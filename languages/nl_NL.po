@@ -1,0 +1,233 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GC Maturity (Gebruiker Centraal Volwassenheidsscore)\n"
+"POT-Creation-Date: 2018-06-13 11:08+0200\n"
+"PO-Revision-Date: 2018-06-13 11:08+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: gc-maturityscore.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: gc-maturityscore.php:255
+msgid "GC Maturity"
+msgstr "Gebuiker Centraal Volwassenheidsscore"
+
+#: gc-maturityscore.php:334
+msgid "Documentation"
+msgstr "Documentatie"
+
+#: gc-maturityscore.php:335
+msgid "GC Maturity documentation"
+msgstr "Documentatie Gebuiker Centraal Volwassenheidsscore"
+
+#: gc-maturityscore.php:401
+msgid "URL"
+msgstr ""
+
+#: gc-maturityscore.php:402
+msgid "Caption"
+msgstr ""
+
+#: gc-maturityscore.php:403
+msgid "New Window"
+msgstr ""
+
+#: gc-maturityscore.php:404
+msgid "Weet je het zeker?"
+msgstr ""
+
+#: gc-maturityscore.php:427
+msgctxt "GC Maturity"
+msgid "Video Player"
+msgstr ""
+
+#: gc-maturityscore.php:534
+msgctxt "GC Maturity"
+msgid "Uitgeschreven tekst"
+msgstr ""
+
+#: gc-maturityscore.php:544
+msgctxt "GC Maturity"
+msgid ""
+"Er is geen caption gevonden voor deze video. Je kunt een uitgelichte "
+"afbeelding gebruiken of een extern beeld-bestand."
+msgstr ""
+
+#: gc-maturityscore.php:547
+msgctxt "GC Maturity"
+msgid "Er is geen video-stream gevonden voor deze video."
+msgstr ""
+
+#: gc-maturityscore.php:550
+msgctxt "GC Maturity"
+msgid "Er is onvoldoende ingevoerd om deze video goed weer te geven."
+msgstr ""
+
+#: gc-maturityscore.php:614
+msgid "Metadata voor video"
+msgstr ""
+
+#: gc-maturityscore.php:624
+msgid "URL van thumbnail"
+msgstr ""
+
+#: gc-maturityscore.php:625
+msgid ""
+"Als caption van de video wordt eerst gekeken of je een uitgelichte "
+"afbeelding hebt toegevoegd aan deze video. Als die er niet is, kun je hier "
+"de URL van het bijbehorende plaatje invoeren."
+msgstr ""
+
+#: gc-maturityscore.php:632
+msgid "Lengte van de video (*)"
+msgstr ""
+
+#: gc-maturityscore.php:633
+msgid "(verplicht) formaat: uu:mm:ss"
+msgstr ""
+
+#: gc-maturityscore.php:643
+msgid "URL van MP4-bestand"
+msgstr ""
+
+#: gc-maturityscore.php:644
+msgid "Apple Quicktime-bestand. Eindigt vaak op .mp4"
+msgstr ""
+
+#: gc-maturityscore.php:651
+msgid "Bestandsgrootte van MP4-bestand"
+msgstr ""
+
+#: gc-maturityscore.php:657
+msgid "URL van Hi-res MP4-bestand"
+msgstr ""
+
+#: gc-maturityscore.php:658
+msgid "Versie van Quicktime-bestand in hoge resolutie."
+msgstr ""
+
+#: gc-maturityscore.php:665
+msgid "Bestandsgrootte van hi-res MP4-bestand"
+msgstr ""
+
+#: gc-maturityscore.php:671
+msgid "Url voor 3GP formaat"
+msgstr ""
+
+#: gc-maturityscore.php:678
+msgid "Bestandsgrootte van 3GP-bestand"
+msgstr ""
+
+#: gc-maturityscore.php:684
+msgid "URL van ondertitel (*)"
+msgstr ""
+
+#: gc-maturityscore.php:685
+msgid "(verplicht veld) Dit is meestal een bestand dat eindigt op .srt"
+msgstr ""
+
+#: gc-maturityscore.php:696
+msgid "Volledige transcriptie"
+msgstr ""
+
+#: gc-maturityscore.php:702
+msgid "URL van audio-track"
+msgstr ""
+
+#: gc-maturityscore.php:703
+msgid "Dit is meestal een bestand dat eindigt op .mp3"
+msgstr ""
+
+#: gc-maturityscore.php:710
+msgid "Bestandsgrootte van audio-track"
+msgstr ""
+
+#: gc-maturityscore.php:718
+msgid "URL van FLV-bestand"
+msgstr ""
+
+#: gc-maturityscore.php:719
+msgid "Eindigt op .flv"
+msgstr ""
+
+#: gc-maturityscore.php:726
+msgid "Bestandsgrootte van FLV-bestand"
+msgstr ""
+
+#: gc-maturityscore.php:732
+msgid "URL van WMV-bestand"
+msgstr ""
+
+#: gc-maturityscore.php:733
+msgid "Windows Media File. Eindigt vaak op .wmv"
+msgstr ""
+
+#: gc-maturityscore.php:740
+msgid "Bestandsgrootte van WMV-bestand"
+msgstr ""
+
+#: gc-maturityscore.php:1225
+msgid "Selecteer een rijksvideo om in dit bericht in te voegen."
+msgstr ""
+
+#: gc-maturityscore.php:1227
+msgid "Voeg rijksvideo in"
+msgstr ""
+
+#: gc-maturityscore.php:1262
+msgid "Choose a video to insert into your post / page."
+msgstr ""
+
+#: gc-maturityscore.php:1264
+msgid "Choose video"
+msgstr ""
+
+#: gc-maturityscore.php:1269
+msgid "Select and insert video"
+msgstr ""
+
+#: gc-maturityscore.php:1271
+msgid "No videos found"
+msgstr ""
+
+#: inc/cmb2-check-required-fields.php:84
+msgid "Deze velden zijn verplicht:\\n"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#, fuzzy
+#| msgid "GC_Maturity"
+msgid "GC Maturity Score Plugin"
+msgstr "Gebuiker Centraal Volwassenheidsscore"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/ICTU/gc-maturityscore-plugin/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk "
+"wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van "
+"organisaties."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Paul van Buuren"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://wbvb.nl"
+msgstr ""
