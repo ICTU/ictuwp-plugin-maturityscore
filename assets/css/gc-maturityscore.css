@@ -49,4 +49,24 @@
 	
  
  */
+.cmb-td .cmb2-radio-list,
+.cmb-td .cmb2-radio-list li {
+  list-style: none;
+}
+.cmb-td .cmb2-radio-list input {
+  width: 5%;
+  display: block;
+  float: left;
+  margin-top: .25em;
+}
+.cmb-td .cmb2-radio-list label {
+  display: block;
+  float: left;
+  clear: right;
+  max-width: 94%;
+}
+.cmb-td .cmb2-radio-list li {
+  display: block;
+  overflow: hidden;
+}
 /*# sourceMappingURL=gc-maturityscore.css.map */

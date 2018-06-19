@@ -18,3 +18,6 @@ wp-content/plugins/hello.php
 /sitemap.xml.gz
 
 *.codekit3
+*.map
+*.codekit3
+*.map

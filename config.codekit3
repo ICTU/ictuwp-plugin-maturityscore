@@ -23,6 +23,14 @@
 		"oAP": "\/.gitignore",
 		"oF": 0
 		},
+	"\/assets\/antwoorden-vragen.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/assets\/antwoorden-vragen-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
 	"\/assets\/css\/admin.css": {
 		"aP": 1,
 		"bl": 0,
@@ -32,6 +40,40 @@
 		"oAP": "\/assets\/css\/admin-min.css",
 		"oF": 0,
 		"oS": 3
+		},
+	"\/assets\/css\/gc-maturityscore-admin.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/assets\/css\/gc-maturityscore-admin-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"\/assets\/css\/gc-maturityscore-admin.css.map": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/assets\/css\/gc-maturityscore-admin.css.map",
+		"oF": 0
+		},
+	"\/assets\/css\/gc-maturityscore.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/assets\/css\/gc-maturityscore-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"\/assets\/css\/gc-maturityscore.css.map": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/assets\/css\/gc-maturityscore.css.map",
+		"oF": 0
 		},
 	"\/assets\/css\/index.php": {
 		"cB": 0,
@@ -2935,49 +2977,12 @@
 		"oAP": "\/cmb2\/tests\/test-cmb-utils.php",
 		"oF": 0
 		},
-	"\/css\/gc-maturityscore-admin.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/css\/gc-maturityscore-admin-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"\/css\/gc-maturityscore-admin.css.map": {
+	"\/deleteme.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/css\/gc-maturityscore-admin.css.map",
+		"oAP": "\/deleteme.php",
 		"oF": 0
-		},
-	"\/css\/gc-maturityscore.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/css\/gc-maturityscore-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"\/css\/gc-maturityscore.css.map": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/css\/gc-maturityscore.css.map",
-		"oF": 0
-		},
-	"\/css\/mediaelementplayer.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/css\/mediaelementplayer-min.css",
-		"oF": 0,
-		"oS": 3
 		},
 	"\/distribute.sh": {
 		"cB": 0,
@@ -3051,8 +3056,8 @@
 		"iI": 0,
 		"ma": 1,
 		"oA": 0,
-		"oAP": "\/css\/gc-maturityscore-admin.css",
-		"oF": 0,
+		"oAP": "\/assets\/css\/gc-maturityscore-admin.css",
+		"oF": 2,
 		"oS": 0,
 		"rU": 0,
 		"sI": 0,
@@ -3068,8 +3073,8 @@
 		"iI": 0,
 		"ma": 1,
 		"oA": 0,
-		"oAP": "\/css\/gc-maturityscore.css",
-		"oF": 0,
+		"oAP": "\/assets\/css\/gc-maturityscore.css",
+		"oF": 2,
 		"oS": 0,
 		"rU": 0,
 		"sI": 0,
