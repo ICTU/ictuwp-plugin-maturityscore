@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: GC Maturity (Gebruiker Centraal Volwassenheidsscore)\n"
-"POT-Creation-Date: 2018-06-13 12:04+0200\n"
+"POT-Creation-Date: 2018-06-17 12:50+0200\n"
 "PO-Revision-Date: 2018-06-13 10:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -431,221 +431,126 @@ msgstr ""
 msgid "Check Three"
 msgstr ""
 
-#: gc-maturityscore.php:220
+#: gc-maturityscore.php:219
 msgctxt "labels"
 msgid "Questionary"
 msgstr ""
 
-#: gc-maturityscore.php:221 gc-maturityscore.php:222 gc-maturityscore.php:238
+#: gc-maturityscore.php:220 gc-maturityscore.php:221 gc-maturityscore.php:237
 msgctxt "labels"
 msgid "Questionaries"
 msgstr ""
 
-#: gc-maturityscore.php:223
+#: gc-maturityscore.php:222
 msgctxt "labels"
 msgid "All questionaries"
 msgstr ""
 
-#: gc-maturityscore.php:224
+#: gc-maturityscore.php:223
 msgctxt "labels"
 msgid "Add new"
 msgstr ""
 
-#: gc-maturityscore.php:225
+#: gc-maturityscore.php:224
 msgctxt "labels"
 msgid "Add new item"
 msgstr ""
 
-#: gc-maturityscore.php:226
+#: gc-maturityscore.php:225
 msgctxt "labels"
 msgid "Edit?"
 msgstr ""
 
-#: gc-maturityscore.php:227
+#: gc-maturityscore.php:226
 msgctxt "labels"
 msgid "Edit questionaries"
 msgstr ""
 
-#: gc-maturityscore.php:228
+#: gc-maturityscore.php:227
 msgctxt "labels"
 msgid "New questionaries"
 msgstr ""
 
-#: gc-maturityscore.php:229
+#: gc-maturityscore.php:228
 msgctxt "labels"
 msgid "Show"
 msgstr ""
 
-#: gc-maturityscore.php:230
+#: gc-maturityscore.php:229
 msgctxt "labels"
 msgid "View questionaries"
 msgstr ""
 
-#: gc-maturityscore.php:231
+#: gc-maturityscore.php:230
 msgctxt "labels"
 msgid "Search questionaries"
 msgstr ""
 
-#: gc-maturityscore.php:232
+#: gc-maturityscore.php:231
 msgctxt "labels"
 msgid "No questionaries available"
 msgstr ""
 
-#: gc-maturityscore.php:233
+#: gc-maturityscore.php:232
 msgctxt "labels"
 msgid "No questionaries found in the trash"
 msgstr ""
 
-#: gc-maturityscore.php:234
+#: gc-maturityscore.php:233
 msgctxt "labels"
-msgid "Paren"
+msgid "Parent"
 msgstr ""
 
-#: gc-maturityscore.php:285
+#: gc-maturityscore.php:284
 msgid "Documentation"
 msgstr ""
 
-#: gc-maturityscore.php:286
+#: gc-maturityscore.php:285
 msgid "GC Maturity documentation"
 msgstr ""
 
-#: gc-maturityscore.php:346
+#: gc-maturityscore.php:345
 msgid "URL"
 msgstr ""
 
-#: gc-maturityscore.php:347
+#: gc-maturityscore.php:346
 msgid "Caption"
 msgstr ""
 
-#: gc-maturityscore.php:348
+#: gc-maturityscore.php:347
 msgid "New Window"
 msgstr ""
 
-#: gc-maturityscore.php:349
+#: gc-maturityscore.php:348
 msgid "Weet je het zeker?"
 msgstr ""
 
-#: gc-maturityscore.php:372
+#: gc-maturityscore.php:369
 msgctxt "GC Maturity"
 msgid "Video Player"
 msgstr ""
 
-#: gc-maturityscore.php:440
-msgid "Metadata voor video"
+#: gc-maturityscore.php:441
+msgid "Vragen en antwoorden"
 msgstr ""
 
 #: gc-maturityscore.php:450
-msgid "URL van thumbnail"
-msgstr ""
-
-#: gc-maturityscore.php:451
-msgid ""
-"Als caption van de video wordt eerst gekeken of je een uitgelichte "
-"afbeelding hebt toegevoegd aan deze video. Als die er niet is, kun je hier "
-"de URL van het bijbehorende plaatje invoeren."
-msgstr ""
-
-#: gc-maturityscore.php:458
-msgid "Lengte van de video (*)"
-msgstr ""
-
-#: gc-maturityscore.php:459
-msgid "(verplicht) formaat: uu:mm:ss"
-msgstr ""
-
-#: gc-maturityscore.php:469
-msgid "URL van MP4-bestand"
-msgstr ""
-
-#: gc-maturityscore.php:470
-msgid "Apple Quicktime-bestand. Eindigt vaak op .mp4"
-msgstr ""
-
-#: gc-maturityscore.php:477
 msgid "Bestandsgrootte van MP4-bestand"
 msgstr ""
 
-#: gc-maturityscore.php:483
-msgid "URL van Hi-res MP4-bestand"
-msgstr ""
-
-#: gc-maturityscore.php:484
-msgid "Versie van Quicktime-bestand in hoge resolutie."
-msgstr ""
-
-#: gc-maturityscore.php:491
-msgid "Bestandsgrootte van hi-res MP4-bestand"
-msgstr ""
-
-#: gc-maturityscore.php:497
-msgid "Url voor 3GP formaat"
-msgstr ""
-
-#: gc-maturityscore.php:504
-msgid "Bestandsgrootte van 3GP-bestand"
-msgstr ""
-
-#: gc-maturityscore.php:510
-msgid "URL van ondertitel (*)"
-msgstr ""
-
-#: gc-maturityscore.php:511
-msgid "(verplicht veld) Dit is meestal een bestand dat eindigt op .srt"
-msgstr ""
-
-#: gc-maturityscore.php:522
-msgid "Volledige transcriptie"
-msgstr ""
-
-#: gc-maturityscore.php:528
-msgid "URL van audio-track"
-msgstr ""
-
-#: gc-maturityscore.php:529
-msgid "Dit is meestal een bestand dat eindigt op .mp3"
-msgstr ""
-
-#: gc-maturityscore.php:536
-msgid "Bestandsgrootte van audio-track"
-msgstr ""
-
-#: gc-maturityscore.php:544
-msgid "URL van FLV-bestand"
-msgstr ""
-
-#: gc-maturityscore.php:545
-msgid "Eindigt op .flv"
-msgstr ""
-
-#: gc-maturityscore.php:552
-msgid "Bestandsgrootte van FLV-bestand"
-msgstr ""
-
-#: gc-maturityscore.php:558
-msgid "URL van WMV-bestand"
-msgstr ""
-
-#: gc-maturityscore.php:559
-msgid "Windows Media File. Eindigt vaak op .wmv"
-msgstr ""
-
-#: gc-maturityscore.php:566
-msgid "Bestandsgrootte van WMV-bestand"
-msgstr ""
-
-#: gc-maturityscore.php:1038
+#: gc-maturityscore.php:923
 msgid "Choose a video to insert into your post / page."
 msgstr ""
 
-#: gc-maturityscore.php:1040
+#: gc-maturityscore.php:925
 msgid "Choose video"
 msgstr ""
 
-#: gc-maturityscore.php:1045
+#: gc-maturityscore.php:930
 msgid "Select and insert video"
 msgstr ""
 
-#: gc-maturityscore.php:1047
+#: gc-maturityscore.php:932
 msgid "No videos found"
 msgstr ""
 
