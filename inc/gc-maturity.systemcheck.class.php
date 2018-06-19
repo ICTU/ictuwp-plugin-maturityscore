@@ -24,7 +24,7 @@ class GC_MaturitySystemCheck {
     public function check() {
         $this->dismissMessages();
         $this->checkWordPressVersion();
-        $this->checkImageLibrary();
+        $this->check_amcharts_plugin();
         $this->checkRoleScoper();
         //$this->checkWpFooter();
         $this->updateSystemCheck();
@@ -63,7 +63,8 @@ class GC_MaturitySystemCheck {
         if ( !function_exists( 'wp_enqueue_media' ) ) {
             $error = "GC_Maturity requires WordPress 3.5 or above. Please upgrade your WordPress installation.";
             $this->printMessage( $error, 'wordPressVersion' );
-        } else {
+        }
+        else {
             $this->options['wordPressVersion'] = false;
         }
     }
@@ -71,17 +72,17 @@ class GC_MaturitySystemCheck {
     /**
      * Check GD or ImageMagick library exists
      */
-    private function checkImageLibrary() {
-        if ( isset( $this->options['imageLibrary'] ) && $this->options['imageLibrary'] === false ) {
-            return;
-        }
+    private function check_amcharts_plugin() {
 
-        if ( ( !extension_loaded( 'gd' ) || !function_exists( 'gd_info' ) ) && ( !extension_loaded( 'imagick' ) || !class_exists( 'Imagick' ) || !class_exists( 'ImagickPixel' ) ) ) {
-            $error = "GC_Maturity requires the GD or ImageMagick PHP extension. Please contact your hosting provider";
-            $this->printMessage( $error, 'imageLibrary' );
-        } else {
-            $this->options['imageLibrary'] = false;
-        }
+      if ( function_exists( 'is_plugin_active' ) && is_plugin_active( 'amcharts-charts-and-maps/amcharts.php' ) ) {
+        //plugin is activated
+        return;
+      }       
+      else {
+        $error = "Deze plugin wil graag grafieken tonen met de AM-charts plugin. Deze is niet actief. ";
+        $this->printMessage( $error, 'amcharts' );
+      }
+            
     }
 
     /**
