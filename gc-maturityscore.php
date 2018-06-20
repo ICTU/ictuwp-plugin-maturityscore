@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.0.2
- * Version description: First version
+ * Version:             1.0.3
+ * Version description: Tonen van een grafiek, berekenen van een gemiddelde.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -31,7 +31,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.0.2';
+      public $version = '1.0.3';
   
   
       /**
@@ -238,6 +238,11 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         
         // Hook do_sync method
         add_action( 'wp_ajax_gcms_reset', array( $this, 'gcms_reset_values' ) );
+
+
+        add_action( 'wp_enqueue_scripts', array( $this, 'register_frontend_style_script' ) );
+
+        
         
       }
   
@@ -333,7 +338,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         update_option( GCMS_OPTIONS_TOTALSURVEYS, $counter );
 
   
-        $log = $this->getstatstable();
+        $log = $this->gcms_frontend_stats_table_get();
 
         if ( $givefeedback ) {
 /*          
@@ -605,6 +610,80 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       //========================================================================================================
   
       /**
+       * Returns data from a survey and the site averages
+       */
+      public function gcms_get_surveydata( $postid = 0,  $context = '' ) {
+
+        $yourdata = array();
+        $waarden  = array();
+        $metadata = array();
+        $arrpoep  = array();
+        
+        $formfields_data  = gcms_read_formfields();
+
+        if ( $postid ) {
+
+          $metadata_raw     = get_post_meta( $postid );    	
+          $metadata         = maybe_unserialize( $metadata_raw[GCMS_FORMKEYS][0] );
+
+          foreach( $metadata as $key => $value ){        
+
+            $constituents = explode( '_', $key );
+            if ( isset( $constituents[1] ) ) {
+              $groep = $constituents[1];
+            }
+
+            $waarden[ $formfields_data->$groep->group_label ][] = $value;
+
+          }
+
+          if ( $waarden ) {
+            
+            foreach( $waarden as $key => $value ){        
+
+              $thesum             = array_sum( $waarden[ $key ] );
+              $average_onderdeel  = round( ( $thesum / count( $waarden[ $key ] ) ), 2 );
+              
+              $arrpoep[ $key ]    = $average_onderdeel;
+          
+            }
+          }
+        }
+
+        if ( $formfields_data ) {
+          foreach ( $formfields_data as $key => $value) {
+            $waarden[ $value->group_label ][] = $value->group_label;
+          }
+        }
+        
+        if ( $waarden ) {
+
+          $yourdata['cols'][] = _x( "Onderdeel", "table header", "gcmaturity-translate" );
+
+          $yourdata['cols'][] = _x( "Gemiddelde score", "table header", "gcmaturity-translate" );
+          if ( $postid ) {
+            $yourdata['cols'][] = _x( "Jouw score", "table header", "gcmaturity-translate" );
+          }
+          
+          foreach( $waarden as $key => $value ){    
+            $thevalue = get_option( sanitize_title( $key ) );
+            if ( $thevalue ) {
+              $yourdata['rows'][ $key ][] = $thevalue;    
+            }
+            if ( $postid && $arrpoep[ $key ]) {
+              $yourdata['rows'][ $key ][] = $arrpoep[ $key ] ;    
+            }
+          }
+        }
+
+        
+        return $yourdata;
+  
+      }
+  
+      //========================================================================================================
+  
+      /**
        * Register frontend styles
        */
       public function register_frontend_style_script() {
@@ -614,8 +693,251 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           $infooter = false;
           
           // don't add to any admin pages
-          wp_enqueue_script( 'gcms-action-js', GCMS_ASSETS_URL . 'js/min/functions-min.js', array( 'jquery' ), GCMS_VERSION, $infooter );
+
+          
           wp_enqueue_style( 'gc-maturityscore-frontend', GCMS_ASSETS_URL . 'css/gc-maturityscore.css', array(), GCMS_VERSION, $infooter );
+
+
+          // contains minified versions of amcharts js files
+          wp_enqueue_script( 'gcms-action-js', GCMS_ASSETS_URL . 'js/min/functions-min.js', array( 'jquery' ), GCMS_VERSION, $infooter );
+
+
+          $postid = get_the_ID();
+          $mydata = $this->gcms_get_surveydata( $postid, 'register_frontend_style_script' );
+          
+//          dovardump( $postid );
+//          dovardump( $mydata );
+
+if ( $mydata ) {
+
+$mykeyname = 'Paul';  
+
+$kleurjouwscore = '#0000FF'; // blauw
+$kleurgemiddeldescore = '#FF0000'; // rood
+  
+  $radardata = json_decode( '{
+	"type": "radar",
+	"categoryField": "' . $mykeyname . '",
+	"sequencedAnimation": false,
+	"fontFamily": "\'Montserrat light\',Helvetica,Arial,sans-serif",
+	"backgroundColor": "#FFFFFF",
+	"color": "#000000",
+	"handDrawScatter": 0,
+	"handDrawThickness": 3,
+	"percentPrecision": 1,
+	"processCount": 1004,
+	"theme": "dark",
+	"graphs": [
+		{
+			"fillAlphas": 0.31,
+			"fillColors": "' . $kleurgemiddeldescore . '",
+			"id": "AmGraph-2",
+			"lineColor": "' . $kleurgemiddeldescore . '",
+			"title": "graph 2",
+			"valueField": "gemiddelde score",
+			"balloonText": "Gemiddelde score: [[value]]"
+		},
+		{
+			"balloonColor": "#FF0000",
+			"balloonText": "Jouw score: [[value]]",
+			"bullet": "round",
+			"fillAlphas": 0.48,
+			"fillColors": "' . $kleurjouwscore . '",
+			"id": "AmGraph-1",
+			"lineColor": "' . $kleurjouwscore . '",
+			"valueField": "jouw score"
+		}
+	],
+	"guides": [],
+	"valueAxes": [
+		{
+			"axisTitleOffset": 20,
+			"id": "ValueAxis-1",
+			"minimum": 0,
+			"zeroGridAlpha": 2,
+			"axisAlpha": 0.76,
+			"axisColor": "#6B6B6B",
+			"axisThickness": 2,
+			"dashLength": 0,
+			"fillAlpha": 0.49,
+			"gridAlpha": 0.68,
+			"gridColor": "#6B6B6B",
+			"minorGridAlpha": 0.4,
+			"minorGridEnabled": true
+		},
+		{
+			"id": "ValueAxis-2",
+			"dashLength": 0,
+			"fillAlpha": 0.43,
+			"gridAlpha": 0.44,
+			"gridColor": "#0000FF",
+			"minorGridAlpha": 0.32
+		}
+	],
+	"allLabels": [],
+	"balloon": {
+		"borderAlpha": 0.24,
+		"color": "#9400D3"
+	},
+	"titles": [],
+	"dataProvider": [
+		{
+			"jouw score": "4.2",
+			"gemiddelde score": "5",
+			"Score": "Eerste dinges"
+		},
+		{
+			"jouw score": "2.4",
+			"gemiddelde score": "4",
+			"Score": "Tweede dinges"
+		},
+		{
+			"jouw score": "3.5",
+			"gemiddelde score": "2",
+			"Score": "Derde dinges"
+		},
+		{
+			"jouw score": "2.8",
+			"gemiddelde score": "1",
+			"Score": "Vierde dinges"
+		},
+		{
+			"jouw score": "4",
+			"gemiddelde score": 2,
+			"Score": "Vijfde dinges"
+		}
+	]
+}
+' );
+
+//  dovardump( $mydata, 'my data' );
+  
+  $columncounter  = 0;
+  $rowcounter     = 0;
+
+//  dovardump( $radardata->graphs );
+
+  foreach( $mydata['cols'] as $columname => $columnsvalue ) {
+
+    
+    if ( $columncounter > 0 ) {
+
+      $radardata->graphs[ ( $columncounter - 1 ) ]->valueField = $columnsvalue;
+
+      $radardata->graphs[ ( $columncounter - 1 ) ]->eh = $columncounter . '_' . $columnsvalue;
+      $radardata->graphs[ ( $columncounter - 1 ) ]->balloonText = $columnsvalue . ': [[value]]';
+
+    }
+
+    $columncounter++;
+
+         
+  }
+
+//  dovardump( $radardata->graphs );
+
+//die();
+
+  $columncounter  = 0;
+  
+/*
+  [cols] => Array
+      (
+          [0] => Onderdeel
+          [1] => Jouw score
+          [2] => Gemiddelde score
+      )
+
+  [rows] => Array
+      (
+          [1 Middelen en processen] => Array
+              (
+                  [0] => 2.9
+                  [1] => 2.33
+              )
+
+          [2 Management en sturing] => Array
+              (
+                  [0] => 2.71
+                  [1] => 2.67
+              )
+
+          [3 Methodieken en meten] => Array
+              (
+                  [0] => 3.24
+                  [1] => 2
+              )
+
+          [4 Kennis en cultuur] => Array
+              (
+                  [0] => 3.28
+                  [1] => 3
+              )
+
+          [5 Begrijpen van eindgebruiker/klant] => Array
+              (
+                  [0] => 3.24
+                  [1] => 4.67
+              )
+
+      )
+*/
+
+//  dovardump( $radardata->dataProvider, 'before' );
+
+  $radardata->dataProvider = array();
+
+  foreach( $mydata['rows'] as $rowname => $rowvalue ) {
+
+    // 0 = jouw score
+    // 1 = algemeneen gemiddelde
+
+    $jouwscore        = $rowvalue[0];
+    $gemiddeldescore  = $rowvalue[1];
+
+    $columncounter = 0;
+
+    foreach( $mydata['cols'] as $columname => $columnsvalue ) {
+      
+//      rowcounter > colname
+
+      $thekey = 'MIJN_x_' . $columnsvalue . '_r' . $rowcounter . '_c' . $columncounter;
+
+      $radardata->dataProvider[$rowcounter]->$mykeyname = $rowname;
+      
+      if ( $columncounter == 2 ) {
+        $radardata->dataProvider[$rowcounter]->$columnsvalue = $gemiddeldescore;
+      }
+      elseif ( $columncounter == 1 ) {
+        $radardata->dataProvider[$rowcounter]->$columnsvalue = $jouwscore;
+      }
+
+
+
+      $columncounter++;
+  
+    }
+
+    $rowcounter++;
+
+  }
+
+//  dovardump( $radardata->graphs );
+//  dovardump( $radardata->dataProvider, 'after' );
+//  dovardump( $radardata );
+
+}
+
+          
+          
+          wp_add_inline_script( 'gcms-action-js', 
+  '      try {
+var amchart1 = AmCharts.makeChart( "amchart1", 
+' . wp_json_encode( $radardata ) . ' );
+}
+catch( err ) { console.log( err ); } ' );
+  
+
               
         }
   
@@ -706,37 +1028,18 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         }
 
         if ( $waarden ) {
-          $aantalenquetes   = 99;
           $onderdeelcount   = 0;
           $overallscore     = 0;
           $aantalenquetes   = get_option( GCMS_OPTIONS_TOTALSURVEYS );
 
           $returnstring = '<p>' . sprintf( _n( 'Er is nu %s enquete ingevoerd.',  'Er zijn inmiddels %s enquetes ingevoerd.', $aantalenquetes, "gcmaturity-translate" ), $aantalenquetes ) . '</p>';
-          $returnstring .= '<table class="gcms-score">';
-          $returnstring .= "<caption>" . _x( "Jouw score per onderdeel, afgezet tegen het gemiddelde", "table description", "gcmaturity-translate" ) . "</caption>";
-          $returnstring .= '<tr><th scope="col">' . _x( "Onderdeel", "table header", "gcmaturity-translate" ) . "</th>";
-          $returnstring .= '<th scope="col">' . _x( "Jouw score", "table header", "gcmaturity-translate" ) . "</th>";
-          $returnstring .= '<th scope="col">' . _x( "Gemiddelde score", "table header", "gcmaturity-translate" ) . "</th></tr>";
-          
-          foreach( $waarden as $key => $value ){        
 
-            $thesum             = array_sum( $value );
-            $average_onderdeel  = number_format_i18n( ( $thesum / count( $value ) ), 1 );
-            $overallscore       = $overallscore + $average_onderdeel;
+          $returnstring .= $this->gcms_frontend_interpretation_get( false, $postid );      
+          $returnstring .= $this->gcms_frontend_graph_get( false, $postid );      
+          $returnstring .= $this->gcms_frontend_stats_table_get( false, $postid );      
 
-            $returnstring .= '<tr><th scope="row">' . $formfields_data->$key->group_label . '</th><td>' . $average_onderdeel . '</td><td>' . number_format_i18n( get_option( sanitize_title( $formfields_data->$key->group_label ) ), 1 )  . '</td></tr>';
-            $onderdeelcount++;
-          }
-
-          $average_overall  = number_format_i18n( ( $overallscore / $onderdeelcount ), 1 );
-          $system_overall   = get_option( GCMS_OPTIONS_OVERALLAVERAGE );
-
-          $returnstring .= '<tr><th scope="row">' . _x( "Eindcijfer", "table description", "gcmaturity-translate" ) . '</th>';
-          $returnstring .= '<td>' . number_format_i18n( $average_overall, 1) . '</td>';
-          $returnstring .= '<td>' . number_format_i18n( $system_overall, 1) . '</td></tr>';
-
-          $returnstring .= '</table>';
         }
+
 
 
         return $returnstring;
@@ -850,6 +1153,9 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             
             $default = rand( 1, ( count( $options ) - 1 ) );
 //            $default = rand( 1, ( count( $options ) - 3 ) );
+//            $default = 5;
+//            $default = 3;
+//            $default = 2;
             
           	$cmb->add_field( array(
           		'name'    => $value2->question_label,
@@ -1052,7 +1358,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 
       echo '<div class="wrap">';
       echo '	<h2>' .  esc_html( get_admin_page_title() ) . '</h2>';
-      echo $this->getstatstable();
+      echo $this->gcms_frontend_stats_table_get();
       echo '</div>';
 
 
@@ -1060,38 +1366,81 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 
     //====================================================================================================
 
-    private function getstatstable( $doecho = false ) {
+    private function gcms_frontend_graph_get( $doecho = false, $postid = 0 ) {
       
-      $return           = '';
+      $return = '<h2>' . _x( "Grafiek", "table description", "gcmaturity-translate" ) . "</h2>\n";
+      $return .= '<div class="radarchart" id="amchart1" style="min-height: 500px; width: 100%"></div>';
+      $return .= '<p>' . _x( "Jouw score in het blauw; gemiddelde score in het rood.", "table description", "gcmaturity-translate" ) . '</p>';
+
+      return $return;
+
+    }
+
+
+    //====================================================================================================
+
+    private function gcms_frontend_interpretation_get( $doecho = false, $postid = 0 ) {
+      
+      $return = '<h2>' . _x( "Onze interpretatie", "table description", "gcmaturity-translate" ) . "</h2>\n";
+      $return .= '<p>' . _x( "Hier komt de score-interpretatie", "table description", "gcmaturity-translate" ) . '</p>';
+
+      return $return;
+
+    }
+
+    //====================================================================================================
+
+    private function gcms_frontend_stats_table_get( $doecho = false, $postid = 0 ) {
+
+      $mydata = $this->gcms_get_surveydata( $postid, 'gcms_frontend_stats_table_get' );
+      $return = '';
+
       $formfields_data  = gcms_read_formfields();
-      $overallscore     = 0;
-      $onderdeelcount   = 0;
       
       if ( $formfields_data ) {
         foreach ( $formfields_data as $key => $value) {
           $waarden[ $value->group_label ][] = $value->group_label;
         }
       }
-      
-      $return = '	<table class="gcms-score">';
-      $return .= '<caption>' . _x( "Gemiddelde score per onderdeel", "table description", "gcmaturity-translate" ) . "</caption>";
-      
-      $return .= '<tr><th scope="col">' . _x( "Onderdeel", "table header", "gcmaturity-translate" ) . "</th>";
-      $return .= '<th scope="col">' . _x( "Gemiddelde score", "table header", "gcmaturity-translate" ) . "</th></tr>";
-      
-      foreach( $waarden as $key => $value ){        
-      
-        $thetitle = sanitize_title( $key );
-        $thevalue = get_option( $thetitle );
-        $thenumber = round( $thevalue, 2 );
-      
-        $return .= '<tr><th scope="row">' . $key . '</th><td>' . number_format_i18n( $thevalue, 1)  . '</td></tr>';
 
+      
+      if ( $mydata ) {
+
+        $return = '<h3>' . _x( "Jouw score en het algemeen gemiddelde", "table description", "gcmaturity-translate" ) . "</h3>\n";
+        $return .= '	<table class="gcms-score">' . "\n";
+        $return .= '<caption>' . _x( "Gemiddelde score per onderdeel", "table description", "gcmaturity-translate" ) . "</caption>\n";
+
+        if ( $mydata['cols'] ) {
+          $return .= '<tr>';
+          foreach( $mydata['cols'] as $key => $value ){        
+            $return .= '<th scope="col">' . $value . "</th>\n";
+          }
+          $return .= "</tr>\n";
+        }
+        
+        if ( $mydata['rows'] ) {
+
+          foreach( $mydata['rows'] as $key => $value ){        
+
+            $return .= '<tr>';
+            $return .= '<th scope="row">' . $key . '</th>';
+
+            foreach( $value as $key2 => $value2 ){        
+
+              $return .= '<td>' . number_format_i18n( $value2, 1)  . "</td>";
+
+            }
+
+            $return .= "</tr>\n";
+
+          }
+        }
+
+        $return .= "</table>\n";
+      
       }
-      
-      $return .= '<tr><th scope="row">' . _x( "Totaal gemiddelde", "table header", "gcmaturity-translate" ) . '</th><td>' . number_format_i18n( get_option( GCMS_OPTIONS_OVERALLAVERAGE ), 1)  . '</td></tr>';
-      $return .= '</table>';
-      
+
+
       if ( $doecho ) {
         echo $return;
       }
@@ -1119,7 +1468,7 @@ if ( isset( $_REQUEST[ 'settings-updated' ] ) && ($_REQUEST[ 'settings-updated' 
       echo '<div class="wrap">';
       echo '	<h2>' .  esc_html( get_admin_page_title() ) . '</h2>';
       echo '<div id="thetable">';
-      echo $this->getstatstable();      
+      echo $this->gcms_frontend_stats_table_get();      
       echo '</div>';
 ?>
 
@@ -1242,8 +1591,6 @@ if ( isset( $_REQUEST[ 'settings-updated' ] ) && ($_REQUEST[ 'settings-updated' 
   
         add_action( 'genesis_entry_content',  'gcms_do_frontend_form_submission_shortcode_echo', 15 );
 
-        $this->register_frontend_style_script();
-        
         //* Force full-width-content layout
         add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
       
@@ -1538,9 +1885,7 @@ function register_plugin_styles() {
   if ( !is_admin() ) {
 
     $infooter = false;
-    
-    // don't add to any admin pages
-    wp_enqueue_script( 'gcms-action-js', GCMS_ASSETS_URL . 'assets/js/min/functions-min.js', array( 'jquery' ), GCMS_VERSION, $infooter );
+
     wp_enqueue_style( 'gc-maturityscore-frontend', GCMS_ASSETS_URL . 'css/gc-maturityscore.css', array(), GCMS_VERSION, $infooter );
         
   }
