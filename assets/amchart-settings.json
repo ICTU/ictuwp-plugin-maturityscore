@@ -1,0 +1,128 @@
+var $CHART$ = AmCharts.makeChart( "$CHART$", {
+  "type": "radar",
+  "dataProvider": [ {
+    "volwassenheidsscore": "Middelen en processen",
+    "punten": 2
+  }, {
+    "volwassenheidsscore": "Management en sturing",
+    "punten": 5
+  }, {
+    "volwassenheidsscore": "Methodieken en meten",
+    "punten": 4
+  }, {
+    "volwassenheidsscore": "Kennis en cultuur",
+    "punten": 6
+  }, {
+    "volwassenheidsscore": "Begrijpen van eindgebruiker/klant",
+    "punten": 3
+  } ],
+  "valueAxes": [ {
+    "axisTitleOffset": 20,
+    "minimum": 0,
+    "axisAlpha": 0.15
+  } ],
+  "startDuration": 0,
+  "graphs": [ {
+    "balloonText": "score: [[value]]",
+    "bullet": "round",
+    "valueField": "punten"
+  } ],
+  "categoryField": "volwassenheidsscore"
+} );
+
+
+
+{
+	"type": "radar",
+	"categoryField": "Score",
+	"sequencedAnimation": false,
+	"backgroundColor": "#FFFFFF",
+	"color": "#000000",
+	"fontFamily": "Georgia",
+	"fontSize": 14,
+	"handDrawScatter": 0,
+	"handDrawThickness": 3,
+	"percentPrecision": 1,
+	"processCount": 1004,
+	"theme": "dark",
+	"graphs": [
+		{
+			"balloonColor": "#FF0000",
+			"balloonText": "[[value]] litres of beer per year",
+			"bullet": "round",
+			"fillAlphas": 0.48,
+			"fillColors": "#FF0000",
+			"id": "AmGraph-1",
+			"lineColor": "#FF0000",
+			"valueField": "jouw score"
+		},
+		{
+			"dashLength": 1,
+			"fillAlphas": 0.31,
+			"fillColors": "#0000FF",
+			"id": "AmGraph-2",
+			"lineColor": "#0000FF",
+			"title": "graph 2",
+			"valueField": "gemiddelde score"
+		}
+	],
+	"guides": [],
+	"valueAxes": [
+		{
+			"axisTitleOffset": 20,
+			"id": "ValueAxis-1",
+			"minimum": 0,
+			"zeroGridAlpha": 2,
+			"axisAlpha": 0.76,
+			"axisColor": "#6B6B6B",
+			"axisThickness": 2,
+			"dashLength": 0,
+			"fillAlpha": 0.49,
+			"gridAlpha": 0.68,
+			"gridColor": "#6B6B6B",
+			"minorGridAlpha": 0.4,
+			"minorGridEnabled": true
+		},
+		{
+			"id": "ValueAxis-2",
+			"dashLength": 0,
+			"fillAlpha": 0.43,
+			"gridAlpha": 0.44,
+			"gridColor": "#0000FF",
+			"minorGridAlpha": 0.32
+		}
+	],
+	"allLabels": [],
+	"balloon": {
+		"borderAlpha": 0.24,
+		"color": "#9400D3"
+	},
+	"titles": [],
+	"dataProvider": [
+		{
+			"jouw score": "4.2",
+			"gemiddelde score": "5",
+			"Score": "Eerste dinges"
+		},
+		{
+			"jouw score": "2.4",
+			"gemiddelde score": "4",
+			"Score": "Tweede dinges"
+		},
+		{
+			"jouw score": "3.5",
+			"gemiddelde score": "2",
+			"Score": "Derde dinges"
+		},
+		{
+			"jouw score": "2.8",
+			"gemiddelde score": "1",
+			"Score": "Vierde dinges"
+		},
+		{
+			"jouw score": "4",
+			"gemiddelde score": 2,
+			"Score": "Vijfde dinges"
+		}
+	]
+}
