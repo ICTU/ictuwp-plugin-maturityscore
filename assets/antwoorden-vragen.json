@@ -1,489 +1,494 @@
 {
-  "groep 1": {
-    "naam": "1 Middelen en processen",
-    "vragen": [
+  "g1": {
+    "group_key": "groep_1",
+    "group_label": "1 Middelen en processen",
+    "group_questions": [
       {
-        "vraag": "1: Hoeveel budget is er beschikbaar voor User eXperience (UX)?",
-        "key": "1_1",
-        "antwoorden": [
+        "question_label": "1: Hoeveel budget is er beschikbaar voor User eXperience (UX)?",
+        "question_key": "question_g1_v1",
+        "question_answers": [
           {
-            "value": "1",
-            "key": "1_1",
-            "label": "Geen"
+            "answer_value": "1",
+            "answer_key": "answer_g1_v1_1",
+            "answer_label": "Geen"
           },
           {
-            "value": "2",
-            "key": "1_2",
-            "label": "Op ad hoc basis komt budget beschikbaar"
+            "answer_value": "2",
+            "answer_key": "answer_g1_v1_2",
+            "answer_label": "Op ad hoc basis komt budget beschikbaar"
           },
           {
-            "value": "3",
-            "key": "1_3",
-            "label": "Per project is budget beschikbaar"
+            "answer_value": "3",
+            "answer_key": "answer_g1_v1_3",
+            "answer_label": "Per project is budget beschikbaar"
           },
           {
-            "value": "4",
-            "key": "1_4",
-            "label": "Er is structureel een (beperkt) budget beschikbaar voor het betrekken van gebruikers en voor opleiden van medewerkers"
+            "answer_value": "4",
+            "answer_key": "answer_g1_v1_4",
+            "answer_label": "Er is structureel een (beperkt) budget beschikbaar voor het betrekken van gebruikers en voor opleiden van medewerkers"
           },
           {
-            "value": "5",
-            "key": "1_5",
-            "label": "Budget voor betrekken gebruikers zit standaard (voor 10-15%) in alle werkzaamheden en projecten. Er is structureel budget voor opleidingen van medewerkers en voor aanschaf van materiaal, hard- en software voor uitvoeren van onderzoek"
+            "answer_value": "5",
+            "answer_key": "answer_g1_v1_5",
+            "answer_label": "Budget voor betrekken gebruikers zit standaard (voor 10-15%) in alle werkzaamheden en projecten. Er is structureel budget voor opleidingen van medewerkers en voor aanschaf van materiaal, hard- en software voor uitvoeren van onderzoek"
           }
         ]
       },
       {
-        "vraag": "2: Hoeveel mensen/disciplines betrekken gebruikers in hun werk?",
-        "key": "1_2",
-        "antwoorden": [
+        "question_label": "2: Hoeveel mensen/disciplines betrekken gebruikers in hun werk?",
+        "question_key": "question_g1_v2",
+        "question_answers": [
           {
-            "value": "1",
-            "key": "2_1",
-            "label": "Geen"
+            "answer_value": "1",
+            "answer_key": "answer_g1_v2_1",
+            "answer_label": "Geen"
           },
           {
-            "value": "2",
-            "key": "2_2",
-            "label": "Een enkele gedreven medewerker van onderop in de organisatie, maar niemand is full-time hiermee bezig"
+            "answer_value": "2",
+            "answer_key": "answer_g1_v2_2",
+            "answer_label": "Een enkele gedreven medewerker van onderop in de organisatie, maar niemand is full-time hiermee bezig"
           },
           {
-            "value": "3",
-            "key": "2_3",
-            "label": "In projecten worden gebruikers betrokken; er zijn een paar fulltime UX medewerkers beschikbaar voor projecten"
+            "answer_value": "3",
+            "answer_key": "answer_g1_v2_3",
+            "answer_label": "In projecten worden gebruikers betrokken; er zijn een paar fulltime UX medewerkers beschikbaar voor projecten"
           },
           {
-            "value": "4",
-            "key": "2_4",
-            "label": "We hebben een apart team met fulltime mensen voor betrekken gebruikers met aantal disciplines erin"
+            "answer_value": "4",
+            "answer_key": "answer_g1_v2_4",
+            "answer_label": "We hebben een apart team met fulltime mensen voor betrekken gebruikers met aantal disciplines erin"
           },
           {
-            "value": "5",
-            "key": "2_5",
-            "label": "Alle medewerkers en disciplines hebben oog voor de gebruiker en er is een team van full-time medewerkers voor specialistisch (UX) werk"
+            "answer_value": "5",
+            "answer_key": "answer_g1_v2_5",
+            "answer_label": "Alle medewerkers en disciplines hebben oog voor de gebruiker en er is een team van full-time medewerkers voor specialistisch (UX) werk"
           }
         ]
       },
       {
-        "vraag": "3: In hoeverre is User eXperience (UX) meegenomen in de werkprocessen?",
-        "key": "1_3",
-        "antwoorden": [
+        "question_label": "3: In hoeverre is User eXperience (UX) meegenomen in de werkprocessen?",
+        "question_key": "question_g1_v3",
+        "question_answers": [
           {
-            "value": "1",
-            "key": "3_1",
-            "label": "Het is niet opgenomen in de werkprocessen"
+            "answer_value": "1",
+            "answer_key": "answer_g1_v3_1",
+            "answer_label": "Het is niet opgenomen in de werkprocessen"
           },
           {
-            "value": "2",
-            "key": "3_2",
-            "label": "We hebben alleen generieke processen op het gebied van kwaliteit (van dienstverlening)"
+            "answer_value": "2",
+            "answer_key": "answer_g1_v3_2",
+            "answer_label": "We hebben alleen generieke processen op het gebied van kwaliteit (van dienstverlening)"
           },
           {
-            "value": "3",
-            "key": "3_3",
-            "label": "UX wordt nog gezien als een instrument dat je wel of niet toepast, bijvoorbeeld maar één keer een usabilityonderzoek (laten) uitvoeren bij oplevering."
+            "answer_value": "3",
+            "answer_key": "answer_g1_v3_3",
+            "answer_label": "UX wordt nog gezien als een instrument dat je wel of niet toepast, bijvoorbeeld maar één keer een usabilityonderzoek (laten) uitvoeren bij oplevering."
           },
           {
-            "value": "4",
-            "key": "3_4",
-            "label": "Er zijn aparte UX processen ingericht voor het betrekken van gebruikers"
+            "answer_value": "4",
+            "answer_key": "answer_g1_v3_4",
+            "answer_label": "Er zijn aparte UX processen ingericht voor het betrekken van gebruikers"
           },
           {
-            "value": "5",
-            "key": "3_5",
-            "label": "UX zit ingebed in alle werkprocessen, zowel in de agile ontwikkel- als de beheer-processen. Er wordt intensief samengewerkt aan kwaliteitsverbetering met de partners en er wordt voor gezorgd dat gebruikers dezelfde beleving geboden wordt"
+            "answer_value": "5",
+            "answer_key": "answer_g1_v3_5",
+            "answer_label": "UX zit ingebed in alle werkprocessen, zowel in de agile ontwikkel- als de beheer-processen. Er wordt intensief samengewerkt aan kwaliteitsverbetering met de partners en er wordt voor gezorgd dat gebruikers dezelfde beleving geboden wordt"
           }
         ]
       }
     ]
   },
-  "groep 2": {
-    "naam": "2 Management en sturing",
-    "vragen": [
+  "g2": {
+    "group_key": "groep_2",
+    "group_label": "2 Management en sturing",
+    "group_questions": [
       {
-        "vraag": "4: Hoe is het management betrokken?",
-        "key": "2_4",
-        "antwoorden": [
+        "question_label": "4: Hoe is het management betrokken?",
+        "question_key": "question_g2_v4",
+        "question_answers": [
           {
-            "value": "1",
-            "key": "4_1",
-            "label": "Er is geen betrokkenheid"
+            "answer_value": "1",
+            "answer_key": "answer_g2_v4_1",
+            "answer_label": "Er is geen betrokkenheid"
           },
           {
-            "value": "2",
-            "key": "4_2",
-            "label": "Ze krijgen af en toe een onderzoeksrapport"
+            "answer_value": "2",
+            "answer_key": "answer_g2_v4_2",
+            "answer_label": "Ze krijgen af en toe een onderzoeksrapport"
           },
           {
-            "value": "3",
-            "key": "4_3",
-            "label": "Ze raken geïnteresseerd en willen weten wat het oplevert"
+            "answer_value": "3",
+            "answer_key": "answer_g2_v4_3",
+            "answer_label": "Ze raken geïnteresseerd en willen weten wat het oplevert"
           },
           {
-            "value": "4",
-            "key": "4_4",
-            "label": "Vinden het belangrijk en gaan er op sturen"
+            "answer_value": "4",
+            "answer_key": "answer_g2_v4_4",
+            "answer_label": "Vinden het belangrijk en gaan er op sturen"
           },
           {
-            "value": "5",
-            "key": "4_5",
-            "label": "In het topmanagement is er één persoon de eigenaar van alles m.b.t. UX of het management is binnen de organisatie hét gezicht van het werken aan een excellente gebruikersgerichtheid en hebben daarmee een voorbeeldrol"
+            "answer_value": "5",
+            "answer_key": "answer_g2_v4_5",
+            "answer_label": "In het topmanagement is er één persoon de eigenaar van alles m.b.t. UX of het management is binnen de organisatie hét gezicht van het werken aan een excellente gebruikersgerichtheid en hebben daarmee een voorbeeldrol"
           }
         ]
       },
       {
-        "vraag": "5: Is het betrekken van gebruikers meegenomen in de visie en missie van de organisatie?",
-        "key": "2_5",
-        "antwoorden": [
+        "question_label": "5: Is het betrekken van gebruikers meegenomen in de visie en missie van de organisatie?",
+        "question_key": "question_g2_v5",
+        "question_answers": [
           {
-            "value": "1",
-            "key": "5_1",
-            "label": "Nee"
+            "answer_value": "1",
+            "answer_key": "answer_g2_v5_1",
+            "answer_label": "Nee"
           },
           {
-            "value": "2",
-            "key": "5_2",
-            "label": "Bij projecten of een enkele afdeling worden resultaten van onderzoeken gebruikt voor het bepalen van werkzaamheden"
+            "answer_value": "2",
+            "answer_key": "answer_g2_v5_2",
+            "answer_label": "Bij projecten of een enkele afdeling worden resultaten van onderzoeken gebruikt voor het bepalen van werkzaamheden"
           },
           {
-            "value": "3",
-            "key": "5_3",
-            "label": "Er is een onderzoeksjaarplan en een set van KPI’s (key performance indicatoren)"
+            "answer_value": "3",
+            "answer_key": "answer_g2_v5_3",
+            "answer_label": "Er is een onderzoeksjaarplan en een set van KPI’s (key performance indicatoren)"
           },
           {
-            "value": "4",
-            "key": "5_4",
-            "label": "Het management vindt het belangrijk en heeft het manifest van Gebruiker Centraal ondertekend en we hebben een gedegen set van KPI’s waar op gestuurd wordt"
+            "answer_value": "4",
+            "answer_key": "answer_g2_v5_4",
+            "answer_label": "Het management vindt het belangrijk en heeft het manifest van Gebruiker Centraal ondertekend en we hebben een gedegen set van KPI’s waar op gestuurd wordt"
           },
           {
-            "value": "5",
-            "key": "5_5",
-            "label": "Gebruikers betrekken wordt strategisch ingezet en staat expliciet in de visie en missie van de gehele organisatie maar ook in de visie en missie van de verschillende afdelingen afzonderlijk. Er wordt ook naar gehandeld, inclusief alle sturingsmiddelen die daar bij horen"
+            "answer_value": "5",
+            "answer_key": "answer_g2_v5_5",
+            "answer_label": "Gebruikers betrekken wordt strategisch ingezet en staat expliciet in de visie en missie van de gehele organisatie maar ook in de visie en missie van de verschillende afdelingen afzonderlijk. Er wordt ook naar gehandeld, inclusief alle sturingsmiddelen die daar bij horen"
           }
         ]
       },
       {
-        "vraag": "6: Hoe lang wordt er actief gestuurd op het betrekken van gebruikers?",
-        "key": "2_6",
-        "antwoorden": [
+        "question_label": "6: Hoe lang wordt er actief gestuurd op het betrekken van gebruikers?",
+        "question_key": "question_g2_v6",
+        "question_answers": [
           {
-            "value": "1",
-            "key": "6_1",
-            "label": "Wij zijn nog niet actief aan het sturen op betrekken gebruikers"
+            "answer_value": "1",
+            "answer_key": "answer_g2_v6_1",
+            "answer_label": "Wij zijn nog niet actief aan het sturen op betrekken gebruikers"
           },
           {
-            "value": "2",
-            "key": "6_2",
-            "label": "We zijn minder dan 2 jaar bezig"
+            "answer_value": "2",
+            "answer_key": "answer_g2_v6_2",
+            "answer_label": "We zijn minder dan 2 jaar bezig"
           },
           {
-            "value": "3",
-            "key": "6_3",
-            "label": "We zijn tussen de 2-5 jaar bezig"
+            "answer_value": "3",
+            "answer_key": "answer_g2_v6_3",
+            "answer_label": "We zijn tussen de 2-5 jaar bezig"
           },
           {
-            "value": "4",
-            "key": "6_4",
-            "label": "We zijn tussen de 5-10 jaar bezig"
+            "answer_value": "4",
+            "answer_key": "answer_g2_v6_4",
+            "answer_label": "We zijn tussen de 5-10 jaar bezig"
           },
           {
-            "value": "5",
-            "key": "6_5",
-            "label": "We zijn al langer dan 10 jaar bezig met het actief sturen op betrekken gebruikers"
+            "answer_value": "5",
+            "answer_key": "answer_g2_v6_5",
+            "answer_label": "We zijn al langer dan 10 jaar bezig met het actief sturen op betrekken gebruikers"
           }
         ]
       }
     ]
   },
-  "groep 3": {
-    "naam": "3 Methodieken en meten",
-    "vragen": [
+  "g3": {
+    "group_key": "groep_3",
+    "group_label": "3 Methodieken en meten",
+    "group_questions": [
       {
-        "vraag": "7: Welke methodieken worden gebruikt voor het betrekken van gebruikers?",
-        "key": "3_7",
-        "antwoorden": [
+        "question_label": "7: Welke methodieken worden gebruikt voor het betrekken van gebruikers?",
+        "question_key": "question_g3_v7",
+        "question_answers": [
           {
-            "value": "1",
-            "key": "7_1",
-            "label": "Geen"
+            "answer_value": "1",
+            "answer_key": "answer_g3_v7_1",
+            "answer_label": "Geen"
           },
           {
-            "value": "2",
-            "key": "7_2",
-            "label": "Er is één keer een usability test uitgevoerd (door een extern bureau) en we hebben statistiek informatie"
+            "answer_value": "2",
+            "answer_key": "answer_g3_v7_2",
+            "answer_label": "Er is één keer een usability test uitgevoerd (door een extern bureau) en we hebben statistiek informatie"
           },
           {
-            "value": "3",
-            "key": "7_3",
-            "label": "Er is een beperkte basisset die we voor alles gebruiken: guerrillamethoden worden ingezet voor gebruiksonderzoek en er wordt geëxperimenteerd met persona’s en klantreizen"
+            "answer_value": "3",
+            "answer_key": "answer_g3_v7_3",
+            "answer_label": "Er is een beperkte basisset die we voor alles gebruiken: guerrillamethoden worden ingezet voor gebruiksonderzoek en er wordt geëxperimenteerd met persona’s en klantreizen"
           },
           {
-            "value": "4",
-            "key": "7_4",
-            "label": "Er is een set van methoden die we bij het ontwikkelen van nieuwe functionaliteit gebruiken, bijvoorbeeld voor bepalen prioriteit en voor validatie van wat we aan het doen zijn, naast statistiek en gebruiksonderzoek"
+            "answer_value": "4",
+            "answer_key": "answer_g3_v7_4",
+            "answer_label": "Er is een set van methoden die we bij het ontwikkelen van nieuwe functionaliteit gebruiken, bijvoorbeeld voor bepalen prioriteit en voor validatie van wat we aan het doen zijn, naast statistiek en gebruiksonderzoek"
           },
           {
-            "value": "5",
-            "key": "7_5",
-            "label": "We zetten strategisch vele verschillende methoden in, inclusief co-creatie met eindgebruikers, eigen testfaciliteiten, een researchcommunity, etc. We bepalen per keer wat de beste methoden zijn. Dit kunnen ook voor ons nieuwe methodieken zijn."
+            "answer_value": "5",
+            "answer_key": "answer_g3_v7_5",
+            "answer_label": "We zetten strategisch vele verschillende methoden in, inclusief co-creatie met eindgebruikers, eigen testfaciliteiten, een researchcommunity, etc. We bepalen per keer wat de beste methoden zijn. Dit kunnen ook voor ons nieuwe methodieken zijn."
           }
         ]
       },
       {
-        "vraag": "8: Wat gebeurt er met de resultaten van de ingezette methodieken?",
-        "key": "3_8",
-        "antwoorden": [
+        "question_label": "8: Wat gebeurt er met de resultaten van de ingezette methodieken?",
+        "question_key": "question_g3_v8",
+        "question_answers": [
           {
-            "value": "1",
-            "key": "8_1",
-            "label": "Weinig tot niets"
+            "answer_value": "1",
+            "answer_key": "answer_g3_v8_1",
+            "answer_label": "Weinig tot niets"
           },
           {
-            "value": "2",
-            "key": "8_2",
-            "label": "We kijken een keer per jaar wat gebruikers vinden en zien wel wat er uit komt en wat we daarmee kunnen"
+            "answer_value": "2",
+            "answer_key": "answer_g3_v8_2",
+            "answer_label": "We kijken een keer per jaar wat gebruikers vinden en zien wel wat er uit komt en wat we daarmee kunnen"
           },
           {
-            "value": "3",
-            "key": "8_3",
-            "label": "We gebruiken de resultaten alleen om bevestiging te krijgen bij nieuwe ontwikkelingen/bijsturen en delen de resultaten alleen binnen projectteam/afdeling"
+            "answer_value": "3",
+            "answer_key": "answer_g3_v8_3",
+            "answer_label": "We gebruiken de resultaten alleen om bevestiging te krijgen bij nieuwe ontwikkelingen/bijsturen en delen de resultaten alleen binnen projectteam/afdeling"
           },
           {
-            "value": "4",
-            "key": "8_4",
-            "label": "We hebben een onderzoeksjaarplan voor specifieke producten waarbij we structureel methoden inzetten. De resultaten worden gedeeld met de betrokken stakeholders."
+            "answer_value": "4",
+            "answer_key": "answer_g3_v8_4",
+            "answer_label": "We hebben een onderzoeksjaarplan voor specifieke producten waarbij we structureel methoden inzetten. De resultaten worden gedeeld met de betrokken stakeholders."
           },
           {
-            "value": "5",
-            "key": "8_5",
-            "label": "We meten zoveel mogelijk en delen proactief de resultaten (ook met de directie), hebben een overzicht van alle inzichten van de uitgevoerde onderzoeken, niets gaat live of wordt veranderd zonder de verandering te valideren"
+            "answer_value": "5",
+            "answer_key": "answer_g3_v8_5",
+            "answer_label": "We meten zoveel mogelijk en delen proactief de resultaten (ook met de directie), hebben een overzicht van alle inzichten van de uitgevoerde onderzoeken, niets gaat live of wordt veranderd zonder de verandering te valideren"
           }
         ]
       },
       {
-        "vraag": "9: Wat wordt er gemeten?",
-        "key": "3_9",
-        "antwoorden": [
+        "question_label": "9: Wat wordt er gemeten?",
+        "question_key": "question_g3_v9",
+        "question_answers": [
           {
-            "value": "1",
-            "key": "9_1",
-            "label": "Weinig tot niets"
+            "answer_value": "1",
+            "answer_key": "answer_g3_v9_1",
+            "answer_label": "Weinig tot niets"
           },
           {
-            "value": "2",
-            "key": "9_2",
-            "label": "Er worden alleen klanttevredenheidsonderzoeken uitgevoerd"
+            "answer_value": "2",
+            "answer_key": "answer_g3_v9_2",
+            "answer_label": "Er worden alleen klanttevredenheidsonderzoeken uitgevoerd"
           },
           {
-            "value": "3",
-            "key": "9_3",
-            "label": "Er wordt een start gemaakt met het meten door het opstellen van een aantal KPI’s op gebied van UX, bijvoorbeeld voor de gebruikerstevredenheid"
+            "answer_value": "3",
+            "answer_key": "answer_g3_v9_3",
+            "answer_label": "Er wordt een start gemaakt met het meten door het opstellen van een aantal KPI’s op gebied van UX, bijvoorbeeld voor de gebruikerstevredenheid"
           },
           {
-            "value": "4",
-            "key": "9_4",
-            "label": "Er wordt geëxperimenteerd welke KPI’s werken voor de organisatie voor het betrekken van gebruikers, nadruk ligt nog op cijfermatige KPI’s"
+            "answer_value": "4",
+            "answer_key": "answer_g3_v9_4",
+            "answer_label": "Er wordt geëxperimenteerd welke KPI’s werken voor de organisatie voor het betrekken van gebruikers, nadruk ligt nog op cijfermatige KPI’s"
           },
           {
-            "value": "5",
-            "key": "9_5",
-            "label": "Er is een uitgebreid KPI set, daarnaast wordt er ook op zachtere eisen gestuurd door regelmatig op gestructureerde wijze de emoties, beleving en ervaringen van gebruikers te onderzoeken"
+            "answer_value": "5",
+            "answer_key": "answer_g3_v9_5",
+            "answer_label": "Er is een uitgebreid KPI set, daarnaast wordt er ook op zachtere eisen gestuurd door regelmatig op gestructureerde wijze de emoties, beleving en ervaringen van gebruikers te onderzoeken"
           }
         ]
       }
     ]
   },
-  "groep 4": {
-    "naam": "4 Kennis en cultuur",
-    "vragen": [
+  "g4": {
+    "group_key": "groep_4",
+    "group_label": "4 Kennis en cultuur",
+    "group_questions": [
       {
-        "vraag": "10: Wie heeft kennis van het betrekken van gebruikers in de organisatie?",
-        "key": "4_10",
-        "antwoorden": [
+        "question_label": "10: Wie heeft kennis van het betrekken van gebruikers in de organisatie?",
+        "question_key": "question_g4_v10",
+        "question_answers": [
           {
-            "value": "1",
-            "key": "10_1",
-            "label": "Bijna niemand"
+            "answer_value": "1",
+            "answer_key": "answer_g4_v10_1",
+            "answer_label": "Bijna niemand"
           },
           {
-            "value": "2",
-            "key": "10_2",
-            "label": "Een paar mensen die het belangrijk vinden op verschillende afdelingen"
+            "answer_value": "2",
+            "answer_key": "answer_g4_v10_2",
+            "answer_label": "Een paar mensen die het belangrijk vinden op verschillende afdelingen"
           },
           {
-            "value": "3",
-            "key": "10_3",
-            "label": "Medewerkers die het belangrijk vinden gaan elkaar opzoeken en kennis delen"
+            "answer_value": "3",
+            "answer_key": "answer_g4_v10_3",
+            "answer_label": "Medewerkers die het belangrijk vinden gaan elkaar opzoeken en kennis delen"
           },
           {
-            "value": "4",
-            "key": "10_4",
-            "label": "We hebben een aparte afdeling met fulltime mensen voor onderzoek/user experience"
+            "answer_value": "4",
+            "answer_key": "answer_g4_v10_4",
+            "answer_label": "We hebben een aparte afdeling met fulltime mensen voor onderzoek/user experience"
           },
           {
-            "value": "5",
-            "key": "10_5",
-            "label": "Iedereen heeft basiskennis en voor specialistische kennis hebben we een intern team met interaction designers, onderzoekers, begeleiders voor sessies met gebruikers, etc."
+            "answer_value": "5",
+            "answer_key": "answer_g4_v10_5",
+            "answer_label": "Iedereen heeft basiskennis en voor specialistische kennis hebben we een intern team met interaction designers, onderzoekers, begeleiders voor sessies met gebruikers, etc."
           }
         ]
       },
       {
-        "vraag": "11: Hoe komt de organisatie en medewerkers aan kennis over het betrekken van gebruikers?",
-        "key": "4_11",
-        "antwoorden": [
+        "question_label": "11: Hoe komt de organisatie en medewerkers aan kennis over het betrekken van gebruikers?",
+        "question_key": "question_g4_v11",
+        "question_answers": [
           {
-            "value": "1",
-            "key": "11_1",
-            "label": "Niet"
+            "answer_value": "1",
+            "answer_key": "answer_g4_v11_1",
+            "answer_label": "Niet"
           },
           {
-            "value": "2",
-            "key": "11_2",
-            "label": "Een aantal medewerkers vindt het belangrijk en gaat zelf op zoek"
+            "answer_value": "2",
+            "answer_key": "answer_g4_v11_2",
+            "answer_label": "Een aantal medewerkers vindt het belangrijk en gaat zelf op zoek"
           },
           {
-            "value": "3",
-            "key": "11_3",
-            "label": "We gaan af en toe naar bijeenkomsten en ad hoc gaan medewerkers naar opleidingen"
+            "answer_value": "3",
+            "answer_key": "answer_g4_v11_3",
+            "answer_label": "We gaan af en toe naar bijeenkomsten en ad hoc gaan medewerkers naar opleidingen"
           },
           {
-            "value": "4",
-            "key": "11_4",
-            "label": "We denken na over wat voor opleidingen er op het gebied van betrekken gebruikers nodig zouden zijn, en maken een plan en gaan naar bijeenkomsten (toe) en delen kennis over wat er is geleerd"
+            "answer_value": "4",
+            "answer_key": "answer_g4_v11_4",
+            "answer_label": "We denken na over wat voor opleidingen er op het gebied van betrekken gebruikers nodig zouden zijn, en maken een plan en gaan naar bijeenkomsten (toe) en delen kennis over wat er is geleerd"
           },
           {
-            "value": "5",
-            "key": "11_5",
-            "label": "We zorgen ervoor dat zoveel mogelijk mensen opgeleid en gecertificeerd zijn, delen actief kennis via communities en netwerken en nemen mensen aan die al opgeleid zijn"
+            "answer_value": "5",
+            "answer_key": "answer_g4_v11_5",
+            "answer_label": "We zorgen ervoor dat zoveel mogelijk mensen opgeleid en gecertificeerd zijn, delen actief kennis via communities en netwerken en nemen mensen aan die al opgeleid zijn"
           }
         ]
       },
       {
-        "vraag": "12: Hoe wordt er gedacht over betrekken van gebruikers in de organisatie?",
-        "key": "4_12",
-        "antwoorden": [
+        "question_label": "12: Hoe wordt er gedacht over betrekken van gebruikers in de organisatie?",
+        "question_key": "question_g4_v12",
+        "question_answers": [
           {
-            "vraag": "1",
-            "key": "12_1",
-            "label": "Niet"
+            "question_label": "1",
+            "answer_key": "answer_g4_v12_1",
+            "answer_label": "Niet"
           },
           {
-            "value": "2",
-            "key": "12_2",
-            "label": "Een aantal medewerkers vindt het belangrijk genoeg om hier aandacht aan te besteden, de rest vindt gebruikers maar lastig"
+            "answer_value": "2",
+            "answer_key": "answer_g4_v12_2",
+            "answer_label": "Een aantal medewerkers vindt het belangrijk genoeg om hier aandacht aan te besteden, de rest vindt gebruikers maar lastig"
           },
           {
-            "value": "3",
-            "key": "12_3",
-            "label": "Er zijn een aantal specifieke afdelingen die positief zijn over het betrekken van gebruikers omdat zij direct te maken hebben met gebruikers"
+            "answer_value": "3",
+            "answer_key": "answer_g4_v12_3",
+            "answer_label": "Er zijn een aantal specifieke afdelingen die positief zijn over het betrekken van gebruikers omdat zij direct te maken hebben met gebruikers"
           },
           {
-            "value": "4",
-            "key": "12_4",
-            "label": "Medewerkers in de organisatie weten wat hun persoonlijke bijdrage is aan het realiseren van enthousiaste en loyale gebruikers"
+            "answer_value": "4",
+            "answer_key": "answer_g4_v12_4",
+            "answer_label": "Medewerkers in de organisatie weten wat hun persoonlijke bijdrage is aan het realiseren van enthousiaste en loyale gebruikers"
           },
           {
-            "value": "5",
-            "key": "12_5",
-            "label": "Wij bieden doorlopend leer- en ontwikkelprogramma’s aan waarin cultuur, gebruikersgerichtheid en gebruikersbeleving belangrijke onderwerpen zijn"
+            "answer_value": "5",
+            "answer_key": "answer_g4_v12_5",
+            "answer_label": "Wij bieden doorlopend leer- en ontwikkelprogramma’s aan waarin cultuur, gebruikersgerichtheid en gebruikersbeleving belangrijke onderwerpen zijn"
           }
         ]
       }
     ]
   },
-  "groep 5": {
-    "naam": "5 Begrijpen van eindgebruiker/klant",
-    "vragen": [
+  "g5": {
+    "group_key": "groep_5",
+    "group_label": "5 Begrijpen van eindgebruiker/klant",
+    "group_questions": [
       {
-        "vraag": "13: Op welke momenten / fases in een project worden gebruikers betrokken?",
-        "key": "5_13",
-        "antwoorden": [
+        "question_label": "13: Op welke momenten / fases in een project worden gebruikers betrokken?",
+        "question_key": "question_g5_v13",
+        "question_answers": [
           {
-            "value": "1",
-            "key": "13_1",
-            "label": "Nooit"
+            "answer_value": "1",
+            "answer_key": "answer_g5_v13_1",
+            "answer_label": "Nooit"
           },
           {
-            "value": "2",
-            "key": "13_2",
-            "label": "Alleen aan het eind als de website live is, bijvoorbeeld door usability onderzoek of statistiek"
+            "answer_value": "2",
+            "answer_key": "answer_g5_v13_2",
+            "answer_label": "Alleen aan het eind als de website live is, bijvoorbeeld door usability onderzoek of statistiek"
           },
           {
-            "value": "3",
-            "key": "13_3",
-            "label": "Ook tijdens het ontwikkelen van producten of diensten worden gebruikers betrokken, bijvoorbeeld door testen met prototypes"
+            "answer_value": "3",
+            "answer_key": "answer_g5_v13_3",
+            "answer_label": "Ook tijdens het ontwikkelen van producten of diensten worden gebruikers betrokken, bijvoorbeeld door testen met prototypes"
           },
           {
-            "value": "4",
-            "key": "13_4",
-            "label": "Gebruikers worden al betrokken bij het opstellen van de eisen voor een product of dienst"
+            "answer_value": "4",
+            "answer_key": "answer_g5_v13_4",
+            "answer_label": "Gebruikers worden al betrokken bij het opstellen van de eisen voor een product of dienst"
           },
           {
-            "value": "5",
-            "key": "13_5",
-            "label": "De gebruiker wordt in alle fasen betrokken, maar ook voor het bepalen of en zo ja welk product of dienst moet worden gemaakt"
+            "answer_value": "5",
+            "answer_key": "answer_g5_v13_5",
+            "answer_label": "De gebruiker wordt in alle fasen betrokken, maar ook voor het bepalen of en zo ja welk product of dienst moet worden gemaakt"
           }
         ]
       },
       {
-        "vraag": "14: Wie hebben er contact met gebruikers?",
-        "key": "5_14",
-        "antwoorden": [
+        "question_label": "14: Wie hebben er contact met gebruikers?",
+        "question_key": "question_g5_v14",
+        "question_answers": [
           {
-            "value": "1",
-            "key": "14_1",
-            "label": "Alleen helpdesk als er problemen zijn"
+            "answer_value": "1",
+            "answer_key": "answer_g5_v14_1",
+            "answer_label": "Alleen helpdesk als er problemen zijn"
           },
           {
-            "value": "2",
-            "key": "14_2",
-            "label": "Alleen onderzoekers bij het uitvoeren van enkele gebruikstesten"
+            "answer_value": "2",
+            "answer_key": "answer_g5_v14_2",
+            "answer_label": "Alleen onderzoekers bij het uitvoeren van enkele gebruikstesten"
           },
           {
-            "value": "3",
-            "key": "14_3",
-            "label": "Projectteam kijkt mee met onderzoeken"
+            "answer_value": "3",
+            "answer_key": "answer_g5_v14_3",
+            "answer_label": "Projectteam kijkt mee met onderzoeken"
           },
           {
-            "value": "4",
-            "key": "14_4",
-            "label": "Product owners, product managers en projectleiders hebben contact met gebruikers"
+            "answer_value": "4",
+            "answer_key": "answer_g5_v14_4",
+            "answer_label": "Product owners, product managers en projectleiders hebben contact met gebruikers"
           },
           {
-            "value": "5",
-            "key": "14_5",
-            "label": "Iedereen, inclusief onze directie en leidinggevenden, hebben veelvuldig en intensief contact met gebruikers en weten zo steeds wat er bij hen leeft"
+            "answer_value": "5",
+            "answer_key": "answer_g5_v14_5",
+            "answer_label": "Iedereen, inclusief onze directie en leidinggevenden, hebben veelvuldig en intensief contact met gebruikers en weten zo steeds wat er bij hen leeft"
           }
         ]
       },
       {
-        "vraag": "15: Wat zijn de uitdagingen binnen de organisatie om gebruikers te betrekken",
-        "key": "5_15",
-        "antwoorden": [
+        "question_label": "15: Wat zijn de uitdagingen binnen de organisatie om gebruikers te betrekken",
+        "question_key": "question_g5_v15",
+        "question_answers": [
           {
-            "value": "1",
-             "key": "15_1",
-           "label": "Zeer uitdagend, organisatie heeft (nog) geen interesse om gebruikers te betrekken"
+            "answer_value": "1",
+            "answer_key": "answer_g5_v15_1",
+            "answer_label": "Zeer uitdagend, organisatie heeft (nog) geen interesse om gebruikers te betrekken"
           },
           {
-            "value": "2",
-             "key": "15_2",
-            "label": "Het is al lastig om te ontdekken wie de gebruikers nu eigenlijk zijn"
+            "answer_value": "2",
+            "answer_key": "answer_g5_v15_2",
+            "answer_label": "Het is al lastig om te ontdekken wie de gebruikers nu eigenlijk zijn"
           },
           {
-            "value": "3",
-             "key": "15_3",
-            "label": "De uitdaging zit in het betrekken van gebruikers bij het testen (van ontwerpen) en regelen van budgetten"
+            "answer_value": "3",
+            "answer_key": "answer_g5_v15_3",
+            "answer_label": "De uitdaging zit in het betrekken van gebruikers bij het testen (van ontwerpen) en regelen van budgetten"
           },
           {
-            "value": "4",
-             "key": "15_4",
-            "label": "De uitdaging zit vooral in het meekrijgen van het management en samenwerken met verschillende afdelingen"
+            "answer_value": "4",
+            "answer_key": "answer_g5_v15_4",
+            "answer_label": "De uitdaging zit vooral in het meekrijgen van het management en samenwerken met verschillende afdelingen"
           },
           {
-            "value": "5",
-             "key": "15_5",
-            "label": "De uitdagingen zitten vooral op het consistent krijgen van de UX, samenwerken met verschillende organisaties en omgaan met bestaande systemen"
+            "answer_value": "5",
+            "answer_key": "answer_g5_v15_5",
+            "answer_label": "De uitdagingen zitten vooral op het consistent krijgen van de UX, samenwerken met verschillende organisaties en omgaan met bestaande systemen"
           }
         ]
       }
