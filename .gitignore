@@ -22,3 +22,4 @@ wp-content/plugins/hello.php
 *.codekit3
 *.map
 deleteme.php
+*.codekit3

@@ -23,6 +23,14 @@
 		"oAP": "\/.gitignore",
 		"oF": 0
 		},
+	"\/assets\/amchart-settings.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/assets\/amchart-settings-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
 	"\/assets\/antwoorden-vragen.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -3047,9 +3055,26 @@
 		"oAP": "\/languages\/nl_NL.po",
 		"oF": 0
 		},
-	"\/less\/gc-maturityscore-admin.less": {
+	"\/less\/01-sizes-colors.less": {
 		"aP": 0,
 		"bl": 0,
+		"dJ": 0,
+		"ft": 1,
+		"ie": 1,
+		"iI": 0,
+		"ma": 1,
+		"oA": 1,
+		"oAP": "\/css\/01-sizes-colors.css",
+		"oF": 0,
+		"oS": 0,
+		"rU": 0,
+		"sI": 0,
+		"sM": 0,
+		"sU": 0
+		},
+	"\/less\/gc-maturityscore-admin.less": {
+		"aP": 1,
+		"bl": 1,
 		"dJ": 0,
 		"ft": 1,
 		"ie": 1,
@@ -3058,15 +3083,15 @@
 		"oA": 0,
 		"oAP": "\/assets\/css\/gc-maturityscore-admin.css",
 		"oF": 2,
-		"oS": 0,
+		"oS": 1,
 		"rU": 0,
-		"sI": 0,
-		"sM": 0,
-		"sU": 0
+		"sI": 1,
+		"sM": 1,
+		"sU": 1
 		},
 	"\/less\/gc-maturityscore.less": {
-		"aP": 0,
-		"bl": 0,
+		"aP": 1,
+		"bl": 1,
 		"dJ": 0,
 		"ft": 1,
 		"ie": 1,
@@ -3075,11 +3100,11 @@
 		"oA": 0,
 		"oAP": "\/assets\/css\/gc-maturityscore.css",
 		"oF": 2,
-		"oS": 0,
+		"oS": 1,
 		"rU": 0,
-		"sI": 0,
-		"sM": 0,
-		"sU": 0
+		"sI": 1,
+		"sM": 1,
+		"sU": 1
 		},
 	"\/less\/index.php": {
 		"cB": 0,

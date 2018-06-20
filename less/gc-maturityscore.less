@@ -51,6 +51,9 @@
  
  */
 
+@import "01-sizes-colors.less";  
+
+
 .cmb-td {
   
   .cmb2-radio-list {
@@ -77,4 +80,68 @@
 
 }
 
+@media only screen and (min-width: ( @break_tablet ) ) {
+  
+  .cmb-type-text,
+  .cmb-type-text-email {
+    .cmb-th,
+    .cmb-td {
+      float: left;
+    }
+    .cmb-th {
+      width: 25%;
+    }
+    .cmb-td {
+      width: 74%;
+      input {
+        width: 75%;
+      }
+      .cmb2-metabox-description {
+        width: 24%;
+        padding-left: 1em;
+        font-size: 90%;
+        font-style: italic;
+      }
+      input,
+      .cmb2-metabox-description {
+        float: left;
+      }
+    }
+  }
 
+}
+
+
+.radarchart {
+  background: #f2f2f2;
+  height: ( ( 400 / 16 ) * 1em );
+  width: 100%;
+}
+
+.gcms-score {
+  &, th, td {
+    width: auto;
+  }
+  th, td {
+    border-bottom: 1px solid #f2f2f2;
+    padding: .25em .5em;
+  }
+  .align-center,
+  th[scope="col"] {
+    text-align: center;
+  }
+  .align-right,
+  th[scope="row"],
+  td {
+    font-weight: normal;
+    text-transform: none;
+    text-align: right;
+  }
+}
+
+.debugstring {
+  border: 1px solid red;
+  background: yellow;
+  display: inline-block;
+  padding: .25em .5em;
+}
