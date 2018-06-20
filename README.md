@@ -6,10 +6,10 @@ Gebruiker Centraal - Volwassenheidsscore plugin
 Paul van Buuren (paul@wbvb.nl)
 
 ## Current version
-* 1.0.1
+* 1.0.2
 
 ## Version history
-* 1.0.1 - First version
+* 1.0.2 - First version
 
 
 ## To do
