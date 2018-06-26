@@ -15,7 +15,7 @@ class GC_MaturitySystemCheck {
      * Constructor
      */
     public function __construct() {
-        $this->options = get_site_option( 'gcmsf_systemcheck_v1.0.4' );
+        $this->options = get_site_option( 'gcmsf_systemcheck_v1.0.5' );
     }
 
     /**
@@ -40,7 +40,7 @@ class GC_MaturitySystemCheck {
 
             if ( wp_verify_nonce( $nonce, "gcms-dismiss-{$key}" ) ) {
                 $this->options[$key] = false;
-                update_site_option( 'gcmsf_systemcheck_v1.0.4', $this->options );
+                update_site_option( 'gcmsf_systemcheck_v1.0.5', $this->options );
             }
         }
     }
@@ -49,7 +49,7 @@ class GC_MaturitySystemCheck {
      * Update our stored messages
      */
     private function updateSystemCheck() {
-        update_site_option( 'gcmsf_systemcheck_v1.0.4', $this->options );
+        update_site_option( 'gcmsf_systemcheck_v1.0.5', $this->options );
     }
 
     /**

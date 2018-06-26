@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @plugin: gc-maturityscore
-// * Version: 1.0.0
-// * Version desc: First version
+// * Version: 1.0.5
+// * Version desc: Bugfixes en kleine stijlverbeteringen.
 // * @link    https://github.com/ICTU/gc-maturityscore-plugin/
 
 
@@ -136,9 +136,15 @@
 }
 
 .radarchart {
-  background: @lichtgrijs;
+//  background: @lichtgrijs;
   height: ( ( 400 / 16 ) * 1em );
   width: 100%;
+  
+  a[style],
+  desc {
+    display: none;
+  }
+  
 }
 
 .gcms-score {
@@ -257,47 +263,6 @@ details[open] summary:before {
   content: "-";
 }
 
-/*
-dl {
-  display: block;
-  overflow: hidden;
-  clear: both;
-  padding-bottom: 0;
-  padding-top: 0;
-  margin-top: 0;
-  
-  dt {
-    font-weight: bold;
-    display: block;
-    width: 25%;
-    float: left;
-    background: yellow;
-    clear: left;
-  }
-  dd {
-    display: inline-block;
-    width: 70%;
-    float: right;
-    background: red;
-    clear: right;
-  }
-  dt,
-  dd {
-    border-top: 1px solid @lichtgrijs;
-    padding: .5em .5em 1em .5em;
-  }
-  
-  & + dl {
-    border-top-style: none;
-    border-top: 1px solid @lichtgrijs;
-  }
-}
-
-dl + dl {
-  margin-top: 1em;
-}
-
-*/
 
 
 dl {

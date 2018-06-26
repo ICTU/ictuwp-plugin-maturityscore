@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.0.4
- * Version description: Tonen van resultaatpagina. Invoer score-bandbreedtes.
+ * Version:             1.0.5
+ * Version description: Bugfixes en kleine stijlverbeteringen.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -31,7 +31,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.0.4';
+      public $version = '1.0.5';
   
   
       /**
@@ -108,6 +108,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         define( 'GCMS_C_FORMKEYS',                GCMS_C_CMBS2_PREFIX . 'keys' ); // prefix for cmb2 metadata fields
         
         define( 'GCMS_C_PLUGIN_DO_DEBUG',         true );
+//        define( 'GCMS_C_PLUGIN_DO_DEBUG',         false );
         define( 'GCMS_C_PLUGIN_USE_CMB2',         true ); 
         define( 'GCMS_C_PLUGIN_GENESIS_ACTIVE',   true ); // todo: inbouwen check op actief zijn van Genesis framework
         define( 'GCMS_C_PLUGIN_AMCHART_ACTIVE',   true ); // todo: inbouwen check op actief zijn AM-chart of op AM-chart licentie
@@ -115,8 +116,8 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 //        define( 'GCMS_C_FRONTEND_SHOW_AVERAGES',  true ); 
         define( 'GCMS_C_FRONTEND_SHOW_AVERAGES',  false ); 
 
-        define( 'GCMS_C_AVGS_NR_SURVEYS',         'gcmsf_total_number_surveys2' ); 
-        define( 'GCMS_C_AVGS_OVERALL_AVG',        'gcmsf_overall_average2' ); 
+        define( 'GCMS_C_AVGS_NR_SURVEYS',         'gcmsf_total_number_surveys3' ); 
+        define( 'GCMS_C_AVGS_OVERALL_AVG',        'gcmsf_overall_average3' ); 
 
         define( 'GCMS_C_METABOX_ID',              'front-end-post-form' ); 
         define( 'GCMS_C_FAKE_OBJECT_ID',          'fake-oject-id' ); 
@@ -263,7 +264,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         add_action( 'admin_init', array( $this, 'gcmsf_admin_register_settings' ) );
         
         // Hook do_sync method
-        add_action( 'wp_ajax_gcmsf_reset', array( $this, 'gcmsf_admin_reset_values' ) );
+        add_action( 'wp_ajax_gcmsf_reset', 'gcms_data_reset_values');
 
 
         add_action( 'wp_enqueue_scripts', array( $this, 'gcmsf_frontend_register_frontend_style_script' ) );
@@ -512,108 +513,6 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
   
       //========================================================================================================
   
-      /**
-       * Reset the statistics
-       */
-      public function gcmsf_admin_reset_values( $givefeedback = true ) {
-        
-        if ( isset( $_POST['dofeedback'] ) ) {
-          $givefeedback = true;
-        }
-
-        $log              = '';
-        $subjects         = array();
-        $allemetingen     = array();
-        $formfields_data  = gcmsf_data_get_survey_json();
-        $counter          = 0;
-
-        update_option( GCMS_C_AVGS_NR_SURVEYS, 0 );  
-        update_option( GCMS_C_AVGS_OVERALL_AVG, 0 );  
-        
-        $args = array(
-          'post_type'       => GCMS_C_SURVEY_CPT,
-          'posts_per_page'  => '-1',
-      		'post_status'     => 'publish',
-          'order'           => 'ASC'
-        );   
-                   
-  
-        if ( $formfields_data ) {
-          foreach ( $formfields_data as $key => $value) {
-  
-            $optionkey = sanitize_title( $value->group_label );
-
-            $subjects[] = 'Reset value for ' . $optionkey . ' = 0';
-            
-            update_option( $optionkey, '0' );  
-  
-          }
-        }
-
-        $the_query = new WP_Query( $args );
-
-        if($the_query->have_posts() ) {
-          
-          while ( $the_query->have_posts() ) {
-            
-            $the_query->the_post();
-            
-            $counter++;
-            $postid           = get_the_id();
-            $subjects[]       = $counter . ' ' . GCMS_C_SURVEY_CPT . ' = ' . get_the_title() . '(' . $postid . ')';
-            
-            $user_answers_raw     = get_post_meta( $postid );    	
-            $user_answers         = maybe_unserialize( $user_answers_raw[GCMS_C_FORMKEYS][0] );
-            
-            foreach ( $user_answers as $key => $value) {
-            
-              $subjects[]   = '(' . $postid . ') ' . $key . '=' . $value . '.';
-              $constituents = explode( GCMS_C_PLUGIN_SEPARATOR, $key );
-              
-              if ( isset( $constituents[1] ) ) {
-                $group = $constituents[1];
-              }
-              
-              if ( intval( $value ) > 0 ) {
-                $values[ $group ][]  = $value;
-              }
-            }
-          }        
-        }
-
-        foreach( $values as $key => $value ){        
-
-          $thesum               = array_sum( $value );
-          $systemaverage_score  = round( ( $thesum / count( $value ) ), 2 );
-          
-          update_option( sanitize_title( $formfields_data->$key->group_label ), $systemaverage_score );
-          
-          $subjects[]           = 'nieuw gemiddelde voor ' . $formfields_data->$key->group_label . ' = ' . $systemaverage_score . '.';
-
-          $allemetingen[]       = $systemaverage_score;
-
-        }
-
-        // overall gemiddelde
-        $thesum           = array_sum( $allemetingen );
-        $average_overall  = round( ( $thesum / count( $allemetingen ) ), 2 );
-
-        update_option( GCMS_C_AVGS_OVERALL_AVG, $average_overall );
-        update_option( GCMS_C_AVGS_NR_SURVEYS, $counter );
-
-        if ( $givefeedback ) {
-
-        	wp_send_json( array(
-        		'ajaxrespons_messages'  => $subjects,
-        		'ajaxrespons_item'      => $log,
-        	) );
-
-        }
-
-      }
-
-      //========================================================================================================
-  
     	/**
     	 * Register the options page
     	 *
@@ -855,6 +754,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
        * to be unique within this box.
        * Prefix is not needed.
        */
+      
 
       $formfields_data    = gcmsf_data_get_survey_json();
       $sectiontitle_prev  = '';
@@ -1047,7 +947,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
               unset( $values[ 'all_values' ] );
 
               foreach( $values[ 'averages'][ 'groups'] as $key => $value ){        
-                $average = gcms_aux_get_average_for_array( $value, 2 );
+                $average = gcms_aux_get_average_for_array( $value, 1 );
                 $values[ 'averages'][ 'groups'][ $key ] = $average;
 
                 $columns = array();
@@ -1090,6 +990,8 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 
         if ( !is_admin() ) {
 
+          $postid               = get_the_ID();
+
           if ( ! $this->survey_data ) {
             $this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
           }
@@ -1102,7 +1004,6 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           wp_enqueue_script( 'gcms-action-js', GCMS_C_ASSETS_URL . 'js/min/functions-min.js', array( 'jquery' ), GCMS_C_VERSION, $infooter );
 
           // get the graph for this user
-          $postid               = get_the_ID();
           $mykeyname            = 'volwassenheidsscore';  
           $kleurjouwscore       = '#0000FF'; // blauw
           $kleurgemiddeldescore = '#FF0000'; // rood
@@ -1141,7 +1042,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             	"graphs": [
             		' . $averages . '
             		{
-            			"balloonColor": "#FF0000",
+            			"balloonColor": "' . $kleurjouwscore . '",
             			"balloonText": "Jouw score: [[value]]",
             			"bullet": "round",
             			"fillAlphas": 0.48,
@@ -1173,7 +1074,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             			"dashLength": 0,
             			"fillAlpha": 0.43,
             			"gridAlpha": 0.44,
-            			"gridColor": "#0000FF",
+            			"gridColor": "' . $kleurjouwscore . '",
             			"minorGridAlpha": 0.32
             		}
             	],
@@ -1243,7 +1144,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           
               foreach( $this->survey_data['cols'] as $columname => $columnsvalue ) {
 
-                $radardata->dataProvider[$rowcounter]->$mykeyname = $rowname;
+                $radardata->dataProvider[$rowcounter]->$mykeyname = gcms_aux_get_value_for_cmb2_key( $rowname );
                 
                 if ( $columncounter == 2 ) {
                   $radardata->dataProvider[$rowcounter]->$columnsvalue = '';
@@ -1270,7 +1171,6 @@ die('dataprovider');
 
 */  
 
-//$thedata = '';
 $thedata = wp_json_encode( $radardata );
 
           
@@ -1387,11 +1287,8 @@ catch( err ) { console.log( err ); } ' );
             $defaults         = array();
             $default          = '';
             $answers          = (array) $question_single->question_answers[0];
+            $question_label   = $question_single->question_label;
 
-            $question_label = $question_single->question_label;
-
-            //snip2.txt
-            
             // get all possible answers
             foreach ( $answers as $answer_key => $answer ) {
 
@@ -1401,18 +1298,24 @@ catch( err ) { console.log( err ); } ' );
               $defaults[]                   = $this_answer_key;
 
             }
-                        
 
+            // only set a random default if we are debugging
             if ( WP_DEBUG && GCMS_C_PLUGIN_DO_DEBUG ) {
               $default = $defaults[ array_rand( $defaults ) ];
+//              $default = $defaults[ ( count( $defaults ) - 1 ) ];
             }
             
+            // put it together
           	$cmb->add_field( array(
           		'name'    => $question_single->question_label,
           		'id'      => $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key,
           		'type'    => 'radio',
               'options' => $options,
               'default' => $default,
+            	'attributes'  => array(
+            		'required'    => 'required',
+            	),
+              
           	) );
             
             
@@ -1645,17 +1548,28 @@ catch( err ) { console.log( err ); } ' );
 
           $overall_average = $this->survey_data['averages']['overall'];
 
+          $total_number_of_surveys  = get_option( GCMS_C_AVGS_NR_SURVEYS, 1 );
+          $site_average             = get_option( GCMS_C_AVGS_OVERALL_AVG, 1 );
+
           $return .= '<p>' . sprintf( __( 'Je gemiddelde score was %s. ', "gcmaturity-translate" ), $overall_average );
+          $return .= sprintf( _n( 'Er is %s enquête ingevoerd. ', 'Er zijn %s enquêtes ingevoerd. ', $total_number_of_surveys, "gcmaturity-translate" ), $total_number_of_surveys );
+          if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+            $return .= sprintf( __( 'De gemiddelde score tot nu is %s. ', "gcmaturity-translate" ), $site_average );
+          }          
+          $return .= '</p>';
 
           $key = 'SITESCORE';
           $fieldkey = $key . GCMS_SCORESEPARATOR . number_format_i18n( $overall_average, 0 ); 
           $return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey ) . '</p>';
+
+          $return .= '<h2>' . __( 'Score per onderdeel', "gcmaturity-translate" ) . '</h2>';
           
           $counter = 0;
           
           foreach( $this->survey_data['user_answers'] as $key => $value ){        
 
-// snip3.txt
+            $counter++;
+
             $jouwgemiddelde = $this->survey_data['averages']['groups'][$key];
             $jouwscore    = number_format_i18n( $jouwgemiddelde, 0 );
             $thesectionid = sanitize_title( $key . "_" . $counter );
@@ -1664,10 +1578,10 @@ catch( err ) { console.log( err ); } ' );
             $fieldkey = $key . GCMS_SCORESEPARATOR . $jouwscore; // g2_score_4
 
             $return .= '<section aria-labelledby="' . $titleid . '" id="' . $thesectionid . '" class="survey-result">';
-            $return .= '<h2 class="rating-section-title"><span id="' . $titleid . '">' . gcms_aux_get_value_for_cmb2_key( $key );
+            $return .= '<h3 class="rating-section-title"><span id="' . $titleid . '">' . gcms_aux_get_value_for_cmb2_key( $key );
             
             $return .= ' <span class="visuallyhidden">' . _x( "Jouw score", "table description", "gcmaturity-translate" ) . '</span></span> : ' . $this->gcmsf_frontend_get_percentage( $jouwscore, GCMS_C_SCORE_MAX );
-            $return .= '</h2>';
+            $return .= '</h3>';
 
             $return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey ) . '</p>';
 
@@ -1684,18 +1598,19 @@ catch( err ) { console.log( err ); } ' );
                   $return .= '<dt>' . _x( "Antwoord", "interpretatie", "gcmaturity-translate" ) . '</dt>';
                   $return .= '<dd>' . $antwoorden['answer_label'] . '</dd>';
 
+                  $score = sprintf( _n( '%s punt', '%s punten', $antwoorden['answer_value'], "gcmaturity-translate" ), $antwoorden['answer_value'] );
 
                   if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
 
                     $return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
-                    $return .= '<dd>' . $antwoorden['answer_value'] . '</dd>';
+                    $return .= '<dd>' . $score . '</dd>';
                     
                     $return .= '<dt class="space-me">' . _x( "Gemiddelde score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
                     $return .= '<dd class="space-me">' . $antwoorden['answer_site_average'] . '</dd>';
                   }
                   else {
                     $return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
-                    $return .= '<dd class="space-me">' . $antwoorden['answer_value'] . '</dd>';
+                    $return .= '<dd class="space-me">' . $score . '</dd>';
                     
                   }
                 }
@@ -1918,12 +1833,13 @@ function gcmsf_frontend_form_handle_posting() {
 	 */
 	$sanitized_values = $cmb->get_sanitized_values( $_POST );
 
+  $datum  = date_i18n( get_option( 'date_format' ), current_time('timestamp') );
+
 	// Check name submitted
 	if ( empty( $_POST['submitted_your_name'] ) ) {
-    $sanitized_values['submitted_your_name'] = __( "Score van jouw organisatie", "gcmaturity-translate" );
+    $sanitized_values['submitted_your_name'] = __( "Score van jouw organisatie", "gcmaturity-translate" ) . ' (' . $datum . ')';
 	}
 
-  $datum  = date_i18n( get_option( 'date_format' ), current_time('timestamp') );
   $rand   = $aantalenquetes . '-' . substr( md5( microtime() ),rand( 0, 26 ), 20 );	
 
 	// Current user
@@ -1963,6 +1879,9 @@ function gcmsf_frontend_form_handle_posting() {
 	$cmb->save_fields( $new_submission_id, 'post', $sanitized_values );
 	update_post_meta( $new_submission_id, GCMS_C_FORMKEYS, $sanitized_values );
 
+  gcms_data_reset_values( false );
+
+
   // add all custom tax values
 	if ( ! empty( $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE ] ) ) {
     wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE ], GCMS_C_SURVEY_CT_ORG_ATTITUDE );
@@ -1989,6 +1908,123 @@ function gcmsf_frontend_form_handle_posting() {
 	
 	exit;
 }
+
+//========================================================================================================
+
+/**
+ * Reset the statistics
+ */
+function gcms_data_reset_values( $givefeedback = true ) {
+  
+  if ( isset( $_POST['dofeedback'] ) ) {
+    $givefeedback = true;
+  }
+
+  $log              = '';
+  $subjects         = array();
+  $allemetingen     = array();
+  $formfields_data  = gcmsf_data_get_survey_json();
+  $counter          = 0;
+
+  update_option( GCMS_C_AVGS_NR_SURVEYS, 0 );  
+  update_option( GCMS_C_AVGS_OVERALL_AVG, 0 );  
+  
+  $args = array(
+    'post_type'       => GCMS_C_SURVEY_CPT,
+    'posts_per_page'  => '-1',
+		'post_status'     => 'publish',
+    'order'           => 'ASC'
+  );   
+             
+
+  if ( $formfields_data ) {
+
+    foreach ( $formfields_data as $key => $value) {
+
+      $optionkey = sanitize_title( $value->group_label );
+
+      $subjects[] = 'Reset value for ' . $optionkey . ' = 0';
+      
+      update_option( $optionkey, '0' );  
+
+    }
+  }
+
+  $the_query = new WP_Query( $args );
+
+  if($the_query->have_posts() ) {
+    
+    while ( $the_query->have_posts() ) {
+      
+      $the_query->the_post();
+      
+      $counter++;
+      $postid           = get_the_id();
+      $subjects[]       = $counter . ' ' . GCMS_C_SURVEY_CPT . ' = ' . get_the_title() . '(' . $postid . ')';
+      
+      $user_answers_raw     = get_post_meta( $postid );    	
+      $user_answers         = maybe_unserialize( $user_answers_raw[GCMS_C_FORMKEYS][0] );
+      
+      foreach ( $user_answers as $key => $value) {
+
+      
+        $subjects[]   = '(' . $postid . ') ' . $key . '=' . $value . '.';
+        $constituents = explode( GCMS_C_PLUGIN_SEPARATOR, $value ); // [0] = group, [1] = question, [2] = answer
+        
+        $group    = '';
+        $question = '';
+        $answer   = '';
+        
+        if ( isset( $constituents[0] ) ) {
+          $group    = $constituents[0];
+        }
+        if ( isset( $constituents[1] ) ) {
+          $question = $constituents[1];
+        }
+        if ( isset( $constituents[2] ) ) {
+          $answer = $constituents[2];
+        }
+
+        $current_answer   = (array) $formfields_data->$group->group_questions[0]->$question->question_answers[0]->$answer;
+
+        if ( intval( $current_answer['answer_value'] ) > 0 ) {
+          $values[ $group . GCMS_C_PLUGIN_SEPARATOR . $question ][] = $current_answer['answer_value'];
+          $values[ $group ][] = $current_answer['answer_value'];
+        }
+      }
+    }        
+  }
+
+  // loop door alle keys en bereken hun gemiddelde
+  foreach( $values as $key => $value ){        
+    
+    $systemaverage_score  = gcms_aux_get_average_for_array( $value, 1);
+    $subjects[]           = 'nieuw gemiddelde voor ' . $key . ' = ' . $systemaverage_score . '.';
+
+    $allemetingen[ $key ] = $systemaverage_score;
+    
+    // save het gemiddelde
+    update_option( $key, $systemaverage_score );
+
+  }
+
+  // overall gemiddelde
+  $average_overall  = gcms_aux_get_average_for_array( $allemetingen, 1);
+
+  update_option( GCMS_C_AVGS_OVERALL_AVG, $average_overall );
+  update_option( GCMS_C_AVGS_NR_SURVEYS, $counter );
+
+  if ( $givefeedback ) {
+
+  	wp_send_json( array(
+  		'ajaxrespons_messages'  => $subjects,
+  		'ajaxrespons_item'      => $log,
+  	) );
+
+  }
+
+}
+
 
 //========================================================================================================
 
