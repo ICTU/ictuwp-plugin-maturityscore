@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.0.3
- * Version description: Tonen van een grafiek, berekenen van een gemiddelde.
+ * Version:             1.0.4
+ * Version description: Tonen van resultaatpagina. Invoer score-bandbreedtes.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -24,14 +24,14 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 /**
  * Register the plugin.
  *
- * Display the administration panel, insert JavaScript etc.
+ * Display the administration panel, add JavaScript etc.
  */
   class GC_MaturityPlugin {
   
       /**
        * @var string
        */
-      public $version = '1.0.3';
+      public $version = '1.0.4';
   
   
       /**
@@ -42,12 +42,13 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var GC_Maturity
        */
-      public $plugin_name = null;
 
       public $option_name = null;
 
+      public $survey_answers = null;
 
-  
+      public $survey_data = null;
+
   
       /**
        * Init
@@ -67,9 +68,10 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
   
           $this->define_constants();
           $this->includes();
-          $this->setup_actions();
-          $this->setup_filters();
-          $this->append_comboboxes();
+          $this->gcmsf_init_setup_actions();
+          $this->gcmsf_init_setup_filters();
+          $this->gcmsf_admin_do_system_check();
+          $this->gcmsf_frontend_append_comboboxes();
 
       }
   
@@ -82,42 +84,63 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
   
         $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://';
   
-        define( 'GCMS_VERSION',                 $this->version );
-        define( 'GCMS_FOLDER',                  'gc-maturityscore' );
-        define( 'GCMS_BASE_URL',                trailingslashit( plugins_url( GCMS_FOLDER ) ) );
-        define( 'GCMS_ASSETS_URL',              trailingslashit( GCMS_BASE_URL . 'assets' ) );
-        define( 'GCMS_MEDIAELEMENT_URL',        trailingslashit( GCMS_BASE_URL . 'mediaelement' ) );
-        define( 'GCMS_PATH',                    plugin_dir_path( __FILE__ ) );
-        define( 'GCMS_QUESTION_CPT',            "enquetes" );
-        define( 'GCMS_QUESTION_GROUP_CT',       "gcms_custom_taxonomy" );
-        define( 'GCMS_DEFAULT',                 "default" );
-        define( 'GCMS_DEFAULT_USERID',          2600 );
+        define( 'GCMS_C_VERSION',                 $this->version );
+        define( 'GCMS_C_FOLDER',                  'gc-maturityscore' );
+        define( 'GCMS_C_BASE_URL',                trailingslashit( plugins_url( GCMS_C_FOLDER ) ) );
+        define( 'GCMS_C_ASSETS_URL',              trailingslashit( GCMS_C_BASE_URL . 'assets' ) );
+        define( 'GCMS_C_MEDIAELEMENT_URL',        trailingslashit( GCMS_C_BASE_URL . 'mediaelement' ) );
+        define( 'GCMS_C_PATH',                    plugin_dir_path( __FILE__ ) );
+        
+        define( 'GCMS_C_SURVEY_CPT',              "enquetes" );
+        define( 'GCMS_C_QUESTION_CPT',            "vraag" );
+        define( 'GCMS_C_QUESTION_GROUPING_CT',    "groepering" );
+        define( 'GCMS_C_QUESTION_DEFAULT',        "default" );
 
-        define( 'GCMS_CT_ORGANISATIETYPE',      "organisatietype" );
-        define( 'GCMS_CT_ORGANISATIEGROOTTE',   "organisatiegrootte" );
-        define( 'GCMS_CT_ORGANISATIEATTITUDE',  "organisatieattitude" );
-        define( 'GCMS_CT_REGIO',                "regio" );
+        define( 'GCMS_C_SURVEY_DEFAULT_USERID',   2600 ); // 't is wat, hardgecodeerde userids (todo: invoerbaar maken via admin)
+
+        define( 'GCMS_C_SURVEY_CT_ORG_TYPE',      "organisatietype" );
+        define( 'GCMS_C_SURVEY_CT_ORG_SIZE',      "organisatiegrootte" );
+        define( 'GCMS_C_SURVEY_CT_ORG_ATTITUDE',  "organisatieattitude" );
+        define( 'GCMS_C_SURVEY_CT_REGION',        "regio" );
+
+        define( 'GCMS_C_QUESTION_PREFIX',         GCMS_C_SURVEY_CPT . '_pf_' ); // prefix for cmb2 metadata fields
+        define( 'GCMS_C_CMBS2_PREFIX',            GCMS_C_QUESTION_PREFIX . '_form_' ); // prefix for cmb2 metadata fields
+        define( 'GCMS_C_FORMKEYS',                GCMS_C_CMBS2_PREFIX . 'keys' ); // prefix for cmb2 metadata fields
+        
+        define( 'GCMS_C_PLUGIN_DO_DEBUG',         true );
+        define( 'GCMS_C_PLUGIN_USE_CMB2',         true ); 
+        define( 'GCMS_C_PLUGIN_GENESIS_ACTIVE',   true ); // todo: inbouwen check op actief zijn van Genesis framework
+        define( 'GCMS_C_PLUGIN_AMCHART_ACTIVE',   true ); // todo: inbouwen check op actief zijn AM-chart of op AM-chart licentie
+
+//        define( 'GCMS_C_FRONTEND_SHOW_AVERAGES',  true ); 
+        define( 'GCMS_C_FRONTEND_SHOW_AVERAGES',  false ); 
+
+        define( 'GCMS_C_AVGS_NR_SURVEYS',         'gcmsf_total_number_surveys2' ); 
+        define( 'GCMS_C_AVGS_OVERALL_AVG',        'gcmsf_overall_average2' ); 
+
+        define( 'GCMS_C_METABOX_ID',              'front-end-post-form' ); 
+        define( 'GCMS_C_FAKE_OBJECT_ID',          'fake-oject-id' ); 
+
+        define( 'GCMS_C_ALGEMEEN_LABEL',          'lalala label' ); 
+        define( 'GCMS_C_ALGEMEEN_KEY',            'lalala_key' ); 
+
+        define( 'GCMS_C_PLUGIN_KEY',              'gcms' ); 
+        
+        define( 'GCMS_C_PLUGIN_SEPARATOR',        '__' );
+
+        define( 'GCMS_SCORESEPARATOR',            GCMS_C_PLUGIN_SEPARATOR . 'score' . GCMS_C_PLUGIN_SEPARATOR );
+ 
+        define( 'GCMS_C_SCORE_MAX',               5 ); // max 5 sterren, max 5 punten per vraag / onderdeel
+
+        define( 'GCMS_C_TABLE_COL_TH',            0 );
+        define( 'GCMS_C_TABLE_COL_USER_AVERAGE',  1 );
+        define( 'GCMS_C_TABLE_COL_SITE_AVERAGE',  2 );
+
+        $this->option_name  = 'gcms-option';
+        $this->survey_data  = array();
         
 
-        define( 'GCMS_QUESTION_PREFIX',         GCMS_QUESTION_CPT . '_pf_' ); // prefix for cmb2 metadata fields
-        define( 'GCMS_CMBS2_PREFIX',            GCMS_QUESTION_PREFIX . '_form_' ); // prefix for cmb2 metadata fields
-        define( 'GCMS_FORMKEYS',                GCMS_CMBS2_PREFIX . 'keys' ); // prefix for cmb2 metadata fields
-        
-        define( 'GCMS_PLUGIN_DO_DEBUG',         true );
-        define( 'GCMS_PLUGIN_USE_CMB2',         true ); 
-        define( 'GCMS_PLUGIN_GENESIS_ACTIVE',   true ); 
-        define( 'GCMS_PLUGIN_AMCHART_ACTIVE',   true ); 
-
-        define( 'GCMS_OPTIONS_TOTALSURVEYS',    'gcms_total_number_surveys' ); 
-        define( 'GCMS_OPTIONS_OVERALLAVERAGE',  'gcms_overall_average' ); 
-
-        $this->plugin_name = 'gcms';
-        $this->option_name = 'gcms-option';
-        
-
-
-  
-      }
+       }
   
       //========================================================================================================
   
@@ -127,7 +150,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       private function plugin_classes() {
   
           return array(
-              'GC_MaturitySystemCheck'  => GCMS_PATH . 'inc/gc-maturity.systemcheck.class.php',
+              'GC_MaturitySystemCheck'  => GCMS_C_PATH . 'inc/gc-maturity.systemcheck.class.php',
           );
   
       }
@@ -139,7 +162,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
        */
       private function includes() {
       
-        if ( GCMS_PLUGIN_USE_CMB2 ) {
+        if ( GCMS_C_PLUGIN_USE_CMB2 ) {
           // load CMB2 functionality
           if ( ! defined( 'CMB2_LOADED' ) ) {
             // cmb2 NOT loaded
@@ -152,7 +175,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           }
         }
 
-        $autoload_is_disabled = defined( 'GCMS_AUTOLOAD_CLASSES' ) && GCMS_AUTOLOAD_CLASSES === false;
+        $autoload_is_disabled = defined( 'GCMS_C_AUTOLOAD_CLASSES' ) && GCMS_C_AUTOLOAD_CLASSES === false;
         
         if ( function_exists( "spl_autoload_register" ) && ! ( $autoload_is_disabled ) ) {
           
@@ -172,6 +195,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           }
           
         }
+
       
       }
   
@@ -180,13 +204,13 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * filter for when the CPT is previewed
        */
-      public function content_filter_for_preview($content = '') {
+      public function gcmsf_frontend_filter_for_preview( $content = '' ) {
+
         global $post;
 
-      
-        if ( ( GCMS_QUESTION_CPT == get_post_type() ) && ( is_single() ) ) {
+        if ( is_singular( GCMS_C_SURVEY_CPT ) && in_the_loop() ) {
           // lets go
-          return $content . $this->gcms_display_questionary( $post->ID );
+          return $this->gcmsf_frontend_display_survey_results( $post->ID );
         }
         else {
           return $content;
@@ -206,6 +230,8 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           $class_name = strtolower( $class );
   
           if ( isset( $classes[$class_name] ) && is_readable( $classes[$class_name] ) ) {
+            echo 'require: ' . $classes[$class_name]. '<br>';
+            die();
               require_once( $classes[$class_name] );
           }
   
@@ -216,34 +242,272 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * Hook GC_Maturity into WordPress
        */
-      private function setup_actions() {
+      private function gcmsf_init_setup_actions() {
         
         
-        add_action( 'init',           array( $this, 'register_post_type' ) );
-        add_action( 'init',           array( $this, 'register_post_type' ) );
-        add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
+        add_action( 'init',           array( $this, 'gcmsf_init_register_post_type' ) );
+        add_action( 'init',           array( $this, 'gcmsf_init_register_post_type' ) );
+        add_action( 'plugins_loaded', array( $this, 'gcmsf_init_load_plugin_textdomain' ) );
         
         // add a page temlate name
         $this->templates          = array();
         $this->templatefile   		= 'stelselcatalogus-template.php';
         
         // add the page template to the templates list
-        add_filter( 'theme_page_templates', array( $this, 'gcms_add_page_templates' ) );
+        add_filter( 'theme_page_templates', array( $this, 'gcmsf_init_add_page_templates' ) );
         
         // activate the page filters
-        add_action( 'template_redirect',    array( $this, 'gcms_use_page_template' )  );
+        add_action( 'template_redirect',    array( $this, 'gcmsf_frontend_use_page_template' )  );
         
-        add_action( 'admin_menu', array( $this, 'gcms_admin_register_menu_pages' ) );
-        add_action( 'admin_init', array( $this, 'gcms_admin_register_settings' ) );
+//        add_action( 'admin_menu', array( $this, 'gcmsf_admin_register_menu_pages' ) );
+        add_action( 'admin_init', array( $this, 'gcmsf_admin_register_settings' ) );
         
         // Hook do_sync method
-        add_action( 'wp_ajax_gcms_reset', array( $this, 'gcms_reset_values' ) );
+        add_action( 'wp_ajax_gcmsf_reset', array( $this, 'gcmsf_admin_reset_values' ) );
 
 
-        add_action( 'wp_enqueue_scripts', array( $this, 'register_frontend_style_script' ) );
+        add_action( 'wp_enqueue_scripts', array( $this, 'gcmsf_frontend_register_frontend_style_script' ) );
 
-        
-        
+
+        add_action( 'admin_enqueue_scripts', array( $this, 'gcmsf_admin_register_styles' ) );
+
+
+      }
+      //========================================================================================================
+  
+      /**
+       * Hook GC_Maturity into WordPress
+       */
+      private function gcmsf_init_setup_filters() {
+
+        	// content filter
+          add_filter( 'the_content', array( $this, 'gcmsf_frontend_filter_for_preview' ) );
+
+      }
+  
+      //========================================================================================================
+  
+      /**
+       * Register post type
+       */
+      public function gcmsf_init_register_post_type() {
+  
+      	$labels = array(
+      		"name"                  => _x( "Enquête", "labels", "gcmaturity-translate" ),
+      		"singular_name"         => _x( "Enquête", "labels", "gcmaturity-translate" ),
+      		"menu_name"             => _x( "Enquêtes", "labels", "gcmaturity-translate" ),
+      		"all_items"             => _x( "Alle enquêtes", "labels", "gcmaturity-translate" ),
+      		"add_new"               => _x( "Enquête toevoegen", "labels", "gcmaturity-translate" ),
+      		"add_new_item"          => _x( "Nieuwe enquête toevoegen", "labels", "gcmaturity-translate" ),
+      		"edit"                  => _x( "Bewerken?", "labels", "gcmaturity-translate" ),
+      		"edit_item"             => _x( "Enquête bewerken", "labels", "gcmaturity-translate" ),
+      		"new_item"              => _x( "Enquête toevoegen", "labels", "gcmaturity-translate" ),
+      		"view"                  => _x( "Toon", "labels", "gcmaturity-translate" ),
+      		"view_item"             => _x( "Enquête bekijken", "labels", "gcmaturity-translate" ),
+      		"search_items"          => _x( "Enquête zoeken", "labels", "gcmaturity-translate" ),
+      		"not_found"             => _x( "Geen enquêtes beschikbaar", "labels", "gcmaturity-translate" ),
+      		"not_found_in_trash"    => _x( "Geen enquêtes in prullenbak", "labels", "gcmaturity-translate" ),
+      		"parent"                => _x( "Parent", "labels", "gcmaturity-translate" ),
+    		);
+      
+      	$args = array(
+          "label"                 => _x( "Enquêtes", "labels", "gcmaturity-translate" ),
+          "labels"                => $labels,
+          "description"           => "",
+          "public"                => true,
+          "publicly_queryable"    => true,
+          "show_ui"               => true,
+          "show_in_rest"          => false,
+          "rest_base"             => "",
+          "has_archive"           => false,
+          "show_in_menu"          => true,
+          "exclude_from_search"   => false,
+          "capability_type"       => "post",
+          "map_meta_cap"          => true,
+          "hierarchical"          => false,
+          "rewrite"               => array( "slug" => GCMS_C_SURVEY_CPT, "with_front" => true ),
+          "query_var"             => true,
+      		"supports"              => array( "title", "editor" ),					
+    		);
+      		
+      	register_post_type( GCMS_C_SURVEY_CPT, $args );
+
+
+        // ORGANISATIETYPES
+      	$labels = array(
+      		"name"                  => __( 'Organisatietypes', "gcmaturity-translate" ),
+      		"singular_name"         => __( 'Organisatietype', "gcmaturity-translate" ),
+      		"menu_name"             => __( 'Organisatietypes', "gcmaturity-translate" ),
+      		"all_items"             => __( 'Alle organisatietypes', "gcmaturity-translate" ),
+      		"add_new"               => __( 'Nieuw organisatietype toevoegen', "gcmaturity-translate" ),
+      		"add_new_item"          => __( 'Voeg nieuw organisatietype toe', "gcmaturity-translate" ),
+      		"edit_item"             => __( 'Bewerk organisatietype', "gcmaturity-translate" ),
+      		"new_item"              => __( 'Nieuw organisatietype', "gcmaturity-translate" ),
+      		"view_item"             => __( 'Bekijk organisatietype', "gcmaturity-translate" ),
+      		"search_items"          => __( 'Zoek organisatietype', "gcmaturity-translate" ),
+      		"not_found"             => __( 'Geen organisatietypes gevonden', "gcmaturity-translate" ),
+      		"not_found_in_trash"    => __( 'Geen organisatietypes gevonden in de prullenbak', "gcmaturity-translate" ),
+      		"archives"              => __( 'Overzichten', "gcmaturity-translate" ),
+    		);
+
+      	$args = array(
+      		"label"               => __( 'Organisatietypes', "gcmaturity-translate" ),
+      		"labels"              => $labels,
+      		"public"              => false,
+      		"hierarchical"        => true,
+      		"label"               => __( 'Organisatietypes', "gcmaturity-translate" ),
+      		"show_ui"             => true,
+      		"show_in_menu"        => true,
+      		"show_in_nav_menus"   => true,
+      		"query_var"           => true,
+      		"rewrite"             => array( 'slug' => GCMS_C_SURVEY_CT_ORG_TYPE, 'with_front' => true, ),
+      		"show_admin_column"   => true,
+      		"show_in_rest"        => false,
+      		"rest_base"           => "",
+      		"show_in_quick_edit"  => false,
+      	);
+      	register_taxonomy( GCMS_C_SURVEY_CT_ORG_TYPE, array( GCMS_C_SURVEY_CPT ), $args );
+
+
+        // organisatiegrootteS
+      	$labels = array(
+      		"name"                  => __( 'Organisatiegroottes', "gcmaturity-translate" ),
+      		"singular_name"         => __( 'Organisatiegrootte', "gcmaturity-translate" ),
+      		"menu_name"             => __( 'Organisatiegroottes', "gcmaturity-translate" ),
+      		"all_items"             => __( 'Alle organisatiegroottes', "gcmaturity-translate" ),
+      		"add_new"               => __( 'Nieuw organisatiegrootte toevoegen', "gcmaturity-translate" ),
+      		"add_new_item"          => __( 'Voeg nieuw organisatiegrootte toe', "gcmaturity-translate" ),
+      		"edit_item"             => __( 'Bewerk organisatiegrootte', "gcmaturity-translate" ),
+      		"new_item"              => __( 'Nieuw organisatiegrootte', "gcmaturity-translate" ),
+      		"view_item"             => __( 'Bekijk organisatiegrootte', "gcmaturity-translate" ),
+      		"search_items"          => __( 'Zoek organisatiegrootte', "gcmaturity-translate" ),
+      		"not_found"             => __( 'Geen organisatiegroottes gevonden', "gcmaturity-translate" ),
+      		"not_found_in_trash"    => __( 'Geen organisatiegroottes gevonden in de prullenbak', "gcmaturity-translate" ),
+      		"archives"              => __( 'Overzichten', "gcmaturity-translate" ),
+    		);
+
+      	$args = array(
+      		"label"               => __( 'Organisatiegroottes', "gcmaturity-translate" ),
+      		"labels"              => $labels,
+      		"public"              => false,
+      		"hierarchical"        => true,
+      		"label"               => __( 'Organisatiegroottes', "gcmaturity-translate" ),
+      		"show_ui"             => true,
+      		"show_in_menu"        => true,
+      		"show_in_nav_menus"   => true,
+      		"query_var"           => true,
+      		"rewrite"             => array( 'slug' => GCMS_C_SURVEY_CT_ORG_SIZE, 'with_front' => true, ),
+      		"show_admin_column"   => true,
+      		"show_in_rest"        => false,
+      		"rest_base"           => "",
+      		"show_in_quick_edit"  => false,
+      	);
+      	register_taxonomy( GCMS_C_SURVEY_CT_ORG_SIZE, array( GCMS_C_SURVEY_CPT ), $args );
+	      	
+
+        // REGIO'S
+      	$labels = array(
+      		"name"                  => __( "Regio's", "gcmaturity-translate" ),
+      		"singular_name"         => __( 'Regio', "gcmaturity-translate" ),
+      		"menu_name"             => __( "Regio's", "gcmaturity-translate" ),
+      		"all_items"             => __( "Alle regio's", "gcmaturity-translate" ),
+      		"add_new"               => __( 'Nieuwe regio toevoegen', "gcmaturity-translate" ),
+      		"add_new_item"          => __( 'Voeg nieuwe regio toe', "gcmaturity-translate" ),
+      		"edit_item"             => __( 'Bewerk regio', "gcmaturity-translate" ),
+      		"new_item"              => __( 'Nieuwe regio', "gcmaturity-translate" ),
+      		"view_item"             => __( 'Bekijk regio', "gcmaturity-translate" ),
+      		"search_items"          => __( 'Zoek regio', "gcmaturity-translate" ),
+      		"not_found"             => __( "Geen regio's gevonden", "gcmaturity-translate" ),
+      		"not_found_in_trash"    => __( "Geen regio's gevonden in de prullenbak", "gcmaturity-translate" ),
+      		"archives"              => __( 'Overzichten', "gcmaturity-translate" ),
+    		);
+      
+      	$args = array(
+      		"label"               => __( "Regio's", "gcmaturity-translate" ),
+      		"labels"              => $labels,
+      		"public"              => false,
+      		"hierarchical"        => true,
+      		"label"               => __( "Regio's", "gcmaturity-translate" ),
+      		"show_ui"             => true,
+      		"show_in_menu"        => true,
+      		"show_in_nav_menus"   => true,
+      		"query_var"           => true,
+      		"rewrite"             => array( 'slug' => GCMS_C_SURVEY_CT_REGION, 'with_front' => true, ),
+      		"show_admin_column"   => true,
+      		"show_in_rest"        => false,
+      		"rest_base"           => "",
+      		"show_in_quick_edit"  => false,
+      	);
+      	register_taxonomy( GCMS_C_SURVEY_CT_REGION, array( GCMS_C_SURVEY_CPT ), $args );
+	      	
+
+
+        // organisatieattitudes
+      	$labels = array(
+      		"name"                  => __( 'Organisatieattitudes', "gcmaturity-translate" ),
+      		"singular_name"         => __( 'Organisatieattitude', "gcmaturity-translate" ),
+      		"menu_name"             => __( 'Organisatieattitudes', "gcmaturity-translate" ),
+      		"all_items"             => __( 'Alle organisatieattitudes', "gcmaturity-translate" ),
+      		"add_new"               => __( 'Nieuw organisatieattitude toevoegen', "gcmaturity-translate" ),
+      		"add_new_item"          => __( 'Voeg nieuw organisatieattitude toe', "gcmaturity-translate" ),
+      		"edit_item"             => __( 'Bewerk organisatieattitude', "gcmaturity-translate" ),
+      		"new_item"              => __( 'Nieuw organisatieattitude', "gcmaturity-translate" ),  
+      		"view_item"             => __( 'Bekijk organisatieattitude', "gcmaturity-translate" ),
+      		"search_items"          => __( 'Zoek organisatieattitude', "gcmaturity-translate" ),
+      		"not_found"             => __( 'Geen organisatieattitudes gevonden', "gcmaturity-translate" ),
+      		"not_found_in_trash"    => __( 'Geen organisatieattitudes gevonden in de prullenbak', "gcmaturity-translate" ),
+      		"archives"              => __( 'Overzichten', "gcmaturity-translate" ),
+    		);
+
+      	$args = array(
+      		"label"               => __( 'Organisatieattitudes', "gcmaturity-translate" ),
+      		"labels"              => $labels,
+      		"public"              => false,
+      		"hierarchical"        => true,
+      		"label"               => __( 'Organisatieattitudes', "gcmaturity-translate" ),
+      		"show_ui"             => true,
+      		"show_in_menu"        => true,
+      		"show_in_nav_menus"   => true,
+      		"query_var"           => true,
+      		"rewrite"             => array( 'slug' => GCMS_C_SURVEY_CT_ORG_ATTITUDE, 'with_front' => true, ),
+      		"show_admin_column"   => true,
+      		"show_in_rest"        => false,
+      		"rest_base"           => "",
+      		"show_in_quick_edit"  => false,
+      	);
+      	register_taxonomy( GCMS_C_SURVEY_CT_ORG_ATTITUDE, array( GCMS_C_SURVEY_CPT ), $args );
+
+
+	      	
+      	
+      	flush_rewrite_rules();
+  
+      }
+  
+      //========================================================================================================
+  
+      /**
+       * Initialise translations
+       */
+      public function gcmsf_init_load_plugin_textdomain() {
+
+          load_plugin_textdomain( "gcmaturity-translate", false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
+      }
+  
+      //========================================================================================================
+  
+      /**
+      * Hides the custom post template for pages on WordPress 4.6 and older
+      *
+      * @param array $post_templates Array of page templates. Keys are filenames, values are translated names.
+      * @return array Expanded array of page templates.
+      */
+      function gcmsf_init_add_page_templates( $post_templates ) {
+      
+        $post_templates[$this->templatefile]  		= _x( 'Volwassenheidsscore-pagina', "naam template", "gcmaturity-translate" );    
+        return $post_templates;
+      
       }
   
       //========================================================================================================
@@ -251,7 +515,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * Reset the statistics
        */
-      public function gcms_reset_values( $givefeedback = true ) {
+      public function gcmsf_admin_reset_values( $givefeedback = true ) {
         
         if ( isset( $_POST['dofeedback'] ) ) {
           $givefeedback = true;
@@ -260,14 +524,14 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         $log              = '';
         $subjects         = array();
         $allemetingen     = array();
-        $formfields_data  = gcms_read_formfields();
+        $formfields_data  = gcmsf_data_get_survey_json();
         $counter          = 0;
 
-        update_option( GCMS_OPTIONS_TOTALSURVEYS, 0 );  
-        update_option( GCMS_OPTIONS_OVERALLAVERAGE, 0 );  
+        update_option( GCMS_C_AVGS_NR_SURVEYS, 0 );  
+        update_option( GCMS_C_AVGS_OVERALL_AVG, 0 );  
         
         $args = array(
-          'post_type'       => GCMS_QUESTION_CPT,
+          'post_type'       => GCMS_C_SURVEY_CPT,
           'posts_per_page'  => '-1',
       		'post_status'     => 'publish',
           'order'           => 'ASC'
@@ -296,37 +560,37 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             
             $counter++;
             $postid           = get_the_id();
-            $subjects[]       = $counter . ' ' . GCMS_QUESTION_CPT . ' = ' . get_the_title() . '(' . $postid . ')';
+            $subjects[]       = $counter . ' ' . GCMS_C_SURVEY_CPT . ' = ' . get_the_title() . '(' . $postid . ')';
             
-            $metadata_raw     = get_post_meta( $postid );    	
-            $metadata         = maybe_unserialize( $metadata_raw[GCMS_FORMKEYS][0] );
+            $user_answers_raw     = get_post_meta( $postid );    	
+            $user_answers         = maybe_unserialize( $user_answers_raw[GCMS_C_FORMKEYS][0] );
             
-            foreach ( $metadata as $key => $value) {
+            foreach ( $user_answers as $key => $value) {
             
               $subjects[]   = '(' . $postid . ') ' . $key . '=' . $value . '.';
-              $constituents = explode( '_', $key );
+              $constituents = explode( GCMS_C_PLUGIN_SEPARATOR, $key );
               
               if ( isset( $constituents[1] ) ) {
-                $groep = $constituents[1];
+                $group = $constituents[1];
               }
               
               if ( intval( $value ) > 0 ) {
-                $waarden[ $groep ][]  = $value;
+                $values[ $group ][]  = $value;
               }
             }
           }        
         }
 
-        foreach( $waarden as $key => $value ){        
+        foreach( $values as $key => $value ){        
 
-          $thesum             = array_sum( $value );
-          $average_onderdeel  = round( ( $thesum / count( $value ) ), 2 );
+          $thesum               = array_sum( $value );
+          $systemaverage_score  = round( ( $thesum / count( $value ) ), 2 );
           
-          update_option( sanitize_title( $formfields_data->$key->group_label ), $average_onderdeel );
+          update_option( sanitize_title( $formfields_data->$key->group_label ), $systemaverage_score );
           
-          $subjects[] = 'nieuw gemiddelde voor ' . $formfields_data->$key->group_label . ' = ' . $average_onderdeel . '.';
+          $subjects[]           = 'nieuw gemiddelde voor ' . $formfields_data->$key->group_label . ' = ' . $systemaverage_score . '.';
 
-          $allemetingen[]       = $average_onderdeel;
+          $allemetingen[]       = $systemaverage_score;
 
         }
 
@@ -334,272 +598,63 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         $thesum           = array_sum( $allemetingen );
         $average_overall  = round( ( $thesum / count( $allemetingen ) ), 2 );
 
-        update_option( GCMS_OPTIONS_OVERALLAVERAGE, $average_overall );
-        update_option( GCMS_OPTIONS_TOTALSURVEYS, $counter );
-
-  
-        $log = $this->gcms_frontend_stats_table_get();
+        update_option( GCMS_C_AVGS_OVERALL_AVG, $average_overall );
+        update_option( GCMS_C_AVGS_NR_SURVEYS, $counter );
 
         if ( $givefeedback ) {
-/*          
-          
-          dovardump( $waarden );
-          dovardump( $subjects );
-          dovardump( $log );
-*/        
+
         	wp_send_json( array(
         		'ajaxrespons_messages'  => $subjects,
         		'ajaxrespons_item'      => $log,
         	) );
 
-
-
         }
 
       }
+
+      //========================================================================================================
   
+    	/**
+    	 * Register the options page
+    	 *
+    	 * @since    1.0.0
+    	 */
+    	public function gcmsf_admin_register_settings() {
+  
+    		// Add a General section
+    		add_settings_section(
+    			$this->option_name . '_general',
+    			__( 'Algemeen', "gcmaturity-translate" ),
+    			array( $this, $this->option_name . '_general_cb' ),
+    			GCMS_C_PLUGIN_KEY
+    		);
+
+      }  
+
       //========================================================================================================
   
       /**
-       * Hook GC_Maturity into WordPress
+       * Register admin-side styles
        */
-      private function setup_filters() {
-
-        	// content filter
-          add_filter( 'the_content', array( $this, 'content_filter_for_preview' ) );
-
-      }
+      public function gcmsf_admin_register_styles() {
   
-      //========================================================================================================
-  
-      /**
-       * Register post type
-       */
-      public function gcms_register_forms() {
-        
-      }
-  
-      //========================================================================================================
-  
-      /**
-       * Register post type
-       */
-      public function register_post_type() {
-  
-      	$labels = array(
-      		"name"                  => _x( "Enquête", "labels", "gcmaturity-translate" ),
-      		"singular_name"         => _x( "Enquête", "labels", "gcmaturity-translate" ),
-      		"menu_name"             => _x( "Enquêtes", "labels", "gcmaturity-translate" ),
-      		"all_items"             => _x( "Alle enquêtes", "labels", "gcmaturity-translate" ),
-      		"add_new"               => _x( "Enquête toevoegen", "labels", "gcmaturity-translate" ),
-      		"add_new_item"          => _x( "Nieuwe enquête toevoegen", "labels", "gcmaturity-translate" ),
-      		"edit"                  => _x( "Bewerken?", "labels", "gcmaturity-translate" ),
-      		"edit_item"             => _x( "Enquête bewerken", "labels", "gcmaturity-translate" ),
-      		"new_item"              => _x( "Enquête toevoegen", "labels", "gcmaturity-translate" ),
-      		"view"                  => _x( "Toon", "labels", "gcmaturity-translate" ),
-      		"view_item"             => _x( "Enquête bekijken", "labels", "gcmaturity-translate" ),
-      		"search_items"          => _x( "Enquête zoeken", "labels", "gcmaturity-translate" ),
-      		"not_found"             => _x( "Geen enquêtes beschikbaar", "labels", "gcmaturity-translate" ),
-      		"not_found_in_trash"    => _x( "Geen enquêtes in prullenbak", "labels", "gcmaturity-translate" ),
-      		"parent"                => _x( "Parent", "labels", "gcmaturity-translate" ),
-      		);
-      
-      	$args = array(
-          "label"                 => _x( "Enquêtes", "labels", "gcmaturity-translate" ),
-          "labels"                => $labels,
-          "description"           => "",
-          "public"                => true,
-          "publicly_queryable"    => true,
-          "show_ui"               => true,
-          "show_in_rest"          => false,
-          "rest_base"             => "",
-          "has_archive"           => false,
-          "show_in_menu"          => true,
-          "exclude_from_search"   => false,
-          "capability_type"       => "post",
-          "map_meta_cap"          => true,
-          "hierarchical"          => false,
-          "rewrite"               => array( "slug" => GCMS_QUESTION_CPT, "with_front" => true ),
-          "query_var"             => true,
-      		"supports"              => array( "title", "editor" ),					
-      		);
-      		
-      	register_post_type( GCMS_QUESTION_CPT, $args );
-
-
-        // ORGANISATIETYPES
-      	$labels = array(
-      		"name"                  => __( 'Organisatietypes', "gcmaturity-translate" ),
-      		"singular_name"         => __( 'Organisatietype', "gcmaturity-translate" ),
-      		"menu_name"             => __( 'Organisatietypes', "gcmaturity-translate" ),
-      		"all_items"             => __( 'Alle organisatietypes', "gcmaturity-translate" ),
-      		"add_new"               => __( 'Nieuw organisatietype toevoegen', "gcmaturity-translate" ),
-      		"add_new_item"          => __( 'Voeg nieuw organisatietype toe', "gcmaturity-translate" ),
-      		"edit_item"             => __( 'Bewerk organisatietype', "gcmaturity-translate" ),
-      		"new_item"              => __( 'Nieuw organisatietype', "gcmaturity-translate" ),
-      		"view_item"             => __( 'Bekijk organisatietype', "gcmaturity-translate" ),
-      		"search_items"          => __( 'Zoek organisatietype', "gcmaturity-translate" ),
-      		"not_found"             => __( 'Geen organisatietypes gevonden', "gcmaturity-translate" ),
-      		"not_found_in_trash"    => __( 'Geen organisatietypes gevonden in de prullenbak', "gcmaturity-translate" ),
-      		"archives"              => __( 'Overzichten', "gcmaturity-translate" ),
-      		);
-
-      	$args = array(
-      		"label"               => __( 'Organisatietypes', "gcmaturity-translate" ),
-      		"labels"              => $labels,
-      		"public"              => false,
-      		"hierarchical"        => true,
-      		"label"               => __( 'Organisatietypes', "gcmaturity-translate" ),
-      		"show_ui"             => true,
-      		"show_in_menu"        => true,
-      		"show_in_nav_menus"   => true,
-      		"query_var"           => true,
-      		"rewrite"             => array( 'slug' => GCMS_CT_ORGANISATIETYPE, 'with_front' => true, ),
-      		"show_admin_column"   => true,
-      		"show_in_rest"        => false,
-      		"rest_base"           => "",
-      		"show_in_quick_edit"  => false,
-      	);
-      	register_taxonomy( GCMS_CT_ORGANISATIETYPE, array( GCMS_QUESTION_CPT ), $args );
-
-
-        // organisatiegrootteS
-      	$labels = array(
-      		"name"                  => __( 'Organisatiegroottes', "gcmaturity-translate" ),
-      		"singular_name"         => __( 'Organisatiegrootte', "gcmaturity-translate" ),
-      		"menu_name"             => __( 'Organisatiegroottes', "gcmaturity-translate" ),
-      		"all_items"             => __( 'Alle organisatiegroottes', "gcmaturity-translate" ),
-      		"add_new"               => __( 'Nieuw organisatiegrootte toevoegen', "gcmaturity-translate" ),
-      		"add_new_item"          => __( 'Voeg nieuw organisatiegrootte toe', "gcmaturity-translate" ),
-      		"edit_item"             => __( 'Bewerk organisatiegrootte', "gcmaturity-translate" ),
-      		"new_item"              => __( 'Nieuw organisatiegrootte', "gcmaturity-translate" ),
-      		"view_item"             => __( 'Bekijk organisatiegrootte', "gcmaturity-translate" ),
-      		"search_items"          => __( 'Zoek organisatiegrootte', "gcmaturity-translate" ),
-      		"not_found"             => __( 'Geen organisatiegroottes gevonden', "gcmaturity-translate" ),
-      		"not_found_in_trash"    => __( 'Geen organisatiegroottes gevonden in de prullenbak', "gcmaturity-translate" ),
-      		"archives"              => __( 'Overzichten', "gcmaturity-translate" ),
-      		);
-
-      	$args = array(
-      		"label"               => __( 'Organisatiegroottes', "gcmaturity-translate" ),
-      		"labels"              => $labels,
-      		"public"              => false,
-      		"hierarchical"        => true,
-      		"label"               => __( 'Organisatiegroottes', "gcmaturity-translate" ),
-      		"show_ui"             => true,
-      		"show_in_menu"        => true,
-      		"show_in_nav_menus"   => true,
-      		"query_var"           => true,
-      		"rewrite"             => array( 'slug' => GCMS_CT_ORGANISATIEGROOTTE, 'with_front' => true, ),
-      		"show_admin_column"   => true,
-      		"show_in_rest"        => false,
-      		"rest_base"           => "",
-      		"show_in_quick_edit"  => false,
-      	);
-      	register_taxonomy( GCMS_CT_ORGANISATIEGROOTTE, array( GCMS_QUESTION_CPT ), $args );
-	      	
-
-        // REGIO'S
-      	$labels = array(
-      		"name"                  => __( "Regio's", "gcmaturity-translate" ),
-      		"singular_name"         => __( 'Regio', "gcmaturity-translate" ),
-      		"menu_name"             => __( "Regio's", "gcmaturity-translate" ),
-      		"all_items"             => __( "Alle regio's", "gcmaturity-translate" ),
-      		"add_new"               => __( 'Nieuwe regio toevoegen', "gcmaturity-translate" ),
-      		"add_new_item"          => __( 'Voeg nieuwe regio toe', "gcmaturity-translate" ),
-      		"edit_item"             => __( 'Bewerk regio', "gcmaturity-translate" ),
-      		"new_item"              => __( 'Nieuwe regio', "gcmaturity-translate" ),
-      		"view_item"             => __( 'Bekijk regio', "gcmaturity-translate" ),
-      		"search_items"          => __( 'Zoek regio', "gcmaturity-translate" ),
-      		"not_found"             => __( "Geen regio's gevonden", "gcmaturity-translate" ),
-      		"not_found_in_trash"    => __( "Geen regio's gevonden in de prullenbak", "gcmaturity-translate" ),
-      		"archives"              => __( 'Overzichten', "gcmaturity-translate" ),
-      		);
-      
-      	$args = array(
-      		"label"               => __( "Regio's", "gcmaturity-translate" ),
-      		"labels"              => $labels,
-      		"public"              => false,
-      		"hierarchical"        => true,
-      		"label"               => __( "Regio's", "gcmaturity-translate" ),
-      		"show_ui"             => true,
-      		"show_in_menu"        => true,
-      		"show_in_nav_menus"   => true,
-      		"query_var"           => true,
-      		"rewrite"             => array( 'slug' => GCMS_CT_REGIO, 'with_front' => true, ),
-      		"show_admin_column"   => true,
-      		"show_in_rest"        => false,
-      		"rest_base"           => "",
-      		"show_in_quick_edit"  => false,
-      	);
-      	register_taxonomy( GCMS_CT_REGIO, array( GCMS_QUESTION_CPT ), $args );
-	      	
-
-
-        // organisatieattitudes
-      	$labels = array(
-      		"name"                  => __( 'Organisatieattitudes', "gcmaturity-translate" ),
-      		"singular_name"         => __( 'Organisatieattitude', "gcmaturity-translate" ),
-      		"menu_name"             => __( 'Organisatieattitudes', "gcmaturity-translate" ),
-      		"all_items"             => __( 'Alle organisatieattitudes', "gcmaturity-translate" ),
-      		"add_new"               => __( 'Nieuw organisatieattitude toevoegen', "gcmaturity-translate" ),
-      		"add_new_item"          => __( 'Voeg nieuw organisatieattitude toe', "gcmaturity-translate" ),
-      		"edit_item"             => __( 'Bewerk organisatieattitude', "gcmaturity-translate" ),
-      		"new_item"              => __( 'Nieuw organisatieattitude', "gcmaturity-translate" ),  
-      		"view_item"             => __( 'Bekijk organisatieattitude', "gcmaturity-translate" ),
-      		"search_items"          => __( 'Zoek organisatieattitude', "gcmaturity-translate" ),
-      		"not_found"             => __( 'Geen organisatieattitudes gevonden', "gcmaturity-translate" ),
-      		"not_found_in_trash"    => __( 'Geen organisatieattitudes gevonden in de prullenbak', "gcmaturity-translate" ),
-      		"archives"              => __( 'Overzichten', "gcmaturity-translate" ),
-      		);
-
-      	$args = array(
-      		"label"               => __( 'Organisatieattitudes', "gcmaturity-translate" ),
-      		"labels"              => $labels,
-      		"public"              => false,
-      		"hierarchical"        => true,
-      		"label"               => __( 'Organisatieattitudes', "gcmaturity-translate" ),
-      		"show_ui"             => true,
-      		"show_in_menu"        => true,
-      		"show_in_nav_menus"   => true,
-      		"query_var"           => true,
-      		"rewrite"             => array( 'slug' => GCMS_CT_ORGANISATIEATTITUDE, 'with_front' => true, ),
-      		"show_admin_column"   => true,
-      		"show_in_rest"        => false,
-      		"rest_base"           => "",
-      		"show_in_quick_edit"  => false,
-      	);
-      	register_taxonomy( GCMS_CT_ORGANISATIEATTITUDE, array( GCMS_QUESTION_CPT ), $args );
-
-
-	      	
-      	
-      	flush_rewrite_rules();
+        if ( is_admin() ) {
+          wp_enqueue_style( 'gc-maturityscore-admin', GCMS_C_ASSETS_URL . 'css/gc-maturityscore-admin.css', false, GCMS_C_VERSION );
+        }
   
       }
-  
-      //========================================================================================================
-  
-      /**
-       * Initialise translations
-       */
-      public function load_plugin_textdomain() {
 
-          load_plugin_textdomain( "gcmaturity-translate", false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
-      }
-  
       //========================================================================================================
   
       /**
        * Add the help tab to the screen.
        */
-      public function help_tab() {
+      public function gcmsf_admin_help_tab() {
   
         $screen = get_current_screen();
   
         // documentation tab
-        $screen->add_help_tab( array(
+        $screen->add_gcmsf_admin_help_tab( array(
           'id'      => 'documentation',
           'title'   => __( 'Documentation', "gcmaturity-translate" ),
           'content' => "<p><a href='https://github.com/ICTU/gc-maturityscore-plugin/documentation/' target='blank'>" . __( 'GC Maturity documentation', "gcmaturity-translate" ) . "</a></p>",
@@ -607,361 +662,29 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         );
       }
   
-      //========================================================================================================
+      //====================================================================================================
   
       /**
-       * Returns data from a survey and the site averages
+       * Check our WordPress installation is compatible with GC_Maturity
        */
-      public function gcms_get_surveydata( $postid = 0,  $context = '' ) {
-
-        $yourdata = array();
-        $waarden  = array();
-        $metadata = array();
-        $arrpoep  = array();
-        
-        $formfields_data  = gcms_read_formfields();
-
-        if ( $postid ) {
-
-          $metadata_raw     = get_post_meta( $postid );    	
-          $metadata         = maybe_unserialize( $metadata_raw[GCMS_FORMKEYS][0] );
-
-          foreach( $metadata as $key => $value ){        
-
-            $constituents = explode( '_', $key );
-            if ( isset( $constituents[1] ) ) {
-              $groep = $constituents[1];
-            }
-
-            $waarden[ $formfields_data->$groep->group_label ][] = $value;
-
-          }
-
-          if ( $waarden ) {
-            
-            foreach( $waarden as $key => $value ){        
-
-              $thesum             = array_sum( $waarden[ $key ] );
-              $average_onderdeel  = round( ( $thesum / count( $waarden[ $key ] ) ), 2 );
-              
-              $arrpoep[ $key ]    = $average_onderdeel;
-          
-            }
-          }
-        }
-
-        if ( $formfields_data ) {
-          foreach ( $formfields_data as $key => $value) {
-            $waarden[ $value->group_label ][] = $value->group_label;
-          }
-        }
-        
-        if ( $waarden ) {
-
-          $yourdata['cols'][] = _x( "Onderdeel", "table header", "gcmaturity-translate" );
-
-          $yourdata['cols'][] = _x( "Gemiddelde score", "table header", "gcmaturity-translate" );
-          if ( $postid ) {
-            $yourdata['cols'][] = _x( "Jouw score", "table header", "gcmaturity-translate" );
-          }
-          
-          foreach( $waarden as $key => $value ){    
-            $thevalue = get_option( sanitize_title( $key ) );
-            if ( $thevalue ) {
-              $yourdata['rows'][ $key ][] = $thevalue;    
-            }
-            if ( $postid && $arrpoep[ $key ]) {
-              $yourdata['rows'][ $key ][] = $arrpoep[ $key ] ;    
-            }
-          }
-        }
-
-        
-        return $yourdata;
+      public function gcmsf_admin_main_page_get() {
+  
+        echo '<div class="wrap">';
+        echo '	<h2>' .  esc_html( get_admin_page_title() ) . '</h2>';
+        echo '	<p>' .  _x( 'Hier kun je de inhoud van de vragen bijwerken.', "admin", "gcmaturity-translate" ) . '</p>';
+        echo $this->gcmsf_frontend_get_tableview( false, 0, true );
+        // cmb2
+        echo '</div>';
+  
   
       }
-  
-      //========================================================================================================
-  
-      /**
-       * Register frontend styles
-       */
-      public function register_frontend_style_script() {
-  
-        if ( !is_admin() ) {
 
-          $infooter = false;
-          
-          // don't add to any admin pages
-
-          
-          wp_enqueue_style( 'gc-maturityscore-frontend', GCMS_ASSETS_URL . 'css/gc-maturityscore.css', array(), GCMS_VERSION, $infooter );
-
-
-          // contains minified versions of amcharts js files
-          wp_enqueue_script( 'gcms-action-js', GCMS_ASSETS_URL . 'js/min/functions-min.js', array( 'jquery' ), GCMS_VERSION, $infooter );
-
-
-          $postid = get_the_ID();
-          $mydata = $this->gcms_get_surveydata( $postid, 'register_frontend_style_script' );
-          
-//          dovardump( $postid );
-//          dovardump( $mydata );
-
-if ( $mydata ) {
-
-$mykeyname = 'Paul';  
-
-$kleurjouwscore = '#0000FF'; // blauw
-$kleurgemiddeldescore = '#FF0000'; // rood
-  
-  $radardata = json_decode( '{
-	"type": "radar",
-	"categoryField": "' . $mykeyname . '",
-	"sequencedAnimation": false,
-	"fontFamily": "\'Montserrat light\',Helvetica,Arial,sans-serif",
-	"backgroundColor": "#FFFFFF",
-	"color": "#000000",
-	"handDrawScatter": 0,
-	"handDrawThickness": 3,
-	"percentPrecision": 1,
-	"processCount": 1004,
-	"theme": "dark",
-	"graphs": [
-		{
-			"fillAlphas": 0.31,
-			"fillColors": "' . $kleurgemiddeldescore . '",
-			"id": "AmGraph-2",
-			"lineColor": "' . $kleurgemiddeldescore . '",
-			"title": "graph 2",
-			"valueField": "gemiddelde score",
-			"balloonText": "Gemiddelde score: [[value]]"
-		},
-		{
-			"balloonColor": "#FF0000",
-			"balloonText": "Jouw score: [[value]]",
-			"bullet": "round",
-			"fillAlphas": 0.48,
-			"fillColors": "' . $kleurjouwscore . '",
-			"id": "AmGraph-1",
-			"lineColor": "' . $kleurjouwscore . '",
-			"valueField": "jouw score"
-		}
-	],
-	"guides": [],
-	"valueAxes": [
-		{
-			"axisTitleOffset": 20,
-			"id": "ValueAxis-1",
-			"minimum": 0,
-			"zeroGridAlpha": 2,
-			"axisAlpha": 0.76,
-			"axisColor": "#6B6B6B",
-			"axisThickness": 2,
-			"dashLength": 0,
-			"fillAlpha": 0.49,
-			"gridAlpha": 0.68,
-			"gridColor": "#6B6B6B",
-			"minorGridAlpha": 0.4,
-			"minorGridEnabled": true
-		},
-		{
-			"id": "ValueAxis-2",
-			"dashLength": 0,
-			"fillAlpha": 0.43,
-			"gridAlpha": 0.44,
-			"gridColor": "#0000FF",
-			"minorGridAlpha": 0.32
-		}
-	],
-	"allLabels": [],
-	"balloon": {
-		"borderAlpha": 0.24,
-		"color": "#9400D3"
-	},
-	"titles": [],
-	"dataProvider": [
-		{
-			"jouw score": "4.2",
-			"gemiddelde score": "5",
-			"Score": "Eerste dinges"
-		},
-		{
-			"jouw score": "2.4",
-			"gemiddelde score": "4",
-			"Score": "Tweede dinges"
-		},
-		{
-			"jouw score": "3.5",
-			"gemiddelde score": "2",
-			"Score": "Derde dinges"
-		},
-		{
-			"jouw score": "2.8",
-			"gemiddelde score": "1",
-			"Score": "Vierde dinges"
-		},
-		{
-			"jouw score": "4",
-			"gemiddelde score": 2,
-			"Score": "Vijfde dinges"
-		}
-	]
-}
-' );
-
-//  dovardump( $mydata, 'my data' );
-  
-  $columncounter  = 0;
-  $rowcounter     = 0;
-
-//  dovardump( $radardata->graphs );
-
-  foreach( $mydata['cols'] as $columname => $columnsvalue ) {
-
-    
-    if ( $columncounter > 0 ) {
-
-      $radardata->graphs[ ( $columncounter - 1 ) ]->valueField = $columnsvalue;
-
-      $radardata->graphs[ ( $columncounter - 1 ) ]->eh = $columncounter . '_' . $columnsvalue;
-      $radardata->graphs[ ( $columncounter - 1 ) ]->balloonText = $columnsvalue . ': [[value]]';
-
-    }
-
-    $columncounter++;
-
-         
-  }
-
-//  dovardump( $radardata->graphs );
-
-//die();
-
-  $columncounter  = 0;
-  
-/*
-  [cols] => Array
-      (
-          [0] => Onderdeel
-          [1] => Jouw score
-          [2] => Gemiddelde score
-      )
-
-  [rows] => Array
-      (
-          [1 Middelen en processen] => Array
-              (
-                  [0] => 2.9
-                  [1] => 2.33
-              )
-
-          [2 Management en sturing] => Array
-              (
-                  [0] => 2.71
-                  [1] => 2.67
-              )
-
-          [3 Methodieken en meten] => Array
-              (
-                  [0] => 3.24
-                  [1] => 2
-              )
-
-          [4 Kennis en cultuur] => Array
-              (
-                  [0] => 3.28
-                  [1] => 3
-              )
-
-          [5 Begrijpen van eindgebruiker/klant] => Array
-              (
-                  [0] => 3.24
-                  [1] => 4.67
-              )
-
-      )
-*/
-
-//  dovardump( $radardata->dataProvider, 'before' );
-
-  $radardata->dataProvider = array();
-
-  foreach( $mydata['rows'] as $rowname => $rowvalue ) {
-
-    // 0 = jouw score
-    // 1 = algemeneen gemiddelde
-
-    $jouwscore        = $rowvalue[0];
-    $gemiddeldescore  = $rowvalue[1];
-
-    $columncounter = 0;
-
-    foreach( $mydata['cols'] as $columname => $columnsvalue ) {
-      
-//      rowcounter > colname
-
-      $thekey = 'MIJN_x_' . $columnsvalue . '_r' . $rowcounter . '_c' . $columncounter;
-
-      $radardata->dataProvider[$rowcounter]->$mykeyname = $rowname;
-      
-      if ( $columncounter == 2 ) {
-        $radardata->dataProvider[$rowcounter]->$columnsvalue = $gemiddeldescore;
-      }
-      elseif ( $columncounter == 1 ) {
-        $radardata->dataProvider[$rowcounter]->$columnsvalue = $jouwscore;
-      }
-
-
-
-      $columncounter++;
-  
-    }
-
-    $rowcounter++;
-
-  }
-
-//  dovardump( $radardata->graphs );
-//  dovardump( $radardata->dataProvider, 'after' );
-//  dovardump( $radardata );
-
-}
-
-          
-          
-          wp_add_inline_script( 'gcms-action-js', 
-  '      try {
-var amchart1 = AmCharts.makeChart( "amchart1", 
-' . wp_json_encode( $radardata ) . ' );
-}
-catch( err ) { console.log( err ); } ' );
-  
-
-              
-        }
-  
-      }
-  
-      //========================================================================================================
-  
-      /**
-       * Register admin-side styles
-       */
-      public function register_admin_styles() {
-  
-          wp_enqueue_style( 'gc-maturityscore-admin', GCMS_ASSETS_URL . 'css/gc-maturityscore-admin.css', false, GCMS_VERSION );
-  
-          do_action( 'rijksvideo_register_admin_styles' );
-  
-      }
-  
       //========================================================================================================
   
       /**
        * Register admin JavaScript
        */
-      public function register_admin_scripts() {
+      public function gcmsf_admin_register_scripts() {
   
           // media library dependencies
           wp_enqueue_media();
@@ -969,9 +692,9 @@ catch( err ) { console.log( err ); } ' );
           // plugin dependencies
           wp_enqueue_script( 'jquery-ui-core', array( 'jquery' ) );
   
-          $this->localize_admin_scripts();
+          $this->gcmsf_admin_localize_scripts();
   
-          do_action( 'gcms_register_admin_scripts' );
+          do_action( 'gcmsf_gcmsf_admin_register_scripts' );
   
       }
   
@@ -980,7 +703,7 @@ catch( err ) { console.log( err ); } ' );
       /**
        * Localise admin script
        */
-      public function localize_admin_scripts() {
+      public function gcmsf_admin_localize_scripts() {
   
           wp_localize_script( 'gcms-admin-script', 'gcms', array(
                   'url'               => __( "URL", "gcmaturity-translate" ),
@@ -988,11 +711,582 @@ catch( err ) { console.log( err ); } ' );
                   'new_window'        => __( "New Window", "gcmaturity-translate" ),
                   'confirm'           => __( "Weet je het zeker?", "gcmaturity-translate" ),
                   'ajaxurl'           => admin_url( 'admin-ajax.php' ),
-                  'resize_nonce'      => wp_create_nonce( 'gcms_resize' ),
-                  'iframeurl'         => admin_url( 'admin-post.php?action=gcms_preview' ),
+                  'resize_nonce'      => wp_create_nonce( 'gcmsf_resize' ),
+                  'iframeurl'         => admin_url( 'admin-post.php?action=gcmsf_preview' ),
               )
           );
   
+      }
+  
+    //====================================================================================================
+
+    /**
+     * Check our WordPress installation is compatible with GC_Maturity
+     */
+    public function gcmsf_admin_options_page() {
+
+      echo '<div class="wrap">';
+      echo '	<h2>' .  esc_html( get_admin_page_title() ) . '</h2>';
+      echo '<div id="thetable">';
+      echo $this->gcmsf_frontend_get_tableview();      
+      echo '</div>';
+
+?>
+
+    	<table class="form-table" id="progress">
+    		<tr>
+    			<td>
+    				<input id="startsync" type="button" class="button button-primary" value="<?php _e( 'Statistieken opnieuw instellen', "gcmaturity-translate" ); ?>" />
+    				<input id="clearlog" type="button" class="button button-secondary" value="<?php _e( 'Log leegmaken', "gcmaturity-translate" ); ?>" />
+    			</td>
+    		</tr>
+    	</table>
+      <noscript style="background: red; padding: .5em; font-size: 120%;display: block; margin-top: 1em !important; color: white;">
+        <strong><?php _e( 'Dit werkt alleen als je JavaScript hebt aangezet.', "gcmaturity-translate" );?></strong>
+      </noscript>
+      <div style="width: 100%; padding-top: 16px;" id="items">&nbsp;</div>
+    	<div style="width: 100%; padding-top: 16px; font-style: italic;" id="log"><?php _e( 'Druk op de knop!', "gcmaturity-translate" );?></div>
+    
+    
+    	<script type="text/javascript">
+    
+    
+    		var _button       = jQuery('input#startsync');
+    		var _clearbutton  = jQuery('input#clearlog');
+    		var _lastrow      = jQuery('#progress tr:last');
+    		var startrec = 1;
+    
+    		var setProgress = function (_message) {
+    			_lastrow.append(_message);
+    		}
+    
+    		jQuery(document).ready(function () {
+    
+    			_button.click(function (e) {
+    
+    				e.preventDefault();
+    				jQuery(this).val('<?php _e( 'Momentje', "gcmaturity-translate" );?>').prop('disabled', true);
+    				jQuery( '#log' ).empty();
+    				jQuery( '#thetable' ).empty();
+    				_requestJob( );
+    
+    			});
+    
+    			// clear log div
+    			_clearbutton.click(function() {
+    				jQuery( '#log' ).empty();
+    				jQuery( '#thetable' ).empty();
+    			})
+    
+    		})
+    
+    		var _requestJob = function ( ) {
+    			jQuery.post(ajaxurl, { 'action': 'gcmsf_reset',  'dofeedback': '1' }, _jobResult);
+    		}
+    
+    		var _jobResult = function (response) {
+    
+          _button.val('<?php _e( 'Statistieken opnieuw instellen', "gcmaturity-translate" ) ?>').prop('disabled', false);
+    
+    			if (response.ajaxrespons_item.length > 0) {
+    				// new messages appear on top. .append() can be used to have new entries at the bottom
+    				jQuery('#thetable').html( response.ajaxrespons_item );
+    			}
+    			if (response.ajaxrespons_messages.length > 0) {
+    				for (var i = 0; i < response.ajaxrespons_messages.length; i++) {
+    					// new messages appear on top. .append() can be used to have new entries at the bottom
+    					jQuery('#log').prepend(response.ajaxrespons_messages[i] + '<br />');
+    				}
+    			}
+    
+    			jQuery(this).val('<?php _e( 'Momentje', "gcmaturity-translate" );?>').prop('disabled', true);
+    		}
+    
+    	</script>
+    
+    <?php
+      
+          echo '</div>';
+    
+        }
+      
+      //====================================================================================================
+  
+      /**
+       * Check our WordPress installation is compatible with GC_Maturity
+       */
+      public function gcmsf_admin_do_system_check() {
+  
+  
+  //        $systemCheck = new GC_MaturitySystemCheck();
+  //        $systemCheck->check();
+  
+      }
+  
+      //========================================================================================================
+    /**
+     * Register the form and fields for our admin form
+     */
+    public function gcmsf_admin_form_register_cmb2_form() {
+
+      /**
+       * Registers options page menu item and form.
+       */
+      $cmb_options = new_cmb2_box( array(
+      	'id'           => 'gcmsf_admin_options_metabox',
+      	'title'        => esc_html__( 'Volwassenheids&shy;score', "gcmaturity-translate" ),
+      	'object_types' => array( 'options-page' ),
+      	/*
+      	 * The following parameters are specific to the options-page box
+      	 * Several of these parameters are passed along to add_menu_page()/add_submenu_page().
+      	 */
+      	'option_key'      => GCMS_C_PLUGIN_KEY, // The option key and admin menu page slug.
+      	'icon_url'        => 'dashicons-admin-settings', // Menu icon. Only applicable if 'parent_slug' is left empty.
+      	// 'menu_title'      => esc_html__( 'Options', "gcmaturity-translate" ), // Falls back to 'title' (above).
+      	// 'parent_slug'     => 'themes.php', // Make options page a submenu item of the themes menu.
+      	// 'capability'      => 'manage_options', // Cap required to view options-page.
+      	// 'position'        => 1, // Menu position. Only applicable if 'parent_slug' is left empty.
+      	// 'admin_menu_hook' => 'network_admin_menu', // 'network_admin_menu' to add network-level options page.
+      	// 'display_cb'      => false, // Override the options-page form output (CMB2_Hookup::options_page_output()).
+      	// 'save_button'     => esc_html__( 'Save Theme Options', "gcmaturity-translate" ), // The text for the options-page save button. Defaults to 'Save'.
+      ) );
+      /*
+       * Options fields ids only need
+       * to be unique within this box.
+       * Prefix is not needed.
+       */
+
+      $formfields_data    = gcmsf_data_get_survey_json();
+      $sectiontitle_prev  = '';
+
+      if ( $formfields_data ) {
+
+        $counter_total    = 0;
+        $counter_group    = 0;
+        $counter_question = 0;
+        $counter_answer   = 0;
+        $counter          = 0;
+
+
+        $key = 'SITESCORE';
+        
+        $cmb_options->add_field( array(
+        	'name'          => __( 'Uitslagteksten', "gcmaturity-translate" ),
+        	'type'          => 'title',
+        	'id'            => GCMS_C_CMBS2_PREFIX . $key
+        ) );
+
+
+        while( $counter <  GCMS_C_SCORE_MAX ) {
+
+          $counter++;
+
+          $default = sprintf( __( 'Hier de tekst als je voor de hele test tussen de %s en %s scoorde. ', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
+          
+          $label = sprintf( __( 'tussen %s en %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
+          if ( GCMS_C_SCORE_MAX == $counter ) {
+            $default = sprintf( __( 'Perfecte score: %s!', "gcmaturity-translate" ), $counter );
+          }
+
+          $fieldkey = $key . GCMS_SCORESEPARATOR . $counter;
+
+          $cmb_options->add_field( array(
+          	'name'          => sprintf( __( 'Score-tekst %s<br><small>als de totale score %s ligt.</small>', "gcmaturity-translate" ), $counter, $label ),
+          	'description'   => sprintf( __( 'Algemene gemiddelde score %s', "gcmaturity-translate" ), $label . ' (' . $fieldkey . ')' ),
+        		'type'          => 'wysiwyg',
+          	'id'            => $fieldkey,
+          	'default'       => $default
+          ) );
+        
+        }
+
+
+        
+      
+        foreach ( $formfields_data as $key => $value) {
+          $counter_group++;
+
+          // $key = 'g1'
+
+          $groupdescription = '';
+          $key_group_desc   = $key . '_group_description';
+
+          if ( isset( $value->group_description ) ) {
+            $groupdescription = $value->group_description;
+          }
+
+
+          $cmb_options->add_field( array(
+          	'name'          => 'Groep ' . $counter_group,
+          	'type'          => 'title',
+          	'id'            => GCMS_C_CMBS2_PREFIX . 'start_section' . $counter_group
+          ) );
+
+          $cmb_options->add_field( array(
+          	'name'          => 'Label voor groep ' . $counter_group,
+        		'type'          => 'text',
+          	'id'            => $key,
+          	'default'       => $value->group_label
+          ) );
+
+          $cmb_options->add_field( array(
+          	'name'          => 'Korte beschrijving',
+        		'type'          => 'textarea',
+          	'id'            => $key_group_desc,
+          	'default'       => $groupdescription
+          ) );
+
+
+          $counter = 0;
+
+          while( $counter <  GCMS_C_SCORE_MAX ) {
+
+            $counter++;
+
+            $default = sprintf( __( 'Op het onderdeel <em>%s</em> scoorde je meer dan %s, maar minder dan %s. Hier staat de toelichting. ', "gcmaturity-translate" ), gcms_aux_get_value_for_cmb2_key( $key ), ( $counter - 1 ), $counter );
+            
+            $label = sprintf( __( 'tussen %s en %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
+            if ( GCMS_C_SCORE_MAX == $counter ) {
+              $default = sprintf( __( 'Perfecte score: %s!', "gcmaturity-translate" ), $counter );
+            }
+
+            $fieldkey = $key . GCMS_SCORESEPARATOR . $counter;
+
+            $cmb_options->add_field( array(
+            	'name'          => sprintf( __( 'Score-tekst %s<br><small>als de score %s ligt.</small>', "gcmaturity-translate" ), $counter, $label ),
+            	'description'   => sprintf( __( 'Score %s', "gcmaturity-translate" ), $label . ' (' . $fieldkey . ')' ),
+          		'type'          => 'wysiwyg',
+            	'id'            => $fieldkey,
+            	'default'       => $default
+            ) );
+          
+          }
+
+          // snip1.txt
+
+        }
+      }
+      else {
+        // fout bij het ophalen van de formulierwaarden
+        gcmsf_aux_write_to_log('Fout bij ophalen van de formulierwaarden');
+      }
+  
+  
+    }    
+
+    //====================================================================================================  
+      /**
+       * Returns data from a survey and the site averages
+       */
+      public function gcmsf_data_get_user_answers_and_averages( $postid = 0,  $context = '' ) {
+
+        $yourdata         = array();
+        $values           = array();
+        $user_answers     = array();
+        $systemaverages   = array();
+        $valuescounter    = 0;
+
+        $formfields_data  = gcmsf_data_get_survey_json();
+
+        if ( $postid ) {
+
+          $user_answers_raw   = get_post_meta( $postid );    	
+
+          if ( isset( $user_answers_raw[GCMS_C_FORMKEYS][0] ) ) {
+            $user_answers     = maybe_unserialize( $user_answers_raw[GCMS_C_FORMKEYS][0] );
+          }
+
+          if ( $user_answers ) {
+    
+            foreach( $user_answers as $key => $value ){        
+
+              $array = array();
+  
+              $constituents = explode( GCMS_C_PLUGIN_SEPARATOR, $value ); // [0] = group, [1] = question, [2] = answer
+              
+              $group    = '';
+              $question = '';
+              $answer   = '';
+              
+              if ( isset( $constituents[0] ) ) {
+                $group    = $constituents[0];
+              }
+              if ( isset( $constituents[1] ) ) {
+                $question = $constituents[1];
+              }
+              if ( isset( $constituents[2] ) ) {
+                $answer = $constituents[2];
+              }
+
+              $current_group    = (array) $formfields_data->$group;
+              $current_question = (array) $formfields_data->$group->group_questions[0]->$question;
+              $current_answer   = (array) $formfields_data->$group->group_questions[0]->$question->question_answers[0]->$answer;
+
+              if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+                $current_answer['answer_site_average'] = get_option( $key, 1 );
+              }
+
+              $current_answer['question_label'] = $current_question['question_label'];
+  
+              $array['question_label']  = $current_question['question_label'];
+              $array['question_answer'] = $current_answer;
+
+              $values[ 'averages'][ 'groups'][ $group ][]   = $current_answer['answer_value'];
+              $values[ 'all_values' ][]                     = $current_answer['answer_value'];
+              $values[ 'user_answers' ][ $group ][ $key ]   = $current_answer;
+
+              $group_label      = gcms_aux_get_value_for_cmb2_key( $group );
+
+            }
+
+  
+            if ( $values ) {
+
+              $values['averages'][ 'overall' ]  = gcms_aux_get_average_for_array( $values[ 'all_values' ], 1);
+
+              unset( $values[ 'all_values' ] );
+
+              foreach( $values[ 'averages'][ 'groups'] as $key => $value ){        
+                $average = gcms_aux_get_average_for_array( $value, 2 );
+                $values[ 'averages'][ 'groups'][ $key ] = $average;
+
+                $columns = array();
+                
+                $columns[ GCMS_C_TABLE_COL_TH ] = gcms_aux_get_value_for_cmb2_key( $key );
+                $columns[ GCMS_C_TABLE_COL_USER_AVERAGE ] = $average;
+
+                if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+                  $columns[ GCMS_C_TABLE_COL_SITE_AVERAGE ] = get_option( $key, 1 );
+                }
+                
+                $values[ 'rows' ][ $key ]  = $columns;
+                
+              }
+  
+      
+              $values['cols'][ GCMS_C_TABLE_COL_TH ] = _x( "Onderdeel", "table header", "gcmaturity-translate" );
+              if ( $postid ) {
+                $values['cols'][ GCMS_C_TABLE_COL_USER_AVERAGE ] = _x( "Jouw score", "table header", "gcmaturity-translate" );
+              }
+    
+              if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+                $values['cols'][ GCMS_C_TABLE_COL_SITE_AVERAGE ] = _x( "Gemiddelde score", "table header", "gcmaturity-translate" );
+              }
+              
+            }
+          }
+        }
+
+        return $values;
+  
+      }
+  
+      //========================================================================================================
+  
+      /**
+       * Register frontend styles
+       */
+      public function gcmsf_frontend_register_frontend_style_script( ) {
+
+        if ( !is_admin() ) {
+
+          if ( ! $this->survey_data ) {
+            $this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
+          }
+
+          $infooter = false;
+
+          wp_enqueue_style( 'gc-maturityscore-frontend', GCMS_C_ASSETS_URL . 'css/gc-maturityscore.css', array(), GCMS_C_VERSION, $infooter );
+
+          // contains minified versions of amcharts js files
+          wp_enqueue_script( 'gcms-action-js', GCMS_C_ASSETS_URL . 'js/min/functions-min.js', array( 'jquery' ), GCMS_C_VERSION, $infooter );
+
+          // get the graph for this user
+          $postid               = get_the_ID();
+          $mykeyname            = 'volwassenheidsscore';  
+          $kleurjouwscore       = '#0000FF'; // blauw
+          $kleurgemiddeldescore = '#FF0000'; // rood
+          
+
+
+          if ( $this->survey_data ) {
+            
+            $averages = '';
+            
+            if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+              $averages = '{
+            			"fillAlphas": 0.31,
+            			"fillColors": "' . $kleurgemiddeldescore . '",
+            			"id": "AmGraph-2",
+            			"lineColor": "' . $kleurgemiddeldescore . '",
+            			"title": "graph 2",
+            			"valueField": "Lalal gemiddelde score",
+            			"balloonText": "Gemiddelde score: [[value]]"
+            		},';
+            }
+
+            
+            $radardata = json_decode( '{
+            	"type": "radar",
+            	"categoryField": "' . $mykeyname . '",
+            	"sequencedAnimation": false,
+            	"fontFamily": "\'Montserrat light\',Helvetica,Arial,sans-serif",
+            	"backgroundColor": "#FFFFFF",
+            	"color": "#000000",
+            	"handDrawScatter": 0,
+            	"handDrawThickness": 3,
+            	"percentPrecision": 1,
+            	"processCount": 1004,
+            	"theme": "dark",
+            	"graphs": [
+            		' . $averages . '
+            		{
+            			"balloonColor": "#FF0000",
+            			"balloonText": "Jouw score: [[value]]",
+            			"bullet": "round",
+            			"fillAlphas": 0.48,
+            			"fillColors": "' . $kleurjouwscore . '",
+            			"id": "AmGraph-1",
+            			"lineColor": "' . $kleurjouwscore . '",
+            			"valueField": "jouw score"
+            		}
+            	],
+            	"guides": [],
+            	"valueAxes": [
+            		{
+            			"axisTitleOffset": 20,
+            			"id": "ValueAxis-1",
+            			"minimum": 0,
+            			"zeroGridAlpha": 2,
+            			"axisAlpha": 0.76,
+            			"axisColor": "#6B6B6B",
+            			"axisThickness": 2,
+            			"dashLength": 0,
+            			"fillAlpha": 0.49,
+            			"gridAlpha": 0.68,
+            			"gridColor": "#6B6B6B",
+            			"minorGridAlpha": 0.4,
+            			"minorGridEnabled": true
+            		},
+            		{
+            			"id": "ValueAxis-2",
+            			"dashLength": 0,
+            			"fillAlpha": 0.43,
+            			"gridAlpha": 0.44,
+            			"gridColor": "#0000FF",
+            			"minorGridAlpha": 0.32
+            		}
+            	],
+            	"allLabels": [],
+            	"balloon": {
+            		"borderAlpha": 0.24,
+            		"color": "#9400D3"
+            	},
+            	"titles": [],
+            	"dataProvider": [
+            		{
+            			"jouw score": "4.2",
+            			"gemiddelde score": "5",
+            			"Score": "Eerste dinges"
+            		},
+            		{
+            			"jouw score": "2.4",
+            			"gemiddelde score": "4",
+            			"Score": "Tweede dinges"
+            		},
+            		{
+            			"jouw score": "3.5",
+            			"gemiddelde score": "2",
+            			"Score": "Derde dinges"
+            		},
+            		{
+            			"jouw score": "2.8",
+            			"gemiddelde score": "1",
+            			"Score": "Vierde dinges"
+            		},
+            		{
+            			"jouw score": "4",
+            			"gemiddelde score": 2,
+            			"Score": "Vijfde dinges"
+            		}
+            	]
+            }
+            ' );
+          
+
+            $columncounter  = 0;
+            $rowcounter     = 0;
+
+            $radardata->graphs[ ( GCMS_C_TABLE_COL_USER_AVERAGE - 1 ) ]->valueField     = $this->survey_data['cols'][ GCMS_C_TABLE_COL_USER_AVERAGE ] ;
+            $radardata->graphs[ ( GCMS_C_TABLE_COL_USER_AVERAGE - 1 ) ]->balloonText    = $this->survey_data['cols'][ GCMS_C_TABLE_COL_USER_AVERAGE ] . ': [[value]]';
+
+            if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+
+              $radardata->graphs[ ( GCMS_C_TABLE_COL_SITE_AVERAGE - 1 ) ]->valueField   = $this->survey_data['cols'][ GCMS_C_TABLE_COL_SITE_AVERAGE ] ;
+              $radardata->graphs[ ( GCMS_C_TABLE_COL_SITE_AVERAGE - 1 ) ]->balloonText  = $this->survey_data['cols'][ GCMS_C_TABLE_COL_SITE_AVERAGE ] . ': [[value]]';
+              
+            }
+            else {
+              unset( $radardata->graphs[ 1 ] );
+            }
+
+            $columncounter  = 0;
+
+            $radardata->dataProvider = array();
+          
+            foreach( $this->survey_data['rows'] as $rowname => $rowvalue ) {
+          
+              $jouwscore        = isset( $rowvalue[ GCMS_C_TABLE_COL_USER_AVERAGE ] ) ? $rowvalue[ GCMS_C_TABLE_COL_USER_AVERAGE ] : 0;
+              $gemiddeldescore  = isset( $rowvalue[ GCMS_C_TABLE_COL_SITE_AVERAGE ] ) ? $rowvalue[ GCMS_C_TABLE_COL_SITE_AVERAGE ] : 0;
+          
+              $columncounter = 0;
+          
+              foreach( $this->survey_data['cols'] as $columname => $columnsvalue ) {
+
+                $radardata->dataProvider[$rowcounter]->$mykeyname = $rowname;
+                
+                if ( $columncounter == 2 ) {
+                  $radardata->dataProvider[$rowcounter]->$columnsvalue = '';
+                  if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+                    $radardata->dataProvider[$rowcounter]->$columnsvalue = $gemiddeldescore;
+                  }
+                }
+                elseif ( $columncounter == 1 ) {
+                  $radardata->dataProvider[$rowcounter]->$columnsvalue = $jouwscore;
+                }
+
+                $columncounter++;
+            
+              }
+          
+              $rowcounter++;
+          
+            }  
+
+/*            
+
+dovardump( $radardata, 'dataprovider' );
+die('dataprovider');
+
+*/  
+
+//$thedata = '';
+$thedata = wp_json_encode( $radardata );
+
+          
+
+          
+          
+          wp_add_inline_script( 'gcms-action-js', 
+  '      try {
+var amchart1 = AmCharts.makeChart( "amchart1", 
+' . $thedata . ' );
+}
+catch( err ) { console.log( err ); } ' );
+
+
+          } // if ( $this->survey_data ) {
+        }
       }
   
       //========================================================================================================
@@ -1000,86 +1294,34 @@ catch( err ) { console.log( err ); } ' );
       /**
        * Output the HTML
        */
-      public function gcms_display_questionary( $postid ) {
+      public function gcmsf_frontend_display_survey_results( $postid ) {
         
         $returnstring     = '';
-        $formfields_data  = gcms_read_formfields();
-        $metadata_raw     = get_post_meta( $postid );    	
-        $metadata         = maybe_unserialize( $metadata_raw[GCMS_FORMKEYS][0] );
-        $waarden          = array();
 
+        if ( ! $this->survey_data ) {
+          $this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
+        }
 
-        if ( $formfields_data && $metadata ) {
+        if ( $this->survey_data ) {
 
-          foreach ( $metadata as $key => $value) {
+          $returnstring  = $this->gcmsf_frontend_get_interpretation( false );
+          $returnstring .= $this->gcmsf_frontend_get_graph( false );
+          $returnstring .= $this->gcmsf_frontend_get_tableview( false );      
 
-            $constituents = explode( '_', $key );
-            if ( isset( $constituents[1] ) ) {
-              $groep = $constituents[1];
-            }
-
-            if ( intval( $value ) > 0 ) {
-              $waarden[ $groep ][] = $value;
-            }
-          }
         }
         else {
-          $returnstring = '';
+          $returnstring .= '<p>' . __( "Geen gegevens beschikbaar. Waarschijnlijk is de server stuk. Het is niet jouw schuld.", "gcmaturity-translate" ) . '<p>';
         }
-
-        if ( $waarden ) {
-          $onderdeelcount   = 0;
-          $overallscore     = 0;
-          $aantalenquetes   = get_option( GCMS_OPTIONS_TOTALSURVEYS );
-
-          $returnstring = '<p>' . sprintf( _n( 'Er is nu %s enquete ingevoerd.',  'Er zijn inmiddels %s enquetes ingevoerd.', $aantalenquetes, "gcmaturity-translate" ), $aantalenquetes ) . '</p>';
-
-          $returnstring .= $this->gcms_frontend_interpretation_get( false, $postid );      
-          $returnstring .= $this->gcms_frontend_graph_get( false, $postid );      
-          $returnstring .= $this->gcms_frontend_stats_table_get( false, $postid );      
-
-        }
-
-
 
         return $returnstring;
       
       }
   
       //========================================================================================================
-  
-      private function get_stored_values( $postid, $postkey, $defaultvalue = '' ) {
-  
-        if ( GCMS_PLUGIN_DO_DEBUG ) {
-          $returnstring = $defaultvalue;
-        }
-        else {
-          $returnstring = '';
-        }
-  
-        $temp = get_post_meta( $postid, $postkey, true );
-        if ( $temp ) {
-          $returnstring = $temp;
-        }
-        
-        return $returnstring;
-      }
-  
-      //========================================================================================================
-      
-      public function getuniqueid( $video_id ) {
-        
-        global $post;
-        
-        return '_video' . $video_id . '_post' . $post->ID;    
-      
-      }
 
-      //========================================================================================================
-
-      public function append_comboboxes() {
+      public function gcmsf_frontend_append_comboboxes() {
       
-        if ( GCMS_PLUGIN_USE_CMB2 ) {
+        if ( GCMS_C_PLUGIN_USE_CMB2 ) {
   
           if ( ! defined( 'CMB2_LOADED' ) ) {
             return false;
@@ -1087,94 +1329,106 @@ catch( err ) { console.log( err ); } ' );
             // cmb2 NOT loaded
           }
 
-          add_shortcode( 'gcms_survey', 'gcms_register_shortcode' );
+          add_shortcode( 'gcms_survey', 'gcmsf_frontend_register_shortcode' );
 
-          add_action( 'cmb2_init', array( $this, 'gcms_register_frontend_form' ) );
+          add_action( 'cmb2_init',        array( $this, 'gcmsf_frontend_form_register_cmb2_form' ) );
+          add_action( 'cmb2_after_init',  'gcmsf_frontend_form_handle_posting' );
+          
+          add_action( 'cmb2_admin_init',  array( $this, 'gcmsf_admin_form_register_cmb2_form' ) );
 
-          add_action( 'cmb2_after_init', 'gcms_handle_survey_posting' );
-
-        }  // GCMS_PLUGIN_USE_CMB2
+        }  // GCMS_C_PLUGIN_USE_CMB2
   
     }    
 
     //====================================================================================================
 
 
+
+
+
     /**
      * Register the form and fields for our front-end submission form
      */
-    public function gcms_register_frontend_form() {
+    public function gcmsf_frontend_form_register_cmb2_form() {
 
     	$cmb = new_cmb2_box( array(
-    		'id'            => 'front-end-post-form',
+    		'id'            => GCMS_C_METABOX_ID,
     		'title'         => __( "Vragen en antwoorden", "gcmaturity-translate" ),
     		'object_types'  => array( 'post' ),
     		'hookup'        => false,
-    		'save_fields'   => false,
+    		'save_fields'   => true,
         'cmb_styles'    => false, // false to disable the CMB stylesheet
     	) );
 
-      $formfields_data = gcms_read_formfields();
-
-      // reset statistics
-      $this->gcms_reset_values( false );
+      $formfields_data = gcmsf_data_get_survey_json();
+      $sectiontitle_prev = '';
 
 
       if ( $formfields_data ) {
 
-        $counter_top  = 0;
-        $counter_loop = 0;
-      
-        foreach ( $formfields_data as $key => $value) {
-          $counter_top++;
-          $counter_loop = 0;
+        // loop through the groups
+        foreach ( $formfields_data as $group_key => $value) {
 
-        	$cmb->add_field( array(
-        		'id'            => GCMS_CMBS2_PREFIX . $counter_top,
-        		'title'         => $value->group_label,
-        		'object_types'  => array( GCMS_QUESTION_CPT ), // Post type
-        	) );
+          $group_label      = gcms_aux_get_value_for_cmb2_key( $group_key );
+          $groupdescription = gcms_aux_get_value_for_cmb2_key( $group_key . '_group_description' );
+          $groupquestions   = (array) $value->group_questions[0];
 
-          foreach ( $value->group_questions as $key2 => $value2 ) {
+          $cmb->add_field( array(
+          	'name'          => $group_label,
+          	'description'   => $groupdescription,
+          	'type'          => 'title',
+          	'id'            => GCMS_C_CMBS2_PREFIX . '_section_' . $group_key
+          ) );
 
-            $counter_loop++;
+          // loop through the questions
+          foreach ( $groupquestions as $question_key => $question_single ) {
 
-            $options = array();
-            $label = 'label_' . $counter_top . '_' . $counter_loop;
+            $options          = array();
+            $defaults         = array();
+            $default          = '';
+            $answers          = (array) $question_single->question_answers[0];
 
-            $options[ GCMS_DEFAULT ] = _x( 'Geen antwoord', 'default answer', "gcmaturity-translate" );
-            $default = GCMS_DEFAULT;
+            $question_label = $question_single->question_label;
 
-            foreach ( $value2->question_answers as $antwoord ) {
+            //snip2.txt
+            
+            // get all possible answers
+            foreach ( $answers as $answer_key => $answer ) {
 
-              $options[ $antwoord->answer_value ] = $antwoord->answer_label;
+              $this_answer_key              = $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key . GCMS_C_PLUGIN_SEPARATOR . $answer_key;
+              
+              $options[ $this_answer_key  ] = $answer->answer_label;
+              $defaults[]                   = $this_answer_key;
 
             }
-            
-            $default = rand( 1, ( count( $options ) - 1 ) );
-//            $default = rand( 1, ( count( $options ) - 3 ) );
-//            $default = 5;
-//            $default = 3;
-//            $default = 2;
+                        
+
+            if ( WP_DEBUG && GCMS_C_PLUGIN_DO_DEBUG ) {
+              $default = $defaults[ array_rand( $defaults ) ];
+            }
             
           	$cmb->add_field( array(
-          		'name'    => $value2->question_label,
-          		'id'      => $value2->question_key,
+          		'name'    => $question_single->question_label,
+          		'id'      => $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key,
           		'type'    => 'radio',
               'options' => $options,
               'default' => $default,
           	) );
             
-          }            
+            
+            
+          }
+
+                      
         }
       }
       else {
         // fout bij het ophalen van de formulierwaarden
-        rijksreleasekalender_writedebug('Fout bij ophalen van de formulierwaarden');
+        gcmsf_aux_write_to_log('Fout bij ophalen van de formulierwaarden');
       }
       
     	$cmb->add_field( array(
-    		'name'    => __( 'Je naam', 'naam', "gcmaturity-translate" ),
+    		'name'    => _x( 'Je naam', 'naam', "gcmaturity-translate" ),
     		'id'      => 'submitted_your_name',
     		'type'    => 'text',
     		'desc'    => _x( 'Niet verplicht', 'naam', "gcmaturity-translate" ),
@@ -1197,13 +1451,13 @@ catch( err ) { console.log( err ); } ' );
 
       // organisatietypes
       $terms = get_terms( array(
-        'taxonomy' => GCMS_CT_ORGANISATIETYPE,
+        'taxonomy' => GCMS_C_SURVEY_CT_ORG_TYPE,
         'hide_empty' => false,
       ) );
     
       if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
         $options = array();
-        $taxinfo = get_taxonomy( GCMS_CT_ORGANISATIETYPE );
+        $taxinfo = get_taxonomy( GCMS_C_SURVEY_CT_ORG_TYPE );
     
         foreach ( $terms as $term ) {
           $options[ $term->term_id ] = $term->name;
@@ -1212,7 +1466,7 @@ catch( err ) { console.log( err ); } ' );
     
       	$cmb->add_field( array(
       		'name'    => $taxinfo->labels->singular_name,
-      		'id'      => GCMS_QUESTION_PREFIX . GCMS_CT_ORGANISATIETYPE,
+      		'id'      => GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_TYPE,
       		'type'    => 'radio',
           'options' => $options,
           'default' => $default,
@@ -1222,13 +1476,13 @@ catch( err ) { console.log( err ); } ' );
 
       // regio's
       $terms = get_terms( array(
-        'taxonomy' => GCMS_CT_REGIO,
+        'taxonomy' => GCMS_C_SURVEY_CT_REGION,
         'hide_empty' => false,
       ) );
     
       if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
         $options = array();
-        $taxinfo = get_taxonomy( GCMS_CT_REGIO );
+        $taxinfo = get_taxonomy( GCMS_C_SURVEY_CT_REGION );
     
         foreach ( $terms as $term ) {
           $options[ $term->term_id ] = $term->name;
@@ -1237,7 +1491,7 @@ catch( err ) { console.log( err ); } ' );
     
       	$cmb->add_field( array(
       		'name'    => $taxinfo->labels->singular_name,
-      		'id'      => GCMS_QUESTION_PREFIX . GCMS_CT_REGIO,
+      		'id'      => GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_REGION,
       		'type'    => 'radio',
           'options' => $options,
           'default' => $default,
@@ -1248,13 +1502,13 @@ catch( err ) { console.log( err ); } ' );
 
       // organisatiegrootte
       $terms = get_terms( array(
-        'taxonomy' => GCMS_CT_ORGANISATIEGROOTTE,
+        'taxonomy' => GCMS_C_SURVEY_CT_ORG_SIZE,
         'hide_empty' => false,
       ) );
     
       if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
         $options = array();
-        $taxinfo = get_taxonomy( GCMS_CT_ORGANISATIEGROOTTE );
+        $taxinfo = get_taxonomy( GCMS_C_SURVEY_CT_ORG_SIZE );
     
         foreach ( $terms as $term ) {
           $options[ $term->term_id ] = $term->name;
@@ -1263,7 +1517,7 @@ catch( err ) { console.log( err ); } ' );
     
       	$cmb->add_field( array(
       		'name'    => $taxinfo->labels->singular_name,
-      		'id'      => GCMS_QUESTION_PREFIX . GCMS_CT_ORGANISATIEGROOTTE,
+      		'id'      => GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_SIZE,
       		'type'    => 'radio',
           'options' => $options,
           'default' => $default,
@@ -1274,13 +1528,13 @@ catch( err ) { console.log( err ); } ' );
 
       // organisatieattitude
       $terms = get_terms( array(
-        'taxonomy' => GCMS_CT_ORGANISATIEATTITUDE,
+        'taxonomy' => GCMS_C_SURVEY_CT_ORG_ATTITUDE,
         'hide_empty' => false,
       ) );
     
       if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
         $options = array();
-        $taxinfo = get_taxonomy( GCMS_CT_ORGANISATIEATTITUDE );
+        $taxinfo = get_taxonomy( GCMS_C_SURVEY_CT_ORG_ATTITUDE );
     
         foreach ( $terms as $term ) {
           $options[ $term->term_id ] = $term->name;
@@ -1289,7 +1543,7 @@ catch( err ) { console.log( err ); } ' );
     
       	$cmb->add_field( array(
       		'name'    => $taxinfo->labels->singular_name,
-      		'id'      => GCMS_QUESTION_PREFIX . GCMS_CT_ORGANISATIEATTITUDE,
+      		'id'      => GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE,
       		'type'    => 'radio',
           'options' => $options,
           'default' => $default,
@@ -1298,148 +1552,239 @@ catch( err ) { console.log( err ); } ' );
       }
 
     }  
-	
-    //====================================================================================================
-
-  	/**
-  	 * Register the options page
-  	 *
-  	 * @since    1.0.0
-  	 */
-  	public function gcms_admin_register_settings() {
-
-  		// Add a General section
-  		add_settings_section(
-  			$this->option_name . '_general',
-  			__( 'Algemeen', "gcmaturity-translate" ),
-  			array( $this, $this->option_name . '_general_cb' ),
-  			$this->plugin_name
-  		);
-  
-  
-    }  
-	
-    //====================================================================================================
-
-  	/**
-  	 * Register the options page
-  	 *
-  	 * @since    1.0.0
-  	 */
-  	public function gcms_admin_register_menu_pages() {
-  
-  
-  		add_menu_page(
-  			__( 'Volwassenheids&shy;score', "gcmaturity-translate" ),
-  			__( 'Volwassenheids&shy;score', "gcmaturity-translate" ),
-  			'manage_options',
-  			$this->plugin_name,
-  			array( $this, 'gcms_main_page' ),
-  			'dashicons-admin-settings'
-  		);
-  		add_submenu_page(
-  			$this->plugin_name,
-  			__( 'GC Volwassenheidsscore - instellingen', "gcmaturity-translate" ),
-  			__( 'Instellingen', "gcmaturity-translate" ),
-  			'manage_options',
-  			$this->plugin_name . '-instellingen',
-  			array( $this, 'gcms_options_page' )
-  		);
-  		
-  	}
-
-	
-    //====================================================================================================
-
-    /**
-     * Check our WordPress installation is compatible with GC_Maturity
-     */
-    public function gcms_main_page() {
-
-      echo '<div class="wrap">';
-      echo '	<h2>' .  esc_html( get_admin_page_title() ) . '</h2>';
-      echo $this->gcms_frontend_stats_table_get();
-      echo '</div>';
-
-
-    }
 
     //====================================================================================================
 
-    private function gcms_frontend_graph_get( $doecho = false, $postid = 0 ) {
+    private function gcmsf_frontend_get_graph( $doecho = false ) {
+
+      if ( ! $this->survey_data ) {
+        $this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
+      }
       
-      $return = '<h2>' . _x( "Grafiek", "table description", "gcmaturity-translate" ) . "</h2>\n";
-      $return .= '<div class="radarchart" id="amchart1" style="min-height: 500px; width: 100%"></div>';
-      $return .= '<p>' . _x( "Jouw score in het blauw; gemiddelde score in het rood.", "table description", "gcmaturity-translate" ) . '</p>';
+      if ( $this->survey_data ) {
+        $return = '<h2>' . _x( "Grafiek", "table description", "gcmaturity-translate" ) . "</h2>\n";
+        $return .= '<div class="radarchart" id="amchart1" style="min-height: 500px; width: 100%"></div>';
 
-      return $return;
-
-    }
-
-
-    //====================================================================================================
-
-    private function gcms_frontend_interpretation_get( $doecho = false, $postid = 0 ) {
-      
-      $return = '<h2>' . _x( "Onze interpretatie", "table description", "gcmaturity-translate" ) . "</h2>\n";
-      $return .= '<p>' . _x( "Hier komt de score-interpretatie", "table description", "gcmaturity-translate" ) . '</p>';
-
-      return $return;
-
-    }
-
-    //====================================================================================================
-
-    private function gcms_frontend_stats_table_get( $doecho = false, $postid = 0 ) {
-
-      $mydata = $this->gcms_get_surveydata( $postid, 'gcms_frontend_stats_table_get' );
-      $return = '';
-
-      $formfields_data  = gcms_read_formfields();
-      
-      if ( $formfields_data ) {
-        foreach ( $formfields_data as $key => $value) {
-          $waarden[ $value->group_label ][] = $value->group_label;
+        if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+  //        $return .= '<p>' . _x( "Jouw score in het blauw; gemiddelde score in het rood.", "table description", "gcmaturity-translate" ) . '</p>';
+          $return .= '<p>' . _x( "Jouw score in het rood; gemiddelde score in het blauw.", "table description", "gcmaturity-translate" ) . '</p>';
         }
+        else {
+          $return .= '<p>' . _x( "Jouw score in het blauw.", "table description", "gcmaturity-translate" ) . '</p>';
+        }
+
+      }
+      else {
+        $return = '<p>' . __( "Geen gegevens beschikbaar. Waarschijnlijk is de server stuk. Het is niet jouw schuld.", "gcmaturity-translate" ) . '<p>';
+        
+      }
+      
+
+      if ( $doecho ) {
+        echo $return;
+      }
+      else {
+        return $return;
       }
 
+    }
+
+    //====================================================================================================
+
+    private function gcmsf_frontend_get_percentage( $score = 0, $max = 5, $doecho = false ) {
+
+      $return = '';
+
+      if ( $max ) {
+
+        $displayvalue = ( 100 / $max ); // percentage            
+        $return       = ( $score * $displayvalue ) . '%';
+        
+        $counter = 0;
+        
+
+        $return .= '<div class="star-rating">';
+        
+        while( $counter <  $max ) {
+          if ( $score > $counter ) {
+            $return .= '<svg class="ja" height="494" viewBox="0 0 507 494" width="507" xmlns="http://www.w3.org/2000/svg"><path d="m253.5 408.75-156.6447697 84.207131 29.9164887-178.353566-126.72828059-126.310696 175.13417659-26.021434 78.322385-162.271435 78.322385 162.271435 175.134177 26.021434-126.728281 126.310696 29.916489 178.353566z" fill="#ffffff" fill-rule="evenodd" stroke="#000"/></svg>';
+          }
+          else {
+            $return .= '<svg class="nee" height="494" viewBox="0 0 507 494" width="507" xmlns="http://www.w3.org/2000/svg"><path d="m253.5 408.75-156.6447697 84.207131 29.9164887-178.353566-126.72828059-126.310696 175.13417659-26.021434 78.322385-162.271435 78.322385 162.271435 175.134177 26.021434-126.728281 126.310696 29.916489 178.353566z" fill="#ffffff" fill-rule="evenodd" stroke="#000"/></svg>';
+          }
+          $counter++;
+          
+        }
+        $return .= '</div>';
+
+      }
       
-      if ( $mydata ) {
+      if ( $doecho ) {
+        echo $return;
+      }
+      else {
+        return $return;
+      }
 
-        $return = '<h3>' . _x( "Jouw score en het algemeen gemiddelde", "table description", "gcmaturity-translate" ) . "</h3>\n";
-        $return .= '	<table class="gcms-score">' . "\n";
-        $return .= '<caption>' . _x( "Gemiddelde score per onderdeel", "table description", "gcmaturity-translate" ) . "</caption>\n";
+    }
 
-        if ( $mydata['cols'] ) {
+    //====================================================================================================
+
+    private function gcmsf_frontend_get_interpretation( $userdata = array(), $doecho = false ) {
+      
+      if ( ! $this->survey_data ) {
+        $this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
+      }
+      
+      $return = '';
+      
+      if ( $this->survey_data ) {
+
+
+        if ( isset( $this->survey_data['averages'] ) ) {
+
+          $overall_average = $this->survey_data['averages']['overall'];
+
+          $return .= '<p>' . sprintf( __( 'Je gemiddelde score was %s. ', "gcmaturity-translate" ), $overall_average );
+
+          $key = 'SITESCORE';
+          $fieldkey = $key . GCMS_SCORESEPARATOR . number_format_i18n( $overall_average, 0 ); 
+          $return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey ) . '</p>';
+          
+          $counter = 0;
+          
+          foreach( $this->survey_data['user_answers'] as $key => $value ){        
+
+// snip3.txt
+            $jouwgemiddelde = $this->survey_data['averages']['groups'][$key];
+            $jouwscore    = number_format_i18n( $jouwgemiddelde, 0 );
+            $thesectionid = sanitize_title( $key . "_" . $counter );
+            $titleid      = sanitize_title( $thesectionid . '_title' );
+
+            $fieldkey = $key . GCMS_SCORESEPARATOR . $jouwscore; // g2_score_4
+
+            $return .= '<section aria-labelledby="' . $titleid . '" id="' . $thesectionid . '" class="survey-result">';
+            $return .= '<h2 class="rating-section-title"><span id="' . $titleid . '">' . gcms_aux_get_value_for_cmb2_key( $key );
+            
+            $return .= ' <span class="visuallyhidden">' . _x( "Jouw score", "table description", "gcmaturity-translate" ) . '</span></span> : ' . $this->gcmsf_frontend_get_percentage( $jouwscore, GCMS_C_SCORE_MAX );
+            $return .= '</h2>';
+
+            $return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey ) . '</p>';
+
+
+              $return .= '<details>';
+              $return .= '  <summary>' . _x( "Bekijk jouw antwoorden", "interpretatie", "gcmaturity-translate" ) . '</summary>';
+
+              if ( $value ) {
+                $return .= '<dl>';
+                foreach( $value as $vragen => $antwoorden ){        
+                  $return .= '<dt>' . _x( "Vraag", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+                  $return .= '<dd>' . $antwoorden['question_label'] . '</dd>';
+
+                  $return .= '<dt>' . _x( "Antwoord", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+                  $return .= '<dd>' . $antwoorden['answer_label'] . '</dd>';
+
+
+                  if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+
+                    $return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+                    $return .= '<dd>' . $antwoorden['answer_value'] . '</dd>';
+                    
+                    $return .= '<dt class="space-me">' . _x( "Gemiddelde score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+                    $return .= '<dd class="space-me">' . $antwoorden['answer_site_average'] . '</dd>';
+                  }
+                  else {
+                    $return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+                    $return .= '<dd class="space-me">' . $antwoorden['answer_value'] . '</dd>';
+                    
+                  }
+                }
+                $return .= '</dl>';
+                
+              }
+              
+
+              $return .= '</details>';
+              $return .= '</section>';
+
+          }
+
+        }
+
+
+      }
+      else {
+        $return .= '<p>' . _x( "Geen data-interpretatie mogelijk, want er zijn geen gegevens beschikbaar.", "table description", "gcmaturity-translate" ) . '</p>';
+      }      
+
+      if ( $doecho ) {
+        echo $return;
+      }
+      else {
+        return $return;
+      }
+
+    }
+
+    //====================================================================================================
+
+    private function gcmsf_frontend_get_tableview( $doecho = false ) {
+
+      $return = '';
+
+      if ( ! $this->survey_data ) {
+        $this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
+      }
+      
+      if ( $this->survey_data ) {
+
+        if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+//          $return = '<h3>' . _x( "Jouw score en het algemeen gemiddelde", "table description", "gcmaturity-translate" ) . "</h3>\n";
+        }
+        else {
+//          $return = '<h3>' . _x( "Jouw score", "table description", "gcmaturity-translate" ) . "</h3>\n";
+        }
+
+        if ( isset( $this->survey_data['cols'] ) ) {
+
+          $return .= '	<table class="gcms-score">' . "\n";
+                  
+          if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+            $return .= '<caption>' . _x( "Gemiddelde score en jouw score per onderdeel", "table description", "gcmaturity-translate" ) . "</caption>\n";
+          }
+          else {
+            $return .= '<caption>' . _x( "Jouw score per onderdeel", "table description", "gcmaturity-translate" ) . "</caption>\n";
+          }
           $return .= '<tr>';
-          foreach( $mydata['cols'] as $key => $value ){        
+          foreach( $this->survey_data['cols'] as $key => $value ){        
             $return .= '<th scope="col">' . $value . "</th>\n";
           }
           $return .= "</tr>\n";
-        }
         
-        if ( $mydata['rows'] ) {
+          if ( isset( $this->survey_data['rows'] ) ) {
 
-          foreach( $mydata['rows'] as $key => $value ){        
-
-            $return .= '<tr>';
-            $return .= '<th scope="row">' . $key . '</th>';
-
-            foreach( $value as $key2 => $value2 ){        
-
-              $return .= '<td>' . number_format_i18n( $value2, 1)  . "</td>";
-
+            foreach( $this->survey_data['rows'] as $key => $value ){        
+  
+              $return .= '<tr>';
+              $return .= '<th scope="row">' . $value[ GCMS_C_TABLE_COL_TH ] . '</th>';
+  
+              $return .= '<td>' . number_format_i18n( $value[ GCMS_C_TABLE_COL_USER_AVERAGE ], 1)  . "</td>";
+              if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+                  $return .= '<td>' . number_format_i18n( $value[ GCMS_C_TABLE_COL_SITE_AVERAGE ], 1)  . "</td>";
+              }              
+              $return .= "</tr>\n";
+  
             }
-
-            $return .= "</tr>\n";
-
           }
+          $return .= "</table>\n";
+
+        }
+        else {
+          $return .= "<p>" . _x( "Geen data beschikbaar.", "table description", "gcmaturity-translate" ) . "</p>";
         }
 
-        $return .= "</table>\n";
       
       }
-
 
       if ( $doecho ) {
         echo $return;
@@ -1453,135 +1798,9 @@ catch( err ) { console.log( err ); } ' );
     //====================================================================================================
 
     /**
-     * Check our WordPress installation is compatible with GC_Maturity
-     */
-    public function gcms_options_page() {
-
-// Call the schedule cron job method, $this is the _admin object
-
-// But only do this when we have updated the settings
-if ( isset( $_REQUEST[ 'settings-updated' ] ) && ($_REQUEST[ 'settings-updated' ] ) ) {
-	$this->rijksreleasekalender_schedule_cron_job();
-}
-
-
-      echo '<div class="wrap">';
-      echo '	<h2>' .  esc_html( get_admin_page_title() ) . '</h2>';
-      echo '<div id="thetable">';
-      echo $this->gcms_frontend_stats_table_get();      
-      echo '</div>';
-?>
-
-	<table class="form-table" id="progress">
-		<tr>
-			<td>
-				<input id="startsync" type="button" class="button button-primary" value="<?php _e( 'Statistieken opnieuw instellen', "gcmaturity-translate" ); ?>" />
-				<input id="clearlog" type="button" class="button button-secondary" value="<?php _e( 'Log leegmaken', "gcmaturity-translate" ); ?>" />
-			</td>
-		</tr>
-	</table>
-  <noscript style="background: red; padding: .5em; font-size: 120%;display: block; margin-top: 1em !important; color: white;">
-    <strong><?php _e( 'Dit werkt alleen als je JavaScript hebt aangezet.', "gcmaturity-translate" );?></strong>
-  </noscript>
-  <div style="width: 100%; padding-top: 16px;" id="items">&nbsp;</div>
-	<div style="width: 100%; padding-top: 16px; font-style: italic;" id="log"><?php _e( 'Druk op de knop!', "gcmaturity-translate" );?></div>
-
-
-	<script type="text/javascript">
-
-
-		var _button       = jQuery('input#startsync');
-		var _clearbutton  = jQuery('input#clearlog');
-		var _lastrow      = jQuery('#progress tr:last');
-		var startrec = 1;
-
-		var setProgress = function (_message) {
-			_lastrow.append(_message);
-		}
-
-		jQuery(document).ready(function () {
-
-			_button.click(function (e) {
-
-				e.preventDefault();
-				jQuery(this).val('<?php _e( 'Momentje', "gcmaturity-translate" );?>').prop('disabled', true);
-				jQuery( '#log' ).empty();
-				jQuery( '#thetable' ).empty();
-				_requestJob( );
-
-			});
-
-			// clear log div
-			_clearbutton.click(function() {
-				jQuery( '#log' ).empty();
-				jQuery( '#thetable' ).empty();
-			})
-
-		})
-
-		var _requestJob = function ( ) {
-			jQuery.post(ajaxurl, { 'action': 'gcms_reset',  'dofeedback': '1' }, _jobResult);
-		}
-
-		var _jobResult = function (response) {
-
-      _button.val('<?php _e( 'Statistieken opnieuw instellen', "gcmaturity-translate" ) ?>').prop('disabled', false);
-
-			if (response.ajaxrespons_item.length > 0) {
-				// new messages appear on top. .append() can be used to have new entries at the bottom
-				jQuery('#thetable').html( response.ajaxrespons_item );
-			}
-			if (response.ajaxrespons_messages.length > 0) {
-				for (var i = 0; i < response.ajaxrespons_messages.length; i++) {
-					// new messages appear on top. .append() can be used to have new entries at the bottom
-					jQuery('#log').prepend(response.ajaxrespons_messages[i] + '<br />');
-				}
-			}
-
-			jQuery(this).val('<?php _e( 'Momentje', "gcmaturity-translate" );?>').prop('disabled', true);
-		}
-
-	</script>
-
-<?php
-  
-      echo '</div>';
-
-    }
-
-    //====================================================================================================
-
-    /**
-     * Check our WordPress installation is compatible with GC_Maturity
-     */
-    public function do_system_check() {
-
-        $systemCheck = new GC_MaturitySystemCheck();
-        $systemCheck->check();
-
-    }
-
-    //====================================================================================================
-
-    /**
-    * Hides the custom post template for pages on WordPress 4.6 and older
-    *
-    * @param array $post_templates Array of page templates. Keys are filenames, values are translated names.
-    * @return array Expanded array of page templates.
-    */
-    function gcms_add_page_templates( $post_templates ) {
-    
-      $post_templates[$this->templatefile]  		= _x( 'Volwassenheidsscore-pagina', "naam template", "gcmaturity-translate" );    
-      return $post_templates;
-    
-    }
-
-    //====================================================================================================
-
-    /**
     * Modify page content if using a specific page template.
     */
-    public function gcms_use_page_template() {
+    public function gcmsf_frontend_use_page_template() {
       
       global $post;
       
@@ -1589,7 +1808,7 @@ if ( isset( $_REQUEST[ 'settings-updated' ] ) && ($_REQUEST[ 'settings-updated' 
       
       if ( $this->templatefile == $page_template ) {
   
-        add_action( 'genesis_entry_content',  'gcms_do_frontend_form_submission_shortcode_echo', 15 );
+        add_action( 'genesis_entry_content',  'gcmsf_do_frontend_form_submission_shortcode_echo', 15 );
 
         //* Force full-width-content layout
         add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
@@ -1611,43 +1830,19 @@ add_action( 'plugins_loaded', array( 'GC_MaturityPlugin', 'init' ), 10 );
 //========================================================================================================
 
 /**
- * Handle the gcms_survey shortcode
+ * Handle the gcmsf_survey shortcode
  *
  * @param  array  $atts Array of shortcode attributes
  * @return string       Form html
  */
 
-function gcms_register_shortcode( $atts = array() ) {
+function gcmsf_frontend_register_shortcode( $atts = array() ) {
 
 	// Get CMB2 metabox object
-	$cmb = gcms_frontend_cmb2_get();
+	$cmb = gcmsf_frontend_cmb2_get();
 
 	// Get $cmb object_types
 	$post_types = $cmb->prop( 'object_types' );
-
-	// Current user
-	$user_id = get_current_user_id();
-
-	// Parse attributes
-	$atts = shortcode_atts( array(
-		'post_author' => $user_id ? $user_id : GCMS_DEFAULT_USERID, // Current user, or default
-		'post_status' => 'publish',
-		'post_type'   => GCMS_QUESTION_CPT, // Only use first object_type in array
-	), $atts, 'gcms_survey' );
-
-	/*
-	 * Let's add these attributes as hidden fields to our cmb form
-	 * so that they will be passed through to our form submission
-	 */
-	foreach ( $atts as $key => $value ) {
-		$cmb->add_hidden_field( array(
-			'field_args'  => array(
-				'id'    => "atts[$key]",
-				'type'  => 'hidden',
-				'default' => $value,
-			),
-		) );
-	}
 
 	// Initiate our output variable
 	$output = '';
@@ -1658,17 +1853,8 @@ function gcms_register_shortcode( $atts = array() ) {
 		$output .= '<h3>' . sprintf( __( 'Je inzending is niet opgeslagen, omdat er fouten zijn opgetreden: %s', "gcmaturity-translate" ), '<strong>'. $error->get_error_message() .'</strong>' ) . '</h3>';
 	}
 
-	// If the post was submitted successfully, notify the user.
-	if ( isset( $_GET['post_submitted'] ) && ( $post = get_post( absint( $_GET['post_submitted'] ) ) ) ) {
-
-		// Get submitter's name
-		$name = get_post_meta( $post->ID, 'submitted_author_name', 1 );
-		$name = $name ? ' '. $name : '';
-
-	}
-
 	// Get our form
-	$output .= cmb2_get_metabox_form( $cmb, 'fake-oject-id', array( 'save_button' => __( "Versturen", "gcmaturity-translate" ) ) );
+	$output .= cmb2_get_metabox_form( $cmb, GCMS_C_FAKE_OBJECT_ID, array( 'save_button' => __( "Versturen", "gcmaturity-translate" ) ) );
 
 	return $output;
 
@@ -1681,13 +1867,13 @@ function gcms_register_shortcode( $atts = array() ) {
  *
  * @return CMB2 object
  */
-function gcms_frontend_cmb2_get() {
+function gcmsf_frontend_cmb2_get() {
 
-	// Use ID of metabox in gcms_register_frontend_form
-	$metabox_id = 'front-end-post-form';
+	// Use ID of metabox in gcmsf_frontend_form_register_cmb2_form
+	$metabox_id = GCMS_C_METABOX_ID;
 
 	// Post/object ID is not applicable since we're using this form for submission
-	$object_id  = 'fake-oject-id';
+	$object_id  = GCMS_C_FAKE_OBJECT_ID;
 
 	// Get CMB2 metabox object
 	return cmb2_get_metabox( $metabox_id, $object_id );
@@ -1701,7 +1887,7 @@ function gcms_frontend_cmb2_get() {
  *
  * @return void
  */
-function gcms_handle_survey_posting() {
+function gcmsf_frontend_form_handle_posting() {
 
 	// If no form submission, bail
 	if ( empty( $_POST ) || ! isset( $_POST['submit-cmb'], $_POST['object_id'] ) ) {
@@ -1709,7 +1895,7 @@ function gcms_handle_survey_posting() {
 	}
 
 	// Get CMB2 metabox object
-	$cmb = gcms_frontend_cmb2_get();
+	$cmb = gcmsf_frontend_cmb2_get();
 
 	$post_data = array();
 
@@ -1734,20 +1920,36 @@ function gcms_handle_survey_posting() {
 
 	// Check name submitted
 	if ( empty( $_POST['submitted_your_name'] ) ) {
-    $sanitized_values['submitted_your_name'] = __( "Geen naam opgegeven", "gcmaturity-translate" );
+    $sanitized_values['submitted_your_name'] = __( "Score van jouw organisatie", "gcmaturity-translate" );
 	}
 
   $datum  = date_i18n( get_option( 'date_format' ), current_time('timestamp') );
   $rand   = $aantalenquetes . '-' . substr( md5( microtime() ),rand( 0, 26 ), 20 );	
 
+	// Current user
+	$user_id = get_current_user_id();
+
 	// Set our post data arguments
 	$post_data['post_title']  = $sanitized_values['submitted_your_name'];
 	$post_data['post_name']   = sanitize_title( $rand . '-' . $sanitized_values['submitted_your_name'] );
+  $post_data['post_author'] = $user_id ? $user_id : GCMS_C_SURVEY_DEFAULT_USERID;
+  $post_data['post_status'] = 'publish';
+  $post_data['post_type']   = GCMS_C_SURVEY_CPT;
 
+  $post_content = '';
+  if ( $sanitized_values['submitted_your_name'] ) {
+    $post_content .= _x( 'Je naam', 'naam', "gcmaturity-translate" ) . '=' . $sanitized_values['submitted_your_name'] . '<br>';
+  }
+  if ( $sanitized_values['submitted_your_email'] ) {
+    $post_content .= _x( 'Je e-mailadres', 'email', "gcmaturity-translate" ) . '=' . $sanitized_values['submitted_your_email'] . '<br>';
+  }
 	
 	unset( $sanitized_values['submitted_your_name'] );
-//	$post_data['post_content'] = 'Hier mijn content: <div class="radarchart" id="amchart1" style="min-height: 500px; width: 100%"></div>. Tot zover.';
-	$post_data['post_content'] = 'Hier mijn content!';
+
+
+  // update the number of surveys taken
+  update_option( GCMS_C_AVGS_NR_SURVEYS, get_option( GCMS_C_AVGS_NR_SURVEYS, 1) );
+  
 
 	// Create the new post
 	$new_submission_id = wp_insert_post( $post_data, true );
@@ -1756,26 +1958,26 @@ function gcms_handle_survey_posting() {
 	if ( is_wp_error( $new_submission_id ) ) {
 		return $cmb->prop( 'submission_error', $new_submission_id );
 	}
-
+  
+  // save the extra fields as metadata
 	$cmb->save_fields( $new_submission_id, 'post', $sanitized_values );
+	update_post_meta( $new_submission_id, GCMS_C_FORMKEYS, $sanitized_values );
 
-	update_post_meta( $new_submission_id, GCMS_FORMKEYS, $sanitized_values );
-	
-
-	if ( ! empty( $sanitized_values[ GCMS_QUESTION_PREFIX . GCMS_CT_ORGANISATIEATTITUDE ] ) ) {
-    wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_QUESTION_PREFIX . GCMS_CT_ORGANISATIEATTITUDE ], GCMS_CT_ORGANISATIEATTITUDE );
+  // add all custom tax values
+	if ( ! empty( $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE ] ) ) {
+    wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE ], GCMS_C_SURVEY_CT_ORG_ATTITUDE );
 	}
 
-	if ( ! empty( $sanitized_values[ GCMS_QUESTION_PREFIX . GCMS_CT_REGIO ] ) ) {
-    wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_QUESTION_PREFIX . GCMS_CT_REGIO ], GCMS_CT_REGIO );
+	if ( ! empty( $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_REGION ] ) ) {
+    wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_REGION ], GCMS_C_SURVEY_CT_REGION );
 	}
 
-	if ( ! empty( $sanitized_values[ GCMS_QUESTION_PREFIX . GCMS_CT_ORGANISATIEGROOTTE ] ) ) {
-    wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_QUESTION_PREFIX . GCMS_CT_ORGANISATIEGROOTTE ], GCMS_CT_ORGANISATIEGROOTTE );
+	if ( ! empty( $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_SIZE ] ) ) {
+    wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_SIZE ], GCMS_C_SURVEY_CT_ORG_SIZE );
 	}
 
-	if ( ! empty( $sanitized_values[ GCMS_QUESTION_PREFIX . GCMS_CT_ORGANISATIETYPE ] ) ) {
-    wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_QUESTION_PREFIX . GCMS_CT_ORGANISATIETYPE ], GCMS_CT_ORGANISATIETYPE );
+	if ( ! empty( $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_TYPE ] ) ) {
+    wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_TYPE ], GCMS_C_SURVEY_CT_ORG_TYPE );
 	}
 
 
@@ -1790,10 +1992,131 @@ function gcms_handle_survey_posting() {
 
 //========================================================================================================
 
+if (! function_exists( 'gcmsf_data_get_survey_json' ) ) {
+  /**
+   * Read a JSON file that contains the form definitions
+   */
+  function gcmsf_data_get_survey_json() {
+
+    $formfields_location = GCMS_C_BASE_URL . 'assets/antwoorden-vragen.json';
+    
+    $formfields_json = wp_remote_get( $formfields_location );
+
+    if( is_wp_error( $formfields_json ) ) {
+        return false; // Bail early
+    }
+ 
+     // Retrieve the data
+    $formfields_body = wp_remote_retrieve_body( $formfields_json );
+    $formfields_data = json_decode( $formfields_body );
+    
+    return $formfields_data;
+  
+  }    
+}    
+
+//========================================================================================================
+
+add_action( 'wp_enqueue_scripts', 'gcmsf_aux_remove_cruft', 100 ); // high prio, to ensure all junk is discarded
+
+/**
+ * Unhook GC_Maturity styles from WordPress
+ */
+function gcmsf_aux_remove_cruft() {
+
+    wp_dequeue_style('cmb2-styles');
+    wp_dequeue_style('cmb2-styles-css');
+
+}
+
+//========================================================================================================
+
+if (! function_exists( 'gcmsf_aux_write_to_log' ) ) {
+
+	function gcmsf_aux_write_to_log( $log ) {
+		
+    $subject = 'log';
+    $subject .= ' (ID = ' . getmypid() . ')';
+
+    $subjects = array();
+    $subjects[] = $log;
+
+		if ( true === WP_DEBUG ) {
+			if ( is_array( $log ) || is_object( $log ) ) {
+				error_log( $subject . ' - ' .  print_r( $log, true ) );
+			}
+			else {
+				error_log( $subject . ' - ' .  $log );
+			}
+		}
+	}
+
+}
+
+//========================================================================================================
+
+/**
+ * Wrapper function around cmb2_get_option
+ * @since  0.1.0
+ * @param  string $key     Options array key
+ * @param  mixed  $default Optional default value
+ * @return mixed           Option value
+ */
+function gcms_aux_get_value_for_cmb2_key( $key = '', $default = false ) {
+
+  $return = '';
+
+  if ( function_exists( 'cmb2_get_option' ) ) {
+
+    $return = cmb2_get_option( GCMS_C_PLUGIN_KEY, $key, $default );
+    return $return;
+    
+  }
+    
+  // Fallback to get_option if CMB2 is not loaded yet.
+  $opts = get_option( 'gcmsf_admin_options_metabox', $default );
+  
+  $val = $default;
+  
+  if ( 'all' == $key ) {
+    $val = $opts;
+  } elseif ( is_array( $opts ) && array_key_exists( $key, $opts ) && false !== $opts[ $key ] ) {
+    $val = $opts[ $key ];
+  }
+  
+  return $val;
+
+}
+
+//========================================================================================================
+
+
+/**
+ * gcms_aux_get_average_for_array : get average values from an array
+ * @param  array      $inputarray     Options array key
+ * @param  number     $roundby  Optional default value
+ * @return $return    0 or an average value
+ */
+function gcms_aux_get_average_for_array( $inputarray = '', $roundby = 0 ) {
+
+  $return   = 0;
+  $roundby  = intval( $roundby );
+
+  if ( is_array( $inputarray ) ) {
+    $return = round( ( array_sum( $inputarray ) / count( $inputarray ) ), $roundby );
+  }
+
+  return $return;
+
+}
+
+//========================================================================================================
+
 if (! function_exists( 'dovardump' ) ) {
   
   function dovardump($data, $context = '', $echo = true ) {
-    if ( WP_DEBUG ) {
+
+    if ( WP_DEBUG && GCMS_C_PLUGIN_DO_DEBUG ) {
       $contextstring  = '';
       $startstring    = '<div class="debug-context-info">';
       $endtring       = '</div>';
@@ -1818,16 +2141,16 @@ if (! function_exists( 'dovardump' ) ) {
 }
 
 //========================================================================================================
+
 if (! function_exists( 'dodebug' ) ) {
   
   function dodebug( $string, $tag = 'span' ) {
-    if ( WP_DEBUG && GCMS_PLUGIN_DO_DEBUG ) {
+    
+    if ( WP_DEBUG && GCMS_C_PLUGIN_DO_DEBUG ) {
 
-      rijksreleasekalender_writedebug( $string );      
-      
+      gcmsf_aux_write_to_log( $string );      
       echo '<' . $tag . ' class="debugstring" style="border: 1px solid red; background: yellow; display: block; "> ' . $string . '</' . $tag . '>';
 
-      
     }
   }
 
@@ -1835,87 +2158,4 @@ if (! function_exists( 'dodebug' ) ) {
 
 //========================================================================================================
 
-if (! function_exists( 'gcms_read_formfields' ) ) {
-  /**
-   * Read a JSON file that contains the form definitions
-   */
-  function gcms_read_formfields() {
 
-    $formfields_location = GCMS_BASE_URL . 'assets/antwoorden-vragen.json';
-    
-    $formfields_json = wp_remote_get( $formfields_location );
-
-    if( is_wp_error( $formfields_json ) ) {
-        return false; // Bail early
-    }
- 
-     // Retrieve the data
-    $formfields_body = wp_remote_retrieve_body( $formfields_json );
-    $formfields_data = json_decode( $formfields_body );
-    
-    return $formfields_data;
-  
-  }    
-}    
-
-//========================================================================================================
-
-add_action( 'wp_enqueue_scripts', 'gcms_deregister_styles', 100 );
-
-/**
- * Hook GC_Maturity into WordPress
- */
-function gcms_deregister_styles() {
-
-    wp_dequeue_style('cmb2-styles');
-    wp_dequeue_style('cmb2-styles-css');
-
-}
-
-//========================================================================================================
-
-// Register style sheet.
-add_action( 'wp_enqueue_scripts', 'register_plugin_styles' );
-
-/**
- * Hook GC_Maturity into WordPress
- */
-function register_plugin_styles() {
-
-  if ( !is_admin() ) {
-
-    $infooter = false;
-
-    wp_enqueue_style( 'gc-maturityscore-frontend', GCMS_ASSETS_URL . 'css/gc-maturityscore.css', array(), GCMS_VERSION, $infooter );
-        
-  }
-
-}
-
-//========================================================================================================
-
-if (! function_exists( 'rijksreleasekalender_writedebug' ) ) {
-
-	function rijksreleasekalender_writedebug( $log ) {
-		
-    $subject = 'log';
-    $subject .= ' (ID = ' . getmypid() . ')';
-
-    $subjects = array();
-    $subjects[] = $log;
-
-		if ( true === WP_DEBUG ) {
-			if ( is_array( $log ) || is_object( $log ) ) {
-				error_log( $subject . ' - ' .  print_r( $log, true ) );
-			}
-			else {
-				error_log( $subject . ' - ' .  $log );
-			}
-		}
-	}
-
-}
-
-//========================================================================================================
-
-  
