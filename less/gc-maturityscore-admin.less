@@ -15,6 +15,47 @@
 
 .cmb-type-group .cmb-th,
 .cmb2-postbox .cmb-th {
-  width: 30% !important;
-  border: 10px solid red !important;
+//  width: 30% !important;
+}
+
+.cmb-type-text,
+.cmb-type-text-small {
+  
+  
+  &.half-width {
+    width: 47%;
+    max-width: 48%;
+    float: left;
+    display: inline-block;
+    margin: 0;
+    background: green;
+  }
+  input {
+    width: 100%;
+  }
+}
+
+.cmb-row.answer-value + .cmb2-row {
+  border: 1px solid red !important;
+  clear: both !important;
+}
+
+.cmb-type-text-small {
+  &.half-width {
+//    clear: right;
+  }
+}
+
+.cmb-type-title {
+  width: 100%;
+  clear: both;
+  float: none;  
+}
+
+.cmb2-wrap,
+.cmb2-metabox {
+  overflow: hidden;
+  padding: 0;
+  display: block;
+  width: 100%;
 }

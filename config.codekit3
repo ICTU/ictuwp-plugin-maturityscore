@@ -3174,6 +3174,27 @@
 		"pME": 1,
 		"rFN": 0,
 		"uCM": 0
+		},
+	"\/snip\/snip1.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/snip\/snip1.txt",
+		"oF": 0
+		},
+	"\/snip\/snip2.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/snip\/snip2.txt",
+		"oF": 0
+		},
+	"\/snip\/snip3.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/snip\/snip3.txt",
+		"oF": 0
 		}
 	},
 "hooks": [
