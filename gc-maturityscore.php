@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.0.5
- * Version description: Bugfixes en kleine stijlverbeteringen.
+ * Version:             1.0.6
+ * Version description: Getest op afwezigheid / aanwezigheid CSS. Kleine elementen visueel wel of niet tonen.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -31,7 +31,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.0.5';
+      public $version = '1.0.6';
   
   
       /**
@@ -1466,15 +1466,26 @@ catch( err ) { console.log( err ); } ' );
       
       if ( $this->survey_data ) {
         $return = '<h2>' . _x( "Grafiek", "table description", "gcmaturity-translate" ) . "</h2>\n";
-        $return .= '<div class="radarchart" id="amchart1" style="min-height: 500px; width: 100%"></div>';
+        $titleid = 'grafiek_amchart';
+
+//        $return .= '<section class="radarchart" id="amchart1" style="min-height: 500px; width: 100%" aria-labelledby="' . $titleid . '">';
+        
+        $return .= '<div class="radarchart" id="amchart1" style="min-height: 500px; width: 100%" aria-labelledby="' . $titleid . '"></div>';
+
+        $return .= '<p id="' . $titleid . '">';
+        $return .= '<span class="visuallyhidden">';
+        $return .= _x( "Radargrafiek met je score. ", "table description", "gcmaturity-translate" );
+        $return .= '</span>';
+
 
         if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
   //        $return .= '<p>' . _x( "Jouw score in het blauw; gemiddelde score in het rood.", "table description", "gcmaturity-translate" ) . '</p>';
-          $return .= '<p>' . _x( "Jouw score in het rood; gemiddelde score in het blauw.", "table description", "gcmaturity-translate" ) . '</p>';
+          $return .= _x( "Jouw score in het rood; gemiddelde score in het blauw.", "table description", "gcmaturity-translate" );
         }
         else {
-          $return .= '<p>' . _x( "Jouw score in het blauw.", "table description", "gcmaturity-translate" ) . '</p>';
+          $return .= _x( "Jouw score in het blauw.", "table description", "gcmaturity-translate" );
         }
+        $return .= '</p>';
 
       }
       else {
@@ -1510,10 +1521,10 @@ catch( err ) { console.log( err ); } ' );
         
         while( $counter <  $max ) {
           if ( $score > $counter ) {
-            $return .= '<svg class="ja" height="494" viewBox="0 0 507 494" width="507" xmlns="http://www.w3.org/2000/svg"><path d="m253.5 408.75-156.6447697 84.207131 29.9164887-178.353566-126.72828059-126.310696 175.13417659-26.021434 78.322385-162.271435 78.322385 162.271435 175.134177 26.021434-126.728281 126.310696 29.916489 178.353566z" fill="#ffffff" fill-rule="evenodd" stroke="#000"/></svg>';
+            $return .= '<svg style="display: none;" class="ja" height="494" viewBox="0 0 507 494" width="507" xmlns="http://www.w3.org/2000/svg"><path d="m253.5 408.75-156.6447697 84.207131 29.9164887-178.353566-126.72828059-126.310696 175.13417659-26.021434 78.322385-162.271435 78.322385 162.271435 175.134177 26.021434-126.728281 126.310696 29.916489 178.353566z" fill="#ffffff" fill-rule="evenodd" stroke="#000"/></svg>';
           }
           else {
-            $return .= '<svg class="nee" height="494" viewBox="0 0 507 494" width="507" xmlns="http://www.w3.org/2000/svg"><path d="m253.5 408.75-156.6447697 84.207131 29.9164887-178.353566-126.72828059-126.310696 175.13417659-26.021434 78.322385-162.271435 78.322385 162.271435 175.134177 26.021434-126.728281 126.310696 29.916489 178.353566z" fill="#ffffff" fill-rule="evenodd" stroke="#000"/></svg>';
+            $return .= '<svg style="display: none;" class="nee" height="494" viewBox="0 0 507 494" width="507" xmlns="http://www.w3.org/2000/svg"><path d="m253.5 408.75-156.6447697 84.207131 29.9164887-178.353566-126.72828059-126.310696 175.13417659-26.021434 78.322385-162.271435 78.322385 162.271435 175.134177 26.021434-126.728281 126.310696 29.916489 178.353566z" fill="#ffffff" fill-rule="evenodd" stroke="#000"/></svg>';
           }
           $counter++;
           

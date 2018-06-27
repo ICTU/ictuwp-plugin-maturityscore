@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @plugin: gc-maturityscore
-// * Version: 1.0.5
-// * Version desc: Bugfixes en kleine stijlverbeteringen.
+// * Version: 1.0.6
+// * Version desc: Getest op afwezigheid / aanwezigheid CSS. Kleine elementen visueel wel of niet tonen.
 // * @link    https://github.com/ICTU/gc-maturityscore-plugin/
 
 
@@ -136,13 +136,13 @@
 }
 
 .radarchart {
-//  background: @lichtgrijs;
+  background: @lichtgrijs;
   height: ( ( 400 / 16 ) * 1em );
   width: 100%;
   
   a[style],
   desc {
-    display: none;
+    display: none !important;
   }
   
 }
@@ -152,6 +152,10 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 1em;
+  
+  caption {
+    .visuallyhidden();
+  }
   
   &, th, td {
     width: auto;
@@ -219,6 +223,7 @@
   	width: 1em;
     height: 1em;
     stroke-width: 2;
+    display: block;
     &, path {
       fill: @starcolor_default;
       stroke: @starcolor_default;
@@ -291,5 +296,10 @@ dt {
 }
 dd {
   grid-column-start: 2;
+}
+
+#grafiek_amchart {
+  text-align: center;
+  font-size: 80%;
 }
 

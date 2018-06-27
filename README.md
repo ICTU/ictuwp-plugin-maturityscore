@@ -6,9 +6,10 @@ Gebruiker Centraal - Volwassenheidsscore plugin
 Paul van Buuren (paul@wbvb.nl)
 
 ## Current version
-* 1.0.5
+* 1.0.6
 
 ## Version history
+* 1.0.6 - Getest op afwezigheid / aanwezigheid CSS. Kleine elementen visueel wel of niet tonen.
 * 1.0.5 - Bugfixes en kleine stijlverbeteringen.
 * 1.0.4 - Tonen van resultaatpagina. Invoer score-bandbreedtes.
 * 1.0.3 - Tonen van een grafiek, berekenen van een gemiddelde.
