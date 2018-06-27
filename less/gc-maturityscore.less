@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @plugin: gc-maturityscore
-// * Version: 1.0.6
-// * Version desc: Getest op afwezigheid / aanwezigheid CSS. Kleine elementen visueel wel of niet tonen.
+// * Version: 1.0.7
+// * Version desc: Bugfixes voor velden als custom-tax en e-mail. Deze werden ook in de grafiek getoond.
 // * @link    https://github.com/ICTU/gc-maturityscore-plugin/
 
 
@@ -223,7 +223,7 @@
   	width: 1em;
     height: 1em;
     stroke-width: 2;
-    display: block;
+    display: inline-block !important;
     &, path {
       fill: @starcolor_default;
       stroke: @starcolor_default;
