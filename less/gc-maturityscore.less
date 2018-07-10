@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @plugin: gc-maturityscore
-// * Version: 1.0.7
-// * Version desc: Bugfixes voor velden als custom-tax en e-mail. Deze werden ook in de grafiek getoond.
+// * Version: 1.0.8
+// * Version desc: Added extra checkbox for getting user permission to store emailaddress; attempt to translate everything into the Engelands.
 // * @link    https://github.com/ICTU/gc-maturityscore-plugin/
 
 
@@ -94,6 +94,7 @@
 @media only screen and (min-width: ( @break_tablet ) ) {
   
   .cmb-type-text,
+  .cmb-type-checkbox,  
   .cmb-type-text-email {
     .cmb-th,
     .cmb-td {
@@ -111,21 +112,34 @@
     }
     .cmb-td {
       width: 74%;
-      input {
-        width: 75%;
+      input[type="url"],
+      input[type="email"],
+      input[type="text"] {
+        width: 100%;
       }
       .cmb2-metabox-description {
-        width: 24%;
-        padding-left: 1em;
-        font-size: 90%;
-        font-style: italic;
+        width: 100%;
       }
       input,
       .cmb2-metabox-description {
-        float: left;
+        float: none;
+        clear: both;
       }
     }
   }
+  .cmb-type-checkbox {
+    input {
+      margin-right: .5em;
+    }
+  }
+  .cmb-type-text,
+  .cmb-type-text-email {
+    .cmb2-metabox-description {
+      font-size: 90%;
+      font-style: italic;
+    }
+  }
+  
 
 }
 
@@ -136,7 +150,7 @@
 }
 
 .radarchart {
-  background: @lichtgrijs;
+//  background: @lichtgrijs;
   height: ( ( 400 / 16 ) * 1em );
   width: 100%;
   

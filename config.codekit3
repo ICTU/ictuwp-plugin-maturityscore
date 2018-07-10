@@ -108,6 +108,16 @@
 		"oAP": "\/assets\/images\/index.php",
 		"oF": 0
 		},
+	"\/assets\/images\/star.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/assets\/images\/star.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
 	"\/assets\/index.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -3194,6 +3204,34 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/snip\/snip3.txt",
+		"oF": 0
+		},
+	"\/snip\/snip4.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/snip\/snip4.txt",
+		"oF": 0
+		},
+	"\/snip\/snip5.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/snip\/snip5.txt",
+		"oF": 0
+		},
+	"\/snip\/snip6.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/snip\/snip6.txt",
+		"oF": 0
+		},
+	"\/snip\/snip7.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/snip\/snip7.txt",
 		"oF": 0
 		}
 	},

@@ -6,9 +6,10 @@ Gebruiker Centraal - Volwassenheidsscore plugin
 Paul van Buuren (paul@wbvb.nl)
 
 ## Current version
-* 1.0.7
+* 1.0.8
 
 ## Version history
+* 1.0.8 - Added extra checkbox for getting user permission to store emailaddress; attempt to translate everything into the Engelands.
 * 1.0.7 - Bugfixes voor velden als custom-tax en e-mail. Deze werden ook in de grafiek getoond.
 * 1.0.6 - Getest op afwezigheid / aanwezigheid CSS. Kleine elementen visueel wel of niet tonen.
 * 1.0.5 - Bugfixes en kleine stijlverbeteringen.
@@ -24,3 +25,4 @@ Paul van Buuren (paul@wbvb.nl)
 * admin: inbouwen resetpagina
 * admin: opdelen optionspagina in subpagina's
 * CSS opschonen
+* enquetes bewerkbaar maken via de admin

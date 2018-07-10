@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.0.7
- * Version description: Bugfixes voor velden als custom-tax en e-mail. Deze werden ook in de grafiek getoond.
+ * Version:             1.0.8
+ * Version description: Added extra checkbox for getting user permission to store emailaddress; attempt to translate everything into the Engelands.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -31,7 +31,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.0.7';
+      public $version = '1.0.8';
   
   
       /**
@@ -138,6 +138,8 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         define( 'GCMS_C_TABLE_COL_SITE_AVERAGE',  2 );
 
         define( 'GCMS_C_SURVEY_EMAILID',          'submitted_your_email' );
+        define( 'GCMS_C_SURVEY_YOURNAME',         'submitted_your_name' );
+        define( 'GCMS_C_SURVEY_GDPR_CHECK',       'gdpr_do_save_my_emailaddress' );
 
 
 
@@ -207,7 +209,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       //========================================================================================================
   
       /**
-       * filter for when the CPT is previewed
+       * filter for when the CPT for the survey is previewed
        */
       public function gcmsf_frontend_filter_for_preview( $content = '' ) {
 
@@ -289,6 +291,8 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           add_filter( 'the_content', array( $this, 'gcmsf_frontend_filter_for_preview' ) );
 
       }
+
+// snip4.txt  
   
       //========================================================================================================
   
@@ -731,7 +735,6 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
      * Register the form and fields for our admin form
      */
     public function gcmsf_admin_form_register_cmb2_form() {
-
       /**
        * Registers options page menu item and form.
        */
@@ -759,19 +762,14 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
        * Prefix is not needed.
        */
       
-
       $formfields_data    = gcmsf_data_get_survey_json();
       $sectiontitle_prev  = '';
-
       if ( $formfields_data ) {
-
         $counter_total    = 0;
         $counter_group    = 0;
         $counter_question = 0;
         $counter_answer   = 0;
         $counter          = 0;
-
-
         $key = 'SITESCORE';
         
         $cmb_options->add_field( array(
@@ -779,21 +777,15 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         	'type'          => 'title',
         	'id'            => GCMS_C_CMBS2_PREFIX . $key
         ) );
-
-
         while( $counter <  GCMS_C_SCORE_MAX ) {
-
           $counter++;
-
           $default = sprintf( __( 'Hier de tekst als je voor de hele test tussen de %s en %s scoorde. ', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
           
           $label = sprintf( __( 'tussen %s en %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
           if ( GCMS_C_SCORE_MAX == $counter ) {
             $default = sprintf( __( 'Perfecte score: %s!', "gcmaturity-translate" ), $counter );
           }
-
           $fieldkey = $key . GCMS_SCORESEPARATOR . $counter;
-
           $cmb_options->add_field( array(
           	'name'          => sprintf( __( 'Score-tekst %s<br><small>als de totale score %s ligt.</small>', "gcmaturity-translate" ), $counter, $label ),
           	'description'   => sprintf( __( 'Algemene gemiddelde score %s', "gcmaturity-translate" ), $label . ' (' . $fieldkey . ')' ),
@@ -803,59 +795,43 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           ) );
         
         }
-
-
         
       
         foreach ( $formfields_data as $key => $value) {
           $counter_group++;
-
           // $key = 'g1'
-
           $groupdescription = '';
           $key_group_desc   = $key . '_group_description';
-
           if ( isset( $value->group_description ) ) {
             $groupdescription = $value->group_description;
           }
-
-
           $cmb_options->add_field( array(
           	'name'          => 'Groep ' . $counter_group,
           	'type'          => 'title',
           	'id'            => GCMS_C_CMBS2_PREFIX . 'start_section' . $counter_group
           ) );
-
           $cmb_options->add_field( array(
           	'name'          => 'Label voor groep ' . $counter_group,
         		'type'          => 'text',
           	'id'            => $key,
           	'default'       => $value->group_label
           ) );
-
           $cmb_options->add_field( array(
           	'name'          => 'Korte beschrijving',
         		'type'          => 'textarea',
           	'id'            => $key_group_desc,
           	'default'       => $groupdescription
           ) );
-
-
           $counter = 0;
-
           while( $counter <  GCMS_C_SCORE_MAX ) {
-
             $counter++;
-
             $default = sprintf( __( 'Op het onderdeel <em>%s</em> scoorde je meer dan %s, maar minder dan %s. Hier staat de toelichting. ', "gcmaturity-translate" ), gcms_aux_get_value_for_cmb2_key( $key ), ( $counter - 1 ), $counter );
             
             $label = sprintf( __( 'tussen %s en %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
             if ( GCMS_C_SCORE_MAX == $counter ) {
               $default = sprintf( __( 'Perfecte score: %s!', "gcmaturity-translate" ), $counter );
             }
-
             $fieldkey = $key . GCMS_SCORESEPARATOR . $counter;
-
             $cmb_options->add_field( array(
             	'name'          => sprintf( __( 'Score-tekst %s<br><small>als de score %s ligt.</small>', "gcmaturity-translate" ), $counter, $label ),
             	'description'   => sprintf( __( 'Score %s', "gcmaturity-translate" ), $label . ' (' . $fieldkey . ')' ),
@@ -865,9 +841,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             ) );
           
           }
-
           // snip1.txt
-
         }
       }
       else {
@@ -911,11 +885,11 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
                 ( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_REGION ) ||
                 ( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_SIZE ) ||
                 ( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE ) ||
+                ( $key == GCMS_C_SURVEY_YOURNAME ) ||
+                ( $key == GCMS_C_SURVEY_GDPR_CHECK ) ||
                 ( $key == GCMS_C_SURVEY_EMAILID ) 
                   ){
-                
-                dovardump( $key, 'neen, key check' );
-                
+                // do not store values in this array for any of the custom taxonomies or for the email / name fields
                 continue;
               }
 
@@ -961,13 +935,13 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
   
             if ( $values ) {
 
-              $values['averages'][ 'overall' ]  = gcms_aux_get_average_for_array( $values[ 'all_values' ], 1);
+              $values['averages'][ 'overall' ]  = gcms_aux_get_average_for_array( $values[ 'all_values' ], 1 );
 
               unset( $values[ 'all_values' ] );
 
               foreach( $values[ 'averages'][ 'groups'] as $key => $value ){        
                 $average = gcms_aux_get_average_for_array( $value, 1 );
-                $values[ 'averages'][ 'groups'][ $key ] = $average;
+                $values[ 'averages'][ 'groups'][ $key ] = round( $average, 0 );
 
                 $columns = array();
 
@@ -1003,8 +977,6 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           }
         }
 
-dovardump( $values, 'data' );
-
         return $values;
   
       }
@@ -1032,11 +1004,9 @@ dovardump( $values, 'data' );
           wp_enqueue_script( 'gcms-action-js', GCMS_C_ASSETS_URL . 'js/min/functions-min.js', array( 'jquery' ), GCMS_C_VERSION, $infooter );
 
           // get the graph for this user
-          $mykeyname            = 'volwassenheidsscore';  
-          $kleurjouwscore       = '#0000FF'; // blauw
-          $kleurgemiddeldescore = '#FF0000'; // rood
-          
-
+          $mykeyname            = 'maturity_score';  
+          $yourscore_color      = '#FF7700';  // see also @starcolor_gold
+          $averagescore_color   = '#FF0000';  // as red as it gets
 
           if ( $this->survey_data ) {
             
@@ -1045,9 +1015,9 @@ dovardump( $values, 'data' );
             if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
               $averages = '{
             			"fillAlphas": 0.31,
-            			"fillColors": "' . $kleurgemiddeldescore . '",
+            			"fillColors": "' . $averagescore_color . '",
             			"id": "AmGraph-2",
-            			"lineColor": "' . $kleurgemiddeldescore . '",
+            			"lineColor": "' . $averagescore_color . '",
             			"title": "graph 2",
             			"valueField": "Lalal gemiddelde score",
             			"balloonText": "Gemiddelde score: [[value]]"
@@ -1070,14 +1040,21 @@ dovardump( $values, 'data' );
             	"graphs": [
             		' . $averages . '
             		{
-            			"balloonColor": "' . $kleurjouwscore . '",
+            			"balloonColor": "' . $yourscore_color . '",
             			"balloonText": "Jouw score: [[value]]",
-            			"bullet": "round",
-            			"fillAlphas": 0.48,
-            			"fillColors": "' . $kleurjouwscore . '",
+
+                  "bullet": "custom",
+                  "bulletBorderThickness": 1,
+                  "bulletOffset": -1,
+                  "bulletSize": 18,
+                  "customBullet": "' . GCMS_C_ASSETS_URL . '/images/star.svg",
+                  "customMarker": "",                  
+                                        			
+            			"fillAlphas": 0.15,
+            			"fillColors": "' . $yourscore_color . '",
             			"id": "AmGraph-1",
-            			"lineColor": "' . $kleurjouwscore . '",
-            			"valueField": "jouw score"
+            			"lineColor": "' . $yourscore_color . '",
+            			"valueField": "' . _x( "jouw score", "labels", "gcmaturity-translate" ) . '"
             		}
             	],
             	"guides": [],
@@ -1102,7 +1079,7 @@ dovardump( $values, 'data' );
             			"dashLength": 0,
             			"fillAlpha": 0.43,
             			"gridAlpha": 0.44,
-            			"gridColor": "' . $kleurjouwscore . '",
+            			"gridColor": "' . $yourscore_color . '",
             			"minorGridAlpha": 0.32
             		}
             	],
@@ -1228,13 +1205,13 @@ catch( err ) { console.log( err ); } ' );
 
         if ( $this->survey_data ) {
 
-          $returnstring  = $this->gcmsf_frontend_get_interpretation( false );
           $returnstring .= $this->gcmsf_frontend_get_graph( false );
+          $returnstring .= $this->gcmsf_frontend_get_interpretation( false );
           $returnstring .= $this->gcmsf_frontend_get_tableview( false );      
 
         }
         else {
-          $returnstring .= '<p>' . __( "Oeps. Eh, geen gegevens om te tonen.<br>Dat wil zeggen dat er van de enquête die je opvroeg geen gegevens zijn opgeslagen. Waarschijnlijk is de server stuk, of Paul heeft weer zitten broddelen.<br>Het is niet jouw schuld.", "gcmaturity-translate" ) . '<p>';
+          $returnstring .= '<p>' . __( "Oeps. Eh, geen gegevens om te tonen.<br>Dat wil zeggen dat er van de enquête die je opvroeg geen gegevens zijn opgeslagen. Waarschijnlijk is de server stuk, of Paul heeft weer zitten broddelen.</p><p>Het is niet jouw schuld, denk ik.</p><p>Of heb je via de admin-kant een enquete ingevuld? <br>Ja hallo, dat moest je dus niet doen, he?</p>", "gcmaturity-translate" ) . '<p>';
         }
 
         return $returnstring;
@@ -1341,12 +1318,8 @@ catch( err ) { console.log( err ); } ' );
             	),
               
           	) );
-            
-            
-            
-          }
 
-                      
+          }
         }
       }
       else {
@@ -1356,11 +1329,11 @@ catch( err ) { console.log( err ); } ' );
       
     	$cmb->add_field( array(
     		'name'    => _x( 'Je naam', 'naam', "gcmaturity-translate" ),
-    		'id'      => 'submitted_your_name',
+    		'id'      => GCMS_C_SURVEY_YOURNAME,
     		'type'    => 'text',
-    		'desc'    => _x( 'Niet verplicht', 'naam', "gcmaturity-translate" ),
-    		'default' => ! empty( $_POST['submitted_your_name'] )
-    			? $_POST['submitted_your_name']
+    		'desc'    => _x( 'Je naam slaan we maximaal 3 jaar op, zodat jouw naam zichtbaar blijft in je resultaatpagina. Wil je dat niet? Laat het veld dan leeg.<br>Niet verplicht', 'naam', "gcmaturity-translate" ),
+    		'default' => ! empty( $_POST[ GCMS_C_SURVEY_YOURNAME ] )
+    			? $_POST[ GCMS_C_SURVEY_YOURNAME ]
     			: '',
     	) );
       
@@ -1368,11 +1341,19 @@ catch( err ) { console.log( err ); } ' );
     		'name'    => _x( 'Je e-mailadres', 'email', "gcmaturity-translate" ),
     		'id'      => GCMS_C_SURVEY_EMAILID,
     		'type'    => 'text_email',
-    		'desc'    => _x( 'Niet verplicht', 'email', "gcmaturity-translate" ),
-    		'default' => ! empty( $_POST['submitted_your_email'] )
-    			? $_POST['submitted_your_email']
+    		'desc'    => _x( 'We gebruiken dit e-mailadres om je een link te mailen naar jouw resultaatpagina.<br>Niet verplicht.', 'email', "gcmaturity-translate" ),
+    		'default' => ! empty( $_POST[ GCMS_C_SURVEY_EMAILID ] )
+    			? $_POST[ GCMS_C_SURVEY_EMAILID ]
     			: '',
     	) );
+    	
+
+      $cmb->add_field( array(
+      	'name' => 'Opslaan e-mailadres',
+    		'desc'    => _x( 'Ja, ik wil graag via mail op de hoogte gehouden worden van nieuwe versies van het volwassenheidsmodel. Jullie mogen mijn e-mailadres en naam uiterlijk 3 jaar na vandaag hiervoor bewaren. Alleen de beheerders van deze website hebben toegang tot deze gegevens.', 'email', "gcmaturity-translate" ),
+      	'id'   => GCMS_C_SURVEY_GDPR_CHECK,
+      	'type' => 'checkbox',
+      ) );    	
     	
     	$default = '';
 
@@ -1483,13 +1464,15 @@ catch( err ) { console.log( err ); } ' );
     //====================================================================================================
 
     private function gcmsf_frontend_get_graph( $doecho = false ) {
-
+      
       if ( ! $this->survey_data ) {
         $this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
       }
       
+      $return = '';
+      
       if ( $this->survey_data ) {
-        $return = '<h2>' . _x( "Grafiek", "table description", "gcmaturity-translate" ) . "</h2>\n";
+//        $return = '<h2>' . _x( "Grafiek", "table description", "gcmaturity-translate" ) . "</h2>\n";
         $titleid = 'grafiek_amchart';
 
 //        $return .= '<section class="radarchart" id="amchart1" style="min-height: 500px; width: 100%" aria-labelledby="' . $titleid . '">';
@@ -1503,11 +1486,10 @@ catch( err ) { console.log( err ); } ' );
 
 
         if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-  //        $return .= '<p>' . _x( "Jouw score in het blauw; gemiddelde score in het rood.", "table description", "gcmaturity-translate" ) . '</p>';
-          $return .= _x( "Jouw score in het rood; gemiddelde score in het blauw.", "table description", "gcmaturity-translate" );
+          $return .= _x( "Jouw score in het rood; gemiddelde score in oranje.", "table description", "gcmaturity-translate" );
         }
         else {
-          $return .= _x( "Jouw score in het blauw.", "table description", "gcmaturity-translate" );
+          $return .= _x( "Jouw score in oranje.", "table description", "gcmaturity-translate" );
         }
         $return .= '</p>';
 
@@ -1598,8 +1580,6 @@ catch( err ) { console.log( err ); } ' );
           $key = 'SITESCORE';
           $fieldkey = $key . GCMS_SCORESEPARATOR . number_format_i18n( $this->survey_data['averages']['overall'], 0 ); 
           $return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey ) . '</p>';
-
-dovardump( $fieldkey, 'fieldkey' );
 
           $return .= '<h2>' . __( 'Score per onderdeel', "gcmaturity-translate" ) . '</h2>';
           
@@ -1868,8 +1848,8 @@ function gcmsf_frontend_form_handle_posting() {
   $datum  = date_i18n( get_option( 'date_format' ), current_time('timestamp') );
 
 	// Check name submitted
-	if ( empty( $_POST['submitted_your_name'] ) ) {
-    $sanitized_values['submitted_your_name'] = __( "Score van jouw organisatie", "gcmaturity-translate" ) . ' (' . $datum . ')';
+	if ( empty( $_POST[ GCMS_C_SURVEY_YOURNAME ] ) ) {
+    $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] = __( "Score van jouw organisatie", "gcmaturity-translate" ) . ' (' . $datum . ')';
 	}
 
   $rand   = $aantalenquetes . '-' . substr( md5( microtime() ),rand( 0, 26 ), 20 );	
@@ -1878,21 +1858,21 @@ function gcmsf_frontend_form_handle_posting() {
 	$user_id = get_current_user_id();
 
 	// Set our post data arguments
-	$post_data['post_title']  = $sanitized_values['submitted_your_name'];
-	$post_data['post_name']   = sanitize_title( $rand . '-' . $sanitized_values['submitted_your_name'] );
+	$post_data['post_title']  = $sanitized_values[ GCMS_C_SURVEY_YOURNAME ];
+	$post_data['post_name']   = sanitize_title( $rand . '-' . $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] );
   $post_data['post_author'] = $user_id ? $user_id : GCMS_C_SURVEY_DEFAULT_USERID;
   $post_data['post_status'] = 'publish';
   $post_data['post_type']   = GCMS_C_SURVEY_CPT;
 
   $post_content = '';
-  if ( $sanitized_values['submitted_your_name'] ) {
-    $post_content .= _x( 'Je naam', 'naam', "gcmaturity-translate" ) . '=' . $sanitized_values['submitted_your_name'] . '<br>';
+  if ( $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] ) {
+    $post_content .= _x( 'Je naam', 'naam', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] . '<br>';
   }
-  if ( $sanitized_values['submitted_your_email'] ) {
-    $post_content .= _x( 'Je e-mailadres', 'email', "gcmaturity-translate" ) . '=' . $sanitized_values['submitted_your_email'] . '<br>';
+  if ( $sanitized_values[  GCMS_C_SURVEY_EMAILID  ] ) {
+    $post_content .= _x( 'Je e-mailadres', 'email', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_EMAILID ] . '<br>';
   }
 	
-	unset( $sanitized_values['submitted_your_name'] );
+	unset( $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] );
 
 
   // update the number of surveys taken
@@ -1931,12 +1911,20 @@ function gcmsf_frontend_form_handle_posting() {
     wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_TYPE ], GCMS_C_SURVEY_CT_ORG_TYPE );
 	}
 
+$theurl = get_permalink( $new_submission_id );
 
 	/*
 	 * Redirect back to the form page with a query variable with the new post ID.
 	 * This will help double-submissions with browser refreshes
 	 */
 	wp_redirect( get_permalink( $new_submission_id ) );
+
+
+	/*
+	 * Redirect back to the form page with a query variable with the new post ID.
+	 * This will help double-submissions with browser refreshes
+	 */
+	wp_redirect( $theurl );
 	
 	exit;
 }
