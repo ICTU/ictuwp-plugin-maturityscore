@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.1.2
- * Version description: Added mail-from name as field.
+ * Version:             1.1.3
+ * Version description: Translated most of the texts into English and Dutch.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.1.2';
+      public $version = '1.1.3';
   
   
       /**
@@ -618,7 +618,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
   
         echo '<div class="wrap">';
         echo '	<h2>' .  esc_html( get_admin_page_title() ) . '</h2>';
-        echo '	<p>' .  _x( 'Hier kun je de inhoud van de vragen bijwerken.', "admin", "gcmaturity-translate" ) . '</p>';
+        echo '	<p>' .  _x( 'Here you can edit the surveys.', "admin", "gcmaturity-translate" ) . '</p>';
         echo $this->gcmsf_frontend_get_tableview( false, 0, true );
         // cmb2
         echo '</div>';
@@ -653,10 +653,10 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       public function gcmsf_admin_localize_scripts() {
   
           wp_localize_script( 'gcms-admin-script', 'gcms', array(
-                  'url'               => __( "URL", "gcmaturity-translate" ),
-                  'caption'           => __( "Caption", "gcmaturity-translate" ),
-                  'new_window'        => __( "New Window", "gcmaturity-translate" ),
-                  'confirm'           => __( "Weet je het zeker?", "gcmaturity-translate" ),
+                  'url'               => _x( "URL", "js", "gcmaturity-translate" ),
+                  'caption'           => _x( "Caption", "js", "gcmaturity-translate" ),
+                  'new_window'        => _x( "New Window", "js", "gcmaturity-translate" ),
+                  'confirm'           => _x( "Are you sure?", "js", "gcmaturity-translate" ),
                   'ajaxurl'           => admin_url( 'admin-ajax.php' ),
                   'resize_nonce'      => wp_create_nonce( 'gcmsf_resize' ),
                   'iframeurl'         => admin_url( 'admin-post.php?action=gcmsf_preview' ),
@@ -683,16 +683,16 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
     	<table class="form-table" id="progress">
     		<tr>
     			<td>
-    				<input id="startsync" type="button" class="button button-primary" value="<?php _e( 'Statistieken opnieuw instellen', "gcmaturity-translate" ); ?>" />
-    				<input id="clearlog" type="button" class="button button-secondary" value="<?php _e( 'Log leegmaken', "gcmaturity-translate" ); ?>" />
+    				<input id="startsync" type="button" class="button button-primary" value="<?php _e( 'Reset statistics', "gcmaturity-translate" ); ?>" />
+    				<input id="clearlog" type="button" class="button button-secondary" value="<?php _e( 'Empty log', "gcmaturity-translate" ); ?>" />
     			</td>
     		</tr>
     	</table>
       <noscript style="background: red; padding: .5em; font-size: 120%;display: block; margin-top: 1em !important; color: white;">
-        <strong><?php _e( 'Dit werkt alleen als je JavaScript hebt aangezet.', "gcmaturity-translate" );?></strong>
+        <strong><?php _e( 'Ehm, please allow JavaScript.', "gcmaturity-translate" );?></strong>
       </noscript>
       <div style="width: 100%; padding-top: 16px;" id="items">&nbsp;</div>
-    	<div style="width: 100%; padding-top: 16px; font-style: italic;" id="log"><?php _e( 'Druk op de knop!', "gcmaturity-translate" );?></div>
+    	<div style="width: 100%; padding-top: 16px; font-style: italic;" id="log"><?php _e( 'Press the button!', "gcmaturity-translate" );?></div>
     
     
     	<script type="text/javascript">
@@ -712,7 +712,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
     			_button.click(function (e) {
     
     				e.preventDefault();
-    				jQuery(this).val('<?php _e( 'Momentje', "gcmaturity-translate" );?>').prop('disabled', true);
+    				jQuery(this).val('<?php _e( 'Just a moment please', "gcmaturity-translate" );?>').prop('disabled', true);
     				jQuery( '#log' ).empty();
     				jQuery( '#thetable' ).empty();
     				_requestJob( );
@@ -733,7 +733,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
     
     		var _jobResult = function (response) {
     
-          _button.val('<?php _e( 'Statistieken opnieuw instellen', "gcmaturity-translate" ) ?>').prop('disabled', false);
+          _button.val('<?php _e( 'Reset statistics', "gcmaturity-translate" ) ?>').prop('disabled', false);
     
     			if (response.ajaxrespons_item.length > 0) {
     				// new messages appear on top. .append() can be used to have new entries at the bottom
@@ -746,7 +746,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
     				}
     			}
     
-    			jQuery(this).val('<?php _e( 'Momentje', "gcmaturity-translate" );?>').prop('disabled', true);
+    			jQuery(this).val('<?php _e( 'Just a moment please', "gcmaturity-translate" );?>').prop('disabled', true);
     		}
     
     	</script>
@@ -1011,18 +1011,18 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
     
           $counter++;
     
-          $default = sprintf( __( 'Hier de tekst als je voor de hele test tussen de %s en %s scoorde. ', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
+          $default = sprintf( __( 'The text for scores between %s and %s. ', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
           
-          $label = sprintf( __( 'tussen %s en %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
+          $label = sprintf( __( 'between %s and %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
           if ( GCMS_C_SCORE_MAX == $counter ) {
-            $default = sprintf( __( 'Perfecte score: %s!', "gcmaturity-translate" ), $counter );
+            $default = sprintf( __( 'Perfect score: %s!', "gcmaturity-translate" ), $counter );
           }
     
           $fieldkey = $key . GCMS_SCORESEPARATOR . $counter;
     
           $cmb_options->add_field( array(
-          	'name'          => sprintf( __( 'Score-tekst %s<br><small>als de totale score %s ligt.</small>', "gcmaturity-translate" ), $counter, $label ),
-          	'description'   => sprintf( __( 'Algemene gemiddelde score %s', "gcmaturity-translate" ), $label . ' (' . $fieldkey . ')' ),
+          	'name'          => sprintf( _x( 'Score text %s<br><small>if the total score is %s.</small>', 'score range', "gcmaturity-translate" ), $counter, $label ),
+          	'description'   => sprintf( __( 'General average score %s', "gcmaturity-translate" ), $label . ' (' . $fieldkey . ')' ),
         		'type'          => 'wysiwyg',
           	'id'            => $fieldkey,
           	'default'       => $default
@@ -1178,13 +1178,13 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
               }
   
       
-              $values['cols'][ GCMS_C_TABLE_COL_TH ] = _x( "Onderdeel", "table header", "gcmaturity-translate" );
+              $values['cols'][ GCMS_C_TABLE_COL_TH ] = _x( "Chapter", "table header", "gcmaturity-translate" );
               if ( $postid ) {
-                $values['cols'][ GCMS_C_TABLE_COL_USER_AVERAGE ] = _x( "Jouw score", "table header", "gcmaturity-translate" );
+                $values['cols'][ GCMS_C_TABLE_COL_USER_AVERAGE ] = _x( "Your score", "table header", "gcmaturity-translate" );
               }
     
               if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-                $values['cols'][ GCMS_C_TABLE_COL_SITE_AVERAGE ] = _x( "Gemiddelde score", "table header", "gcmaturity-translate" );
+                $values['cols'][ GCMS_C_TABLE_COL_SITE_AVERAGE ] = _x( "Average score", "table header", "gcmaturity-translate" );
               }
               
             }
@@ -1268,7 +1268,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             			"fillColors": "' . $yourscore_color . '",
             			"id": "AmGraph-1",
             			"lineColor": "' . $yourscore_color . '",
-            			"valueField": "' . _x( "jouw score", "labels", "gcmaturity-translate" ) . '"
+            			"valueField": "' . _x( "your score", "labels", "gcmaturity-translate" ) . '"
             		}
             	],
             	"guides": [],
@@ -1425,7 +1425,7 @@ catch( err ) { console.log( err ); } ' );
 
         }
         else {
-          $returnstring .= '<p>' . __( "Oeps. Eh, geen gegevens om te tonen.<br>Dat wil zeggen dat er van de enquête die je opvroeg geen gegevens zijn opgeslagen. Waarschijnlijk is de server stuk, of Paul heeft weer zitten broddelen.</p><p>Het is niet jouw schuld, denk ik.</p><p>Of heb je via de admin-kant een enquete ingevuld? <br>Ja hallo, dat moest je dus niet doen, he?</p>", "gcmaturity-translate" ) . '<p>';
+          $returnstring .= '<p>' . __( "Oopsy daisy. There are no data to display.<br>The survey you requested is empty. The server may have made an error in saving or retrieving the data, or more likely: Paul botched up.</p><p>It's not your fault, is it?</p>", "gcmaturity-translate" ) . '<p>';
         }
 
         return $returnstring;
@@ -1464,7 +1464,7 @@ catch( err ) { console.log( err ); } ' );
 
     	$cmb = new_cmb2_box( array(
     		'id'            => GCMS_C_METABOX_ID,
-    		'title'         => __( "Vragen en antwoorden", "gcmaturity-translate" ),
+    		'title'         => __( "Questions and answers", "gcmaturity-translate" ),
     		'object_types'  => array( 'post' ),
     		'hookup'        => false,
     		'save_fields'   => true,
@@ -1705,28 +1705,24 @@ catch( err ) { console.log( err ); } ' );
 //        $return = '<h2>' . _x( "Grafiek", "table description", "gcmaturity-translate" ) . "</h2>\n";
         $titleid = 'grafiek_amchart';
 
-//        $return .= '<section class="radarchart" id="amchart1" style="min-height: 500px; width: 100%" aria-labelledby="' . $titleid . '">';
-        
         $return .= '<div class="radarchart" id="amchart1" style="min-height: 500px; width: 100%" aria-labelledby="' . $titleid . '"></div>';
-
         $return .= '<p id="' . $titleid . '">';
         $return .= '<span class="visuallyhidden">';
-        $return .= _x( "Radargrafiek met je score. ", "table description", "gcmaturity-translate" );
+        $return .= _x( "Radar graph with your score in this survey.", "table description", "gcmaturity-translate" );
         $return .= '</span>';
 
 
         if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-          $return .= _x( "Jouw score in het rood; gemiddelde score in oranje.", "table description", "gcmaturity-translate" );
+          $return .= _x( "Your score in red; average score in orange.", "table description", "gcmaturity-translate" );
         }
         else {
-          $return .= _x( "Jouw score in oranje.", "table description", "gcmaturity-translate" );
+          $return .= _x( "Your score in orange.", "table description", "gcmaturity-translate" );
         }
         $return .= '</p>';
 
       }
       else {
-        $return = '<p>' . __( "Geen gegevens beschikbaar. Waarschijnlijk is de server stuk. Het is niet jouw schuld.", "gcmaturity-translate" ) . '<p>';
-        
+        $return = '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "gcmaturity-translate" ) . '<p>';
       }
       
 
@@ -1798,12 +1794,12 @@ catch( err ) { console.log( err ); } ' );
           $total_number_of_surveys  = get_option( GCMS_C_AVGS_NR_SURVEYS, 1 );
           $site_average             = get_option( GCMS_C_AVGS_OVERALL_AVG, 1 );
 
-          $punten = sprintf( _n( '%s punt', '%s punten', $overall_average, "gcmaturity-translate" ), $overall_average );
+          $punten = sprintf( _n( '%s point', '%s points', $overall_average, "gcmaturity-translate" ), $overall_average );
 
-          $return .= '<p>' . sprintf( __( 'Je gemiddelde score was %s. ', "gcmaturity-translate" ), $punten );
-          $return .= sprintf( _n( 'Er is %s enquête ingevoerd. ', 'Er zijn %s enquêtes ingevoerd. ', $total_number_of_surveys, "gcmaturity-translate" ), $total_number_of_surveys );
+          $return .= '<p>' . sprintf( __( 'Your average score was %s. ', "gcmaturity-translate" ), $punten );
+          $return .= sprintf( _n( 'Thus far, we received %s survey.', 'Thus far, we received %s surveys. ', $total_number_of_surveys, "gcmaturity-translate" ), $total_number_of_surveys );
           if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-            $return .= sprintf( __( 'De gemiddelde score tot nu is %s. ', "gcmaturity-translate" ), $site_average );
+            $return .= sprintf( __( 'The overall average score is %s. ', "gcmaturity-translate" ), $site_average );
           }          
           $return .= '</p>';
 
@@ -1811,7 +1807,7 @@ catch( err ) { console.log( err ); } ' );
           $fieldkey = $key . GCMS_SCORESEPARATOR . number_format_i18n( $this->survey_data['averages']['overall'], 0 ); 
           $return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey ) . '</p>';
 
-          $return .= '<h2>' . __( 'Score per onderdeel', "gcmaturity-translate" ) . '</h2>';
+          $return .= '<h2>' . __( 'Score per section', "gcmaturity-translate" ) . '</h2>';
           
           $counter = 0;
           
@@ -1829,31 +1825,31 @@ catch( err ) { console.log( err ); } ' );
             $return .= '<section aria-labelledby="' . $titleid . '" id="' . $thesectionid . '" class="survey-result">';
             $return .= '<h3 class="rating-section-title"><span id="' . $titleid . '">' . gcms_aux_get_value_for_cmb2_key( $key );
             
-            $return .= ' <span class="visuallyhidden">' . _x( "Jouw score", "table description", "gcmaturity-translate" ) . '</span></span> : ' . $this->gcmsf_frontend_get_percentage( $jouwscore, GCMS_C_SCORE_MAX );
+            $return .= ' <span class="visuallyhidden">' . _x( "Your score", "table description", "gcmaturity-translate" ) . '</span></span> : ' . $this->gcmsf_frontend_get_percentage( $jouwscore, GCMS_C_SCORE_MAX );
             $return .= '</h3>';
 
             $return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey ) . '</p>';
 
             $return .= '<details>';
-            $return .= '  <summary>' . _x( "Bekijk jouw antwoorden", "interpretatie", "gcmaturity-translate" ) . '</summary>';
+            $return .= '  <summary>' . _x( "Review your answers", "interpretatie", "gcmaturity-translate" ) . '</summary>';
 
             if ( $value ) {
               $return .= '<dl>';
               foreach( $value as $vragen => $antwoorden ){        
-                $return .= '<dt>' . _x( "Vraag", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+                $return .= '<dt>' . _x( "Question", "interpretatie", "gcmaturity-translate" ) . '</dt>';
                 $return .= '<dd>' . $antwoorden['question_label'] . '</dd>';
 
-                $return .= '<dt>' . _x( "Antwoord", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+                $return .= '<dt>' . _x( "Your answer", "interpretatie", "gcmaturity-translate" ) . '</dt>';
                 $return .= '<dd>' . $antwoorden['answer_label'] . '</dd>';
 
-                $score = sprintf( _n( '%s punt', '%s punten', $antwoorden['answer_value'], "gcmaturity-translate" ), $antwoorden['answer_value'] );
+                $score = sprintf( _n( '%s point', '%s points', $antwoorden['answer_value'], "gcmaturity-translate" ), $antwoorden['answer_value'] );
 
                 if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
 
                   $return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
                   $return .= '<dd>' . $score . '</dd>';
                   
-                  $return .= '<dt class="space-me">' . _x( "Gemiddelde score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+                  $return .= '<dt class="space-me">' . _x( "Average score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
                   $return .= '<dd class="space-me">' . $antwoorden['answer_site_average'] . '</dd>';
                 }
                 else {
@@ -1876,7 +1872,7 @@ catch( err ) { console.log( err ); } ' );
 
       }
       else {
-        $return .= '<p>' . _x( "Geen data-interpretatie mogelijk, want er zijn geen gegevens beschikbaar.", "table description", "gcmaturity-translate" ) . '</p>';
+        $return .= '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "gcmaturity-translate" ) . '<p>';
       }      
 
       if ( $doecho ) {
@@ -1905,10 +1901,10 @@ catch( err ) { console.log( err ); } ' );
           $return .= '	<table class="gcms-score">' . "\n";
                   
           if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-            $return .= '<caption>' . _x( "Gemiddelde score en jouw score per onderdeel", "table description", "gcmaturity-translate" ) . "</caption>\n";
+            $return .= '<caption>' . _x( "Average score and your score per section", "table description", "gcmaturity-translate" ) . "</caption>\n";
           }
           else {
-            $return .= '<caption>' . _x( "Jouw score per onderdeel", "table description", "gcmaturity-translate" ) . "</caption>\n";
+            $return .= '<caption>' . _x( "Your score per section", "table description", "gcmaturity-translate" ) . "</caption>\n";
           }
           $return .= '<tr>';
           foreach( $this->survey_data['cols'] as $key => $value ){        
@@ -1935,7 +1931,7 @@ catch( err ) { console.log( err ); } ' );
 
         }
         else {
-          $return .= "<p>" . _x( "Geen data beschikbaar.", "table description", "gcmaturity-translate" ) . "</p>";
+          $return .= '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "gcmaturity-translate" ) . '<p>';
         }
 
       
@@ -2005,12 +2001,12 @@ function gcmsf_frontend_register_shortcode( $atts = array() ) {
 	// Get any submission errors
 	if ( ( $error = $cmb->prop( 'submission_error' ) ) && is_wp_error( $error ) ) {
 		// If there was an error with the submission, add it to our ouput.
-		$output .= '<h3>' . sprintf( __( 'Je inzending is niet opgeslagen, omdat er fouten zijn opgetreden: %s', "gcmaturity-translate" ), '<strong>'. $error->get_error_message() .'</strong>' ) . '</h3>';
+		$output .= '<h3>' . sprintf( __( 'Your survey is not saved; errors occurred: %s', "gcmaturity-translate" ), '<strong>'. $error->get_error_message() .'</strong>' ) . '</h3>';
 	}
 
 
 	// Get our form
-	$output .= cmb2_get_metabox_form( $cmb, GCMS_C_FAKE_OBJECT_ID, array( 'save_button' => __( "Versturen", "gcmaturity-translate" ) ) );
+	$output .= cmb2_get_metabox_form( $cmb, GCMS_C_FAKE_OBJECT_ID, array( 'save_button' => __( "Submit", "gcmaturity-translate" ) ) );
 
 	return $output;
 
@@ -2065,7 +2061,7 @@ function gcmsf_frontend_form_handle_posting() {
 
 	// Check security nonce
 	if ( ! isset( $_POST[ $cmb->nonce() ] ) || ! wp_verify_nonce( $_POST[ $cmb->nonce() ], $cmb->nonce() ) ) {
-		return $cmb->prop( 'submission_error', new WP_Error( 'security_fail', __( "Er is gerommeld met de onderwaterwaarden van het formulier. De inzending wordt niet opgeslagen", "gcmaturity-translate" ) ) );
+		return $cmb->prop( 'submission_error', new WP_Error( 'security_fail', __( "Security checks for your form submission failed. Your data will be discarded.", "gcmaturity-translate" ) ) );
 	}
 
 
@@ -2078,7 +2074,7 @@ function gcmsf_frontend_form_handle_posting() {
 
 	// Check name submitted
 	if ( empty( $_POST[ GCMS_C_SURVEY_YOURNAME ] ) ) {
-    $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] = __( "Score van jouw organisatie", "gcmaturity-translate" ) . ' (' . $datum . ')';
+    $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] = __( "Your organisation's score", "gcmaturity-translate" ) . ' (' . $datum . ')';
 	}
 
   $rand   = $aantalenquetes . '-' . substr( md5( microtime() ),rand( 0, 26 ), 20 );	

@@ -6,9 +6,10 @@ Gebruiker Centraal - Volwassenheidsscore plugin
 Paul van Buuren (paul@wbvb.nl)
 
 ## Current version
-* 1.1.2
+* 1.1.3
 
 ## Version history
+* 1.1.3 - Translated most of the texts into English and Dutch.
 * 1.1.2 - Added mail-from name as field.
 * 1.1.1 - Option to send mail to user; questions and answers editable.
 * 1.0.8 - Added extra checkbox for getting user permission to store emailaddress; attempt to translate everything into the Engelands.
