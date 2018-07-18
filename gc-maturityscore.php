@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.0.8
- * Version description: Added extra checkbox for getting user permission to store emailaddress; attempt to translate everything into the Engelands.
+ * Version:             1.1.1
+ * Version description: Option to send mail to user; questions and answers editable.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -18,6 +18,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // disable direct access
 }
+
+
+add_action( 'plugins_loaded', 'gcmsf_init_load_plugin_textdomain' );
 
 if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 
@@ -31,7 +34,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.0.8';
+      public $version = '1.1.1';
   
   
       /**
@@ -90,7 +93,8 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         define( 'GCMS_C_ASSETS_URL',              trailingslashit( GCMS_C_BASE_URL . 'assets' ) );
         define( 'GCMS_C_MEDIAELEMENT_URL',        trailingslashit( GCMS_C_BASE_URL . 'mediaelement' ) );
         define( 'GCMS_C_PATH',                    plugin_dir_path( __FILE__ ) );
-        
+        define( 'GCMS_C_PATH_LANGUAGES',          trailingslashit( GCMS_C_PATH . 'languages' ) );;
+
         define( 'GCMS_C_SURVEY_CPT',              "enquetes" );
         define( 'GCMS_C_QUESTION_CPT',            "vraag" );
         define( 'GCMS_C_QUESTION_GROUPING_CT',    "groepering" );
@@ -98,7 +102,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 
         define( 'GCMS_C_SURVEY_DEFAULT_USERID',   2600 ); // 't is wat, hardgecodeerde userids (todo: invoerbaar maken via admin)
 
-        define( 'GCMS_C_SURVEY_CT_ORG_TYPE',      "organisatietype" );
+        define( 'GCMS_C_SURVEY_CT_ORG_TYPE',      "Organisation type" );
         define( 'GCMS_C_SURVEY_CT_ORG_SIZE',      "organisatiegrootte" );
         define( 'GCMS_C_SURVEY_CT_ORG_ATTITUDE',  "organisatieattitude" );
         define( 'GCMS_C_SURVEY_CT_REGION',        "regio" );
@@ -140,6 +144,15 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         define( 'GCMS_C_SURVEY_EMAILID',          'submitted_your_email' );
         define( 'GCMS_C_SURVEY_YOURNAME',         'submitted_your_name' );
         define( 'GCMS_C_SURVEY_GDPR_CHECK',       'gdpr_do_save_my_emailaddress' );
+
+        define( 'GCMS_C_KEYS_VALUE',              '_value' );
+        define( 'GCMS_C_KEYS_LABEL',              '_label' );
+
+        define( 'GCMS_C_URLPLACEHOLDER',          '[[url]]' );
+        define( 'GCMS_C_NAMEPLACEHOLDER',         '[[name]]' );
+
+        define( 'GCMS_C_TEXTEMAIL',               'textforemail' );
+
 
 
 
@@ -250,33 +263,29 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
        * Hook GC_Maturity into WordPress
        */
       private function gcmsf_init_setup_actions() {
-        
-        
-        add_action( 'init',           array( $this, 'gcmsf_init_register_post_type' ) );
-        add_action( 'init',           array( $this, 'gcmsf_init_register_post_type' ) );
-        add_action( 'plugins_loaded', array( $this, 'gcmsf_init_load_plugin_textdomain' ) );
+
         
         // add a page temlate name
         $this->templates          = array();
         $this->templatefile   		= 'stelselcatalogus-template.php';
+
+        add_action( 'init',                   array( $this, 'gcmsf_init_register_post_type' ) );
         
         // add the page template to the templates list
-        add_filter( 'theme_page_templates', array( $this, 'gcmsf_init_add_page_templates' ) );
+        add_filter( 'theme_page_templates',   array( $this, 'gcmsf_init_add_page_templates' ) );
         
         // activate the page filters
-        add_action( 'template_redirect',    array( $this, 'gcmsf_frontend_use_page_template' )  );
+        add_action( 'template_redirect',      array( $this, 'gcmsf_frontend_use_page_template' )  );
         
-//        add_action( 'admin_menu', array( $this, 'gcmsf_admin_register_menu_pages' ) );
-        add_action( 'admin_init', array( $this, 'gcmsf_admin_register_settings' ) );
+        // admin settings
+        add_action( 'admin_init',             array( $this, 'gcmsf_admin_register_settings' ) );
         
-        // Hook do_sync method
-        add_action( 'wp_ajax_gcmsf_reset', 'gcms_data_reset_values');
+        // Hook do_sync method *todo*
+        add_action( 'wp_ajax_gcmsf_reset',    'gcms_data_reset_values');
 
+        add_action( 'wp_enqueue_scripts',     array( $this, 'gcmsf_frontend_register_frontend_style_script' ) );
 
-        add_action( 'wp_enqueue_scripts', array( $this, 'gcmsf_frontend_register_frontend_style_script' ) );
-
-
-        add_action( 'admin_enqueue_scripts', array( $this, 'gcmsf_admin_register_styles' ) );
+        add_action( 'admin_enqueue_scripts',  array( $this, 'gcmsf_admin_register_styles' ) );
 
 
       }
@@ -292,35 +301,40 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 
       }
 
-// snip4.txt  
-  
       //========================================================================================================
   
       /**
        * Register post type
        */
       public function gcmsf_init_register_post_type() {
-  
+
+        $typeUC_single = _x( "Survey", "labels", "gcmaturity-translate" );
+        $typeUC_plural = _x( "Surveys", "labels", "gcmaturity-translate" );
+        
+        $typeLC_single = _x( "survey", "labels", "gcmaturity-translate" );
+        $typeLC_plural = _x( "surveys", "labels", "gcmaturity-translate" );
+
       	$labels = array(
-      		"name"                  => _x( "Enquête", "labels", "gcmaturity-translate" ),
-      		"singular_name"         => _x( "Enquête", "labels", "gcmaturity-translate" ),
-      		"menu_name"             => _x( "Enquêtes", "labels", "gcmaturity-translate" ),
-      		"all_items"             => _x( "Alle enquêtes", "labels", "gcmaturity-translate" ),
-      		"add_new"               => _x( "Enquête toevoegen", "labels", "gcmaturity-translate" ),
-      		"add_new_item"          => _x( "Nieuwe enquête toevoegen", "labels", "gcmaturity-translate" ),
-      		"edit"                  => _x( "Bewerken?", "labels", "gcmaturity-translate" ),
-      		"edit_item"             => _x( "Enquête bewerken", "labels", "gcmaturity-translate" ),
-      		"new_item"              => _x( "Enquête toevoegen", "labels", "gcmaturity-translate" ),
-      		"view"                  => _x( "Toon", "labels", "gcmaturity-translate" ),
-      		"view_item"             => _x( "Enquête bekijken", "labels", "gcmaturity-translate" ),
-      		"search_items"          => _x( "Enquête zoeken", "labels", "gcmaturity-translate" ),
-      		"not_found"             => _x( "Geen enquêtes beschikbaar", "labels", "gcmaturity-translate" ),
-      		"not_found_in_trash"    => _x( "Geen enquêtes in prullenbak", "labels", "gcmaturity-translate" ),
+      		"name"                  => sprintf( '%s', $typeUC_single ),
+      		"singular_name"         => sprintf( '%s', $typeUC_single ),
+      		"menu_name"             => sprintf( '%s', $typeUC_single ),
+      		"all_items"             => sprintf( _x( 'All %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"edit"                  => _x( "Edit?", "labels", "gcmaturity-translate" ),
+      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"view"                  => _x( "Show", "labels", "gcmaturity-translate" ),
+      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
       		"parent"                => _x( "Parent", "labels", "gcmaturity-translate" ),
+      		
     		);
       
       	$args = array(
-          "label"                 => _x( "Enquêtes", "labels", "gcmaturity-translate" ),
+          "label"                 => $typeUC_plural,
           "labels"                => $labels,
           "description"           => "",
           "public"                => true,
@@ -342,29 +356,40 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       	register_post_type( GCMS_C_SURVEY_CPT, $args );
 
 
-        // ORGANISATIETYPES
+        $typeUC_single = _x( "Organisation type", "labels", "gcmaturity-translate" );
+        $typeUC_plural = _x( "Organisation types", "labels", "gcmaturity-translate" );
+        
+        $typeLC_single = _x( "organisation type", "labels", "gcmaturity-translate" );
+        $typeLC_plural = _x( "organisation types", "labels", "gcmaturity-translate" );
+
+        // organisation types
       	$labels = array(
-      		"name"                  => __( 'Organisatietypes', "gcmaturity-translate" ),
-      		"singular_name"         => __( 'Organisatietype', "gcmaturity-translate" ),
-      		"menu_name"             => __( 'Organisatietypes', "gcmaturity-translate" ),
-      		"all_items"             => __( 'Alle organisatietypes', "gcmaturity-translate" ),
-      		"add_new"               => __( 'Nieuw organisatietype toevoegen', "gcmaturity-translate" ),
-      		"add_new_item"          => __( 'Voeg nieuw organisatietype toe', "gcmaturity-translate" ),
-      		"edit_item"             => __( 'Bewerk organisatietype', "gcmaturity-translate" ),
-      		"new_item"              => __( 'Nieuw organisatietype', "gcmaturity-translate" ),
-      		"view_item"             => __( 'Bekijk organisatietype', "gcmaturity-translate" ),
-      		"search_items"          => __( 'Zoek organisatietype', "gcmaturity-translate" ),
-      		"not_found"             => __( 'Geen organisatietypes gevonden', "gcmaturity-translate" ),
-      		"not_found_in_trash"    => __( 'Geen organisatietypes gevonden in de prullenbak', "gcmaturity-translate" ),
-      		"archives"              => __( 'Overzichten', "gcmaturity-translate" ),
+
+      		"name"                  => sprintf( '%s', $typeUC_single ),
+      		"singular_name"         => sprintf( '%s', $typeUC_single ),
+      		"menu_name"             => sprintf( '%s', $typeUC_single ),
+      		"all_items"             => sprintf( _x( 'All %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"edit"                  => _x( "Edit?", "labels", "gcmaturity-translate" ),
+      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"view"                  => _x( "Show", "labels", "gcmaturity-translate" ),
+      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"parent"                => _x( "Parent", "labels", "gcmaturity-translate" ),
+      		"archives"              => _x( "Edit?", "labels", "gcmaturity-translate" ),
+
     		);
 
       	$args = array(
-      		"label"               => __( 'Organisatietypes', "gcmaturity-translate" ),
+      		"label"               => $typeUC_plural,
       		"labels"              => $labels,
       		"public"              => false,
       		"hierarchical"        => true,
-      		"label"               => __( 'Organisatietypes', "gcmaturity-translate" ),
+      		"label"               => $typeUC_plural,
       		"show_ui"             => true,
       		"show_in_menu"        => true,
       		"show_in_nav_menus"   => true,
@@ -378,29 +403,38 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       	register_taxonomy( GCMS_C_SURVEY_CT_ORG_TYPE, array( GCMS_C_SURVEY_CPT ), $args );
 
 
+        $typeUC_single = _x( "Organisation size", "labels", "gcmaturity-translate" );
+        $typeUC_plural = _x( "Organisation sizes", "labels", "gcmaturity-translate" );
+        
+        $typeLC_single = _x( "organisation size", "labels", "gcmaturity-translate" );
+        $typeLC_plural = _x( "organisation sizes", "labels", "gcmaturity-translate" );
+
         // organisatiegrootteS
       	$labels = array(
-      		"name"                  => __( 'Organisatiegroottes', "gcmaturity-translate" ),
-      		"singular_name"         => __( 'Organisatiegrootte', "gcmaturity-translate" ),
-      		"menu_name"             => __( 'Organisatiegroottes', "gcmaturity-translate" ),
-      		"all_items"             => __( 'Alle organisatiegroottes', "gcmaturity-translate" ),
-      		"add_new"               => __( 'Nieuw organisatiegrootte toevoegen', "gcmaturity-translate" ),
-      		"add_new_item"          => __( 'Voeg nieuw organisatiegrootte toe', "gcmaturity-translate" ),
-      		"edit_item"             => __( 'Bewerk organisatiegrootte', "gcmaturity-translate" ),
-      		"new_item"              => __( 'Nieuw organisatiegrootte', "gcmaturity-translate" ),
-      		"view_item"             => __( 'Bekijk organisatiegrootte', "gcmaturity-translate" ),
-      		"search_items"          => __( 'Zoek organisatiegrootte', "gcmaturity-translate" ),
-      		"not_found"             => __( 'Geen organisatiegroottes gevonden', "gcmaturity-translate" ),
-      		"not_found_in_trash"    => __( 'Geen organisatiegroottes gevonden in de prullenbak', "gcmaturity-translate" ),
-      		"archives"              => __( 'Overzichten', "gcmaturity-translate" ),
+      		"name"                  => sprintf( '%s', $typeUC_single ),
+      		"singular_name"         => sprintf( '%s', $typeUC_single ),
+      		"menu_name"             => sprintf( '%s', $typeUC_single ),
+      		"all_items"             => sprintf( _x( 'All %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"edit"                  => _x( "Edit?", "labels", "gcmaturity-translate" ),
+      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"view"                  => _x( "Show", "labels", "gcmaturity-translate" ),
+      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"parent"                => _x( "Parent", "labels", "gcmaturity-translate" ),
+      		"archives"              => _x( "Edit?", "labels", "gcmaturity-translate" ),
     		);
 
       	$args = array(
-      		"label"               => __( 'Organisatiegroottes', "gcmaturity-translate" ),
+      		"label"               => $typeUC_plural,
       		"labels"              => $labels,
       		"public"              => false,
       		"hierarchical"        => true,
-      		"label"               => __( 'Organisatiegroottes', "gcmaturity-translate" ),
+      		"label"               => $typeUC_plural,
       		"show_ui"             => true,
       		"show_in_menu"        => true,
       		"show_in_nav_menus"   => true,
@@ -414,29 +448,38 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       	register_taxonomy( GCMS_C_SURVEY_CT_ORG_SIZE, array( GCMS_C_SURVEY_CPT ), $args );
 	      	
 
+        $typeUC_single = _x( "Region", "labels", "gcmaturity-translate" );
+        $typeUC_plural = _x( "Regions", "labels", "gcmaturity-translate" );
+        
+        $typeLC_single = _x( "region", "labels", "gcmaturity-translate" );
+        $typeLC_plural = _x( "regions", "labels", "gcmaturity-translate" );
+
         // REGIO'S
       	$labels = array(
-      		"name"                  => __( "Regio's", "gcmaturity-translate" ),
-      		"singular_name"         => __( 'Regio', "gcmaturity-translate" ),
-      		"menu_name"             => __( "Regio's", "gcmaturity-translate" ),
-      		"all_items"             => __( "Alle regio's", "gcmaturity-translate" ),
-      		"add_new"               => __( 'Nieuwe regio toevoegen', "gcmaturity-translate" ),
-      		"add_new_item"          => __( 'Voeg nieuwe regio toe', "gcmaturity-translate" ),
-      		"edit_item"             => __( 'Bewerk regio', "gcmaturity-translate" ),
-      		"new_item"              => __( 'Nieuwe regio', "gcmaturity-translate" ),
-      		"view_item"             => __( 'Bekijk regio', "gcmaturity-translate" ),
-      		"search_items"          => __( 'Zoek regio', "gcmaturity-translate" ),
-      		"not_found"             => __( "Geen regio's gevonden", "gcmaturity-translate" ),
-      		"not_found_in_trash"    => __( "Geen regio's gevonden in de prullenbak", "gcmaturity-translate" ),
-      		"archives"              => __( 'Overzichten', "gcmaturity-translate" ),
+      		"name"                  => sprintf( '%s', $typeUC_single ),
+      		"singular_name"         => sprintf( '%s', $typeUC_single ),
+      		"menu_name"             => sprintf( '%s', $typeUC_single ),
+      		"all_items"             => sprintf( _x( 'All %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"edit"                  => _x( "Edit?", "labels", "gcmaturity-translate" ),
+      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"view"                  => _x( "Show", "labels", "gcmaturity-translate" ),
+      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"parent"                => _x( "Parent", "labels", "gcmaturity-translate" ),
+      		"archives"              => _x( "Edit?", "labels", "gcmaturity-translate" ),
     		);
       
       	$args = array(
-      		"label"               => __( "Regio's", "gcmaturity-translate" ),
+      		"label"               => $typeUC_plural,
       		"labels"              => $labels,
       		"public"              => false,
       		"hierarchical"        => true,
-      		"label"               => __( "Regio's", "gcmaturity-translate" ),
+      		"label"               => $typeUC_plural,
       		"show_ui"             => true,
       		"show_in_menu"        => true,
       		"show_in_nav_menus"   => true,
@@ -450,30 +493,38 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       	register_taxonomy( GCMS_C_SURVEY_CT_REGION, array( GCMS_C_SURVEY_CPT ), $args );
 	      	
 
+        $typeUC_single = _x( "Organisation attitude", "labels", "gcmaturity-translate" );
+        $typeUC_plural = _x( "Organisation attitudes", "labels", "gcmaturity-translate" );
+        
+        $typeLC_single = _x( "organisation attitude", "labels", "gcmaturity-translate" );
+        $typeLC_plural = _x( "organisation attitudes", "labels", "gcmaturity-translate" );
 
         // organisatieattitudes
       	$labels = array(
-      		"name"                  => __( 'Organisatieattitudes', "gcmaturity-translate" ),
-      		"singular_name"         => __( 'Organisatieattitude', "gcmaturity-translate" ),
-      		"menu_name"             => __( 'Organisatieattitudes', "gcmaturity-translate" ),
-      		"all_items"             => __( 'Alle organisatieattitudes', "gcmaturity-translate" ),
-      		"add_new"               => __( 'Nieuw organisatieattitude toevoegen', "gcmaturity-translate" ),
-      		"add_new_item"          => __( 'Voeg nieuw organisatieattitude toe', "gcmaturity-translate" ),
-      		"edit_item"             => __( 'Bewerk organisatieattitude', "gcmaturity-translate" ),
-      		"new_item"              => __( 'Nieuw organisatieattitude', "gcmaturity-translate" ),  
-      		"view_item"             => __( 'Bekijk organisatieattitude', "gcmaturity-translate" ),
-      		"search_items"          => __( 'Zoek organisatieattitude', "gcmaturity-translate" ),
-      		"not_found"             => __( 'Geen organisatieattitudes gevonden', "gcmaturity-translate" ),
-      		"not_found_in_trash"    => __( 'Geen organisatieattitudes gevonden in de prullenbak', "gcmaturity-translate" ),
-      		"archives"              => __( 'Overzichten', "gcmaturity-translate" ),
+      		"name"                  => sprintf( '%s', $typeUC_single ),
+      		"singular_name"         => sprintf( '%s', $typeUC_single ),
+      		"menu_name"             => sprintf( '%s', $typeUC_single ),
+      		"all_items"             => sprintf( _x( 'All %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"edit"                  => _x( "Edit?", "labels", "gcmaturity-translate" ),
+      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"view"                  => _x( "Show", "labels", "gcmaturity-translate" ),
+      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "gcmaturity-translate" ), $typeLC_single ),
+      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
+      		"parent"                => _x( "Parent", "labels", "gcmaturity-translate" ),
+      		"archives"              => _x( "Edit?", "labels", "gcmaturity-translate" ),
     		);
 
       	$args = array(
-      		"label"               => __( 'Organisatieattitudes', "gcmaturity-translate" ),
+      		"label"               => $typeUC_plural,
       		"labels"              => $labels,
       		"public"              => false,
       		"hierarchical"        => true,
-      		"label"               => __( 'Organisatieattitudes', "gcmaturity-translate" ),
+      		"label"               => $typeUC_plural,
       		"show_ui"             => true,
       		"show_in_menu"        => true,
       		"show_in_nav_menus"   => true,
@@ -491,17 +542,6 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       	
       	flush_rewrite_rules();
   
-      }
-  
-      //========================================================================================================
-  
-      /**
-       * Initialise translations
-       */
-      public function gcmsf_init_load_plugin_textdomain() {
-
-          load_plugin_textdomain( "gcmaturity-translate", false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
       }
   
       //========================================================================================================
@@ -734,27 +774,22 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
     /**
      * Register the form and fields for our admin form
      */
-    public function gcmsf_admin_form_register_cmb2_form() {
+    public function gcmsf_admin_form_register_cmb2_form_new() {
+
       /**
        * Registers options page menu item and form.
        */
       $cmb_options = new_cmb2_box( array(
-      	'id'           => 'gcmsf_admin_options_metabox',
-      	'title'        => esc_html__( 'Volwassenheids&shy;score', "gcmaturity-translate" ),
-      	'object_types' => array( 'options-page' ),
-      	/*
-      	 * The following parameters are specific to the options-page box
-      	 * Several of these parameters are passed along to add_menu_page()/add_submenu_page().
-      	 */
+      	'id'              => 'gcmsf_admin_options_metabox',
+      	'title'           => esc_html__( 'Volwassenheids&shy;score', "gcmaturity-translate" ),
+      	'object_types'    => array( 'options-page' ),
       	'option_key'      => GCMS_C_PLUGIN_KEY, // The option key and admin menu page slug.
       	'icon_url'        => 'dashicons-admin-settings', // Menu icon. Only applicable if 'parent_slug' is left empty.
-      	// 'menu_title'      => esc_html__( 'Options', "gcmaturity-translate" ), // Falls back to 'title' (above).
-      	// 'parent_slug'     => 'themes.php', // Make options page a submenu item of the themes menu.
-      	// 'capability'      => 'manage_options', // Cap required to view options-page.
-      	// 'position'        => 1, // Menu position. Only applicable if 'parent_slug' is left empty.
-      	// 'admin_menu_hook' => 'network_admin_menu', // 'network_admin_menu' to add network-level options page.
-      	// 'display_cb'      => false, // Override the options-page form output (CMB2_Hookup::options_page_output()).
-      	// 'save_button'     => esc_html__( 'Save Theme Options', "gcmaturity-translate" ), // The text for the options-page save button. Defaults to 'Save'.
+      	'capability'      => 'manage_options', // Cap required to view options-page.
+        'tab_group'       => GCMS_C_PLUGIN_KEY,
+        'tab_title'       => _x( 'Email settings &amp; general scoring', 'scoring menu', "gcmaturity-translate"),      	
+        'display_cb'      => 'yourprefix_options_display_with_tabs',
+      	'save_button'     => esc_html__( 'Save options', "gcmaturity-translate" ), 
       ) );
       /*
        * Options fields ids only need
@@ -762,30 +797,222 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
        * Prefix is not needed.
        */
       
-      $formfields_data    = gcmsf_data_get_survey_json();
-      $sectiontitle_prev  = '';
-      if ( $formfields_data ) {
-        $counter_total    = 0;
-        $counter_group    = 0;
-        $counter_question = 0;
-        $counter_answer   = 0;
-        $counter          = 0;
+      
+        $tabscounter = 0;
+        
         $key = 'SITESCORE';
         
+
+        $formfields_data    = gcmsf_data_get_survey_json();
+        $sectiontitle_prev  = '';
+
+        if ( $formfields_data ) {
+          
+          // there are questions and answers
+          
+          // first, let's set up the forms for the general test results
+
+          $counter          = 0;
+          $tabscounter      = 0;  
+          $question_counter = 0;  
+          $total_answer_cnt = 0;  
+          $counter_group    = 0;
+
+          $questionsnumber_start  =   1;
+          $questionsnumber_end    =   0;
+          $questionsnumber_prev   =   0;
+          
+          foreach ( $formfields_data as $group_key => $value) {
+
+            // $key = 'g1'
+            
+            $tabscounter++;
+            $counter_group++;
+
+            $group_label            = gcms_aux_get_value_for_cmb2_key( $group_key );
+            $group_label            = gcms_aux_get_value_for_cmb2_key( $group_key );
+            $groupdescription       = gcms_aux_get_value_for_cmb2_key( $group_key . '_group_description' );
+            $groupquestions         = (array) $value->group_questions[0];
+
+            $questionsnumber_start  = ( $questionsnumber_prev + $tabscounter );
+            $questionsnumber_end    = ( ( $questionsnumber_start - 1 ) + count( $groupquestions ) );
+            $questionsnumber_prev   = $questionsnumber_end;
+
+            $questionrange          = sprintf( _x( '%s - %s', 'question range', "gcmaturity-translate" ), ( $question_counter + 1 ), ( $question_counter + count( $groupquestions ) ) );
+
+
+            $tablabel = sprintf( _x( '%s - questions %s', 'tablabel', "gcmaturity-translate" ), $tabscounter, $questionrange );
+
+            $groupheader = sprintf( _x( 'Group %s: title, introduction and scoring texts', 'tablabel', "gcmaturity-translate" ), $counter_group );
+
+            $grouptitle_label = sprintf( _x( 'Title for group %s', 'tablabel', "gcmaturity-translate" ), $counter_group );
+
+            $groupintro_label = sprintf( _x( 'Introduction %s', 'tablabel', "gcmaturity-translate" ), $counter_group );
+
+            // maak een tab aan voor de vragen van een groep
+            $args = array(
+            	'id'           => GCMS_C_PLUGIN_KEY . $group_key,
+            	'menu_title'   => sprintf( _x( 'Group %s - %s', 'tablabel', "gcmaturity-translate" ), $tabscounter, '(' . $questionrange . ')' ),
+            	'object_types' => array( 'options-page' ),
+            	'option_key'   => GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key,
+            	'parent_slug'  => GCMS_C_PLUGIN_KEY,
+            	'tab_group'    => GCMS_C_PLUGIN_KEY,
+            	'tab_title'    => $tablabel,
+              'display_cb'   => 'yourprefix_options_display_with_tabs',
+            );
+            
+            $questions_tab    = new_cmb2_box( $args );
+
+            $groupdescription = '';
+            $key_group_desc   = $group_key . '_group_description';
+      
+            if ( isset( $value->group_description ) ) {
+              $groupdescription = $value->group_description;
+            }
+
+            $questions_tab->add_field( array(
+            	'name'          => $groupheader,
+            	'type'          => 'title',
+            	'id'            => GCMS_C_CMBS2_PREFIX . 'start_section' . $counter_group
+            ) );
+
+            $questions_tab->add_field( array(
+            	'name'          => $grouptitle_label,
+          		'type'          => 'text',
+            	'id'            => $group_key ,
+            	'default'       => $value->group_label
+            ) );
+      
+            $questions_tab->add_field( array(
+            	'name'          => $groupintro_label,
+          		'type'          => 'textarea',
+            	'id'            => $key_group_desc,
+            	'default'       => $groupdescription
+            ) );
+
+            // loop through the questions
+            foreach ( $groupquestions as $question_key => $question_single ) {
+
+              $question_counter++;
+  
+              $options          = array();
+              $defaults         = array();
+              $default          = '';
+              $answers          = (array) $question_single->question_answers[0];
+              $question_label   = $question_single->question_label;
+
+              $questionkey      =  $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key;
+
+              $questions_tab->add_field( array(
+              	'name'          =>  sprintf( __( 'Question %s - %s', "gcmaturity-translate" ), $question_counter, gcms_aux_get_value_for_cmb2_key( $questionkey, $question_label, GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key ) ),
+              	'type'          => 'title',
+              	'id'            => GCMS_C_CMBS2_PREFIX . '_section_' . $key . '_' . $group_key . '_' . $question_counter
+              ) );
+              
+              // put it together
+            	$questions_tab->add_field( array(
+            		'name'          => sprintf( __( 'Question %s', "gcmaturity-translate" ), $question_counter ),
+              	'id'            => $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key,
+            		'type'          => 'text',
+              	'default'       => $question_label,
+              	'attributes'    => array(
+              		'required'    => 'required',
+              	),
+            	) );
+
+              $optioncounter = 0;
+
+              // get all possible answers
+              foreach ( $answers as $answer_key => $answer ) {
+                
+                $total_answer_cnt++;
+                $optioncounter++;
+  
+                $this_answer_key  = $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key . GCMS_C_PLUGIN_SEPARATOR . $answer_key;
+                  
+                // put it together
+              	$questions_tab->add_field( array(
+              		'name'          => sprintf( __( 'Label answer %s', "gcmaturity-translate" ), $optioncounter ),
+                	'id'            => $this_answer_key . GCMS_C_KEYS_LABEL,
+              		'type'          => 'text',
+                	'default'       => $answer->answer_label,
+                	'attributes'    => array(
+                		'required'    => 'required',
+                	),
+              	) );
+                
+                // put it together
+              	$questions_tab->add_field( array(
+              		'type'          => 'text',
+              		'name'          => sprintf( __( 'Value answer %s', "gcmaturity-translate" ), $optioncounter ),
+                	'id'            => $this_answer_key . GCMS_C_KEYS_VALUE,
+                	'default'       => $answer->answer_value,
+                	'attributes'    => array(
+                		'required'    => 'required',
+                	),
+              	) );
+
+              }
+
+            }
+
+          }
+
+        }
+
+
+
         $cmb_options->add_field( array(
-        	'name'          => __( 'Uitslagteksten', "gcmaturity-translate" ),
+        	'name'          => _x( 'Email settings', "email settings", "gcmaturity-translate" ),
         	'type'          => 'title',
-        	'id'            => GCMS_C_CMBS2_PREFIX . $key
+        	'id'            => GCMS_C_CMBS2_PREFIX . 'start_section_emailsection'
         ) );
+
+        $cmb_options->add_field( array(
+        	'name'          => _x( 'Sender email address', "email settings", "gcmaturity-translate" ),
+      		'type'          => 'text',
+        	'id'            => 'mail-from-address',
+        	'default'       => _x( 'info@gebruikercentraal.nl', "email settings", "gcmaturity-translate" )
+        ) );
+
+        $cmb_options->add_field( array(
+        	'name'          => _x( 'Email subject line', "email settings", "gcmaturity-translate" ),
+      		'type'          => 'text',
+        	'id'            => 'mail-subject',
+        	'default'       => _x( 'Link to your survey results', "email settings", "gcmaturity-translate" )
+        ) );
+
+        $default = sprintf( _x( "Hi %s,\n\nThank you for using this tool.\nFor your future reference, here is a link to the results page of the survey you just filled out:\n%s\n\nKind regards,\nThe Gebruiker Centraal Team.", "email settings", "gcmaturity-translate" ), GCMS_C_NAMEPLACEHOLDER, GCMS_C_URLPLACEHOLDER );
+
+        $cmb_options->add_field( array(
+        	'name'          => _x( 'Text in the email to the user', "email settings", "gcmaturity-translate" ),
+        	'description'   => '<span style="font-weight: 700; background: white; color: black;">' . sprintf( _x( 'This text should contain these strings:<br>%s - this is the placeholder for the link we send.<br>%s - this is the placeholder for user\'s name.', "email settings",  "gcmaturity-translate" ), GCMS_C_URLPLACEHOLDER, GCMS_C_NAMEPLACEHOLDER ) . '</span>',
+      		'type'          => 'wysiwyg',
+        	'id'            => GCMS_C_TEXTEMAIL,
+        	'default'       => $default,
+        ) );
+      
+
+        $cmb_options->add_field( array(
+        	'name'          => __( 'General scoring texts', "gcmaturity-translate" ),
+        	'type'          => 'title',
+        	'id'            => GCMS_C_CMBS2_PREFIX . 'start_section_scoring'
+        ) );
+
+
         while( $counter <  GCMS_C_SCORE_MAX ) {
+    
           $counter++;
+    
           $default = sprintf( __( 'Hier de tekst als je voor de hele test tussen de %s en %s scoorde. ', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
           
           $label = sprintf( __( 'tussen %s en %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
           if ( GCMS_C_SCORE_MAX == $counter ) {
             $default = sprintf( __( 'Perfecte score: %s!', "gcmaturity-translate" ), $counter );
           }
+    
           $fieldkey = $key . GCMS_SCORESEPARATOR . $counter;
+    
           $cmb_options->add_field( array(
           	'name'          => sprintf( __( 'Score-tekst %s<br><small>als de totale score %s ligt.</small>', "gcmaturity-translate" ), $counter, $label ),
           	'description'   => sprintf( __( 'Algemene gemiddelde score %s', "gcmaturity-translate" ), $label . ' (' . $fieldkey . ')' ),
@@ -796,53 +1023,33 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         
         }
         
-      
-        foreach ( $formfields_data as $key => $value) {
-          $counter_group++;
-          // $key = 'g1'
-          $groupdescription = '';
-          $key_group_desc   = $key . '_group_description';
-          if ( isset( $value->group_description ) ) {
-            $groupdescription = $value->group_description;
-          }
-          $cmb_options->add_field( array(
-          	'name'          => 'Groep ' . $counter_group,
-          	'type'          => 'title',
-          	'id'            => GCMS_C_CMBS2_PREFIX . 'start_section' . $counter_group
-          ) );
-          $cmb_options->add_field( array(
-          	'name'          => 'Label voor groep ' . $counter_group,
-        		'type'          => 'text',
-          	'id'            => $key,
-          	'default'       => $value->group_label
-          ) );
-          $cmb_options->add_field( array(
-          	'name'          => 'Korte beschrijving',
-        		'type'          => 'textarea',
-          	'id'            => $key_group_desc,
-          	'default'       => $groupdescription
-          ) );
-          $counter = 0;
-          while( $counter <  GCMS_C_SCORE_MAX ) {
-            $counter++;
-            $default = sprintf( __( 'Op het onderdeel <em>%s</em> scoorde je meer dan %s, maar minder dan %s. Hier staat de toelichting. ', "gcmaturity-translate" ), gcms_aux_get_value_for_cmb2_key( $key ), ( $counter - 1 ), $counter );
+        
             
-            $label = sprintf( __( 'tussen %s en %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
-            if ( GCMS_C_SCORE_MAX == $counter ) {
-              $default = sprintf( __( 'Perfecte score: %s!', "gcmaturity-translate" ), $counter );
-            }
-            $fieldkey = $key . GCMS_SCORESEPARATOR . $counter;
-            $cmb_options->add_field( array(
-            	'name'          => sprintf( __( 'Score-tekst %s<br><small>als de score %s ligt.</small>', "gcmaturity-translate" ), $counter, $label ),
-            	'description'   => sprintf( __( 'Score %s', "gcmaturity-translate" ), $label . ' (' . $fieldkey . ')' ),
-          		'type'          => 'wysiwyg',
-            	'id'            => $fieldkey,
-            	'default'       => $default
-            ) );
+        
+        
+        if ( 22 == 33 ) {
+        
+        
+          $formfields_data    = gcmsf_data_get_survey_json();
+          $sectiontitle_prev  = '';
+        
+          if ( $formfields_data ) {
+        
+            $counter_total    = 0;
+            $counter_group    = 0;
+            $counter_question = 0;
+            $counter_answer   = 0;
+            $counter          = 0;
+        
+        
+            $key = 'SITESCORE';
+            
           
-          }
-          // snip1.txt
+
+        
         }
+        
+        
       }
       else {
         // fout bij het ophalen van de formulierwaarden
@@ -1235,17 +1442,13 @@ catch( err ) { console.log( err ); } ' );
           add_action( 'cmb2_init',        array( $this, 'gcmsf_frontend_form_register_cmb2_form' ) );
           add_action( 'cmb2_after_init',  'gcmsf_frontend_form_handle_posting' );
           
-          add_action( 'cmb2_admin_init',  array( $this, 'gcmsf_admin_form_register_cmb2_form' ) );
+          add_action( 'cmb2_admin_init',  array( $this, 'gcmsf_admin_form_register_cmb2_form_new' ) );
 
         }  // GCMS_C_PLUGIN_USE_CMB2
   
     }    
 
     //====================================================================================================
-
-
-
-
 
     /**
      * Register the form and fields for our front-end submission form
@@ -1270,8 +1473,8 @@ catch( err ) { console.log( err ); } ' );
         // loop through the groups
         foreach ( $formfields_data as $group_key => $value) {
 
-          $group_label      = gcms_aux_get_value_for_cmb2_key( $group_key );
-          $groupdescription = gcms_aux_get_value_for_cmb2_key( $group_key . '_group_description' );
+          $group_label      = gcms_aux_get_value_for_cmb2_key( $group_key, $value->group_label );
+          $groupdescription = gcms_aux_get_value_for_cmb2_key( $group_key . '_group_description', $value->group_description );
           $groupquestions   = (array) $value->group_questions[0];
 
           $cmb->add_field( array(
@@ -1293,9 +1496,14 @@ catch( err ) { console.log( err ); } ' );
             // get all possible answers
             foreach ( $answers as $answer_key => $answer ) {
 
+              $label = gcms_aux_get_value_for_cmb2_key( 
+                $this_answer_key . GCMS_C_KEYS_LABEL, 
+                $answer->answer_label, 
+                GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key 
+              );
+
               $this_answer_key              = $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key . GCMS_C_PLUGIN_SEPARATOR . $answer_key;
-              
-              $options[ $this_answer_key  ] = $answer->answer_label;
+              $options[ $this_answer_key  ] = $label;
               $defaults[]                   = $this_answer_key;
 
             }
@@ -1303,12 +1511,19 @@ catch( err ) { console.log( err ); } ' );
             // only set a random default if we are debugging
             if ( WP_DEBUG && GCMS_C_PLUGIN_DO_DEBUG ) {
               $default = $defaults[ array_rand( $defaults ) ];
-//              $default = $defaults[ ( count( $defaults ) - 1 ) ];
             }
+
+            $questionkey    = $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key;
+            $question_label = $question_single->question_label;
             
+            $label = gcms_aux_get_value_for_cmb2_key( 
+                        $questionkey, 
+                        $question_label, 
+                        GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key );
+
             // put it together
           	$cmb->add_field( array(
-          		'name'    => $question_single->question_label,
+          		'name'    => $label,
           		'id'      => $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key,
           		'type'    => 'radio',
               'options' => $options,
@@ -1326,38 +1541,46 @@ catch( err ) { console.log( err ); } ' );
         // fout bij het ophalen van de formulierwaarden
         gcmsf_aux_write_to_log('Fout bij ophalen van de formulierwaarden');
       }
+
+
+      $yournamedefault = gcmsf_get_post_or_cookie( GCMS_C_SURVEY_YOURNAME );
+      $yourmaildefault = gcmsf_get_post_or_cookie( GCMS_C_SURVEY_EMAILID );
       
+      $cmb->add_field( array(
+    		'name'    => _x( 'About you', 'About you section', "gcmaturity-translate" ),
+      	'type'    => 'title',
+      	'id'      => GCMS_C_CMBS2_PREFIX . 'start_section_survey_user_data',
+    		'desc'    => _x( 'We can send you a link to your survey results if you fill in your email address here.', 'About you section', "gcmaturity-translate" ),
+      ) );
+
+
     	$cmb->add_field( array(
-    		'name'    => _x( 'Je naam', 'naam', "gcmaturity-translate" ),
+    		'name'    => _x( 'Your name', 'About you section', "gcmaturity-translate" ),
     		'id'      => GCMS_C_SURVEY_YOURNAME,
     		'type'    => 'text',
-    		'desc'    => _x( 'Je naam slaan we maximaal 3 jaar op, zodat jouw naam zichtbaar blijft in je resultaatpagina. Wil je dat niet? Laat het veld dan leeg.<br>Niet verplicht', 'naam', "gcmaturity-translate" ),
-    		'default' => ! empty( $_POST[ GCMS_C_SURVEY_YOURNAME ] )
-    			? $_POST[ GCMS_C_SURVEY_YOURNAME ]
-    			: '',
+    		'desc'    => _x( 'Je naam slaan we maximaal 3 jaar op, zodat jouw naam zichtbaar blijft in je resultaatpagina. Wil je dat niet? Laat het veld dan leeg.', 'About you section', "gcmaturity-translate" ) . '<br>' . _x( 'Not required', 'About you section', "gcmaturity-translate" ),
+    		'default' => $yournamedefault,
     	) );
       
     	$cmb->add_field( array(
-    		'name'    => _x( 'Je e-mailadres', 'email', "gcmaturity-translate" ),
+    		'name'    => _x( 'Your emailaddress', 'About you section', "gcmaturity-translate" ),
     		'id'      => GCMS_C_SURVEY_EMAILID,
     		'type'    => 'text_email',
-    		'desc'    => _x( 'We gebruiken dit e-mailadres om je een link te mailen naar jouw resultaatpagina.<br>Niet verplicht.', 'email', "gcmaturity-translate" ),
-    		'default' => ! empty( $_POST[ GCMS_C_SURVEY_EMAILID ] )
-    			? $_POST[ GCMS_C_SURVEY_EMAILID ]
-    			: '',
+    		'desc'    => _x( 'We gebruiken dit e-mailadres om je een link te mailen naar jouw resultaatpagina.', 'About you section', "gcmaturity-translate" ) . '<br>' . _x( 'Not required', 'About you section', "gcmaturity-translate" ),
+    		'default' => $yourmaildefault,
     	) );
     	
 
       $cmb->add_field( array(
-      	'name' => 'Opslaan e-mailadres',
-    		'desc'    => _x( 'Ja, ik wil graag via mail op de hoogte gehouden worden van nieuwe versies van het volwassenheidsmodel. Jullie mogen mijn e-mailadres en naam uiterlijk 3 jaar na vandaag hiervoor bewaren. Alleen de beheerders van deze website hebben toegang tot deze gegevens.', 'email', "gcmaturity-translate" ),
+    		'name'    => _x( 'Permission to store emailaddress', 'About you section', "gcmaturity-translate" ),
+    		'desc'    => _x( 'Ja, ik wil graag via mail op de hoogte gehouden worden van nieuwe versies van het volwassenheidsmodel. Jullie mogen mijn e-mailadres en naam uiterlijk 3 jaar na vandaag hiervoor bewaren. Alleen de beheerders van deze website hebben toegang tot deze gegevens.', 'About you section', "gcmaturity-translate" ),
       	'id'   => GCMS_C_SURVEY_GDPR_CHECK,
       	'type' => 'checkbox',
       ) );    	
     	
     	$default = '';
 
-      // organisatietypes
+      // organisation types
       $terms = get_terms( array(
         'taxonomy' => GCMS_C_SURVEY_CT_ORG_TYPE,
         'hide_empty' => false,
@@ -1604,42 +1827,40 @@ catch( err ) { console.log( err ); } ' );
 
             $return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey ) . '</p>';
 
+            $return .= '<details>';
+            $return .= '  <summary>' . _x( "Bekijk jouw antwoorden", "interpretatie", "gcmaturity-translate" ) . '</summary>';
 
-              $return .= '<details>';
-              $return .= '  <summary>' . _x( "Bekijk jouw antwoorden", "interpretatie", "gcmaturity-translate" ) . '</summary>';
+            if ( $value ) {
+              $return .= '<dl>';
+              foreach( $value as $vragen => $antwoorden ){        
+                $return .= '<dt>' . _x( "Vraag", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+                $return .= '<dd>' . $antwoorden['question_label'] . '</dd>';
 
-              if ( $value ) {
-                $return .= '<dl>';
-                foreach( $value as $vragen => $antwoorden ){        
-                  $return .= '<dt>' . _x( "Vraag", "interpretatie", "gcmaturity-translate" ) . '</dt>';
-                  $return .= '<dd>' . $antwoorden['question_label'] . '</dd>';
+                $return .= '<dt>' . _x( "Antwoord", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+                $return .= '<dd>' . $antwoorden['answer_label'] . '</dd>';
 
-                  $return .= '<dt>' . _x( "Antwoord", "interpretatie", "gcmaturity-translate" ) . '</dt>';
-                  $return .= '<dd>' . $antwoorden['answer_label'] . '</dd>';
+                $score = sprintf( _n( '%s punt', '%s punten', $antwoorden['answer_value'], "gcmaturity-translate" ), $antwoorden['answer_value'] );
 
-                  $score = sprintf( _n( '%s punt', '%s punten', $antwoorden['answer_value'], "gcmaturity-translate" ), $antwoorden['answer_value'] );
+                if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
 
-                  if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-
-                    $return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
-                    $return .= '<dd>' . $score . '</dd>';
-                    
-                    $return .= '<dt class="space-me">' . _x( "Gemiddelde score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
-                    $return .= '<dd class="space-me">' . $antwoorden['answer_site_average'] . '</dd>';
-                  }
-                  else {
-                    $return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
-                    $return .= '<dd class="space-me">' . $score . '</dd>';
-                    
-                  }
+                  $return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+                  $return .= '<dd>' . $score . '</dd>';
+                  
+                  $return .= '<dt class="space-me">' . _x( "Gemiddelde score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+                  $return .= '<dd class="space-me">' . $antwoorden['answer_site_average'] . '</dd>';
                 }
-                $return .= '</dl>';
-                
+                else {
+                  $return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+                  $return .= '<dd class="space-me">' . $score . '</dd>';
+                  
+                }
               }
+              $return .= '</dl>';
               
+            }
 
-              $return .= '</details>';
-              $return .= '</section>';
+            $return .= '</details>';
+            $return .= '</section>';
 
           }
 
@@ -1780,6 +2001,7 @@ function gcmsf_frontend_register_shortcode( $atts = array() ) {
 		$output .= '<h3>' . sprintf( __( 'Je inzending is niet opgeslagen, omdat er fouten zijn opgetreden: %s', "gcmaturity-translate" ), '<strong>'. $error->get_error_message() .'</strong>' ) . '</h3>';
 	}
 
+
 	// Get our form
 	$output .= cmb2_get_metabox_form( $cmb, GCMS_C_FAKE_OBJECT_ID, array( 'save_button' => __( "Versturen", "gcmaturity-translate" ) ) );
 
@@ -1867,12 +2089,16 @@ function gcmsf_frontend_form_handle_posting() {
   $post_content = '';
   if ( $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] ) {
     $post_content .= _x( 'Je naam', 'naam', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] . '<br>';
+    setcookie( GCMS_C_SURVEY_YOURNAME , $sanitized_values[ GCMS_C_SURVEY_YOURNAME ], time() + ( 3600 * 24 * 60 ), '/');
   }
+  
   if ( $sanitized_values[  GCMS_C_SURVEY_EMAILID  ] ) {
     $post_content .= _x( 'Je e-mailadres', 'email', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_EMAILID ] . '<br>';
+    setcookie( GCMS_C_SURVEY_EMAILID , $sanitized_values[ GCMS_C_SURVEY_EMAILID ], time() + ( 3600 * 24 * 60 ), '/');
   }
 	
-	unset( $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] );
+
+
 
 
   // update the number of surveys taken
@@ -1887,6 +2113,49 @@ function gcmsf_frontend_form_handle_posting() {
 		return $cmb->prop( 'submission_error', $new_submission_id );
 	}
   
+
+  $theurl   = get_permalink( $new_submission_id );
+
+  // compose the mail
+  if ( $sanitized_values[ GCMS_C_SURVEY_EMAILID ] ) {
+
+    if ( filter_var( $sanitized_values[ GCMS_C_SURVEY_EMAILID ], FILTER_VALIDATE_EMAIL ) ) {    
+
+      // the users mailaddress appears to be a valid mailaddress
+      $mailtext = gcms_aux_get_value_for_cmb2_key( GCMS_C_TEXTEMAIL, _x( 'No mail text found', 'email', "gcmaturity-translate" ) );
+      $mailtext = str_replace( GCMS_C_URLPLACEHOLDER, '<a href="' . $theurl . '">' . $theurl . '</a>', $mailtext );
+      $mailtext = str_replace( GCMS_C_NAMEPLACEHOLDER, $sanitized_values[ GCMS_C_SURVEY_YOURNAME ], $mailtext );
+  
+      $subject  = gcms_aux_get_value_for_cmb2_key( 'mail-subject', _x( 'Link to your survey results', "email settings", "gcmaturity-translate" ) );
+      $headers  = array(
+        'From: ' . gcms_aux_get_value_for_cmb2_key( 'mail-from-address', _x( 'info@gebruikercentraal.nl', "email settings", "gcmaturity-translate" ) )
+      );
+
+
+
+      add_filter( 'wp_mail_content_type', 'gcmsf_mail_set_html_mail_content_type' );
+       
+       
+      wp_mail( $sanitized_values[ GCMS_C_SURVEY_EMAILID ], $subject, wpautop( $mailtext ), $headers );
+       
+      // Reset content-type to avoid conflicts -- https://core.trac.wordpress.org/ticket/23578
+      remove_filter( 'wp_mail_content_type', 'gcmsf_mail_set_html_mail_content_type' );
+      
+  
+    }
+  }
+
+  if ( $sanitized_values[  GCMS_C_SURVEY_GDPR_CHECK  ] ) {
+    // we are given permission to store the name and emailaddress
+  }
+  else {
+  	// do not save the name nor email
+  	unset( $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] );
+  	unset( $sanitized_values[ GCMS_C_SURVEY_EMAILID ] );
+  	unset( $sanitized_values[ GCMS_C_SURVEY_GDPR_CHECK ] );
+    
+  }
+
   // save the extra fields as metadata
 	$cmb->save_fields( $new_submission_id, 'post', $sanitized_values );
 	update_post_meta( $new_submission_id, GCMS_C_FORMKEYS, $sanitized_values );
@@ -1911,7 +2180,6 @@ function gcmsf_frontend_form_handle_posting() {
     wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_TYPE ], GCMS_C_SURVEY_CT_ORG_TYPE );
 	}
 
-$theurl = get_permalink( $new_submission_id );
 
 	/*
 	 * Redirect back to the form page with a query variable with the new post ID.
@@ -1927,6 +2195,7 @@ $theurl = get_permalink( $new_submission_id );
 	wp_redirect( $theurl );
 	
 	exit;
+	
 }
 
 //========================================================================================================
@@ -2118,13 +2387,13 @@ if (! function_exists( 'gcmsf_aux_write_to_log' ) ) {
  * @param  mixed  $default Optional default value
  * @return mixed           Option value
  */
-function gcms_aux_get_value_for_cmb2_key( $key = '', $default = false ) {
+function gcms_aux_get_value_for_cmb2_key( $key = '', $default = false, $optionkey = GCMS_C_PLUGIN_KEY ) {
 
   $return = '';
 
   if ( function_exists( 'cmb2_get_option' ) ) {
 
-    $return = cmb2_get_option( GCMS_C_PLUGIN_KEY, $key, $default );
+    $return = cmb2_get_option( $optionkey, $key, $default );
     return $return;
     
   }
@@ -2145,7 +2414,6 @@ function gcms_aux_get_value_for_cmb2_key( $key = '', $default = false ) {
 }
 
 //========================================================================================================
-
 
 /**
  * gcms_aux_get_average_for_array : get average values from an array
@@ -2214,4 +2482,53 @@ if (! function_exists( 'dodebug' ) ) {
 
 //========================================================================================================
 
+/**
+ * Initialise translations
+ */
+function gcmsf_init_load_plugin_textdomain() {
+
+  //          load_plugin_textdomain( "gcmaturity-translate", false, GCMS_C_PATH_LANGUAGES );
+  load_plugin_textdomain( "gcmaturity-translate", false, basename( dirname( __FILE__ ) ) . '/languages' );
+
+}
+
+//========================================================================================================
+
+
+/**
+ * Helper function for reading post values or cookie values
+ */
+function gcmsf_get_post_or_cookie( $key = '', $default = '' ) {
+  
+  $return = '';
+
+  if ( $default ) {
+    $return = $default;
+  }
+
+  if ( $key ) {
+    
+    if ( isset( $_POST[ $key ] ) && ( ! empty( $_POST[ $key ] ) ) ) {
+      $return = $_POST[ $key ];
+    }
+    elseif ( isset( $_COOKIE[ $key ] ) && ( ! empty( $_COOKIE[ $key ] ) ) ) {
+      $return = $_COOKIE[ $key ];
+    }
+    
+  }
+  
+  return $return;
+  
+}
+
+//========================================================================================================
+
+/**
+ * Filter the mail content type.
+ */
+function gcmsf_mail_set_html_mail_content_type() {
+    return 'text/html';
+}
+
+//========================================================================================================
 

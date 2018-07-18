@@ -9,8 +9,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @plugin: gc-maturityscore
-// * Version: 1.0.8
-// * Version desc: Added extra checkbox for getting user permission to store emailaddress; attempt to translate everything into the Engelands.
+// * Version: 1.1.1
+// * Version desc: Option to send mail to user; questions and answers editable.
 // * @link    https://github.com/ICTU/gc-maturityscore-plugin/
 
 
@@ -89,6 +89,15 @@
 .cmb-type-title {
   border-top: .5em solid @lichtgrijs;
   padding-top: 1em;
+}
+
+#front-end-post-form {
+  overflow: hidden;
+  margin-bottom: 2em;
+  input[name="submit-cmb"] {
+    float: right;
+    margin-top: 1em;    
+  }
 }
 
 @media only screen and (min-width: ( @break_tablet ) ) {

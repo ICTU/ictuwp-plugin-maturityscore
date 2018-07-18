@@ -135,6 +135,16 @@
 		"sC": 1,
 		"tS": 0
 		},
+	"\/assets\/js\/details-element-polyfill.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "\/assets\/js\/min\/details-element-polyfill-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
 	"\/assets\/js\/functions-frontend.js": {
 		"ft": 64,
 		"ma": 0,
@@ -3067,32 +3077,32 @@
 		"oAP": "\/inc\/index.php",
 		"oF": 0
 		},
+	"\/languages\/gcmaturity-translate-nl_NL.mo": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/languages\/gcmaturity-translate-nl_NL.mo",
+		"oF": 1
+		},
+	"\/languages\/gcmaturity-translate-nl_NL.po": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/languages\/gcmaturity-translate-nl_NL.po",
+		"oF": 1
+		},
 	"\/languages\/gcmaturity-translate.pot": {
 		"cB": 0,
 		"ft": 8192,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/languages\/gcmaturity-translate.pot",
-		"oF": 0
+		"oF": 1
 		},
 	"\/languages\/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/languages\/index.php",
-		"oF": 0
-		},
-	"\/languages\/nl_NL.mo": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/languages\/nl_NL.mo",
-		"oF": 0
-		},
-	"\/languages\/nl_NL.po": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/languages\/nl_NL.po",
 		"oF": 0
 		},
 	"\/less\/01-sizes-colors.less": {
@@ -3233,6 +3243,13 @@
 		"oA": 0,
 		"oAP": "\/snip\/snip7.txt",
 		"oF": 0
+		},
+	"\/snip\/snip8.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/snip\/snip8.txt",
+		"oF": 0
 		}
 	},
 "hooks": [
@@ -3258,6 +3275,12 @@
 			"followForSyntaxChecking": 1,
 			"linkedFileAbbreviatedPath": "\/assets\/js\/radar.js",
 			"position": 1,
+			"type": 0
+			},
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/assets\/js\/details-element-polyfill.js",
+			"position": 2,
 			"type": 0
 			}
 		]
