@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.1.1
- * Version description: Option to send mail to user; questions and answers editable.
+ * Version:             1.1.2
+ * Version description: Added mail-from name as field.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.1.1';
+      public $version = '1.1.2';
   
   
       /**
@@ -973,6 +973,13 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       		'type'          => 'text',
         	'id'            => 'mail-from-address',
         	'default'       => _x( 'info@gebruikercentraal.nl', "email settings", "gcmaturity-translate" )
+        ) );
+
+        $cmb_options->add_field( array(
+        	'name'          => _x( 'Sender email name', "email settings", "gcmaturity-translate" ),
+      		'type'          => 'text',
+        	'id'            => 'mail-from-name',
+        	'default'       => _x( 'Gebruiker Centraal', "email settings", "gcmaturity-translate" )
         ) );
 
         $cmb_options->add_field( array(
@@ -2125,10 +2132,13 @@ function gcmsf_frontend_form_handle_posting() {
       $mailtext = gcms_aux_get_value_for_cmb2_key( GCMS_C_TEXTEMAIL, _x( 'No mail text found', 'email', "gcmaturity-translate" ) );
       $mailtext = str_replace( GCMS_C_URLPLACEHOLDER, '<a href="' . $theurl . '">' . $theurl . '</a>', $mailtext );
       $mailtext = str_replace( GCMS_C_NAMEPLACEHOLDER, $sanitized_values[ GCMS_C_SURVEY_YOURNAME ], $mailtext );
+
+      $mailfrom_address = gcms_aux_get_value_for_cmb2_key( 'mail-from-address' );
+      $mailfrom_name    = gcms_aux_get_value_for_cmb2_key( 'mail-from-name' );
   
       $subject  = gcms_aux_get_value_for_cmb2_key( 'mail-subject', _x( 'Link to your survey results', "email settings", "gcmaturity-translate" ) );
       $headers  = array(
-        'From: ' . gcms_aux_get_value_for_cmb2_key( 'mail-from-address', _x( 'info@gebruikercentraal.nl', "email settings", "gcmaturity-translate" ) )
+        'From: ' . $mailfrom_name . ' <' . $mailfrom_address . '>'
       );
 
 
