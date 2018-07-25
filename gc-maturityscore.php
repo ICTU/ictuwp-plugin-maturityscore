@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.1.3
- * Version description: Translated most of the texts into English and Dutch.
+ * Version:             1.1.4
+ * Version description: Put back the scoring texts per section.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.1.3';
+      public $version = '1.1.4';
   
   
       /**
@@ -889,6 +889,41 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             	'id'            => $key_group_desc,
             	'default'       => $groupdescription
             ) );
+
+            
+            // scoring texts
+            $questions_tab->add_field( array(
+            	'name'          => __( 'Score for this section', "gcmaturity-translate" ),
+            	'type'          => 'title',
+            	'id'            => GCMS_C_CMBS2_PREFIX . 'start_scoring_section' . $counter_group
+            ) );
+            
+            $counter = 0;
+            
+            // code voor onderhouden namen en inleiding
+            while( $counter <  GCMS_C_SCORE_MAX ) {
+            
+              $counter++;
+            
+              $default = sprintf( __( 'For section <em>%s</em> you scored over %s, but lesss than %s. Here more about that. ', "gcmaturity-translate" ), gcms_aux_get_value_for_cmb2_key( $key ), ( $counter - 1 ), $counter );
+              
+              $label = sprintf( __( 'between %s and %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
+              if ( GCMS_C_SCORE_MAX == $counter ) {
+                $default = sprintf( __( 'Perfect score: %s!', "gcmaturity-translate" ), $counter );
+              }
+            
+              $fieldkey = $group_key . GCMS_SCORESEPARATOR . $counter;
+            
+              $questions_tab->add_field( array(
+              	'name'          => sprintf( _x( 'Text %s<br><small>if score %s.</small>', 'score range', "gcmaturity-translate" ), $counter, $label ),
+              	'description'   => sprintf( __( 'Score %s', "gcmaturity-translate" ), $label . ' (' . $fieldkey . ')' ),
+            		'type'          => 'wysiwyg',
+              	'id'            => $fieldkey,
+              	'default'       => $default
+              ) );
+            
+            }
+
 
             // loop through the questions
             foreach ( $groupquestions as $question_key => $question_single ) {
