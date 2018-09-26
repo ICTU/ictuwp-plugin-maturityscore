@@ -2,6 +2,9 @@
 
 # sh '/shared-paul-files/Webs/git-repos/ICTU---GC-volwassenheidsscore-plugin/distribute.sh' &>/dev/null
 
+echo '----------------------------------------------------------------';
+echo 'Distribute GC-volwassenheidsscore-plugin';
+
 # voor een update van de CMB2 bestanden:
 sh '/shared-paul-files/Webs/git-repos/ICTU---Digitale-Overheid-WP---rijksvideoplugin/get_cmb2_files.sh' &>/dev/null
 
@@ -44,3 +47,6 @@ rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/developmen
 # en een kopietje naar Sentia live
 rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/gc-maturityscore/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/plugins/gc-maturityscore/'
 
+
+echo 'Ready';
+echo '----------------------------------------------------------------';
