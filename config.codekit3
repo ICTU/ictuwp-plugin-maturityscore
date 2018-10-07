@@ -1,5 +1,5 @@
 {
-"AAInfo": "This is a CodeKit 3 project config file. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. Doing so will cause CodeKit to crash and\/or corrupt your project. I know it looks like JSON, but it is *not*. Many numbers in this file are 64-bit long long bitFlags, which JSON does not support. These numbers *cannot* be treated as discrete values and if you attempt to parse this file as standard JSON with any public JSON parser, these values will be corrupted. This file is not backwards-compatible with CodeKit 1 or 2. For more information, see https:\/\/codekitapp.com\/",
+"AAInfo": "This is a CodeKit 3 project config file. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. Doing so will cause CodeKit to crash and/or corrupt your project. I know it looks like JSON, but it is *not*. Many numbers in this file are 64-bit long long bitFlags, which JSON does not support. These numbers *cannot* be treated as discrete values and if you attempt to parse this file as standard JSON with any public JSON parser, these values will be corrupted. This file is not backwards-compatible with CodeKit 1 or 2. For more information, see https://codekitapp.com/",
 "buildSteps": [
 	{
 		"name": "Process All Remaining Files and Folders",
@@ -7,340 +7,340 @@
 		"uuidString": "7F779F4B-73AE-4B07-8449-5218FA379575"
 		}
 	],
-"creatorBuild": "26680",
+"creatorBuild": "28841",
 "files": {
-	"\/.gitattributes": {
+	"/.gitattributes": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/.gitattributes",
+		"oAP": "/.gitattributes",
 		"oF": 0
 		},
-	"\/.gitignore": {
+	"/.gitignore": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/.gitignore",
+		"oAP": "/.gitignore",
 		"oF": 0
 		},
-	"\/assets\/amchart-settings.json": {
+	"/assets/amchart-settings.json": {
 		"ft": 524288,
 		"oA": 1,
-		"oAP": "\/assets\/amchart-settings-min.json",
+		"oAP": "/assets/amchart-settings-min.json",
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
 		},
-	"\/assets\/antwoorden-vragen.json": {
+	"/assets/antwoorden-vragen.json": {
 		"ft": 524288,
 		"oA": 1,
-		"oAP": "\/assets\/antwoorden-vragen-min.json",
+		"oAP": "/assets/antwoorden-vragen-min.json",
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
 		},
-	"\/assets\/css\/admin.css": {
+	"/assets/css/admin.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/assets\/css\/admin-min.css",
+		"oAP": "/assets/css/admin-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/assets\/css\/gc-maturityscore-admin.css": {
+	"/assets/css/gc-maturityscore-admin.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/assets\/css\/gc-maturityscore-admin-min.css",
+		"oAP": "/assets/css/gc-maturityscore-admin-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/assets\/css\/gc-maturityscore-admin.css.map": {
+	"/assets/css/gc-maturityscore-admin.css.map": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/assets\/css\/gc-maturityscore-admin.css.map",
+		"oAP": "/assets/css/gc-maturityscore-admin.css.map",
 		"oF": 0
 		},
-	"\/assets\/css\/gc-maturityscore.css": {
+	"/assets/css/gc-maturityscore.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/assets\/css\/gc-maturityscore-min.css",
+		"oAP": "/assets/css/gc-maturityscore-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/assets\/css\/gc-maturityscore.css.map": {
+	"/assets/css/gc-maturityscore.css.map": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/assets\/css\/gc-maturityscore.css.map",
+		"oAP": "/assets/css/gc-maturityscore.css.map",
 		"oF": 0
 		},
-	"\/assets\/css\/index.php": {
+	"/assets/css/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/assets\/css\/index.php",
+		"oAP": "/assets/css/index.php",
 		"oF": 0
 		},
-	"\/assets\/images\/gc-unicorn.jpg": {
+	"/assets/images/gc-unicorn.jpg": {
 		"ft": 16384,
 		"iS": 46142,
 		"jF": 0,
 		"oA": 0,
-		"oAP": "\/assets\/images\/gc-unicorn.jpg",
+		"oAP": "/assets/images/gc-unicorn.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 100
 		},
-	"\/assets\/images\/index.php": {
+	"/assets/images/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/assets\/images\/index.php",
+		"oAP": "/assets/images/index.php",
 		"oF": 0
 		},
-	"\/assets\/images\/star.svg": {
+	"/assets/images/star.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "\/assets\/images\/star.svg",
+		"oAP": "/assets/images/star.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 3758088159,
 		"prP": 0
 		},
-	"\/assets\/index.php": {
+	"/assets/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/assets\/index.php",
+		"oAP": "/assets/index.php",
 		"oF": 0
 		},
-	"\/assets\/js\/amcharts.js": {
+	"/assets/js/amcharts.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 1,
-		"oAP": "\/assets\/js\/min\/amcharts-min.js",
+		"oAP": "/assets/js/min/amcharts-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
-	"\/assets\/js\/details-element-polyfill.js": {
+	"/assets/js/details-element-polyfill.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 1,
-		"oAP": "\/assets\/js\/min\/details-element-polyfill-min.js",
+		"oAP": "/assets/js/min/details-element-polyfill-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
-	"\/assets\/js\/functions-frontend.js": {
+	"/assets/js/functions-frontend.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/min\/functions-frontend-min.js",
+		"oAP": "/assets/js/min/functions-frontend-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
-	"\/assets\/js\/min\/functions-frontend-min.js": {
+	"/assets/js/min/functions-frontend-min.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/min\/min\/functions-frontend-min-min.js",
+		"oAP": "/assets/js/min/min/functions-frontend-min-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
-	"\/assets\/js\/min\/functions-min.js": {
+	"/assets/js/min/functions-min.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/min\/min\/functions-min-min.js",
+		"oAP": "/assets/js/min/min/functions-min-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
-	"\/assets\/js\/radar.js": {
+	"/assets/js/radar.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 1,
-		"oAP": "\/assets\/js\/min\/radar-min.js",
+		"oAP": "/assets/js/min/radar-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
-	"\/cmb2\/bootstrap.php": {
+	"/cmb2/bootstrap.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/bootstrap.php",
+		"oAP": "/cmb2/bootstrap.php",
 		"oF": 0
 		},
-	"\/cmb2\/css\/cmb2-display-rtl.css": {
+	"/cmb2/css/cmb2-display-rtl.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2-display-rtl-min.css",
+		"oAP": "/cmb2/css/cmb2-display-rtl-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/cmb2\/css\/cmb2-display-rtl.min.css": {
+	"/cmb2/css/cmb2-display-rtl.min.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2-display-rtl.min-min.css",
+		"oAP": "/cmb2/css/cmb2-display-rtl.min-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/cmb2\/css\/cmb2-display.css": {
+	"/cmb2/css/cmb2-display.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2-display-min.css",
+		"oAP": "/cmb2/css/cmb2-display-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/cmb2\/css\/cmb2-display.css.map": {
+	"/cmb2/css/cmb2-display.css.map": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2-display.css.map",
+		"oAP": "/cmb2/css/cmb2-display.css.map",
 		"oF": 0
 		},
-	"\/cmb2\/css\/cmb2-display.min.css": {
+	"/cmb2/css/cmb2-display.min.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2-display.min-min.css",
+		"oAP": "/cmb2/css/cmb2-display.min-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/cmb2\/css\/cmb2-front-rtl.css": {
+	"/cmb2/css/cmb2-front-rtl.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2-front-rtl-min.css",
+		"oAP": "/cmb2/css/cmb2-front-rtl-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/cmb2\/css\/cmb2-front-rtl.min.css": {
+	"/cmb2/css/cmb2-front-rtl.min.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2-front-rtl.min-min.css",
+		"oAP": "/cmb2/css/cmb2-front-rtl.min-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/cmb2\/css\/cmb2-front.css": {
+	"/cmb2/css/cmb2-front.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2-front-min.css",
+		"oAP": "/cmb2/css/cmb2-front-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/cmb2\/css\/cmb2-front.css.map": {
+	"/cmb2/css/cmb2-front.css.map": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2-front.css.map",
+		"oAP": "/cmb2/css/cmb2-front.css.map",
 		"oF": 0
 		},
-	"\/cmb2\/css\/cmb2-front.min.css": {
+	"/cmb2/css/cmb2-front.min.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2-front.min-min.css",
+		"oAP": "/cmb2/css/cmb2-front.min-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/cmb2\/css\/cmb2-rtl.css": {
+	"/cmb2/css/cmb2-rtl.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2-rtl-min.css",
+		"oAP": "/cmb2/css/cmb2-rtl-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/cmb2\/css\/cmb2-rtl.min.css": {
+	"/cmb2/css/cmb2-rtl.min.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2-rtl.min-min.css",
+		"oAP": "/cmb2/css/cmb2-rtl.min-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/cmb2\/css\/cmb2.css": {
+	"/cmb2/css/cmb2.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2-min.css",
+		"oAP": "/cmb2/css/cmb2-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/cmb2\/css\/cmb2.css.map": {
+	"/cmb2/css/cmb2.css.map": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2.css.map",
+		"oAP": "/cmb2/css/cmb2.css.map",
 		"oF": 0
 		},
-	"\/cmb2\/css\/cmb2.min.css": {
+	"/cmb2/css/cmb2.min.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/cmb2.min-min.css",
+		"oAP": "/cmb2/css/cmb2.min-min.css",
 		"oF": 0,
 		"oS": 3
 		},
-	"\/cmb2\/css\/index.php": {
+	"/cmb2/css/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/index.php",
+		"oAP": "/cmb2/css/index.php",
 		"oF": 0
 		},
-	"\/cmb2\/css\/sass\/cmb2-display.scss": {
+	"/cmb2/css/sass/cmb2-display.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -348,12 +348,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/css\/cmb2-display.css",
+		"oAP": "/cmb2/css/css/cmb2-display.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/cmb2-front.scss": {
+	"/cmb2/css/sass/cmb2-front.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -361,12 +361,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/css\/cmb2-front.css",
+		"oAP": "/cmb2/css/css/cmb2-front.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/cmb2.scss": {
+	"/cmb2/css/sass/cmb2.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -374,19 +374,19 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/css\/cmb2.css",
+		"oAP": "/cmb2/css/css/cmb2.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/index.php": {
+	"/cmb2/css/sass/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/sass\/index.php",
+		"oAP": "/cmb2/css/sass/index.php",
 		"oF": 0
 		},
-	"\/cmb2\/css\/sass\/partials\/_collapsible_ui.scss": {
+	"/cmb2/css/sass/partials/_collapsible_ui.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -394,12 +394,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/cmb2\/css\/sass\/css\/_collapsible_ui.css",
+		"oAP": "/cmb2/css/sass/css/_collapsible_ui.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/partials\/_context_metaboxes.scss": {
+	"/cmb2/css/sass/partials/_context_metaboxes.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -407,12 +407,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/cmb2\/css\/sass\/css\/_context_metaboxes.css",
+		"oAP": "/cmb2/css/sass/css/_context_metaboxes.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/partials\/_display.scss": {
+	"/cmb2/css/sass/partials/_display.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -420,12 +420,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/cmb2\/css\/sass\/css\/_display.css",
+		"oAP": "/cmb2/css/sass/css/_display.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/partials\/_front.scss": {
+	"/cmb2/css/sass/partials/_front.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -433,12 +433,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/cmb2\/css\/sass\/css\/_front.css",
+		"oAP": "/cmb2/css/sass/css/_front.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/partials\/_jquery_ui.scss": {
+	"/cmb2/css/sass/partials/_jquery_ui.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -446,12 +446,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/cmb2\/css\/sass\/css\/_jquery_ui.css",
+		"oAP": "/cmb2/css/sass/css/_jquery_ui.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/partials\/_main_wrap.scss": {
+	"/cmb2/css/sass/partials/_main_wrap.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -459,12 +459,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/cmb2\/css\/sass\/css\/_main_wrap.css",
+		"oAP": "/cmb2/css/sass/css/_main_wrap.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/partials\/_misc.scss": {
+	"/cmb2/css/sass/partials/_misc.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -472,12 +472,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/cmb2\/css\/sass\/css\/_misc.css",
+		"oAP": "/cmb2/css/sass/css/_misc.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/partials\/_mixins.scss": {
+	"/cmb2/css/sass/partials/_mixins.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -485,12 +485,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/cmb2\/css\/sass\/css\/_mixins.css",
+		"oAP": "/cmb2/css/sass/css/_mixins.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/partials\/_new_term.scss": {
+	"/cmb2/css/sass/partials/_new_term.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -498,12 +498,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/cmb2\/css\/sass\/css\/_new_term.css",
+		"oAP": "/cmb2/css/sass/css/_new_term.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/partials\/_options-page.scss": {
+	"/cmb2/css/sass/partials/_options-page.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -511,12 +511,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/cmb2\/css\/sass\/css\/_options-page.css",
+		"oAP": "/cmb2/css/sass/css/_options-page.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/partials\/_post_metaboxes.scss": {
+	"/cmb2/css/sass/partials/_post_metaboxes.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -524,12 +524,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/cmb2\/css\/sass\/css\/_post_metaboxes.css",
+		"oAP": "/cmb2/css/sass/css/_post_metaboxes.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/partials\/_sidebar_placements.scss": {
+	"/cmb2/css/sass/partials/_sidebar_placements.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -537,12 +537,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/cmb2\/css\/sass\/css\/_sidebar_placements.css",
+		"oAP": "/cmb2/css/sass/css/_sidebar_placements.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/partials\/_variables.scss": {
+	"/cmb2/css/sass/partials/_variables.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
@@ -550,2333 +550,2333 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/cmb2\/css\/sass\/css\/_variables.css",
+		"oAP": "/cmb2/css/sass/css/_variables.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/cmb2\/css\/sass\/partials\/index.php": {
+	"/cmb2/css/sass/partials/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/css\/sass\/partials\/index.php",
+		"oAP": "/cmb2/css/sass/partials/index.php",
 		"oF": 0
 		},
-	"\/cmb2\/images\/ico-delete.png": {
+	"/cmb2/images/ico-delete.png": {
 		"ft": 32768,
 		"iS": 715,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ico-delete.png",
+		"oAP": "/cmb2/images/ico-delete.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/images\/index.php": {
+	"/cmb2/images/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/index.php",
+		"oAP": "/cmb2/images/index.php",
 		"oF": 0
 		},
-	"\/cmb2\/images\/ui-bg_flat_0_aaaaaa_40x100.png": {
+	"/cmb2/images/ui-bg_flat_0_aaaaaa_40x100.png": {
 		"ft": 32768,
 		"iS": 180,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ui-bg_flat_0_aaaaaa_40x100.png",
+		"oAP": "/cmb2/images/ui-bg_flat_0_aaaaaa_40x100.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/images\/ui-bg_flat_75_ffffff_40x100.png": {
+	"/cmb2/images/ui-bg_flat_75_ffffff_40x100.png": {
 		"ft": 32768,
 		"iS": 178,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ui-bg_flat_75_ffffff_40x100.png",
+		"oAP": "/cmb2/images/ui-bg_flat_75_ffffff_40x100.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/images\/ui-bg_glass_55_fbf9ee_1x400.png": {
+	"/cmb2/images/ui-bg_glass_55_fbf9ee_1x400.png": {
 		"ft": 32768,
 		"iS": 120,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ui-bg_glass_55_fbf9ee_1x400.png",
+		"oAP": "/cmb2/images/ui-bg_glass_55_fbf9ee_1x400.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/images\/ui-bg_glass_65_ffffff_1x400.png": {
+	"/cmb2/images/ui-bg_glass_65_ffffff_1x400.png": {
 		"ft": 32768,
 		"iS": 105,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ui-bg_glass_65_ffffff_1x400.png",
+		"oAP": "/cmb2/images/ui-bg_glass_65_ffffff_1x400.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/images\/ui-bg_glass_75_dadada_1x400.png": {
+	"/cmb2/images/ui-bg_glass_75_dadada_1x400.png": {
 		"ft": 32768,
 		"iS": 111,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ui-bg_glass_75_dadada_1x400.png",
+		"oAP": "/cmb2/images/ui-bg_glass_75_dadada_1x400.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/images\/ui-bg_glass_75_e6e6e6_1x400.png": {
+	"/cmb2/images/ui-bg_glass_75_e6e6e6_1x400.png": {
 		"ft": 32768,
 		"iS": 110,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ui-bg_glass_75_e6e6e6_1x400.png",
+		"oAP": "/cmb2/images/ui-bg_glass_75_e6e6e6_1x400.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/images\/ui-bg_glass_95_fef1ec_1x400.png": {
+	"/cmb2/images/ui-bg_glass_95_fef1ec_1x400.png": {
 		"ft": 32768,
 		"iS": 119,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ui-bg_glass_95_fef1ec_1x400.png",
+		"oAP": "/cmb2/images/ui-bg_glass_95_fef1ec_1x400.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/images\/ui-bg_highlight-soft_75_cccccc_1x100.png": {
+	"/cmb2/images/ui-bg_highlight-soft_75_cccccc_1x100.png": {
 		"ft": 32768,
 		"iS": 101,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ui-bg_highlight-soft_75_cccccc_1x100.png",
+		"oAP": "/cmb2/images/ui-bg_highlight-soft_75_cccccc_1x100.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/images\/ui-icons_222222_256x240.png": {
+	"/cmb2/images/ui-icons_222222_256x240.png": {
 		"ft": 32768,
 		"iS": 4369,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ui-icons_222222_256x240.png",
+		"oAP": "/cmb2/images/ui-icons_222222_256x240.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/images\/ui-icons_2e83ff_256x240.png": {
+	"/cmb2/images/ui-icons_2e83ff_256x240.png": {
 		"ft": 32768,
 		"iS": 4369,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ui-icons_2e83ff_256x240.png",
+		"oAP": "/cmb2/images/ui-icons_2e83ff_256x240.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/images\/ui-icons_454545_256x240.png": {
+	"/cmb2/images/ui-icons_454545_256x240.png": {
 		"ft": 32768,
 		"iS": 4369,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ui-icons_454545_256x240.png",
+		"oAP": "/cmb2/images/ui-icons_454545_256x240.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/images\/ui-icons_888888_256x240.png": {
+	"/cmb2/images/ui-icons_888888_256x240.png": {
 		"ft": 32768,
 		"iS": 5355,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ui-icons_888888_256x240.png",
+		"oAP": "/cmb2/images/ui-icons_888888_256x240.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/images\/ui-icons_cd0a0a_256x240.png": {
+	"/cmb2/images/ui-icons_cd0a0a_256x240.png": {
 		"ft": 32768,
 		"iS": 4369,
 		"oA": 0,
-		"oAP": "\/cmb2\/images\/ui-icons_cd0a0a_256x240.png",
+		"oAP": "/cmb2/images/ui-icons_cd0a0a_256x240.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
 		"q": 100
 		},
-	"\/cmb2\/includes\/CMB2.php": {
+	"/cmb2/includes/CMB2.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2.php",
+		"oAP": "/cmb2/includes/CMB2.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_Ajax.php": {
+	"/cmb2/includes/CMB2_Ajax.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_Ajax.php",
+		"oAP": "/cmb2/includes/CMB2_Ajax.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_Base.php": {
+	"/cmb2/includes/CMB2_Base.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_Base.php",
+		"oAP": "/cmb2/includes/CMB2_Base.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_Boxes.php": {
+	"/cmb2/includes/CMB2_Boxes.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_Boxes.php",
+		"oAP": "/cmb2/includes/CMB2_Boxes.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_Field.php": {
+	"/cmb2/includes/CMB2_Field.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_Field.php",
+		"oAP": "/cmb2/includes/CMB2_Field.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_Field_Display.php": {
+	"/cmb2/includes/CMB2_Field_Display.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_Field_Display.php",
+		"oAP": "/cmb2/includes/CMB2_Field_Display.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_hookup.php": {
+	"/cmb2/includes/CMB2_hookup.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_hookup.php",
+		"oAP": "/cmb2/includes/CMB2_hookup.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_Hookup_Base.php": {
+	"/cmb2/includes/CMB2_Hookup_Base.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_Hookup_Base.php",
+		"oAP": "/cmb2/includes/CMB2_Hookup_Base.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_JS.php": {
+	"/cmb2/includes/CMB2_JS.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_JS.php",
+		"oAP": "/cmb2/includes/CMB2_JS.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_Options.php": {
+	"/cmb2/includes/CMB2_Options.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_Options.php",
+		"oAP": "/cmb2/includes/CMB2_Options.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_Options_Hookup.php": {
+	"/cmb2/includes/CMB2_Options_Hookup.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_Options_Hookup.php",
+		"oAP": "/cmb2/includes/CMB2_Options_Hookup.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_Sanitize.php": {
+	"/cmb2/includes/CMB2_Sanitize.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_Sanitize.php",
+		"oAP": "/cmb2/includes/CMB2_Sanitize.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_Show_Filters.php": {
+	"/cmb2/includes/CMB2_Show_Filters.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_Show_Filters.php",
+		"oAP": "/cmb2/includes/CMB2_Show_Filters.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_Types.php": {
+	"/cmb2/includes/CMB2_Types.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_Types.php",
+		"oAP": "/cmb2/includes/CMB2_Types.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/CMB2_Utils.php": {
+	"/cmb2/includes/CMB2_Utils.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/CMB2_Utils.php",
+		"oAP": "/cmb2/includes/CMB2_Utils.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/helper-functions.php": {
+	"/cmb2/includes/helper-functions.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/helper-functions.php",
+		"oAP": "/cmb2/includes/helper-functions.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/index.php": {
+	"/cmb2/includes/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/index.php",
+		"oAP": "/cmb2/includes/index.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/rest-api\/CMB2_REST.php": {
+	"/cmb2/includes/rest-api/CMB2_REST.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/rest-api\/CMB2_REST.php",
+		"oAP": "/cmb2/includes/rest-api/CMB2_REST.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/rest-api\/CMB2_REST_Controller.php": {
+	"/cmb2/includes/rest-api/CMB2_REST_Controller.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/rest-api\/CMB2_REST_Controller.php",
+		"oAP": "/cmb2/includes/rest-api/CMB2_REST_Controller.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/rest-api\/CMB2_REST_Controller_Boxes.php": {
+	"/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/rest-api\/CMB2_REST_Controller_Boxes.php",
+		"oAP": "/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/rest-api\/CMB2_REST_Controller_Fields.php": {
+	"/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/rest-api\/CMB2_REST_Controller_Fields.php",
+		"oAP": "/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/shim\/WP_REST_Controller.php": {
+	"/cmb2/includes/shim/WP_REST_Controller.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/shim\/WP_REST_Controller.php",
+		"oAP": "/cmb2/includes/shim/WP_REST_Controller.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Base.php": {
+	"/cmb2/includes/types/CMB2_Type_Base.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Base.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Base.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Checkbox.php": {
+	"/cmb2/includes/types/CMB2_Type_Checkbox.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Checkbox.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Checkbox.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Colorpicker.php": {
+	"/cmb2/includes/types/CMB2_Type_Colorpicker.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Colorpicker.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Colorpicker.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_File.php": {
+	"/cmb2/includes/types/CMB2_Type_File.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_File.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_File.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_File_Base.php": {
+	"/cmb2/includes/types/CMB2_Type_File_Base.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_File_Base.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_File_Base.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_File_List.php": {
+	"/cmb2/includes/types/CMB2_Type_File_List.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_File_List.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_File_List.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Multi_Base.php": {
+	"/cmb2/includes/types/CMB2_Type_Multi_Base.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Multi_Base.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Multi_Base.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Multicheck.php": {
+	"/cmb2/includes/types/CMB2_Type_Multicheck.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Multicheck.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Multicheck.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Oembed.php": {
+	"/cmb2/includes/types/CMB2_Type_Oembed.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Oembed.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Oembed.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Picker_Base.php": {
+	"/cmb2/includes/types/CMB2_Type_Picker_Base.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Picker_Base.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Picker_Base.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Radio.php": {
+	"/cmb2/includes/types/CMB2_Type_Radio.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Radio.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Radio.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Select.php": {
+	"/cmb2/includes/types/CMB2_Type_Select.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Select.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Select.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Select_Timezone.php": {
+	"/cmb2/includes/types/CMB2_Type_Select_Timezone.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Select_Timezone.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Select_Timezone.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Taxonomy_Base.php": {
+	"/cmb2/includes/types/CMB2_Type_Taxonomy_Base.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Taxonomy_Base.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Taxonomy_Base.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Taxonomy_Multicheck.php": {
+	"/cmb2/includes/types/CMB2_Type_Taxonomy_Multicheck.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Taxonomy_Multicheck.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Taxonomy_Multicheck.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Taxonomy_Multicheck_Hierarchical.php": {
+	"/cmb2/includes/types/CMB2_Type_Taxonomy_Multicheck_Hierarchical.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Taxonomy_Multicheck_Hierarchical.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Taxonomy_Multicheck_Hierarchical.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Taxonomy_Radio.php": {
+	"/cmb2/includes/types/CMB2_Type_Taxonomy_Radio.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Taxonomy_Radio.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Taxonomy_Radio.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Taxonomy_Radio_Hierarchical.php": {
+	"/cmb2/includes/types/CMB2_Type_Taxonomy_Radio_Hierarchical.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Taxonomy_Radio_Hierarchical.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Taxonomy_Radio_Hierarchical.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Taxonomy_Select.php": {
+	"/cmb2/includes/types/CMB2_Type_Taxonomy_Select.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Taxonomy_Select.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Taxonomy_Select.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Text.php": {
+	"/cmb2/includes/types/CMB2_Type_Text.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Text.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Text.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Text_Date.php": {
+	"/cmb2/includes/types/CMB2_Type_Text_Date.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Text_Date.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Text_Date.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Text_Datetime_Timestamp.php": {
+	"/cmb2/includes/types/CMB2_Type_Text_Datetime_Timestamp.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Text_Datetime_Timestamp.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Text_Datetime_Timestamp.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Text_Datetime_Timestamp_Timezone.php": {
+	"/cmb2/includes/types/CMB2_Type_Text_Datetime_Timestamp_Timezone.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Text_Datetime_Timestamp_Timezone.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Text_Datetime_Timestamp_Timezone.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Text_Time.php": {
+	"/cmb2/includes/types/CMB2_Type_Text_Time.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Text_Time.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Text_Time.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Textarea.php": {
+	"/cmb2/includes/types/CMB2_Type_Textarea.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Textarea.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Textarea.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Textarea_Code.php": {
+	"/cmb2/includes/types/CMB2_Type_Textarea_Code.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Textarea_Code.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Textarea_Code.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Title.php": {
+	"/cmb2/includes/types/CMB2_Type_Title.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Title.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Title.php",
 		"oF": 0
 		},
-	"\/cmb2\/includes\/types\/CMB2_Type_Wysiwyg.php": {
+	"/cmb2/includes/types/CMB2_Type_Wysiwyg.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/includes\/types\/CMB2_Type_Wysiwyg.php",
+		"oAP": "/cmb2/includes/types/CMB2_Type_Wysiwyg.php",
 		"oF": 0
 		},
-	"\/cmb2\/index.php": {
+	"/cmb2/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/index.php",
+		"oAP": "/cmb2/index.php",
 		"oF": 0
 		},
-	"\/cmb2\/init.php": {
+	"/cmb2/init.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/init.php",
+		"oAP": "/cmb2/init.php",
 		"oF": 0
 		},
-	"\/cmb2\/js\/cmb2-wysiwyg.js": {
+	"/cmb2/js/cmb2-wysiwyg.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/cmb2\/js\/min\/cmb2-wysiwyg-min.js",
+		"oAP": "/cmb2/js/min/cmb2-wysiwyg-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
-	"\/cmb2\/js\/cmb2.js": {
+	"/cmb2/js/cmb2.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/cmb2\/js\/min\/cmb2-min.js",
+		"oAP": "/cmb2/js/min/cmb2-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
-	"\/cmb2\/js\/cmb2.min.js": {
+	"/cmb2/js/cmb2.min.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/cmb2\/js\/min\/cmb2.min-min.js",
+		"oAP": "/cmb2/js/min/cmb2.min-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
-	"\/cmb2\/js\/index.php": {
+	"/cmb2/js/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/js\/index.php",
+		"oAP": "/cmb2/js/index.php",
 		"oF": 0
 		},
-	"\/cmb2\/js\/jquery-ui-timepicker-addon.min.js": {
+	"/cmb2/js/jquery-ui-timepicker-addon.min.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/cmb2\/js\/min\/jquery-ui-timepicker-addon.min-min.js",
+		"oAP": "/cmb2/js/min/jquery-ui-timepicker-addon.min-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
-	"\/cmb2\/js\/wp-color-picker-alpha.js": {
+	"/cmb2/js/wp-color-picker-alpha.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/cmb2\/js\/min\/wp-color-picker-alpha-min.js",
+		"oAP": "/cmb2/js/min/wp-color-picker-alpha-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
-	"\/cmb2\/js\/wp-color-picker-alpha.min.js": {
+	"/cmb2/js/wp-color-picker-alpha.min.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/cmb2\/js\/min\/wp-color-picker-alpha.min-min.js",
+		"oAP": "/cmb2/js/min/wp-color-picker-alpha.min-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
-	"\/cmb2\/languages\/cmb2-ach.mo": {
+	"/cmb2/languages/cmb2-ach.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ach.mo",
+		"oAP": "/cmb2/languages/cmb2-ach.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ach.po": {
+	"/cmb2/languages/cmb2-ach.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ach.po",
+		"oAP": "/cmb2/languages/cmb2-ach.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-af.mo": {
+	"/cmb2/languages/cmb2-af.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-af.mo",
+		"oAP": "/cmb2/languages/cmb2-af.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-af.po": {
+	"/cmb2/languages/cmb2-af.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-af.po",
+		"oAP": "/cmb2/languages/cmb2-af.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-an.mo": {
+	"/cmb2/languages/cmb2-an.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-an.mo",
+		"oAP": "/cmb2/languages/cmb2-an.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-an.po": {
+	"/cmb2/languages/cmb2-an.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-an.po",
+		"oAP": "/cmb2/languages/cmb2-an.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ar.mo": {
+	"/cmb2/languages/cmb2-ar.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ar.mo",
+		"oAP": "/cmb2/languages/cmb2-ar.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ar.po": {
+	"/cmb2/languages/cmb2-ar.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ar.po",
+		"oAP": "/cmb2/languages/cmb2-ar.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ary.mo": {
+	"/cmb2/languages/cmb2-ary.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ary.mo",
+		"oAP": "/cmb2/languages/cmb2-ary.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ary.po": {
+	"/cmb2/languages/cmb2-ary.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ary.po",
+		"oAP": "/cmb2/languages/cmb2-ary.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-as.mo": {
+	"/cmb2/languages/cmb2-as.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-as.mo",
+		"oAP": "/cmb2/languages/cmb2-as.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-as.po": {
+	"/cmb2/languages/cmb2-as.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-as.po",
+		"oAP": "/cmb2/languages/cmb2-as.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-az.mo": {
+	"/cmb2/languages/cmb2-az.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-az.mo",
+		"oAP": "/cmb2/languages/cmb2-az.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-az.po": {
+	"/cmb2/languages/cmb2-az.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-az.po",
+		"oAP": "/cmb2/languages/cmb2-az.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-be.mo": {
+	"/cmb2/languages/cmb2-be.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-be.mo",
+		"oAP": "/cmb2/languages/cmb2-be.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-be.po": {
+	"/cmb2/languages/cmb2-be.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-be.po",
+		"oAP": "/cmb2/languages/cmb2-be.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-bg.mo": {
+	"/cmb2/languages/cmb2-bg.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-bg.mo",
+		"oAP": "/cmb2/languages/cmb2-bg.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-bg.po": {
+	"/cmb2/languages/cmb2-bg.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-bg.po",
+		"oAP": "/cmb2/languages/cmb2-bg.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-bg_BG.mo": {
+	"/cmb2/languages/cmb2-bg_BG.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-bg_BG.mo",
+		"oAP": "/cmb2/languages/cmb2-bg_BG.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-bg_BG.po": {
+	"/cmb2/languages/cmb2-bg_BG.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-bg_BG.po",
+		"oAP": "/cmb2/languages/cmb2-bg_BG.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-bn_BD.mo": {
+	"/cmb2/languages/cmb2-bn_BD.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-bn_BD.mo",
+		"oAP": "/cmb2/languages/cmb2-bn_BD.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-bn_BD.po": {
+	"/cmb2/languages/cmb2-bn_BD.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-bn_BD.po",
+		"oAP": "/cmb2/languages/cmb2-bn_BD.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-br.mo": {
+	"/cmb2/languages/cmb2-br.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-br.mo",
+		"oAP": "/cmb2/languages/cmb2-br.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-br.po": {
+	"/cmb2/languages/cmb2-br.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-br.po",
+		"oAP": "/cmb2/languages/cmb2-br.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-bs.mo": {
+	"/cmb2/languages/cmb2-bs.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-bs.mo",
+		"oAP": "/cmb2/languages/cmb2-bs.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-bs.po": {
+	"/cmb2/languages/cmb2-bs.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-bs.po",
+		"oAP": "/cmb2/languages/cmb2-bs.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-bs_BA.mo": {
+	"/cmb2/languages/cmb2-bs_BA.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-bs_BA.mo",
+		"oAP": "/cmb2/languages/cmb2-bs_BA.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-bs_BA.po": {
+	"/cmb2/languages/cmb2-bs_BA.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-bs_BA.po",
+		"oAP": "/cmb2/languages/cmb2-bs_BA.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ca.mo": {
+	"/cmb2/languages/cmb2-ca.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ca.mo",
+		"oAP": "/cmb2/languages/cmb2-ca.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ca.po": {
+	"/cmb2/languages/cmb2-ca.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ca.po",
+		"oAP": "/cmb2/languages/cmb2-ca.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-co.mo": {
+	"/cmb2/languages/cmb2-co.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-co.mo",
+		"oAP": "/cmb2/languages/cmb2-co.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-co.po": {
+	"/cmb2/languages/cmb2-co.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-co.po",
+		"oAP": "/cmb2/languages/cmb2-co.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-cs_CZ.mo": {
+	"/cmb2/languages/cmb2-cs_CZ.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-cs_CZ.mo",
+		"oAP": "/cmb2/languages/cmb2-cs_CZ.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-cs_CZ.po": {
+	"/cmb2/languages/cmb2-cs_CZ.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-cs_CZ.po",
+		"oAP": "/cmb2/languages/cmb2-cs_CZ.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-cy.mo": {
+	"/cmb2/languages/cmb2-cy.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-cy.mo",
+		"oAP": "/cmb2/languages/cmb2-cy.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-cy.po": {
+	"/cmb2/languages/cmb2-cy.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-cy.po",
+		"oAP": "/cmb2/languages/cmb2-cy.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-da_DK.mo": {
+	"/cmb2/languages/cmb2-da_DK.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-da_DK.mo",
+		"oAP": "/cmb2/languages/cmb2-da_DK.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-da_DK.po": {
+	"/cmb2/languages/cmb2-da_DK.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-da_DK.po",
+		"oAP": "/cmb2/languages/cmb2-da_DK.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-de_AT.mo": {
+	"/cmb2/languages/cmb2-de_AT.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-de_AT.mo",
+		"oAP": "/cmb2/languages/cmb2-de_AT.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-de_AT.po": {
+	"/cmb2/languages/cmb2-de_AT.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-de_AT.po",
+		"oAP": "/cmb2/languages/cmb2-de_AT.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-de_CH.mo": {
+	"/cmb2/languages/cmb2-de_CH.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-de_CH.mo",
+		"oAP": "/cmb2/languages/cmb2-de_CH.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-de_CH.po": {
+	"/cmb2/languages/cmb2-de_CH.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-de_CH.po",
+		"oAP": "/cmb2/languages/cmb2-de_CH.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-de_DE.mo": {
+	"/cmb2/languages/cmb2-de_DE.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-de_DE.mo",
+		"oAP": "/cmb2/languages/cmb2-de_DE.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-de_DE.po": {
+	"/cmb2/languages/cmb2-de_DE.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-de_DE.po",
+		"oAP": "/cmb2/languages/cmb2-de_DE.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-dv.mo": {
+	"/cmb2/languages/cmb2-dv.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-dv.mo",
+		"oAP": "/cmb2/languages/cmb2-dv.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-dv.po": {
+	"/cmb2/languages/cmb2-dv.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-dv.po",
+		"oAP": "/cmb2/languages/cmb2-dv.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-el.mo": {
+	"/cmb2/languages/cmb2-el.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-el.mo",
+		"oAP": "/cmb2/languages/cmb2-el.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-el.po": {
+	"/cmb2/languages/cmb2-el.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-el.po",
+		"oAP": "/cmb2/languages/cmb2-el.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-en@pirate.mo": {
+	"/cmb2/languages/cmb2-en@pirate.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-en@pirate.mo",
+		"oAP": "/cmb2/languages/cmb2-en@pirate.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-en@pirate.po": {
+	"/cmb2/languages/cmb2-en@pirate.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-en@pirate.po",
+		"oAP": "/cmb2/languages/cmb2-en@pirate.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-en_AU.mo": {
+	"/cmb2/languages/cmb2-en_AU.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-en_AU.mo",
+		"oAP": "/cmb2/languages/cmb2-en_AU.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-en_AU.po": {
+	"/cmb2/languages/cmb2-en_AU.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-en_AU.po",
+		"oAP": "/cmb2/languages/cmb2-en_AU.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-en_CA.mo": {
+	"/cmb2/languages/cmb2-en_CA.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-en_CA.mo",
+		"oAP": "/cmb2/languages/cmb2-en_CA.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-en_CA.po": {
+	"/cmb2/languages/cmb2-en_CA.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-en_CA.po",
+		"oAP": "/cmb2/languages/cmb2-en_CA.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-en_GB.mo": {
+	"/cmb2/languages/cmb2-en_GB.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-en_GB.mo",
+		"oAP": "/cmb2/languages/cmb2-en_GB.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-en_GB.po": {
+	"/cmb2/languages/cmb2-en_GB.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-en_GB.po",
+		"oAP": "/cmb2/languages/cmb2-en_GB.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-eo.mo": {
+	"/cmb2/languages/cmb2-eo.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-eo.mo",
+		"oAP": "/cmb2/languages/cmb2-eo.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-eo.po": {
+	"/cmb2/languages/cmb2-eo.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-eo.po",
+		"oAP": "/cmb2/languages/cmb2-eo.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_AR.mo": {
+	"/cmb2/languages/cmb2-es_AR.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_AR.mo",
+		"oAP": "/cmb2/languages/cmb2-es_AR.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_AR.po": {
+	"/cmb2/languages/cmb2-es_AR.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_AR.po",
+		"oAP": "/cmb2/languages/cmb2-es_AR.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_CL.mo": {
+	"/cmb2/languages/cmb2-es_CL.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_CL.mo",
+		"oAP": "/cmb2/languages/cmb2-es_CL.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_CL.po": {
+	"/cmb2/languages/cmb2-es_CL.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_CL.po",
+		"oAP": "/cmb2/languages/cmb2-es_CL.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_CO.mo": {
+	"/cmb2/languages/cmb2-es_CO.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_CO.mo",
+		"oAP": "/cmb2/languages/cmb2-es_CO.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_CO.po": {
+	"/cmb2/languages/cmb2-es_CO.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_CO.po",
+		"oAP": "/cmb2/languages/cmb2-es_CO.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_ES.mo": {
+	"/cmb2/languages/cmb2-es_ES.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_ES.mo",
+		"oAP": "/cmb2/languages/cmb2-es_ES.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_ES.po": {
+	"/cmb2/languages/cmb2-es_ES.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_ES.po",
+		"oAP": "/cmb2/languages/cmb2-es_ES.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_MX.mo": {
+	"/cmb2/languages/cmb2-es_MX.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_MX.mo",
+		"oAP": "/cmb2/languages/cmb2-es_MX.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_MX.po": {
+	"/cmb2/languages/cmb2-es_MX.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_MX.po",
+		"oAP": "/cmb2/languages/cmb2-es_MX.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_PE.mo": {
+	"/cmb2/languages/cmb2-es_PE.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_PE.mo",
+		"oAP": "/cmb2/languages/cmb2-es_PE.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_PE.po": {
+	"/cmb2/languages/cmb2-es_PE.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_PE.po",
+		"oAP": "/cmb2/languages/cmb2-es_PE.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_VE.mo": {
+	"/cmb2/languages/cmb2-es_VE.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_VE.mo",
+		"oAP": "/cmb2/languages/cmb2-es_VE.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-es_VE.po": {
+	"/cmb2/languages/cmb2-es_VE.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-es_VE.po",
+		"oAP": "/cmb2/languages/cmb2-es_VE.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-et.mo": {
+	"/cmb2/languages/cmb2-et.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-et.mo",
+		"oAP": "/cmb2/languages/cmb2-et.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-et.po": {
+	"/cmb2/languages/cmb2-et.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-et.po",
+		"oAP": "/cmb2/languages/cmb2-et.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-eu.mo": {
+	"/cmb2/languages/cmb2-eu.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-eu.mo",
+		"oAP": "/cmb2/languages/cmb2-eu.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-eu.po": {
+	"/cmb2/languages/cmb2-eu.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-eu.po",
+		"oAP": "/cmb2/languages/cmb2-eu.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fa.mo": {
+	"/cmb2/languages/cmb2-fa.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fa.mo",
+		"oAP": "/cmb2/languages/cmb2-fa.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fa.po": {
+	"/cmb2/languages/cmb2-fa.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fa.po",
+		"oAP": "/cmb2/languages/cmb2-fa.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fa_IR.mo": {
+	"/cmb2/languages/cmb2-fa_IR.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fa_IR.mo",
+		"oAP": "/cmb2/languages/cmb2-fa_IR.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fa_IR.po": {
+	"/cmb2/languages/cmb2-fa_IR.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fa_IR.po",
+		"oAP": "/cmb2/languages/cmb2-fa_IR.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fi.mo": {
+	"/cmb2/languages/cmb2-fi.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fi.mo",
+		"oAP": "/cmb2/languages/cmb2-fi.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fi.po": {
+	"/cmb2/languages/cmb2-fi.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fi.po",
+		"oAP": "/cmb2/languages/cmb2-fi.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fo.mo": {
+	"/cmb2/languages/cmb2-fo.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fo.mo",
+		"oAP": "/cmb2/languages/cmb2-fo.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fo.po": {
+	"/cmb2/languages/cmb2-fo.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fo.po",
+		"oAP": "/cmb2/languages/cmb2-fo.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fr_BE.mo": {
+	"/cmb2/languages/cmb2-fr_BE.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fr_BE.mo",
+		"oAP": "/cmb2/languages/cmb2-fr_BE.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fr_BE.po": {
+	"/cmb2/languages/cmb2-fr_BE.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fr_BE.po",
+		"oAP": "/cmb2/languages/cmb2-fr_BE.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fr_CA.mo": {
+	"/cmb2/languages/cmb2-fr_CA.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fr_CA.mo",
+		"oAP": "/cmb2/languages/cmb2-fr_CA.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fr_CA.po": {
+	"/cmb2/languages/cmb2-fr_CA.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fr_CA.po",
+		"oAP": "/cmb2/languages/cmb2-fr_CA.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fr_FR.mo": {
+	"/cmb2/languages/cmb2-fr_FR.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fr_FR.mo",
+		"oAP": "/cmb2/languages/cmb2-fr_FR.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fr_FR.po": {
+	"/cmb2/languages/cmb2-fr_FR.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fr_FR.po",
+		"oAP": "/cmb2/languages/cmb2-fr_FR.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fy.mo": {
+	"/cmb2/languages/cmb2-fy.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fy.mo",
+		"oAP": "/cmb2/languages/cmb2-fy.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-fy.po": {
+	"/cmb2/languages/cmb2-fy.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-fy.po",
+		"oAP": "/cmb2/languages/cmb2-fy.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ga.mo": {
+	"/cmb2/languages/cmb2-ga.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ga.mo",
+		"oAP": "/cmb2/languages/cmb2-ga.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ga.po": {
+	"/cmb2/languages/cmb2-ga.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ga.po",
+		"oAP": "/cmb2/languages/cmb2-ga.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-gd.mo": {
+	"/cmb2/languages/cmb2-gd.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-gd.mo",
+		"oAP": "/cmb2/languages/cmb2-gd.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-gd.po": {
+	"/cmb2/languages/cmb2-gd.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-gd.po",
+		"oAP": "/cmb2/languages/cmb2-gd.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-gl_ES.mo": {
+	"/cmb2/languages/cmb2-gl_ES.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-gl_ES.mo",
+		"oAP": "/cmb2/languages/cmb2-gl_ES.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-gl_ES.po": {
+	"/cmb2/languages/cmb2-gl_ES.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-gl_ES.po",
+		"oAP": "/cmb2/languages/cmb2-gl_ES.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-gu_IN.mo": {
+	"/cmb2/languages/cmb2-gu_IN.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-gu_IN.mo",
+		"oAP": "/cmb2/languages/cmb2-gu_IN.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-gu_IN.po": {
+	"/cmb2/languages/cmb2-gu_IN.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-gu_IN.po",
+		"oAP": "/cmb2/languages/cmb2-gu_IN.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-he_IL.mo": {
+	"/cmb2/languages/cmb2-he_IL.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-he_IL.mo",
+		"oAP": "/cmb2/languages/cmb2-he_IL.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-he_IL.po": {
+	"/cmb2/languages/cmb2-he_IL.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-he_IL.po",
+		"oAP": "/cmb2/languages/cmb2-he_IL.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-hi_IN.mo": {
+	"/cmb2/languages/cmb2-hi_IN.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-hi_IN.mo",
+		"oAP": "/cmb2/languages/cmb2-hi_IN.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-hi_IN.po": {
+	"/cmb2/languages/cmb2-hi_IN.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-hi_IN.po",
+		"oAP": "/cmb2/languages/cmb2-hi_IN.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-hr.mo": {
+	"/cmb2/languages/cmb2-hr.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-hr.mo",
+		"oAP": "/cmb2/languages/cmb2-hr.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-hr.po": {
+	"/cmb2/languages/cmb2-hr.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-hr.po",
+		"oAP": "/cmb2/languages/cmb2-hr.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-hu_HU.mo": {
+	"/cmb2/languages/cmb2-hu_HU.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-hu_HU.mo",
+		"oAP": "/cmb2/languages/cmb2-hu_HU.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-hu_HU.po": {
+	"/cmb2/languages/cmb2-hu_HU.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-hu_HU.po",
+		"oAP": "/cmb2/languages/cmb2-hu_HU.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-hy.mo": {
+	"/cmb2/languages/cmb2-hy.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-hy.mo",
+		"oAP": "/cmb2/languages/cmb2-hy.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-hy.po": {
+	"/cmb2/languages/cmb2-hy.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-hy.po",
+		"oAP": "/cmb2/languages/cmb2-hy.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-id_ID.mo": {
+	"/cmb2/languages/cmb2-id_ID.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-id_ID.mo",
+		"oAP": "/cmb2/languages/cmb2-id_ID.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-id_ID.po": {
+	"/cmb2/languages/cmb2-id_ID.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-id_ID.po",
+		"oAP": "/cmb2/languages/cmb2-id_ID.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-is_IS.mo": {
+	"/cmb2/languages/cmb2-is_IS.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-is_IS.mo",
+		"oAP": "/cmb2/languages/cmb2-is_IS.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-is_IS.po": {
+	"/cmb2/languages/cmb2-is_IS.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-is_IS.po",
+		"oAP": "/cmb2/languages/cmb2-is_IS.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-it_IT.mo": {
+	"/cmb2/languages/cmb2-it_IT.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-it_IT.mo",
+		"oAP": "/cmb2/languages/cmb2-it_IT.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-it_IT.po": {
+	"/cmb2/languages/cmb2-it_IT.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-it_IT.po",
+		"oAP": "/cmb2/languages/cmb2-it_IT.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ja.mo": {
+	"/cmb2/languages/cmb2-ja.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ja.mo",
+		"oAP": "/cmb2/languages/cmb2-ja.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ja.po": {
+	"/cmb2/languages/cmb2-ja.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ja.po",
+		"oAP": "/cmb2/languages/cmb2-ja.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-jv.mo": {
+	"/cmb2/languages/cmb2-jv.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-jv.mo",
+		"oAP": "/cmb2/languages/cmb2-jv.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-jv.po": {
+	"/cmb2/languages/cmb2-jv.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-jv.po",
+		"oAP": "/cmb2/languages/cmb2-jv.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ka.mo": {
+	"/cmb2/languages/cmb2-ka.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ka.mo",
+		"oAP": "/cmb2/languages/cmb2-ka.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ka.po": {
+	"/cmb2/languages/cmb2-ka.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ka.po",
+		"oAP": "/cmb2/languages/cmb2-ka.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ka_GE.mo": {
+	"/cmb2/languages/cmb2-ka_GE.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ka_GE.mo",
+		"oAP": "/cmb2/languages/cmb2-ka_GE.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ka_GE.po": {
+	"/cmb2/languages/cmb2-ka_GE.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ka_GE.po",
+		"oAP": "/cmb2/languages/cmb2-ka_GE.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-kk.mo": {
+	"/cmb2/languages/cmb2-kk.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-kk.mo",
+		"oAP": "/cmb2/languages/cmb2-kk.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-kk.po": {
+	"/cmb2/languages/cmb2-kk.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-kk.po",
+		"oAP": "/cmb2/languages/cmb2-kk.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-km.mo": {
+	"/cmb2/languages/cmb2-km.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-km.mo",
+		"oAP": "/cmb2/languages/cmb2-km.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-km.po": {
+	"/cmb2/languages/cmb2-km.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-km.po",
+		"oAP": "/cmb2/languages/cmb2-km.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-kn.mo": {
+	"/cmb2/languages/cmb2-kn.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-kn.mo",
+		"oAP": "/cmb2/languages/cmb2-kn.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-kn.po": {
+	"/cmb2/languages/cmb2-kn.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-kn.po",
+		"oAP": "/cmb2/languages/cmb2-kn.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ko_KR.mo": {
+	"/cmb2/languages/cmb2-ko_KR.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ko_KR.mo",
+		"oAP": "/cmb2/languages/cmb2-ko_KR.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ko_KR.po": {
+	"/cmb2/languages/cmb2-ko_KR.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ko_KR.po",
+		"oAP": "/cmb2/languages/cmb2-ko_KR.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ku.mo": {
+	"/cmb2/languages/cmb2-ku.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ku.mo",
+		"oAP": "/cmb2/languages/cmb2-ku.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ku.po": {
+	"/cmb2/languages/cmb2-ku.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ku.po",
+		"oAP": "/cmb2/languages/cmb2-ku.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ky.mo": {
+	"/cmb2/languages/cmb2-ky.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ky.mo",
+		"oAP": "/cmb2/languages/cmb2-ky.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ky.po": {
+	"/cmb2/languages/cmb2-ky.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ky.po",
+		"oAP": "/cmb2/languages/cmb2-ky.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-lo.mo": {
+	"/cmb2/languages/cmb2-lo.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-lo.mo",
+		"oAP": "/cmb2/languages/cmb2-lo.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-lo.po": {
+	"/cmb2/languages/cmb2-lo.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-lo.po",
+		"oAP": "/cmb2/languages/cmb2-lo.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-lt_LT.mo": {
+	"/cmb2/languages/cmb2-lt_LT.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-lt_LT.mo",
+		"oAP": "/cmb2/languages/cmb2-lt_LT.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-lt_LT.po": {
+	"/cmb2/languages/cmb2-lt_LT.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-lt_LT.po",
+		"oAP": "/cmb2/languages/cmb2-lt_LT.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-lv.mo": {
+	"/cmb2/languages/cmb2-lv.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-lv.mo",
+		"oAP": "/cmb2/languages/cmb2-lv.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-lv.po": {
+	"/cmb2/languages/cmb2-lv.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-lv.po",
+		"oAP": "/cmb2/languages/cmb2-lv.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-mg.mo": {
+	"/cmb2/languages/cmb2-mg.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-mg.mo",
+		"oAP": "/cmb2/languages/cmb2-mg.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-mg.po": {
+	"/cmb2/languages/cmb2-mg.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-mg.po",
+		"oAP": "/cmb2/languages/cmb2-mg.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-mk_MK.mo": {
+	"/cmb2/languages/cmb2-mk_MK.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-mk_MK.mo",
+		"oAP": "/cmb2/languages/cmb2-mk_MK.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-mk_MK.po": {
+	"/cmb2/languages/cmb2-mk_MK.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-mk_MK.po",
+		"oAP": "/cmb2/languages/cmb2-mk_MK.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-mn.mo": {
+	"/cmb2/languages/cmb2-mn.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-mn.mo",
+		"oAP": "/cmb2/languages/cmb2-mn.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-mn.po": {
+	"/cmb2/languages/cmb2-mn.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-mn.po",
+		"oAP": "/cmb2/languages/cmb2-mn.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-mr.mo": {
+	"/cmb2/languages/cmb2-mr.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-mr.mo",
+		"oAP": "/cmb2/languages/cmb2-mr.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-mr.po": {
+	"/cmb2/languages/cmb2-mr.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-mr.po",
+		"oAP": "/cmb2/languages/cmb2-mr.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ms_MY.mo": {
+	"/cmb2/languages/cmb2-ms_MY.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ms_MY.mo",
+		"oAP": "/cmb2/languages/cmb2-ms_MY.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ms_MY.po": {
+	"/cmb2/languages/cmb2-ms_MY.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ms_MY.po",
+		"oAP": "/cmb2/languages/cmb2-ms_MY.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-my_MM.mo": {
+	"/cmb2/languages/cmb2-my_MM.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-my_MM.mo",
+		"oAP": "/cmb2/languages/cmb2-my_MM.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-my_MM.po": {
+	"/cmb2/languages/cmb2-my_MM.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-my_MM.po",
+		"oAP": "/cmb2/languages/cmb2-my_MM.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-nb_NO.mo": {
+	"/cmb2/languages/cmb2-nb_NO.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-nb_NO.mo",
+		"oAP": "/cmb2/languages/cmb2-nb_NO.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-nb_NO.po": {
+	"/cmb2/languages/cmb2-nb_NO.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-nb_NO.po",
+		"oAP": "/cmb2/languages/cmb2-nb_NO.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ne_NP.mo": {
+	"/cmb2/languages/cmb2-ne_NP.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ne_NP.mo",
+		"oAP": "/cmb2/languages/cmb2-ne_NP.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ne_NP.po": {
+	"/cmb2/languages/cmb2-ne_NP.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ne_NP.po",
+		"oAP": "/cmb2/languages/cmb2-ne_NP.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-nl_BE.mo": {
+	"/cmb2/languages/cmb2-nl_BE.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-nl_BE.mo",
+		"oAP": "/cmb2/languages/cmb2-nl_BE.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-nl_BE.po": {
+	"/cmb2/languages/cmb2-nl_BE.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-nl_BE.po",
+		"oAP": "/cmb2/languages/cmb2-nl_BE.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-nl_NL.mo": {
+	"/cmb2/languages/cmb2-nl_NL.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-nl_NL.mo",
+		"oAP": "/cmb2/languages/cmb2-nl_NL.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-nl_NL.po": {
+	"/cmb2/languages/cmb2-nl_NL.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-nl_NL.po",
+		"oAP": "/cmb2/languages/cmb2-nl_NL.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-nn_NO.mo": {
+	"/cmb2/languages/cmb2-nn_NO.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-nn_NO.mo",
+		"oAP": "/cmb2/languages/cmb2-nn_NO.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-nn_NO.po": {
+	"/cmb2/languages/cmb2-nn_NO.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-nn_NO.po",
+		"oAP": "/cmb2/languages/cmb2-nn_NO.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-oc.mo": {
+	"/cmb2/languages/cmb2-oc.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-oc.mo",
+		"oAP": "/cmb2/languages/cmb2-oc.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-oc.po": {
+	"/cmb2/languages/cmb2-oc.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-oc.po",
+		"oAP": "/cmb2/languages/cmb2-oc.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-os.mo": {
+	"/cmb2/languages/cmb2-os.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-os.mo",
+		"oAP": "/cmb2/languages/cmb2-os.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-os.po": {
+	"/cmb2/languages/cmb2-os.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-os.po",
+		"oAP": "/cmb2/languages/cmb2-os.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-pap.mo": {
+	"/cmb2/languages/cmb2-pap.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-pap.mo",
+		"oAP": "/cmb2/languages/cmb2-pap.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-pap.po": {
+	"/cmb2/languages/cmb2-pap.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-pap.po",
+		"oAP": "/cmb2/languages/cmb2-pap.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-pl_PL.mo": {
+	"/cmb2/languages/cmb2-pl_PL.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-pl_PL.mo",
+		"oAP": "/cmb2/languages/cmb2-pl_PL.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-pl_PL.po": {
+	"/cmb2/languages/cmb2-pl_PL.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-pl_PL.po",
+		"oAP": "/cmb2/languages/cmb2-pl_PL.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ps.mo": {
+	"/cmb2/languages/cmb2-ps.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ps.mo",
+		"oAP": "/cmb2/languages/cmb2-ps.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ps.po": {
+	"/cmb2/languages/cmb2-ps.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ps.po",
+		"oAP": "/cmb2/languages/cmb2-ps.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-pt_BR.mo": {
+	"/cmb2/languages/cmb2-pt_BR.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-pt_BR.mo",
+		"oAP": "/cmb2/languages/cmb2-pt_BR.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-pt_BR.po": {
+	"/cmb2/languages/cmb2-pt_BR.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-pt_BR.po",
+		"oAP": "/cmb2/languages/cmb2-pt_BR.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-pt_PT.mo": {
+	"/cmb2/languages/cmb2-pt_PT.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-pt_PT.mo",
+		"oAP": "/cmb2/languages/cmb2-pt_PT.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-pt_PT.po": {
+	"/cmb2/languages/cmb2-pt_PT.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-pt_PT.po",
+		"oAP": "/cmb2/languages/cmb2-pt_PT.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ro_RO.mo": {
+	"/cmb2/languages/cmb2-ro_RO.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ro_RO.mo",
+		"oAP": "/cmb2/languages/cmb2-ro_RO.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ro_RO.po": {
+	"/cmb2/languages/cmb2-ro_RO.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ro_RO.po",
+		"oAP": "/cmb2/languages/cmb2-ro_RO.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ru_RU.mo": {
+	"/cmb2/languages/cmb2-ru_RU.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ru_RU.mo",
+		"oAP": "/cmb2/languages/cmb2-ru_RU.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ru_RU.po": {
+	"/cmb2/languages/cmb2-ru_RU.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ru_RU.po",
+		"oAP": "/cmb2/languages/cmb2-ru_RU.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sa.mo": {
+	"/cmb2/languages/cmb2-sa.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sa.mo",
+		"oAP": "/cmb2/languages/cmb2-sa.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sa.po": {
+	"/cmb2/languages/cmb2-sa.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sa.po",
+		"oAP": "/cmb2/languages/cmb2-sa.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sah.mo": {
+	"/cmb2/languages/cmb2-sah.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sah.mo",
+		"oAP": "/cmb2/languages/cmb2-sah.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sah.po": {
+	"/cmb2/languages/cmb2-sah.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sah.po",
+		"oAP": "/cmb2/languages/cmb2-sah.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-si_LK.mo": {
+	"/cmb2/languages/cmb2-si_LK.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-si_LK.mo",
+		"oAP": "/cmb2/languages/cmb2-si_LK.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-si_LK.po": {
+	"/cmb2/languages/cmb2-si_LK.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-si_LK.po",
+		"oAP": "/cmb2/languages/cmb2-si_LK.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sk_SK.mo": {
+	"/cmb2/languages/cmb2-sk_SK.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sk_SK.mo",
+		"oAP": "/cmb2/languages/cmb2-sk_SK.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sk_SK.po": {
+	"/cmb2/languages/cmb2-sk_SK.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sk_SK.po",
+		"oAP": "/cmb2/languages/cmb2-sk_SK.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sl_SI.mo": {
+	"/cmb2/languages/cmb2-sl_SI.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sl_SI.mo",
+		"oAP": "/cmb2/languages/cmb2-sl_SI.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sl_SI.po": {
+	"/cmb2/languages/cmb2-sl_SI.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sl_SI.po",
+		"oAP": "/cmb2/languages/cmb2-sl_SI.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-so.mo": {
+	"/cmb2/languages/cmb2-so.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-so.mo",
+		"oAP": "/cmb2/languages/cmb2-so.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-so.po": {
+	"/cmb2/languages/cmb2-so.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-so.po",
+		"oAP": "/cmb2/languages/cmb2-so.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sq.mo": {
+	"/cmb2/languages/cmb2-sq.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sq.mo",
+		"oAP": "/cmb2/languages/cmb2-sq.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sq.po": {
+	"/cmb2/languages/cmb2-sq.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sq.po",
+		"oAP": "/cmb2/languages/cmb2-sq.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sr_RS.mo": {
+	"/cmb2/languages/cmb2-sr_RS.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sr_RS.mo",
+		"oAP": "/cmb2/languages/cmb2-sr_RS.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sr_RS.po": {
+	"/cmb2/languages/cmb2-sr_RS.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sr_RS.po",
+		"oAP": "/cmb2/languages/cmb2-sr_RS.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-su.mo": {
+	"/cmb2/languages/cmb2-su.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-su.mo",
+		"oAP": "/cmb2/languages/cmb2-su.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-su.po": {
+	"/cmb2/languages/cmb2-su.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-su.po",
+		"oAP": "/cmb2/languages/cmb2-su.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sv_SE.mo": {
+	"/cmb2/languages/cmb2-sv_SE.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sv_SE.mo",
+		"oAP": "/cmb2/languages/cmb2-sv_SE.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sv_SE.po": {
+	"/cmb2/languages/cmb2-sv_SE.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sv_SE.po",
+		"oAP": "/cmb2/languages/cmb2-sv_SE.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sw.mo": {
+	"/cmb2/languages/cmb2-sw.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sw.mo",
+		"oAP": "/cmb2/languages/cmb2-sw.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-sw.po": {
+	"/cmb2/languages/cmb2-sw.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-sw.po",
+		"oAP": "/cmb2/languages/cmb2-sw.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ta_IN.mo": {
+	"/cmb2/languages/cmb2-ta_IN.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ta_IN.mo",
+		"oAP": "/cmb2/languages/cmb2-ta_IN.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ta_IN.po": {
+	"/cmb2/languages/cmb2-ta_IN.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ta_IN.po",
+		"oAP": "/cmb2/languages/cmb2-ta_IN.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ta_LK.mo": {
+	"/cmb2/languages/cmb2-ta_LK.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ta_LK.mo",
+		"oAP": "/cmb2/languages/cmb2-ta_LK.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ta_LK.po": {
+	"/cmb2/languages/cmb2-ta_LK.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ta_LK.po",
+		"oAP": "/cmb2/languages/cmb2-ta_LK.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-te.mo": {
+	"/cmb2/languages/cmb2-te.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-te.mo",
+		"oAP": "/cmb2/languages/cmb2-te.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-te.po": {
+	"/cmb2/languages/cmb2-te.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-te.po",
+		"oAP": "/cmb2/languages/cmb2-te.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-tg.mo": {
+	"/cmb2/languages/cmb2-tg.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-tg.mo",
+		"oAP": "/cmb2/languages/cmb2-tg.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-tg.po": {
+	"/cmb2/languages/cmb2-tg.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-tg.po",
+		"oAP": "/cmb2/languages/cmb2-tg.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-th.mo": {
+	"/cmb2/languages/cmb2-th.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-th.mo",
+		"oAP": "/cmb2/languages/cmb2-th.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-th.po": {
+	"/cmb2/languages/cmb2-th.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-th.po",
+		"oAP": "/cmb2/languages/cmb2-th.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-tk_TM.mo": {
+	"/cmb2/languages/cmb2-tk_TM.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-tk_TM.mo",
+		"oAP": "/cmb2/languages/cmb2-tk_TM.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-tk_TM.po": {
+	"/cmb2/languages/cmb2-tk_TM.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-tk_TM.po",
+		"oAP": "/cmb2/languages/cmb2-tk_TM.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-tl.mo": {
+	"/cmb2/languages/cmb2-tl.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-tl.mo",
+		"oAP": "/cmb2/languages/cmb2-tl.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-tl.po": {
+	"/cmb2/languages/cmb2-tl.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-tl.po",
+		"oAP": "/cmb2/languages/cmb2-tl.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-tr_TR.mo": {
+	"/cmb2/languages/cmb2-tr_TR.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-tr_TR.mo",
+		"oAP": "/cmb2/languages/cmb2-tr_TR.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-tr_TR.po": {
+	"/cmb2/languages/cmb2-tr_TR.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-tr_TR.po",
+		"oAP": "/cmb2/languages/cmb2-tr_TR.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-tzm.mo": {
+	"/cmb2/languages/cmb2-tzm.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-tzm.mo",
+		"oAP": "/cmb2/languages/cmb2-tzm.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-tzm.po": {
+	"/cmb2/languages/cmb2-tzm.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-tzm.po",
+		"oAP": "/cmb2/languages/cmb2-tzm.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ug.mo": {
+	"/cmb2/languages/cmb2-ug.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ug.mo",
+		"oAP": "/cmb2/languages/cmb2-ug.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ug.po": {
+	"/cmb2/languages/cmb2-ug.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ug.po",
+		"oAP": "/cmb2/languages/cmb2-ug.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-uk.mo": {
+	"/cmb2/languages/cmb2-uk.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-uk.mo",
+		"oAP": "/cmb2/languages/cmb2-uk.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-uk.po": {
+	"/cmb2/languages/cmb2-uk.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-uk.po",
+		"oAP": "/cmb2/languages/cmb2-uk.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ur.mo": {
+	"/cmb2/languages/cmb2-ur.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ur.mo",
+		"oAP": "/cmb2/languages/cmb2-ur.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ur.po": {
+	"/cmb2/languages/cmb2-ur.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ur.po",
+		"oAP": "/cmb2/languages/cmb2-ur.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ur_PK.mo": {
+	"/cmb2/languages/cmb2-ur_PK.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ur_PK.mo",
+		"oAP": "/cmb2/languages/cmb2-ur_PK.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-ur_PK.po": {
+	"/cmb2/languages/cmb2-ur_PK.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-ur_PK.po",
+		"oAP": "/cmb2/languages/cmb2-ur_PK.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-uz.mo": {
+	"/cmb2/languages/cmb2-uz.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-uz.mo",
+		"oAP": "/cmb2/languages/cmb2-uz.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-uz.po": {
+	"/cmb2/languages/cmb2-uz.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-uz.po",
+		"oAP": "/cmb2/languages/cmb2-uz.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-vi.mo": {
+	"/cmb2/languages/cmb2-vi.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-vi.mo",
+		"oAP": "/cmb2/languages/cmb2-vi.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-vi.po": {
+	"/cmb2/languages/cmb2-vi.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-vi.po",
+		"oAP": "/cmb2/languages/cmb2-vi.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-zh_CN.mo": {
+	"/cmb2/languages/cmb2-zh_CN.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-zh_CN.mo",
+		"oAP": "/cmb2/languages/cmb2-zh_CN.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-zh_CN.po": {
+	"/cmb2/languages/cmb2-zh_CN.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-zh_CN.po",
+		"oAP": "/cmb2/languages/cmb2-zh_CN.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-zh_HK.mo": {
+	"/cmb2/languages/cmb2-zh_HK.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-zh_HK.mo",
+		"oAP": "/cmb2/languages/cmb2-zh_HK.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-zh_HK.po": {
+	"/cmb2/languages/cmb2-zh_HK.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-zh_HK.po",
+		"oAP": "/cmb2/languages/cmb2-zh_HK.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-zh_TW.mo": {
+	"/cmb2/languages/cmb2-zh_TW.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-zh_TW.mo",
+		"oAP": "/cmb2/languages/cmb2-zh_TW.mo",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2-zh_TW.po": {
+	"/cmb2/languages/cmb2-zh_TW.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2-zh_TW.po",
+		"oAP": "/cmb2/languages/cmb2-zh_TW.po",
 		"oF": 0
 		},
-	"\/cmb2\/languages\/cmb2.pot": {
+	"/cmb2/languages/cmb2.pot": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/languages\/cmb2.pot",
+		"oAP": "/cmb2/languages/cmb2.pot",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/bin\/after-run-wp-unit-tests.sh": {
+	"/cmb2/tests/bin/after-run-wp-unit-tests.sh": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/bin\/after-run-wp-unit-tests.sh",
+		"oAP": "/cmb2/tests/bin/after-run-wp-unit-tests.sh",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/bin\/install-php-phpunit.sh": {
+	"/cmb2/tests/bin/install-php-phpunit.sh": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/bin\/install-php-phpunit.sh",
+		"oAP": "/cmb2/tests/bin/install-php-phpunit.sh",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/bin\/install-wp-tests.sh": {
+	"/cmb2/tests/bin/install-wp-tests.sh": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/bin\/install-wp-tests.sh",
+		"oAP": "/cmb2/tests/bin/install-wp-tests.sh",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/bin\/patches\/node.patch": {
+	"/cmb2/tests/bin/patches/node.patch": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/bin\/patches\/node.patch",
+		"oAP": "/cmb2/tests/bin/patches/node.patch",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/bin\/patches\/openssl.patch": {
+	"/cmb2/tests/bin/patches/openssl.patch": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/bin\/patches\/openssl.patch",
+		"oAP": "/cmb2/tests/bin/patches/openssl.patch",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/bin\/patches\/README.md": {
+	"/cmb2/tests/bin/patches/README.md": {
 		"cB": 0,
 		"cS": 0,
 		"eF": 1,
@@ -2885,7 +2885,7 @@
 		"eSQ": 1,
 		"ft": 4096,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/bin\/patches\/README.html",
+		"oAP": "/cmb2/tests/bin/patches/README.html",
 		"oF": 0,
 		"oFM": 0,
 		"oS": 0,
@@ -2894,53 +2894,53 @@
 		"rFN": 0,
 		"uCM": 0
 		},
-	"\/cmb2\/tests\/bin\/run-wp-unit-tests.sh": {
+	"/cmb2/tests/bin/run-wp-unit-tests.sh": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/bin\/run-wp-unit-tests.sh",
+		"oAP": "/cmb2/tests/bin/run-wp-unit-tests.sh",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/bootstrap.php": {
+	"/cmb2/tests/bootstrap.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/bootstrap.php",
+		"oAP": "/cmb2/tests/bootstrap.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/cmb-rest-tests-base.php": {
+	"/cmb2/tests/cmb-rest-tests-base.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/cmb-rest-tests-base.php",
+		"oAP": "/cmb2/tests/cmb-rest-tests-base.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/cmb-tests-base.php": {
+	"/cmb2/tests/cmb-tests-base.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/cmb-tests-base.php",
+		"oAP": "/cmb2/tests/cmb-tests-base.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/data\/images\/test-image.jpg": {
+	"/cmb2/tests/data/images/test-image.jpg": {
 		"ft": 16384,
 		"iS": 2028,
 		"jF": 0,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/data\/images\/test-image.jpg",
+		"oAP": "/cmb2/tests/data/images/test-image.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 100
 		},
-	"\/cmb2\/tests\/index.php": {
+	"/cmb2/tests/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/index.php",
+		"oAP": "/cmb2/tests/index.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/README.md": {
+	"/cmb2/tests/README.md": {
 		"cB": 0,
 		"cS": 0,
 		"eF": 1,
@@ -2949,7 +2949,7 @@
 		"eSQ": 1,
 		"ft": 4096,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/README.html",
+		"oAP": "/cmb2/tests/README.html",
 		"oF": 0,
 		"oFM": 0,
 		"oS": 0,
@@ -2958,226 +2958,226 @@
 		"rFN": 0,
 		"uCM": 0
 		},
-	"\/cmb2\/tests\/test-cmb-ajax.php": {
+	"/cmb2/tests/test-cmb-ajax.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/test-cmb-ajax.php",
+		"oAP": "/cmb2/tests/test-cmb-ajax.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/test-cmb-core.php": {
+	"/cmb2/tests/test-cmb-core.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/test-cmb-core.php",
+		"oAP": "/cmb2/tests/test-cmb-core.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/test-cmb-field.php": {
+	"/cmb2/tests/test-cmb-field.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/test-cmb-field.php",
+		"oAP": "/cmb2/tests/test-cmb-field.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/test-cmb-options.php": {
+	"/cmb2/tests/test-cmb-options.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/test-cmb-options.php",
+		"oAP": "/cmb2/tests/test-cmb-options.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/test-cmb-rest-controllers.php": {
+	"/cmb2/tests/test-cmb-rest-controllers.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/test-cmb-rest-controllers.php",
+		"oAP": "/cmb2/tests/test-cmb-rest-controllers.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/test-cmb-rest-registered-fields.php": {
+	"/cmb2/tests/test-cmb-rest-registered-fields.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/test-cmb-rest-registered-fields.php",
+		"oAP": "/cmb2/tests/test-cmb-rest-registered-fields.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/test-cmb-rest.php": {
+	"/cmb2/tests/test-cmb-rest.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/test-cmb-rest.php",
+		"oAP": "/cmb2/tests/test-cmb-rest.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/test-cmb-types-base.php": {
+	"/cmb2/tests/test-cmb-types-base.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/test-cmb-types-base.php",
+		"oAP": "/cmb2/tests/test-cmb-types-base.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/test-cmb-types-display.php": {
+	"/cmb2/tests/test-cmb-types-display.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/test-cmb-types-display.php",
+		"oAP": "/cmb2/tests/test-cmb-types-display.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/test-cmb-types.php": {
+	"/cmb2/tests/test-cmb-types.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/test-cmb-types.php",
+		"oAP": "/cmb2/tests/test-cmb-types.php",
 		"oF": 0
 		},
-	"\/cmb2\/tests\/test-cmb-utils.php": {
+	"/cmb2/tests/test-cmb-utils.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/cmb2\/tests\/test-cmb-utils.php",
+		"oAP": "/cmb2/tests/test-cmb-utils.php",
 		"oF": 0
 		},
-	"\/deleteme.php": {
+	"/deleteme.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/deleteme.php",
+		"oAP": "/deleteme.php",
 		"oF": 0
 		},
-	"\/distribute.sh": {
+	"/distribute.sh": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/distribute.sh",
+		"oAP": "/distribute.sh",
 		"oF": 0
 		},
-	"\/gc-maturityscore.php": {
+	"/gc-maturityscore.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/gc-maturityscore.php",
+		"oAP": "/gc-maturityscore.php",
 		"oF": 0
 		},
-	"\/inc\/cmb2-check-required-fields.php": {
+	"/inc/cmb2-check-required-fields.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/inc\/cmb2-check-required-fields.php",
+		"oAP": "/inc/cmb2-check-required-fields.php",
 		"oF": 0
 		},
-	"\/inc\/gc-maturity.systemcheck.class.php": {
+	"/inc/gc-maturity.systemcheck.class.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/inc\/gc-maturity.systemcheck.class.php",
+		"oAP": "/inc/gc-maturity.systemcheck.class.php",
 		"oF": 0
 		},
-	"\/inc\/index.php": {
+	"/inc/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/inc\/index.php",
+		"oAP": "/inc/index.php",
 		"oF": 0
 		},
-	"\/languages\/gcmaturity-translate-nl_NL.mo": {
+	"/languages/gcmaturity-translate-nl_NL.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 1,
-		"oAP": "\/languages\/gcmaturity-translate-nl_NL.mo",
+		"oAP": "/languages/gcmaturity-translate-nl_NL.mo",
 		"oF": 1
 		},
-	"\/languages\/gcmaturity-translate-nl_NL.po": {
+	"/languages/gcmaturity-translate-nl_NL.po": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 1,
-		"oAP": "\/languages\/gcmaturity-translate-nl_NL.po",
+		"oAP": "/languages/gcmaturity-translate-nl_NL.po",
 		"oF": 1
 		},
-	"\/languages\/gcmaturity-translate.pot": {
+	"/languages/gcmaturity-translate.pot": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 1,
-		"oAP": "\/languages\/gcmaturity-translate.pot",
+		"oAP": "/languages/gcmaturity-translate.pot",
 		"oF": 1
 		},
-	"\/languages\/index.php": {
+	"/languages/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/languages\/index.php",
+		"oAP": "/languages/index.php",
 		"oF": 0
 		},
-	"\/less\/01-sizes-colors.less": {
+	"/less/01-sizes-colors.less": {
 		"aP": 0,
 		"bl": 0,
-		"dJ": 0,
+		"eJ": 0,
 		"ft": 1,
 		"ie": 1,
 		"iI": 0,
 		"ma": 1,
+		"mS": 0,
 		"oA": 1,
-		"oAP": "\/css\/01-sizes-colors.css",
+		"oAP": "/css/01-sizes-colors.css",
 		"oF": 0,
 		"oS": 0,
-		"rU": 0,
+		"rwU": 0,
 		"sI": 0,
-		"sM": 0,
 		"sU": 0
 		},
-	"\/less\/gc-maturityscore-admin.less": {
+	"/less/gc-maturityscore-admin.less": {
 		"aP": 1,
 		"bl": 1,
-		"dJ": 0,
+		"eJ": 0,
 		"ft": 1,
 		"ie": 1,
 		"iI": 0,
 		"ma": 1,
+		"mS": 0,
 		"oA": 0,
-		"oAP": "\/assets\/css\/gc-maturityscore-admin.css",
+		"oAP": "/assets/css/gc-maturityscore-admin.css",
 		"oF": 2,
 		"oS": 1,
-		"rU": 0,
+		"rwU": 0,
 		"sI": 1,
-		"sM": 1,
 		"sU": 1
 		},
-	"\/less\/gc-maturityscore.less": {
+	"/less/gc-maturityscore.less": {
 		"aP": 1,
 		"bl": 1,
-		"dJ": 0,
+		"eJ": 0,
 		"ft": 1,
 		"ie": 1,
 		"iI": 0,
 		"ma": 1,
+		"mS": 0,
 		"oA": 0,
-		"oAP": "\/assets\/css\/gc-maturityscore.css",
+		"oAP": "/assets/css/gc-maturityscore.css",
 		"oF": 2,
 		"oS": 1,
-		"rU": 0,
+		"rwU": 0,
 		"sI": 1,
-		"sM": 1,
 		"sU": 1
 		},
-	"\/less\/index.php": {
+	"/less/index.php": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/less\/index.php",
+		"oAP": "/less/index.php",
 		"oF": 0
 		},
-	"\/LICENSE": {
+	"/LICENSE": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/LICENSE",
+		"oAP": "/LICENSE",
 		"oF": 0
 		},
-	"\/README.html": {
+	"/README.html": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/README.html",
+		"oAP": "/README.html",
 		"oF": 0
 		},
-	"\/README.md": {
+	"/README.md": {
 		"cB": 0,
 		"cS": 0,
 		"eF": 1,
@@ -3186,7 +3186,7 @@
 		"eSQ": 1,
 		"ft": 4096,
 		"oA": 0,
-		"oAP": "\/README.html",
+		"oAP": "/README.html",
 		"oF": 0,
 		"oFM": 0,
 		"oS": 0,
@@ -3195,60 +3195,60 @@
 		"rFN": 0,
 		"uCM": 0
 		},
-	"\/snip\/snip1.txt": {
+	"/snip/snip1.txt": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/snip\/snip1.txt",
+		"oAP": "/snip/snip1.txt",
 		"oF": 0
 		},
-	"\/snip\/snip2.txt": {
+	"/snip/snip2.txt": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/snip\/snip2.txt",
+		"oAP": "/snip/snip2.txt",
 		"oF": 0
 		},
-	"\/snip\/snip3.txt": {
+	"/snip/snip3.txt": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/snip\/snip3.txt",
+		"oAP": "/snip/snip3.txt",
 		"oF": 0
 		},
-	"\/snip\/snip4.txt": {
+	"/snip/snip4.txt": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/snip\/snip4.txt",
+		"oAP": "/snip/snip4.txt",
 		"oF": 0
 		},
-	"\/snip\/snip5.txt": {
+	"/snip/snip5.txt": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/snip\/snip5.txt",
+		"oAP": "/snip/snip5.txt",
 		"oF": 0
 		},
-	"\/snip\/snip6.txt": {
+	"/snip/snip6.txt": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/snip\/snip6.txt",
+		"oAP": "/snip/snip6.txt",
 		"oF": 0
 		},
-	"\/snip\/snip7.txt": {
+	"/snip/snip7.txt": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/snip\/snip7.txt",
+		"oAP": "/snip/snip7.txt",
 		"oF": 0
 		},
-	"\/snip\/snip8.txt": {
+	"/snip/snip8.txt": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/snip\/snip8.txt",
+		"oAP": "/snip/snip8.txt",
 		"oF": 0
 		}
 	},
@@ -3258,28 +3258,28 @@
 		"name": "Hook #1",
 		"predicateDataBase64Encoded": "YnBsaXN0MDDUAQIDBAUGYmNYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QFgcIDxQcJicqMTU6Oz5CRktMT1VZXV9VJG51bGzTCQoLDA0OXxAXTlNDb21wb3VuZFByZWRpY2F0ZVR5cGVfEA9OU1N1YnByZWRpY2F0ZXNWJGNsYXNzEAKAAoAV0hALERNaTlMub2JqZWN0c6ESgAOAFNQLFRYXGBkaG18QEU5TUmlnaHRFeHByZXNzaW9uXxAQTlNMZWZ0RXhwcmVzc2lvbl8QE05TUHJlZGljYXRlT3BlcmF0b3KAE4AOgASAEdUdHh8gCyEiIyQlWU5TT3BlcmFuZF5OU1NlbGVjdG9yTmFtZV8QEE5TRXhwcmVzc2lvblR5cGVbTlNBcmd1bWVudHOABoAFEAOACIANXHZhbHVlRm9yS2V5OtIfCygpEAGAB9IrLC0uWiRjbGFzc25hbWVYJGNsYXNzZXNfEBBOU1NlbGZFeHByZXNzaW9uoy0vMFxOU0V4cHJlc3Npb25YTlNPYmplY3TSEAsyNKEzgAmADNMLHzY3ODlZTlNLZXlQYXRogAsQCoAKXWlucHV0RnVsbFBhdGjSKyw8PV8QHE5TS2V5UGF0aFNwZWNpZmllckV4cHJlc3Npb26jPC8w0issP0BeTlNNdXRhYmxlQXJyYXmjP0EwV05TQXJyYXnSKyxDRF8QE05TS2V5UGF0aEV4cHJlc3Npb26kQ0UvMF8QFE5TRnVuY3Rpb25FeHByZXNzaW9u00cfC0hJSl8QD05TQ29uc3RhbnRWYWx1ZYAPEACAEF8QJElDVFUtLS1HQy12b2x3YXNzZW5oZWlkc3Njb3JlLXBsdWdpbtIrLE1OXxAZTlNDb25zdGFudFZhbHVlRXhwcmVzc2lvbqNNLzDUC1BRUlNJKFRaTlNNb2RpZmllcldOU0ZsYWdzXk5TT3BlcmF0b3JUeXBlgBIQY9IrLFZXXxAVTlNJblByZWRpY2F0ZU9wZXJhdG9yo1ZYMF8QE05TUHJlZGljYXRlT3BlcmF0b3LSKyxaW18QFU5TQ29tcGFyaXNvblByZWRpY2F0ZaNaXDBbTlNQcmVkaWNhdGXSKyxBXqJBMNIrLGBhXxATTlNDb21wb3VuZFByZWRpY2F0ZaNgXDBfEA9OU0tleWVkQXJjaGl2ZXLRZGVUcm9vdIABAAgAEQAaACMALQAyADcAUABWAF0AdwCJAJAAkgCUAJYAmwCmAKgAqgCsALUAyQDcAPIA9AD2APgA+gEFAQ8BHgExAT0BPwFBAUMBRQFHAVQBWQFbAV0BYgFtAXYBiQGNAZoBowGoAaoBrAGuAbUBvwHBAcMBxQHTAdgB9wH7AgACDwITAhsCIAI2AjsCUgJZAmsCbQJvAnECmAKdArkCvQLGAtEC2QLoAuoC7ALxAwkDDQMjAygDQANEA1ADVQNYA10DcwN3A4kDjAORAAAAAAAAAgEAAAAAAAAAZgAAAAAAAAAAAAAAAAAAA5M=",
 		"runOrder": 0,
-		"scriptSourceString": "sh '\/shared-paul-files\/Webs\/git-repos\/ICTU---GC-volwassenheidsscore-plugin\/distribute.sh' &>\/dev\/null",
+		"scriptSourceString": "sh '/shared-paul-files/Webs/git-repos/ICTU---GC-volwassenheidsscore-plugin/distribute.sh' &>/dev/null",
 		"scriptType": 1,
 		"uuidString": "EC6EA358-7243-46A4-B57C-10A6CBC61F94"
 		}
 	],
 "manualImportLinks": {
-	"\/assets\/js\/functions-frontend.js": [
+	"/assets/js/functions-frontend.js": [
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/amcharts.js",
+			"linkedFileAbbreviatedPath": "/assets/js/amcharts.js",
 			"position": 0,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/radar.js",
+			"linkedFileAbbreviatedPath": "/assets/js/radar.js",
 			"position": 1,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/details-element-polyfill.js",
+			"linkedFileAbbreviatedPath": "/assets/js/details-element-polyfill.js",
 			"position": 2,
 			"type": 0
 			}
@@ -3289,7 +3289,7 @@
 	"creationDate": 550571693,
 	"displayValue": "ICTU volwassenheidsscore-plugin",
 	"displayValueWasSetByUser": 1,
-	"iconImageName": "\/assets\/images\/gc-unicorn.jpg",
+	"iconImageName": "/assets/images/gc-unicorn.jpg",
 	"iconImageWasSetByUser": 0
 	},
 "projectSettings": {
@@ -3297,141 +3297,94 @@
 	"alwaysUseExternalServer": 1,
 	"animateCSSInjections": 1,
 	"autoBuildNewItems": 1,
-	"autoprefixerBrowserString": "> 1%, last 2 versions, Firefox ESR, Opera 12.1",
 	"autoprefixerEnableIEGrid": 0,
+	"babel7PresetType": 1,
+	"babelAllowRCFiles": 0,
 	"babelAuxiliaryCommentAfter": "",
 	"babelAuxiliaryCommentBefore": "",
-	"babelConfigFileHandlingType": 0,
+	"babelConfigType": 0,
 	"babelCustomPluginsList": "",
 	"babelCustomPresetsList": "",
 	"babelInsertModuleIDs": 0,
 	"babelModuleID": "",
 	"babelNoComments": 0,
 	"babelPlugins": {
+		"arrow-functions": {
+			"active": 0
+			},
 		"async-generator-functions": {
 			"active": 0
 			},
 		"async-to-generator": {
 			"active": 0
 			},
-		"async-to-module-method": {
+		"block-scoped-functions": {
+			"active": 0
+			},
+		"block-scoping": {
 			"active": 0
 			},
 		"class-properties": {
 			"active": 0
 			},
+		"classes": {
+			"active": 0
+			},
+		"computed-properties": {
+			"active": 0
+			},
 		"decorators": {
 			"active": 0
 			},
-		"decorators-legacy": {
+		"destructuring": {
 			"active": 0
 			},
 		"do-expressions": {
 			"active": 0
 			},
-		"es2015-arrow-functions": {
+		"dotall-regex": {
 			"active": 0
 			},
-		"es2015-block-scoped-functions": {
-			"active": 0
-			},
-		"es2015-block-scoping": {
-			"active": 0
-			},
-		"es2015-classes": {
-			"active": 0
-			},
-		"es2015-computed-properties": {
-			"active": 0
-			},
-		"es2015-constants": {
-			"active": 0
-			},
-		"es2015-destructuring": {
-			"active": 0
-			},
-		"es2015-duplicate-keys": {
-			"active": 0
-			},
-		"es2015-for-of": {
-			"active": 0
-			},
-		"es2015-function-name": {
-			"active": 0
-			},
-		"es2015-literals": {
-			"active": 0
-			},
-		"es2015-modules-amd": {
-			"active": 0
-			},
-		"es2015-modules-commonjs": {
-			"active": 0
-			},
-		"es2015-modules-systemjs": {
-			"active": 0
-			},
-		"es2015-modules-umd": {
-			"active": 0
-			},
-		"es2015-object-super": {
-			"active": 0
-			},
-		"es2015-parameters": {
-			"active": 0
-			},
-		"es2015-shorthand-properties": {
-			"active": 0
-			},
-		"es2015-spread": {
-			"active": 0
-			},
-		"es2015-sticky-regex": {
-			"active": 0
-			},
-		"es2015-template-literals": {
-			"active": 0
-			},
-		"es2015-typeof-symbol": {
-			"active": 0
-			},
-		"es2015-unicode-regex": {
-			"active": 0
-			},
-		"es3-member-expression-literals": {
-			"active": 0
-			},
-		"es3-property-literals": {
-			"active": 0
-			},
-		"es5-property-mutators": {
-			"active": 0
-			},
-		"eval": {
+		"duplicate-keys": {
 			"active": 0
 			},
 		"exponentiation-operator": {
 			"active": 0
 			},
-		"export-extensions": {
+		"export-default-from": {
+			"active": 0
+			},
+		"export-namespace-from": {
 			"active": 0
 			},
 		"external-helpers": {
 			"active": 0
 			},
-		"flow-comments": {
+		"flow-strip-types": {
 			"active": 0
 			},
-		"flow-strip-types": {
+		"for-of": {
 			"active": 0
 			},
 		"function-bind": {
 			"active": 0
 			},
-		"inline-environment-variables": {
+		"function-name": {
+			"active": 0
+			},
+		"function-sent": {
+			"active": 0
+			},
+		"instanceof": {
 			"active": 0
 			},
 		"jscript": {
+			"active": 0
+			},
+		"literals": {
+			"active": 0
+			},
+		"logical-assignment-operators": {
 			"active": 0
 			},
 		"member-expression-literals": {
@@ -3443,7 +3396,28 @@
 		"minify-booleans": {
 			"active": 0
 			},
+		"modules-amd": {
+			"active": 0
+			},
+		"modules-commonjs": {
+			"active": 0
+			},
+		"modules-systemjs": {
+			"active": 0
+			},
+		"modules-umd": {
+			"active": 0
+			},
+		"new-target": {
+			"active": 0
+			},
 		"node-env-inline": {
+			"active": 0
+			},
+		"nullish-coalescing-operator": {
+			"active": 0
+			},
+		"numeric-separator": {
 			"active": 0
 			},
 		"object-assign": {
@@ -3455,7 +3429,25 @@
 		"object-set-prototype-of-to-assign": {
 			"active": 0
 			},
+		"object-super": {
+			"active": 0
+			},
+		"optional-catch-binding": {
+			"active": 0
+			},
+		"optional-chaining": {
+			"active": 0
+			},
+		"parameters": {
+			"active": 0
+			},
+		"pipeline-operator": {
+			"active": 0
+			},
 		"property-literals": {
+			"active": 0
+			},
+		"property-mutators": {
 			"active": 0
 			},
 		"proto-to-assign": {
@@ -3491,53 +3483,46 @@
 		"remove-debugger": {
 			"active": 0
 			},
+		"reserved-words": {
+			"active": 0
+			},
 		"runtime": {
+			"active": 0
+			},
+		"shorthand-properties": {
 			"active": 0
 			},
 		"simplify-comparison-operators": {
 			"active": 0
 			},
+		"spread": {
+			"active": 0
+			},
+		"sticky-regex": {
+			"active": 0
+			},
 		"strict-mode": {
 			"active": 0
 			},
-		"syntax-async-generators": {
+		"template-literals": {
 			"active": 0
 			},
-		"syntax-class-properties": {
+		"throw-expressions": {
 			"active": 0
 			},
-		"syntax-decorators": {
-			"active": 0
-			},
-		"syntax-do-expressions": {
-			"active": 0
-			},
-		"syntax-export-extensions": {
-			"active": 0
-			},
-		"syntax-flow": {
-			"active": 0
-			},
-		"syntax-function-bind": {
-			"active": 0
-			},
-		"syntax-function-sent": {
-			"active": 0
-			},
-		"syntax-jsx": {
-			"active": 0
-			},
-		"syntax-object-rest-spread": {
-			"active": 0
-			},
-		"undeclared-variables-check": {
+		"typeof-symbol": {
 			"active": 0
 			},
 		"undefined-to-void": {
 			"active": 0
+			},
+		"unicode-property-regex": {
+			"active": 0
+			},
+		"unicode-regex": {
+			"active": 0
 			}
 		},
-	"babelPresetType": 193,
 	"babelRetainLines": 0,
 	"bowerAbbreviatedPath": "bower_components",
 	"bowerAutoCreateInfoFile": 1,
@@ -3546,6 +3531,7 @@
 	"bowerSaveDevDependencies": 0,
 	"bowerUseExactVersion": 0,
 	"browserRefreshDelay": 0,
+	"browserslistString": ">0.2%, last 2 versions, Firefox ESR, not dead",
 	"buildFolderActive": 0,
 	"buildFolderName": "build",
 	"cleanBuild": 1,
@@ -3903,6 +3889,10 @@
 			"active": 0,
 			"optionString": "'always', {exceptAfterSingleLine: false}"
 			},
+		"max-classes-per-file": {
+			"active": 0,
+			"optionString": "1"
+			},
 		"max-depth": {
 			"active": 0,
 			"optionString": "{'max': 4}"
@@ -3914,6 +3904,10 @@
 		"max-lines": {
 			"active": 0,
 			"optionString": "{'max': 300, 'skipBlankLines': true, 'skipComments': true}"
+			},
+		"max-lines-per-function": {
+			"active": 0,
+			"optionString": "{'max': 50, 'skipBlankLines': true, 'skipComments': true, 'IIFEs': false}"
 			},
 		"max-nested-callbacks": {
 			"active": 0,
@@ -3959,6 +3953,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-async-promise-executor": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-await-in-loop": {
 			"active": 0,
 			"optionString": ""
@@ -3977,10 +3975,6 @@
 			},
 		"no-case-declarations": {
 			"active": 1,
-			"optionString": ""
-			},
-		"no-catch-shadow": {
-			"active": 0,
 			"optionString": ""
 			},
 		"no-class-assign": {
@@ -4179,9 +4173,13 @@
 			"active": 0,
 			"optionString": "{'ignore': [], 'ignoreArrayIndexes': true, 'enforceConst': false, 'detectObjects': false}"
 			},
+		"no-misleading-character-class": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-mixed-operators": {
 			"active": 0,
-			"optionString": "{'groups': [['+', '-', '*', '\/', '%', '**'], ['&', '|', '^', '~', '<<', '>>', '>>>'], ['==', '!=', '===', '!==', '>', '>=', '<', '<='], ['&&', '||'], ['in', 'instanceof']], 'allowSamePrecedence': true}"
+			"optionString": "{'groups': [['+', '-', '*', '/', '%', '**'], ['&', '|', '^', '~', '<<', '>>', '>>>'], ['==', '!=', '===', '!==', '>', '>=', '<', '<='], ['&&', '||'], ['in', 'instanceof']], 'allowSamePrecedence': true}"
 			},
 		"no-mixed-requires": {
 			"active": 0,
@@ -4535,6 +4533,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"prefer-object-spread": {
+			"active": 0,
+			"optionString": ""
+			},
 		"prefer-promise-reject-errors": {
 			"active": 0,
 			"optionString": "{'allowEmptyReject': false}"
@@ -4563,6 +4565,10 @@
 			"active": 0,
 			"optionString": "'always'"
 			},
+		"require-atomic-updates": {
+			"active": 0,
+			"optionString": ""
+			},
 		"require-await": {
 			"active": 0,
 			"optionString": ""
@@ -4570,6 +4576,10 @@
 		"require-jsdoc": {
 			"active": 0,
 			"optionString": "{'require': {'FunctionDeclaration': true, 'MethodDefinition': false, 'ClassDeclaration': false, 'ArrowFunctionExpression': false}}"
+			},
+		"require-unicode-regexp": {
+			"active": 0,
+			"optionString": ""
 			},
 		"require-yield": {
 			"active": 1,
@@ -4625,7 +4635,7 @@
 			},
 		"spaced-comment": {
 			"active": 0,
-			"optionString": "'always', {'line': {'markers': ['\/'], 'exceptions': ['-', '+']}, 'block': {'markers': ['!'], 'exceptions': ['*'], 'balanced': false}}"
+			"optionString": "'always', {'line': {'markers': ['/'], 'exceptions': ['-', '+']}, 'block': {'markers': ['!'], 'exceptions': ['*'], 'balanced': false}}"
 			},
 		"strict": {
 			"active": 0,
@@ -4685,7 +4695,7 @@
 			}
 		},
 	"esLintSourceType": 0,
-	"externalServerAddress": "http:\/\/gcimport.devserver:8201\/",
+	"externalServerAddress": "http://gcimport.devserver:8201/",
 	"gitIgnoreBuildFolder": 1,
 	"hideConfigFile": 0,
 	"jsCheckerReservedNamesString": "",
@@ -5080,7 +5090,6 @@
 		"escapeHTMLCharacters": 0,
 		"noEscapeInAttributes": 0,
 		"outputFormat": 2,
-		"outputStyle": 0,
 		"shouldRunCacheBuster": 0,
 		"useCDATA": 0,
 		"useDoubleQuotes": 0,
@@ -5099,7 +5108,7 @@
 	"languageDefaultsJS": {
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*-min.js",
-		"autoOutputPathRelativePath": "\/min",
+		"autoOutputPathRelativePath": "/min",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 2,
@@ -5131,19 +5140,19 @@
 		"allowInsecureImports": 0,
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.css",
-		"autoOutputPathRelativePath": "..\/css",
+		"autoOutputPathRelativePath": "../css",
 		"autoOutputPathReplace1": "less",
 		"autoOutputPathReplace2": "css",
 		"autoOutputPathStyle": 2,
 		"createSourceMap": 1,
-		"disableJavascript": 0,
+		"enableJavascript": 0,
 		"ieCompatibility": 1,
+		"mathStyle": 0,
 		"outputStyle": 0,
-		"relativeURLS": 0,
+		"rewriteURLStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"strictImports": 0,
-		"strictMath": 0,
 		"strictUnits": 0
 		},
 	"languageDefaultsMARKDOWN": {
@@ -5199,7 +5208,7 @@
 	"languageDefaultsSASS": {
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.css",
-		"autoOutputPathRelativePath": "..\/css",
+		"autoOutputPathRelativePath": "../css",
 		"autoOutputPathReplace1": "sass",
 		"autoOutputPathReplace2": "css",
 		"autoOutputPathStyle": 2,
@@ -5228,7 +5237,7 @@
 	"languageDefaultsSTYLUS": {
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.css",
-		"autoOutputPathRelativePath": "..\/css",
+		"autoOutputPathRelativePath": "../css",
 		"autoOutputPathReplace1": "stylus",
 		"autoOutputPathReplace2": "css",
 		"autoOutputPathStyle": 2,
@@ -5252,36 +5261,70 @@
 	"languageDefaultsTS": {
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.js",
-		"autoOutputPathRelativePath": "\/js",
+		"autoOutputPathRelativePath": "/js",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 2,
 		"createDeclarationFile": 0,
 		"createSourceMap": 0,
-		"jsxMode": 0,
 		"minifyOutput": 0,
 		"moduleResolutionType": 0,
 		"moduleType": 2,
-		"noImplicitAny": 0,
-		"preserveConstEnums": 0,
 		"removeComments": 0,
-		"suppressImplicitAnyIndexErrors": 0,
 		"targetECMAVersion": 0
 		},
 	"languageDefaultsUserDefined": [
 		],
 	"overrideExternalServerCSS": 0,
 	"previewPathAddition": "",
-	"skippedFoldersString": "log, _logs, logs, _cache, cache, .idea, \/storage\/framework\/sessions, node_modules",
+	"skippedFoldersString": "log, _logs, logs, _cache, cache, .idea, /storage/framework/sessions, node_modules",
 	"sourceFolderName": "source",
 	"susyVersion": 3,
+	"tsAllowSyntheticDefaultImports": 0,
+	"tsAllowUnreachableCode": 0,
+	"tsAllowUnusedLabels": 0,
+	"tsAlwaysStrict": 0,
+	"tsDownlevelIteration": 0,
+	"tsEmitBOM": 0,
+	"tsEmitDecoratorMetadata": 0,
+	"tsESModuleInterop": 0,
+	"tsForceConsistentCasingInFileNames": 0,
+	"tsImportHelpers": 0,
+	"tsIsolatedModules": 0,
+	"tsJSXFactory": "React.createElement",
+	"tsKeyofStringsOnly": 0,
+	"tsNoEmitHelpers": 0,
+	"tsNoFallthroughCasesInSwitch": 0,
+	"tsNoImplicitAny": 0,
+	"tsNoImplicitReturns": 0,
+	"tsNoImplicitThis": 0,
+	"tsNoImplicitUseStrict": 0,
+	"tsNoLib": 0,
+	"tsNoResolve": 0,
+	"tsNoStrictGenericChecks": 0,
+	"tsNoUnusedLocals": 0,
+	"tsNoUnusedParameters": 0,
+	"tsPreserveConstEnums": 0,
+	"tsPreserveSymlinks": 0,
+	"tsResolveJsonModule": 0,
+	"tsSkipLibCheck": 0,
+	"tsStrictFunctionTypes": 0,
+	"tsStrictNullChecks": 0,
+	"tsStrictPropertyInitialization": 0,
+	"tsStripInternal": 0,
+	"tsSuppressExcessPropertyErrors": 0,
+	"tsSuppressImplicitAnyIndexErrors": 0,
 	"uglifyDefinesString": "",
 	"uglifyFlags2": {
-		"ascii-only": {
+		"arguments": {
+			"active": 1,
+			"flagValue": -1
+			},
+		"ascii_only": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"bare-returns": {
+		"bare_returns": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -5289,11 +5332,11 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"bracketize": {
+		"braces": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"cascade": {
+		"collapse_vars": {
 			"active": 1,
 			"flagValue": -1
 			},
@@ -5317,6 +5360,10 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"directives": {
+			"active": 1,
+			"flagValue": -1
+			},
 		"drop_console": {
 			"active": 0,
 			"flagValue": -1
@@ -5333,7 +5380,15 @@
 			"active": 1,
 			"flagValue": -1
 			},
+		"expression": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"hoist_funs": {
+			"active": 1,
+			"flagValue": -1
+			},
+		"hoist_props": {
 			"active": 1,
 			"flagValue": -1
 			},
@@ -5341,20 +5396,32 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"if_return": {
+		"html5_comments": {
 			"active": 1,
 			"flagValue": -1
 			},
-		"indent-level": {
+		"ie8": {
 			"active": 0,
-			"flagValue": 4
+			"flagValue": -1
+			},
+		"if_return": {
+			"active": 1,
+			"flagValue": -1
 			},
 		"indent-start": {
 			"active": 0,
 			"flagValue": 0
 			},
-		"inline-script": {
+		"indent_level": {
 			"active": 0,
+			"flagValue": 4
+			},
+		"inline": {
+			"active": 1,
+			"flagValue": 3
+			},
+		"inline_script": {
+			"active": 1,
 			"flagValue": -1
 			},
 		"join_vars": {
@@ -5369,6 +5436,14 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"keep_infinity": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"keep_quoted_props": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"loops": {
 			"active": 1,
 			"flagValue": -1
@@ -5377,12 +5452,20 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"max-line-len": {
+		"max_line_len": {
 			"active": 1,
 			"flagValue": 32000
 			},
 		"negate_iife": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"passes": {
+			"active": 1,
+			"flagValue": 1
+			},
+		"preserve_line": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"properties": {
@@ -5393,11 +5476,19 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"quote-keys": {
+		"quote_keys": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"screw-ie8": {
+		"quote_style": {
+			"active": 1,
+			"flagValue": 0
+			},
+		"reduce_funcs": {
+			"active": 1,
+			"flagValue": -1
+			},
+		"reduce_vars": {
 			"active": 1,
 			"flagValue": -1
 			},
@@ -5409,23 +5500,51 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"sort": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"space-colon": {
+		"shebang": {
 			"active": 1,
 			"flagValue": -1
 			},
-		"support-ie8": {
-			"active": 0,
+		"side_effects": {
+			"active": 1,
+			"flagValue": -1
+			},
+		"switches": {
+			"active": 1,
 			"flagValue": -1
 			},
 		"toplevel": {
 			"active": 0,
 			"flagValue": -1
 			},
+		"typeofs": {
+			"active": 1,
+			"flagValue": -1
+			},
 		"unsafe": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_comps": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_Function": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_math": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_proto": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_regexp": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_undefined": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -5437,9 +5556,17 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"webkit": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"width": {
 			"active": 1,
 			"flagValue": 80
+			},
+		"wrap_iife": {
+			"active": 0,
+			"flagValue": -1
 			}
 		},
 	"uglifyReservedNamesString": "$",
