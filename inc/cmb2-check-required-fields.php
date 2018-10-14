@@ -81,7 +81,7 @@ if( ! function_exists('cmb2_after_form_do_js_validation') ) {
   
   			if ( $first_error_row ) {
   				evt.preventDefault();
-  				alert( '<?php _e( 'Deze velden zijn verplicht:\n', 'cmb2' ); ?> ' + labels.join( ', ' ) );
+  				alert( '<?php $warning = __( 'These are required fields:', 'cmb2' ) . "\n"; echo $warning; ?> ' + labels.join( ', ' ) );
   				$htmlbody.animate({
   					scrollTop: ( $first_error_row.offset().top - 200 )
   				}, 1000);
