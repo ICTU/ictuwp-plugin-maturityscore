@@ -8,6 +8,10 @@ echo 'Distribute GC-volwassenheidsscore-plugin';
 # voor een update van de CMB2 bestanden:
 sh '/shared-paul-files/Webs/git-repos/ICTU---Digitale-Overheid-WP---rijksvideoplugin/get_cmb2_files.sh' &>/dev/null
 
+# change the theme name
+sed -i '.bak' 's/h5/h2/g' '/shared-paul-files/Webs/git-repos/ICTU---GC-volwassenheidsscore-plugin/cmb2/includes/types/CMB2_Type_Title.php'
+
+
 # clear the log file
 > '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/debug.log'
 > '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/gc_live_import/wp-content/debug.log'
