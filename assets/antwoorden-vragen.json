@@ -1,7 +1,7 @@
 {
   "g1": {
-    "group_label": "1 Middelen en processen",
-    "group_description": "",
+    "group_label": "A: Middelen en processen",
+    "group_description": "Deze drie vragen gaan over hoe en hoe vaak je gebruikers betrekt bij het ontwikkelen van dienstverlening.",
     "group_questions": [
       {
         "v1": {
@@ -89,7 +89,8 @@
     ]
   },
   "g2": {
-    "group_label": "2 Management en sturing",
+    "group_label": "B: Management en sturing",
+    "group_description": "",
     "group_questions": [
       {
         "v4": {
@@ -177,7 +178,8 @@
     ]
   },
   "g3": {
-    "group_label": "3 Methodieken en meten",
+    "group_label": "C: Methodieken en meten",
+    "group_description": "",
     "group_questions": [
       {
         "v7": {
@@ -265,7 +267,8 @@
     ]
   },
   "g4": {
-    "group_label": "4 Kennis en cultuur",
+    "group_label": "D: Kennis en cultuur",
+    "group_description": "",
     "group_questions": [
       {
         "v10": {
@@ -353,7 +356,8 @@
     ]
   },
   "g5": {
-    "group_label": "5 Begrijpen van eindgebruiker/klant",
+    "group_label": "E: Begrijpen van eindgebruiker/klant",
+    "group_description": "",
     "group_questions": [
       {
         "v13": {

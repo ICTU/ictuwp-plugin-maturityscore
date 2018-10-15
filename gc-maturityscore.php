@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.1.4
- * Version description: Put back the scoring texts per section.
+ * Version:             1.1.5
+ * Version description: Bugfixes and translations: better check what texts to display and all strings translated.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.1.4';
+      public $version = '1.1.5';
   
   
       /**
@@ -113,6 +113,8 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         
         define( 'GCMS_C_PLUGIN_DO_DEBUG',         true );
 //        define( 'GCMS_C_PLUGIN_DO_DEBUG',         false );
+//        define( 'GCMS_C_PLUGIN_OUTPUT_TOSCREEN',  false );
+        define( 'GCMS_C_PLUGIN_OUTPUT_TOSCREEN',  true );
         define( 'GCMS_C_PLUGIN_USE_CMB2',         true ); 
         define( 'GCMS_C_PLUGIN_GENESIS_ACTIVE',   true ); // todo: inbouwen check op actief zijn van Genesis framework
         define( 'GCMS_C_PLUGIN_AMCHART_ACTIVE',   true ); // todo: inbouwen check op actief zijn AM-chart of op AM-chart licentie
@@ -152,8 +154,6 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         define( 'GCMS_C_NAMEPLACEHOLDER',         '[[name]]' );
 
         define( 'GCMS_C_TEXTEMAIL',               'textforemail' );
-
-
 
 
         $this->option_name  = 'gcms-option';
@@ -554,7 +554,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       */
       function gcmsf_init_add_page_templates( $post_templates ) {
       
-        $post_templates[$this->templatefile]  		= _x( 'Volwassenheidsscore-pagina', "naam template", "gcmaturity-translate" );    
+        $post_templates[$this->templatefile]  		= _x( 'Maturity score template', "naam template", "gcmaturity-translate" );    
         return $post_templates;
       
       }
@@ -571,7 +571,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
     		// Add a General section
     		add_settings_section(
     			$this->option_name . '_general',
-    			__( 'Algemeen', "gcmaturity-translate" ),
+    			__( 'General settings', "gcmaturity-translate" ),
     			array( $this, $this->option_name . '_general_cb' ),
     			GCMS_C_PLUGIN_KEY
     		);
@@ -781,7 +781,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
        */
       $cmb_options = new_cmb2_box( array(
       	'id'              => 'gcmsf_admin_options_metabox',
-      	'title'           => esc_html__( 'Volwassenheids&shy;score', "gcmaturity-translate" ),
+      	'title'           => esc_html__( 'Maturity score', "gcmaturity-translate" ),
       	'object_types'    => array( 'options-page' ),
       	'option_key'      => GCMS_C_PLUGIN_KEY, // The option key and admin menu page slug.
       	'icon_url'        => 'dashicons-admin-settings', // Menu icon. Only applicable if 'parent_slug' is left empty.
@@ -824,14 +824,14 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           
           foreach ( $formfields_data as $group_key => $value) {
 
-            // $key = 'g1'
-            
+            // $group_key = 'g1', 'g2', 'g3', etc
             $tabscounter++;
             $counter_group++;
 
-            $group_label            = gcms_aux_get_value_for_cmb2_key( $group_key );
-            $group_label            = gcms_aux_get_value_for_cmb2_key( $group_key );
-            $groupdescription       = gcms_aux_get_value_for_cmb2_key( $group_key . '_group_description' );
+            $key_grouplabel         = $group_key . '_group_label';
+            $key_group_description  = $group_key . '_group_description';
+            $grouplabel             = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $value->group_label );
+            $groupdescription       = gcms_aux_get_value_for_cmb2_key( $key_group_description, $value->group_description );
             $groupquestions         = (array) $value->group_questions[0];
 
             $questionsnumber_start  = ( $questionsnumber_prev + $tabscounter );
@@ -839,15 +839,10 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             $questionsnumber_prev   = $questionsnumber_end;
 
             $questionrange          = sprintf( _x( '%s - %s', 'question range', "gcmaturity-translate" ), ( $question_counter + 1 ), ( $question_counter + count( $groupquestions ) ) );
-
-
-            $tablabel = sprintf( _x( '%s - questions %s', 'tablabel', "gcmaturity-translate" ), $tabscounter, $questionrange );
-
-            $groupheader = sprintf( _x( 'Group %s: title, introduction and scoring texts', 'tablabel', "gcmaturity-translate" ), $counter_group );
-
-            $grouptitle_label = sprintf( _x( 'Title for group %s', 'tablabel', "gcmaturity-translate" ), $counter_group );
-
-            $groupintro_label = sprintf( _x( 'Introduction %s', 'tablabel', "gcmaturity-translate" ), $counter_group );
+            $tablabel               = sprintf( _x( '%s - questions %s', 'tablabel', "gcmaturity-translate" ), $tabscounter, $questionrange );
+            $groupheader            = sprintf( _x( 'Group %s: title, introduction and scoring texts', 'tablabel', "gcmaturity-translate" ), $counter_group );
+            $grouptitle_label       = sprintf( _x( 'Title for group %s', 'tablabel', "gcmaturity-translate" ), $counter_group );
+            $groupintro_label       = sprintf( _x( 'Introduction %s', 'tablabel', "gcmaturity-translate" ), $counter_group );
 
             // maak een tab aan voor de vragen van een groep
             $args = array(
@@ -863,13 +858,6 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             
             $questions_tab    = new_cmb2_box( $args );
 
-            $groupdescription = '';
-            $key_group_desc   = $group_key . '_group_description';
-      
-            if ( isset( $value->group_description ) ) {
-              $groupdescription = $value->group_description;
-            }
-
             $questions_tab->add_field( array(
             	'name'          => $groupheader,
             	'type'          => 'title',
@@ -879,14 +867,14 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             $questions_tab->add_field( array(
             	'name'          => $grouptitle_label,
           		'type'          => 'text',
-            	'id'            => $group_key ,
-            	'default'       => $value->group_label
+            	'id'            => $key_grouplabel,
+            	'default'       => $grouplabel
             ) );
       
             $questions_tab->add_field( array(
             	'name'          => $groupintro_label,
           		'type'          => 'textarea',
-            	'id'            => $key_group_desc,
+            	'id'            => $key_group_description,
             	'default'       => $groupdescription
             ) );
 
@@ -905,7 +893,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             
               $counter++;
             
-              $default = sprintf( __( 'For section <em>%s</em> you scored over %s, but lesss than %s. Here more about that. ', "gcmaturity-translate" ), gcms_aux_get_value_for_cmb2_key( $key ), ( $counter - 1 ), $counter );
+              $default = sprintf( __( 'For section <em>%s</em> you scored over %s, but lesss than %s. Here more about that.', "gcmaturity-translate" ), gcms_aux_get_value_for_cmb2_key( $key ), ( $counter - 1 ), $counter );
               
               $label = sprintf( __( 'between %s and %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
               if ( GCMS_C_SCORE_MAX == $counter ) {
@@ -931,7 +919,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
               $question_counter++;
   
               $options          = array();
-              $defaults         = array();
+              $selectrandom     = array();
               $default          = '';
               $answers          = (array) $question_single->question_answers[0];
               $question_label   = $question_single->question_label;
@@ -945,11 +933,13 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
               ) );
               
               // put it together
-            	$questions_tab->add_field( array(
+              $fieldkey = $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key;
+              $questions_tab->add_field( array(
             		'name'          => sprintf( __( 'Question %s', "gcmaturity-translate" ), $question_counter ),
-              	'id'            => $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key,
+              	'id'            => $fieldkey,
             		'type'          => 'text',
               	'default'       => $question_label,
+              	'description'   => $fieldkey,
               	'attributes'    => array(
               		'required'    => 'required',
               	),
@@ -966,22 +956,26 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
                 $this_answer_key  = $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key . GCMS_C_PLUGIN_SEPARATOR . $answer_key;
                   
                 // put it together
+                $fieldkey = $this_answer_key . GCMS_C_KEYS_LABEL;
               	$questions_tab->add_field( array(
               		'name'          => sprintf( __( 'Label answer %s', "gcmaturity-translate" ), $optioncounter ),
-                	'id'            => $this_answer_key . GCMS_C_KEYS_LABEL,
+                	'id'            => $fieldkey,
               		'type'          => 'text',
                 	'default'       => $answer->answer_label,
+                	'description'   => $fieldkey,
                 	'attributes'    => array(
                 		'required'    => 'required',
                 	),
               	) );
                 
                 // put it together
+                $fieldkey = $this_answer_key . GCMS_C_KEYS_VALUE;
               	$questions_tab->add_field( array(
               		'type'          => 'text',
               		'name'          => sprintf( __( 'Value answer %s', "gcmaturity-translate" ), $optioncounter ),
-                	'id'            => $this_answer_key . GCMS_C_KEYS_VALUE,
+                	'id'            => $fieldkey,
                 	'default'       => $answer->answer_value,
+                	'description'   => $fieldkey,
                 	'attributes'    => array(
                 		'required'    => 'required',
                 	),
@@ -993,6 +987,10 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 
           }
 
+        }
+        else {
+          // fout bij het ophalen van de formulierwaarden
+          gcmsf_aux_write_to_log('Fout bij ophalen van de formulierwaarden');
         }
 
 
@@ -1041,14 +1039,16 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         	'id'            => GCMS_C_CMBS2_PREFIX . 'start_section_scoring'
         ) );
 
+        // reset
+        $counter = 0;
 
         while( $counter <  GCMS_C_SCORE_MAX ) {
     
           $counter++;
     
-          $default = sprintf( __( 'The text for scores between %s and %s. ', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
-          
-          $label = sprintf( __( 'between %s and %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
+          $default  = sprintf( __( 'The text for scores between %s and %s. ', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
+          $label    = sprintf( __( 'between %s and %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
+
           if ( GCMS_C_SCORE_MAX == $counter ) {
             $default = sprintf( __( 'Perfect score: %s!', "gcmaturity-translate" ), $counter );
           }
@@ -1062,42 +1062,10 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           	'id'            => $fieldkey,
           	'default'       => $default
           ) );
-        
-        }
-        
-        
-            
-        
-        
-        if ( 22 == 33 ) {
-        
-        
-          $formfields_data    = gcmsf_data_get_survey_json();
-          $sectiontitle_prev  = '';
-        
-          if ( $formfields_data ) {
-        
-            $counter_total    = 0;
-            $counter_group    = 0;
-            $counter_question = 0;
-            $counter_answer   = 0;
-            $counter          = 0;
-        
-        
-            $key = 'SITESCORE';
-            
-          
 
         
         }
-        
-        
-      }
-      else {
-        // fout bij het ophalen van de formulierwaarden
-        gcmsf_aux_write_to_log('Fout bij ophalen van de formulierwaarden');
-      }
-  
+
   
     }    
 
@@ -1126,7 +1094,6 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           if ( $user_answers ) {
     
             foreach( $user_answers as $key => $value ){        
-
 
               // some values we do not need in our data structure
               if ( 
@@ -1177,8 +1144,6 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
               $values[ 'all_values' ][]                     = $current_answer['answer_value'];
               $values[ 'user_answers' ][ $group ][ $key ]   = $current_answer;
 
-              $group_label      = gcms_aux_get_value_for_cmb2_key( $group );
-
             }
 
   
@@ -1221,7 +1186,12 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
               if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
                 $values['cols'][ GCMS_C_TABLE_COL_SITE_AVERAGE ] = _x( "Average score", "table header", "gcmaturity-translate" );
               }
-              
+
+              // add the default section titles to the collection
+              foreach ( $formfields_data as $group_key => $value) {
+                $key_grouplabel         = $group_key . '_group_label';
+                $values[ 'default_titles' ][ $key_grouplabel ]  = $value->group_label;
+              }
             }
           }
         }
@@ -1506,21 +1476,23 @@ catch( err ) { console.log( err ); } ' );
         'cmb_styles'    => false, // false to disable the CMB stylesheet
     	) );
 
-      $formfields_data = gcmsf_data_get_survey_json();
-      $sectiontitle_prev = '';
-
+      $sectiontitle_prev  = '';
+      $formfields_data    = gcmsf_data_get_survey_json();
 
       if ( $formfields_data ) {
 
         // loop through the groups
-        foreach ( $formfields_data as $group_key => $value) {
+        foreach ( $formfields_data as $group_key => $value ) {
 
-          $group_label      = gcms_aux_get_value_for_cmb2_key( $group_key, $value->group_label );
-          $groupdescription = gcms_aux_get_value_for_cmb2_key( $group_key . '_group_description', $value->group_description );
-          $groupquestions   = (array) $value->group_questions[0];
+          $collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key;
+          $key_grouplabel         = $group_key . '_group_label';
+          $key_group_description  = $group_key . '_group_description';
+          $grouplabel             = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $value->group_label, $collectionkey );
+          $groupdescription       = gcms_aux_get_value_for_cmb2_key( $key_group_description, $value->group_description, $collectionkey  );
+          $groupquestions         = (array) $value->group_questions[0];
 
           $cmb->add_field( array(
-          	'name'          => $group_label,
+          	'name'          => $grouplabel,
           	'description'   => $groupdescription,
           	'type'          => 'title',
           	'id'            => GCMS_C_CMBS2_PREFIX . '_section_' . $group_key
@@ -1530,38 +1502,42 @@ catch( err ) { console.log( err ); } ' );
           foreach ( $groupquestions as $question_key => $question_single ) {
 
             $options          = array();
-            $defaults         = array();
+            $selectrandom     = array();
             $default          = '';
             $answers          = (array) $question_single->question_answers[0];
             $question_label   = $question_single->question_label;
 
+
             // get all possible answers
             foreach ( $answers as $answer_key => $answer ) {
 
+              $this_answer_key              = $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key . GCMS_C_PLUGIN_SEPARATOR . $answer_key;
+
               $label = gcms_aux_get_value_for_cmb2_key( 
                 $this_answer_key . GCMS_C_KEYS_LABEL, 
-                $answer->answer_label, 
-                GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key 
+                $answer->answer_label,
+                $collectionkey 
               );
+              
 
-              $this_answer_key              = $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key . GCMS_C_PLUGIN_SEPARATOR . $answer_key;
               $options[ $this_answer_key  ] = $label;
-              $defaults[]                   = $this_answer_key;
+              $selectrandom[]               = $this_answer_key;
 
             }
 
             // only set a random default if we are debugging
             if ( WP_DEBUG && GCMS_C_PLUGIN_DO_DEBUG ) {
-              $default = $defaults[ array_rand( $defaults ) ];
+              $default = $selectrandom[ array_rand( $selectrandom ) ];
             }
 
             $questionkey    = $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key;
             $question_label = $question_single->question_label;
             
             $label = gcms_aux_get_value_for_cmb2_key( 
-                        $questionkey, 
-                        $question_label, 
-                        GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key );
+                      $questionkey, 
+                      $question_label, 
+                      $collectionkey 
+                    );
 
             // put it together
           	$cmb->add_field( array(
@@ -1600,7 +1576,7 @@ catch( err ) { console.log( err ); } ' );
     		'name'    => _x( 'Your name', 'About you section', "gcmaturity-translate" ),
     		'id'      => GCMS_C_SURVEY_YOURNAME,
     		'type'    => 'text',
-    		'desc'    => _x( 'Je naam slaan we maximaal 3 jaar op, zodat jouw naam zichtbaar blijft in je resultaatpagina. Wil je dat niet? Laat het veld dan leeg.', 'About you section', "gcmaturity-translate" ) . '<br>' . _x( 'Not required', 'About you section', "gcmaturity-translate" ),
+    		'desc'    => _x( "We store your name for a maximum of 3 years; it will be visible on the resultpage. Leave this empty if you don't want this.", 'About you section', "gcmaturity-translate" ) . '<br>' . _x( 'Not required', 'About you section', "gcmaturity-translate" ),
     		'default' => $yournamedefault,
     	) );
       
@@ -1615,7 +1591,7 @@ catch( err ) { console.log( err ); } ' );
 
       $cmb->add_field( array(
     		'name'    => _x( 'Permission to store emailaddress', 'About you section', "gcmaturity-translate" ),
-    		'desc'    => _x( 'Ja, ik wil graag via mail op de hoogte gehouden worden van nieuwe versies van het volwassenheidsmodel. Jullie mogen mijn e-mailadres en naam uiterlijk 3 jaar na vandaag hiervoor bewaren. Alleen de beheerders van deze website hebben toegang tot deze gegevens.', 'About you section', "gcmaturity-translate" ),
+    		'desc'    => _x( 'Yes, keep me up to date about any developments regarding the maturity model system. You may store my email address and name for at most 3 years. Only site-admins have access to these data.', 'About you section', "gcmaturity-translate" ),
       	'id'   => GCMS_C_SURVEY_GDPR_CHECK,
       	'type' => 'checkbox',
       ) );    	
@@ -1821,28 +1797,26 @@ catch( err ) { console.log( err ); } ' );
       
       if ( $this->survey_data ) {
 
-
         if ( isset( $this->survey_data['averages'] ) ) {
 
           $overall_average = number_format_i18n( $this->survey_data['averages']['overall'], 0 );
 
           $total_number_of_surveys  = get_option( GCMS_C_AVGS_NR_SURVEYS, 1 );
           $site_average             = get_option( GCMS_C_AVGS_OVERALL_AVG, 1 );
+          $collectionkey            = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $key;
 
-          $punten = sprintf( _n( '%s point', '%s points', $overall_average, "gcmaturity-translate" ), $overall_average );
+          $punten     = sprintf( _n( '%s point', '%s points', $overall_average, "gcmaturity-translate" ), $overall_average );
+          $key        = 'SITESCORE';
+          $fieldkey   = $key . GCMS_SCORESEPARATOR . number_format_i18n( $this->survey_data['averages']['overall'], 0 ); 
 
-          $return .= '<p>' . sprintf( __( 'Your average score was %s. ', "gcmaturity-translate" ), $punten );
-          $return .= sprintf( _n( 'Thus far, we received %s survey.', 'Thus far, we received %s surveys. ', $total_number_of_surveys, "gcmaturity-translate" ), $total_number_of_surveys );
+          $return     .= '<p>' . sprintf( __( 'Your average score was %s. ', "gcmaturity-translate" ), $punten );
+          $return     .= sprintf( _n( 'Thus far, we received %s survey.', 'Thus far, we received %s surveys. ', $total_number_of_surveys, "gcmaturity-translate" ), $total_number_of_surveys );
           if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-            $return .= sprintf( __( 'The overall average score is %s. ', "gcmaturity-translate" ), $site_average );
+            $return   .= sprintf( __( 'The overall average score is %s. ', "gcmaturity-translate" ), $site_average );
           }          
-          $return .= '</p>';
-
-          $key = 'SITESCORE';
-          $fieldkey = $key . GCMS_SCORESEPARATOR . number_format_i18n( $this->survey_data['averages']['overall'], 0 ); 
-          $return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey ) . '</p>';
-
-          $return .= '<h2>' . __( 'Score per section', "gcmaturity-translate" ) . '</h2>';
+          $return     .= '</p>';
+          $return     .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey, sprintf( __( 'No text available for %s.', "gcmaturity-translate" ), $fieldkey ) ) . '</p>';
+          $return     .= '<h2>' . __( 'Score per section', "gcmaturity-translate" ) . '</h2>';
           
           $counter = 0;
           
@@ -1850,21 +1824,30 @@ catch( err ) { console.log( err ); } ' );
 
             $counter++;
 
-            $jouwgemiddelde = $this->survey_data['averages']['groups'][$key];
-            $jouwscore    = number_format_i18n( $jouwgemiddelde, 0 );
-            $thesectionid = sanitize_title( $key . "_" . $counter );
-            $titleid      = sanitize_title( $thesectionid . '_title' );
+            $jouwgemiddelde         = $this->survey_data['averages']['groups'][$key];
+            $collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $key;
+            $jouwscore              = number_format_i18n( $jouwgemiddelde, 0 );
+            $thesectionid           = sanitize_title( $key . "_" . $counter );
+            $titleid                = sanitize_title( $thesectionid . '_title' );
+            $key_grouplabel         = $key . '_group_label';
+/*
+          $key_group_description  = $group_key . '_group_description';
+          $grouplabel             = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $value->group_label, $collectionkey );
+          $groupdescription       = gcms_aux_get_value_for_cmb2_key( $key_group_description, $value->group_description, $collectionkey  );
+*/  
 
-            $fieldkey = $key . GCMS_SCORESEPARATOR . $jouwscore; // g2_score_4
+            $fieldkey               = $key . GCMS_SCORESEPARATOR . $jouwscore; // g2_score_4
+            $key_grouplabel         = $key . '_group_label';
+
+
+            
+            $titel                  = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $this->survey_data['default_titles'][ $key_grouplabel ], $collectionkey );
 
             $return .= '<section aria-labelledby="' . $titleid . '" id="' . $thesectionid . '" class="survey-result">';
-            $return .= '<h3 class="rating-section-title"><span id="' . $titleid . '">' . gcms_aux_get_value_for_cmb2_key( $key );
-            
+            $return .= '<h3 class="rating-section-title"><span id="' . $titleid . '">' . $titel;
             $return .= ' <span class="visuallyhidden">' . _x( "Your score", "table description", "gcmaturity-translate" ) . '</span></span> : ' . $this->gcmsf_frontend_get_percentage( $jouwscore, GCMS_C_SCORE_MAX );
             $return .= '</h3>';
-
             $return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey ) . '</p>';
-
             $return .= '<details>';
             $return .= '  <summary>' . _x( "Review your answers", "interpretatie", "gcmaturity-translate" ) . '</summary>';
 
@@ -2126,12 +2109,12 @@ function gcmsf_frontend_form_handle_posting() {
 
   $post_content = '';
   if ( $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] ) {
-    $post_content .= _x( 'Je naam', 'naam', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] . '<br>';
+    $post_content .= _x( 'Your name', 'naam', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] . '<br>';
     setcookie( GCMS_C_SURVEY_YOURNAME , $sanitized_values[ GCMS_C_SURVEY_YOURNAME ], time() + ( 3600 * 24 * 60 ), '/');
   }
   
   if ( $sanitized_values[  GCMS_C_SURVEY_EMAILID  ] ) {
-    $post_content .= _x( 'Je e-mailadres', 'email', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_EMAILID ] . '<br>';
+    $post_content .= _x( 'Your email address', 'email', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_EMAILID ] . '<br>';
     setcookie( GCMS_C_SURVEY_EMAILID , $sanitized_values[ GCMS_C_SURVEY_EMAILID ], time() + ( 3600 * 24 * 60 ), '/');
   }
 	
@@ -2434,8 +2417,7 @@ function gcms_aux_get_value_for_cmb2_key( $key = '', $default = false, $optionke
 
   if ( function_exists( 'cmb2_get_option' ) ) {
 
-    $return = cmb2_get_option( $optionkey, $key, $default );
-    return $return;
+    return cmb2_get_option( $optionkey, $key, $default );
     
   }
     
@@ -2449,7 +2431,7 @@ function gcms_aux_get_value_for_cmb2_key( $key = '', $default = false, $optionke
   } elseif ( is_array( $opts ) && array_key_exists( $key, $opts ) && false !== $opts[ $key ] ) {
     $val = $opts[ $key ];
   }
-  
+
   return $val;
 
 }
@@ -2489,8 +2471,11 @@ if (! function_exists( 'dovardump' ) ) {
       if ( $context ) {
         $contextstring = '<p>Vardump ' . $context . '</p>';        
       }
+
+      gcmsf_aux_write_to_log( print_r($data), true );      
+
       
-      if ( $echo ) {
+      if ( $echo && GCMS_C_PLUGIN_OUTPUT_TOSCREEN ) {
         
         echo $startstring . '<hr>';
         echo $contextstring;        
@@ -2514,8 +2499,9 @@ if (! function_exists( 'dodebug' ) ) {
     if ( WP_DEBUG && GCMS_C_PLUGIN_DO_DEBUG ) {
 
       gcmsf_aux_write_to_log( $string );      
-      echo '<' . $tag . ' class="debugstring" style="border: 1px solid red; background: yellow; display: block; "> ' . $string . '</' . $tag . '>';
-
+      if ( GCMS_C_PLUGIN_OUTPUT_TOSCREEN ) {
+        echo '<' . $tag . ' class="debugstring" style="border: 1px solid red; background: yellow; display: block; "> ' . $string . '</' . $tag . '>';
+      }
     }
   }
 
