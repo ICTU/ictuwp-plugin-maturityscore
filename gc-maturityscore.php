@@ -1282,6 +1282,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             			"axisTitleOffset": 20,
             			"id": "ValueAxis-1",
             			"minimum": 0,
+            			"maximum": 5,
             			"zeroGridAlpha": 2,
             			"axisAlpha": 0.76,
             			"axisColor": "#6B6B6B",
@@ -1291,7 +1292,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             			"gridAlpha": 0.68,
             			"gridColor": "#6B6B6B",
             			"minorGridAlpha": 0.4,
-            			"minorGridEnabled": true
+            			"minorGridEnabled": false
             		},
             		{
             			"id": "ValueAxis-2",
@@ -1713,7 +1714,7 @@ catch( err ) { console.log( err ); } ' );
       $return = '';
       
       if ( $this->survey_data ) {
-//        $return = '<h2>' . _x( "Grafiek", "table description", "gcmaturity-translate" ) . "</h2>\n";
+
         $titleid = 'grafiek_amchart';
 
         $return .= '<div class="radarchart" id="amchart1" style="min-height: 500px; width: 100%" aria-labelledby="' . $titleid . '"></div>';
