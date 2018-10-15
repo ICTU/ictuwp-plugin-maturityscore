@@ -1163,8 +1163,11 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
                 
                 if ( $key && $rowname_translated ) {
 
+                  $key_grouplabel         = $key . '_group_label';
+                  $collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $key;
+                  $default                = $formfields_data->$key->group_label;
                   
-                  $columns[ GCMS_C_TABLE_COL_TH ] = gcms_aux_get_value_for_cmb2_key( $key );
+                  $columns[ GCMS_C_TABLE_COL_TH ] = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $default, $collectionkey );
                   $columns[ GCMS_C_TABLE_COL_USER_AVERAGE ] = $average;
   
                   if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
@@ -1213,6 +1216,10 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 
           if ( ! $this->survey_data ) {
             $this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
+          }
+
+          if ( ! $formfields_data ) {
+            $formfields_data    = gcmsf_data_get_survey_json();
           }
 
           $infooter = false;
@@ -1373,7 +1380,11 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
                 
                 if ( $rowname && $rowname_translated ) {
                 
-                  $radardata->dataProvider[$rowcounter]->$mykeyname = gcms_aux_get_value_for_cmb2_key( $rowname );
+                  $key_grouplabel         = $rowname . '_group_label';
+                  $collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $rowname;
+                  $default                = $formfields_data->$rowname->group_label;
+                  
+                  $radardata->dataProvider[$rowcounter]->$mykeyname = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $default, $collectionkey );
                   
                   if ( $columncounter == 2 ) {
                     $radardata->dataProvider[$rowcounter]->$columnsvalue = '';
