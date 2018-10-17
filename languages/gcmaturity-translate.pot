@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: GC Maturity (Gebruiker Centraal Volwassenheidsscore)\n"
-"POT-Creation-Date: 2018-10-14 10:14+0200\n"
+"POT-Creation-Date: 2018-10-17 17:50+0200\n"
 "PO-Revision-Date: 2018-06-13 10:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -665,7 +665,7 @@ msgid "Just a moment please"
 msgstr ""
 
 #: gc-maturityscore.php:784
-msgid "Volwassenheids&shy;score"
+msgid "Maturity score"
 msgstr ""
 
 #: gc-maturityscore.php:790
@@ -677,130 +677,130 @@ msgstr ""
 msgid "Save options"
 msgstr ""
 
-#: gc-maturityscore.php:840
+#: gc-maturityscore.php:841
 #, php-format
 msgctxt "question range"
 msgid "%s - %s"
 msgstr ""
 
-#: gc-maturityscore.php:843
+#: gc-maturityscore.php:842
 #, php-format
 msgctxt "tablabel"
 msgid "%s - questions %s"
 msgstr ""
 
-#: gc-maturityscore.php:845
+#: gc-maturityscore.php:843
 #, php-format
 msgctxt "tablabel"
 msgid "Group %s: title, introduction and scoring texts"
 msgstr ""
 
-#: gc-maturityscore.php:847
+#: gc-maturityscore.php:844
 #, php-format
 msgctxt "tablabel"
 msgid "Title for group %s"
 msgstr ""
 
-#: gc-maturityscore.php:849
+#: gc-maturityscore.php:845
 #, php-format
 msgctxt "tablabel"
 msgid "Introduction %s"
 msgstr ""
 
-#: gc-maturityscore.php:854
+#: gc-maturityscore.php:850
 #, php-format
 msgctxt "tablabel"
 msgid "Group %s - %s"
 msgstr ""
 
-#: gc-maturityscore.php:897
+#: gc-maturityscore.php:884
 msgid "Score for this section"
 msgstr ""
 
-#: gc-maturityscore.php:909
+#: gc-maturityscore.php:896
 #, php-format
 msgid ""
 "For section <em>%s</em> you scored over %s, but lesss than %s. Here more "
 "about that."
 msgstr ""
 
-#: gc-maturityscore.php:911 gc-maturityscore.php:1052
+#: gc-maturityscore.php:898 gc-maturityscore.php:1050
 #, php-format
 msgid "between %s and %s"
 msgstr ""
 
-#: gc-maturityscore.php:913 gc-maturityscore.php:1054
+#: gc-maturityscore.php:900 gc-maturityscore.php:1053
 #, php-format
 msgid "Perfect score: %s!"
 msgstr ""
 
-#: gc-maturityscore.php:919
+#: gc-maturityscore.php:906
 #, php-format
 msgctxt "score range"
 msgid "Text %s<br><small>if score %s.</small>"
 msgstr ""
 
-#: gc-maturityscore.php:920
+#: gc-maturityscore.php:907
 #, php-format
 msgid "Score %s"
 msgstr ""
 
-#: gc-maturityscore.php:943
+#: gc-maturityscore.php:930
 #, php-format
 msgid "Question %s - %s"
 msgstr ""
 
-#: gc-maturityscore.php:950
+#: gc-maturityscore.php:938
 #, php-format
 msgid "Question %s"
 msgstr ""
 
-#: gc-maturityscore.php:971
+#: gc-maturityscore.php:961
 #, php-format
 msgid "Label answer %s"
 msgstr ""
 
-#: gc-maturityscore.php:983
+#: gc-maturityscore.php:975
 #, php-format
 msgid "Value answer %s"
 msgstr ""
 
-#: gc-maturityscore.php:1002
+#: gc-maturityscore.php:999
 msgctxt "email settings"
 msgid "Email settings"
 msgstr ""
 
-#: gc-maturityscore.php:1008
+#: gc-maturityscore.php:1005
 msgctxt "email settings"
 msgid "Sender email address"
 msgstr ""
 
-#: gc-maturityscore.php:1011
+#: gc-maturityscore.php:1008
 msgctxt "email settings"
 msgid "info@gebruikercentraal.nl"
 msgstr ""
 
-#: gc-maturityscore.php:1015
+#: gc-maturityscore.php:1012
 msgctxt "email settings"
 msgid "Sender email name"
 msgstr ""
 
-#: gc-maturityscore.php:1018
+#: gc-maturityscore.php:1015
 msgctxt "email settings"
 msgid "Gebruiker Centraal"
 msgstr ""
 
-#: gc-maturityscore.php:1022
+#: gc-maturityscore.php:1019
 msgctxt "email settings"
 msgid "Email subject line"
 msgstr ""
 
-#: gc-maturityscore.php:1025 gc-maturityscore.php:2178
+#: gc-maturityscore.php:1022 gc-maturityscore.php:2165
 msgctxt "email settings"
 msgid "Link to your survey results"
 msgstr ""
 
-#: gc-maturityscore.php:1028
+#: gc-maturityscore.php:1025
 #, php-format
 msgctxt "email settings"
 msgid ""
@@ -815,12 +815,12 @@ msgid ""
 "The Gebruiker Centraal Team."
 msgstr ""
 
-#: gc-maturityscore.php:1031
+#: gc-maturityscore.php:1028
 msgctxt "email settings"
 msgid "Text in the email to the user"
 msgstr ""
 
-#: gc-maturityscore.php:1032
+#: gc-maturityscore.php:1029
 #, php-format
 msgctxt "email settings"
 msgid ""
@@ -828,236 +828,240 @@ msgid ""
 "the link we send.<br>%s - this is the placeholder for user's name."
 msgstr ""
 
-#: gc-maturityscore.php:1040
+#: gc-maturityscore.php:1037
 msgid "General scoring texts"
 msgstr ""
 
-#: gc-maturityscore.php:1050
+#: gc-maturityscore.php:1049
 #, php-format
 msgid "The text for scores between %s and %s. "
 msgstr ""
 
-#: gc-maturityscore.php:1060
+#: gc-maturityscore.php:1059
 #, php-format
 msgctxt "score range"
 msgid "Score text %s<br><small>if the total score is %s.</small>"
 msgstr ""
 
-#: gc-maturityscore.php:1061
+#: gc-maturityscore.php:1060
 #, php-format
 msgid "General average score %s"
 msgstr ""
 
-#: gc-maturityscore.php:1217
+#: gc-maturityscore.php:1184
 msgctxt "table header"
 msgid "Chapter"
 msgstr ""
 
-#: gc-maturityscore.php:1219
+#: gc-maturityscore.php:1186
 msgctxt "table header"
 msgid "Your score"
 msgstr ""
 
-#: gc-maturityscore.php:1223
+#: gc-maturityscore.php:1190
 msgctxt "table header"
 msgid "Average score"
 msgstr ""
 
-#: gc-maturityscore.php:1307
+#: gc-maturityscore.php:1283
 msgctxt "labels"
 msgid "your score"
 msgstr ""
 
-#: gc-maturityscore.php:1464
+#: gc-maturityscore.php:1445
 msgid ""
 "Oopsy daisy. There are no data to display.<br>The survey you requested is "
 "empty. The server may have made an error in saving or retrieving the data, "
 "or more likely: Paul botched up.</p><p>It's not your fault, is it?</p>"
 msgstr ""
 
-#: gc-maturityscore.php:1503
+#: gc-maturityscore.php:1484
 msgid "Questions and answers"
 msgstr ""
 
-#: gc-maturityscore.php:1600
+#: gc-maturityscore.php:1580
 msgctxt "About you section"
 msgid "About you"
 msgstr ""
 
-#: gc-maturityscore.php:1603
+#: gc-maturityscore.php:1583
 msgctxt "About you section"
 msgid ""
 "We can send you a link to your survey results if you fill in your email "
 "address here."
 msgstr ""
 
-#: gc-maturityscore.php:1608
+#: gc-maturityscore.php:1588
 msgctxt "About you section"
 msgid "Your name"
 msgstr ""
 
-#: gc-maturityscore.php:1611
+#: gc-maturityscore.php:1591
 msgctxt "About you section"
 msgid ""
-"Je naam slaan we maximaal 3 jaar op, zodat jouw naam zichtbaar blijft in je "
-"resultaatpagina. Wil je dat niet? Laat het veld dan leeg."
+"We store your name for a maximum of 3 years; it will be visible on the "
+"resultpage. Leave this empty if you don't want this."
 msgstr ""
 
-#: gc-maturityscore.php:1611 gc-maturityscore.php:1619
+#: gc-maturityscore.php:1591 gc-maturityscore.php:1599
 msgctxt "About you section"
 msgid "Not required"
 msgstr ""
 
-#: gc-maturityscore.php:1616
+#: gc-maturityscore.php:1596
 msgctxt "About you section"
 msgid "Your emailaddress"
 msgstr ""
 
-#: gc-maturityscore.php:1619
+#: gc-maturityscore.php:1599
 msgctxt "About you section"
 msgid ""
 "We gebruiken dit e-mailadres om je een link te mailen naar jouw "
 "resultaatpagina."
 msgstr ""
 
-#: gc-maturityscore.php:1625
+#: gc-maturityscore.php:1605
 msgctxt "About you section"
 msgid "Permission to store emailaddress"
 msgstr ""
 
-#: gc-maturityscore.php:1626
+#: gc-maturityscore.php:1606
 msgctxt "About you section"
 msgid ""
-"Ja, ik wil graag via mail op de hoogte gehouden worden van nieuwe versies "
-"van het volwassenheidsmodel. Jullie mogen mijn e-mailadres en naam uiterlijk "
-"3 jaar na vandaag hiervoor bewaren. Alleen de beheerders van deze website "
-"hebben toegang tot deze gegevens."
+"Yes, keep me up to date about any developments regarding the maturity model "
+"system. You may store my email address and name for at most 3 years. Only "
+"site-admins have access to these data."
 msgstr ""
 
-#: gc-maturityscore.php:1754
+#: gc-maturityscore.php:1734
 msgctxt "table description"
 msgid "Radar graph with your score in this survey."
 msgstr ""
 
-#: gc-maturityscore.php:1759
+#: gc-maturityscore.php:1739
 msgctxt "table description"
 msgid "Your score in red; average score in orange."
 msgstr ""
 
-#: gc-maturityscore.php:1762
+#: gc-maturityscore.php:1742
 msgctxt "table description"
 msgid "Your score in orange."
 msgstr ""
 
-#: gc-maturityscore.php:1768 gc-maturityscore.php:1918
-#: gc-maturityscore.php:1977
+#: gc-maturityscore.php:1748 gc-maturityscore.php:1905
+#: gc-maturityscore.php:1964
 msgctxt "no data error"
 msgid "No data available. Not your fault, blame the server."
 msgstr ""
 
-#: gc-maturityscore.php:1840 gc-maturityscore.php:1888
+#: gc-maturityscore.php:1820 gc-maturityscore.php:1875
 #, php-format
 msgid "%s point"
 msgid_plural "%s points"
 msgstr[0] ""
 msgstr[1] ""
 
-#: gc-maturityscore.php:1842
+#: gc-maturityscore.php:1824
 #, php-format
 msgid "Your average score was %s. "
 msgstr ""
 
-#: gc-maturityscore.php:1843
+#: gc-maturityscore.php:1825
 #, php-format
 msgid "Thus far, we received %s survey."
 msgid_plural "Thus far, we received %s surveys. "
 msgstr[0] ""
 msgstr[1] ""
 
-#: gc-maturityscore.php:1845
+#: gc-maturityscore.php:1827
 #, php-format
 msgid "The overall average score is %s. "
 msgstr ""
 
-#: gc-maturityscore.php:1853
+#: gc-maturityscore.php:1830
+#, php-format
+msgid "No text available for %s."
+msgstr ""
+
+#: gc-maturityscore.php:1831
 msgid "Score per section"
 msgstr ""
 
-#: gc-maturityscore.php:1871
+#: gc-maturityscore.php:1860
 msgctxt "table description"
 msgid "Your score"
 msgstr ""
 
-#: gc-maturityscore.php:1877
+#: gc-maturityscore.php:1864
 msgctxt "interpretatie"
 msgid "Review your answers"
 msgstr ""
 
-#: gc-maturityscore.php:1882
+#: gc-maturityscore.php:1869
 msgctxt "interpretatie"
 msgid "Question"
 msgstr ""
 
-#: gc-maturityscore.php:1885
+#: gc-maturityscore.php:1872
 msgctxt "interpretatie"
 msgid "Your answer"
 msgstr ""
 
-#: gc-maturityscore.php:1892 gc-maturityscore.php:1899
+#: gc-maturityscore.php:1879 gc-maturityscore.php:1886
 msgctxt "interpretatie"
 msgid "Score"
 msgstr ""
 
-#: gc-maturityscore.php:1895
+#: gc-maturityscore.php:1882
 msgctxt "interpretatie"
 msgid "Average score"
 msgstr ""
 
-#: gc-maturityscore.php:1947
+#: gc-maturityscore.php:1934
 msgctxt "table description"
 msgid "Average score and your score per section"
 msgstr ""
 
-#: gc-maturityscore.php:1950
+#: gc-maturityscore.php:1937
 msgctxt "table description"
 msgid "Your score per section"
 msgstr ""
 
-#: gc-maturityscore.php:2047
+#: gc-maturityscore.php:2034
 #, php-format
 msgid "Your survey is not saved; errors occurred: %s"
 msgstr ""
 
-#: gc-maturityscore.php:2052
+#: gc-maturityscore.php:2039
 msgid "Submit"
 msgstr ""
 
-#: gc-maturityscore.php:2107
+#: gc-maturityscore.php:2094
 msgid ""
 "Security checks for your form submission failed. Your data will be discarded."
 msgstr ""
 
-#: gc-maturityscore.php:2120
+#: gc-maturityscore.php:2107
 msgid "Your organisation's score"
 msgstr ""
 
-#: gc-maturityscore.php:2137
+#: gc-maturityscore.php:2124
 msgctxt "naam"
-msgid "Je naam"
+msgid "Your name"
 msgstr ""
 
-#: gc-maturityscore.php:2142
+#: gc-maturityscore.php:2129
 msgctxt "email"
-msgid "Je e-mailadres"
+msgid "Your email address"
 msgstr ""
 
-#: gc-maturityscore.php:2171
+#: gc-maturityscore.php:2158
 msgctxt "email"
 msgid "No mail text found"
 msgstr ""
 
 #: inc/cmb2-check-required-fields.php:84
-msgid "Deze velden zijn verplicht:\\n"
+msgid "These are required fields:"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

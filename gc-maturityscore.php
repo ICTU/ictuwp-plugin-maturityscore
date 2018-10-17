@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.1.5
- * Version description: Bugfixes and translations: better check what texts to display and all strings translated.
+ * Version:             1.1.6
+ * Version description: CSS fixes for mobile (remove left-padding for lists with checkboxes).
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.1.5';
+      public $version = '1.1.6';
   
   
       /**
@@ -126,7 +126,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         define( 'GCMS_C_AVGS_OVERALL_AVG',        'gcmsf_overall_average3' ); 
 
         define( 'GCMS_C_METABOX_ID',              'front-end-post-form' ); 
-        define( 'GCMS_C_FAKE_OBJECT_ID',          'fake-oject-id' ); 
+        define( 'GCMS_CMB2_RANDOM_OBJECT_ID',     'fake-oject-id' ); 
 
         define( 'GCMS_C_ALGEMEEN_LABEL',          'lalala label' ); 
         define( 'GCMS_C_ALGEMEEN_KEY',            'lalala_key' ); 
@@ -1442,7 +1442,7 @@ catch( err ) { console.log( err ); } ' );
 
         }
         else {
-          $returnstring .= '<p>' . __( "Oopsy daisy. There are no data to display.<br>The survey you requested is empty. The server may have made an error in saving or retrieving the data, or more likely: Paul botched up.</p><p>It's not your fault, is it?</p>", "gcmaturity-translate" ) . '<p>';
+          $returnstring .= '<p>' . __( "Oopsy daisy. There are no data to display. The survey you requested is empty. The server may have made an error in saving or retrieving the data, or more likely: our developer botched up. It's not your fault.", "gcmaturity-translate" ) . '</p>';
         }
 
         return $returnstring;
@@ -2031,12 +2031,12 @@ function gcmsf_frontend_register_shortcode( $atts = array() ) {
 	// Get any submission errors
 	if ( ( $error = $cmb->prop( 'submission_error' ) ) && is_wp_error( $error ) ) {
 		// If there was an error with the submission, add it to our ouput.
-		$output .= '<h3>' . sprintf( __( 'Your survey is not saved; errors occurred: %s', "gcmaturity-translate" ), '<strong>'. $error->get_error_message() .'</strong>' ) . '</h3>';
+		$output .= '<h2>' . sprintf( __( 'Your survey is not saved; errors occurred: %s', "gcmaturity-translate" ), '<strong>'. $error->get_error_message() .'</strong>' ) . '</h2>';
 	}
 
 
 	// Get our form
-	$output .= cmb2_get_metabox_form( $cmb, GCMS_C_FAKE_OBJECT_ID, array( 'save_button' => __( "Submit", "gcmaturity-translate" ) ) );
+	$output .= cmb2_get_metabox_form( $cmb, GCMS_CMB2_RANDOM_OBJECT_ID, array( 'save_button' => __( "Submit", "gcmaturity-translate" ) ) );
 
 	return $output;
 
@@ -2055,7 +2055,7 @@ function gcmsf_frontend_cmb2_get() {
 	$metabox_id = GCMS_C_METABOX_ID;
 
 	// Post/object ID is not applicable since we're using this form for submission
-	$object_id  = GCMS_C_FAKE_OBJECT_ID;
+	$object_id  = GCMS_CMB2_RANDOM_OBJECT_ID;
 
 	// Get CMB2 metabox object
 	return cmb2_get_metabox( $metabox_id, $object_id );
@@ -2568,6 +2568,23 @@ function gcmsf_get_post_or_cookie( $key = '', $default = '' ) {
 function gcmsf_mail_set_html_mail_content_type() {
     return 'text/html';
 }
+
+//========================================================================================================
+
+add_filter('the_post_navigation', 'gcmsf_remove_post_navigation_for_survey');
+
+function gcmsf_remove_post_navigation_for_survey( $args ){
+
+  if ( GCMS_C_SURVEY_CPT == get_type() ) {
+    return '';
+  }
+  else {
+    return '';
+  }  
+    return $args;
+
+}
+
 
 //========================================================================================================
 
