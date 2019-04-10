@@ -7,11 +7,12 @@
 		"uuidString": "7F779F4B-73AE-4B07-8449-5218FA379575"
 		}
 	],
-"creatorBuild": "28905",
+"creatorBuild": "29156",
 "files": {
 	"/.gitattributes": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/.gitattributes",
 		"oF": 0
@@ -19,6 +20,7 @@
 	"/.gitignore": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/.gitignore",
 		"oF": 0
@@ -62,6 +64,7 @@
 	"/assets/css/gc-maturityscore-admin.css.map": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/css/gc-maturityscore-admin.css.map",
 		"oF": 0
@@ -79,6 +82,7 @@
 	"/assets/css/gc-maturityscore.css.map": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/css/gc-maturityscore.css.map",
 		"oF": 0
@@ -86,6 +90,7 @@
 	"/assets/css/index.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/css/index.php",
 		"oF": 0
@@ -104,6 +109,7 @@
 	"/assets/images/index.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/images/index.php",
 		"oF": 0
@@ -121,11 +127,13 @@
 	"/assets/index.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/index.php",
 		"oF": 0
 		},
 	"/assets/js/amcharts.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -136,6 +144,7 @@
 		"tS": 0
 		},
 	"/assets/js/details-element-polyfill.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -146,6 +155,7 @@
 		"tS": 0
 		},
 	"/assets/js/functions-frontend.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -156,6 +166,7 @@
 		"tS": 0
 		},
 	"/assets/js/min/functions-frontend-min.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -166,6 +177,7 @@
 		"tS": 0
 		},
 	"/assets/js/min/functions-min.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -176,6 +188,7 @@
 		"tS": 0
 		},
 	"/assets/js/radar.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -185,985 +198,191 @@
 		"sC": 1,
 		"tS": 0
 		},
+	"/cmb2/assets/amchart-settings.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/cmb2/assets/amchart-settings-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"/cmb2/assets/antwoorden-vragen.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/cmb2/assets/antwoorden-vragen-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"/cmb2/assets/css/admin.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/cmb2/assets/css/admin-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/cmb2/assets/css/gc-maturityscore-admin.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/cmb2/assets/css/gc-maturityscore-admin-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/cmb2/assets/css/gc-maturityscore-admin.css.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/cmb2/assets/css/gc-maturityscore-admin.css.map",
+		"oF": 0
+		},
+	"/cmb2/assets/css/gc-maturityscore.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/cmb2/assets/css/gc-maturityscore-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/cmb2/assets/css/gc-maturityscore.css.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/cmb2/assets/css/gc-maturityscore.css.map",
+		"oF": 0
+		},
+	"/cmb2/assets/css/index.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/cmb2/assets/css/index.php",
+		"oF": 0
+		},
+	"/cmb2/assets/images/gc-unicorn.jpg": {
+		"ft": 16384,
+		"iS": 46142,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/cmb2/assets/images/gc-unicorn.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"/cmb2/assets/images/index.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/cmb2/assets/images/index.php",
+		"oF": 0
+		},
+	"/cmb2/assets/images/star.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/cmb2/assets/images/star.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"/cmb2/assets/index.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/cmb2/assets/index.php",
+		"oF": 0
+		},
+	"/cmb2/assets/js/amcharts.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/cmb2/assets/js/min/amcharts-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"/cmb2/assets/js/details-element-polyfill.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/cmb2/assets/js/min/details-element-polyfill-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"/cmb2/assets/js/functions-frontend.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/cmb2/assets/js/min/functions-frontend-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"/cmb2/assets/js/min/functions-frontend-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/cmb2/assets/js/min/min/functions-frontend-min-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"/cmb2/assets/js/min/functions-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/cmb2/assets/js/min/min/functions-min-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"/cmb2/assets/js/radar.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/cmb2/assets/js/min/radar-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
 	"/cmb2/bootstrap.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/bootstrap.php",
 		"oF": 0
 		},
-	"/cmb2/css/cmb2-display-rtl.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2-display-rtl-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/cmb2/css/cmb2-display-rtl.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2-display-rtl.min-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/cmb2/css/cmb2-display.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2-display-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/cmb2/css/cmb2-display.css.map": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2-display.css.map",
-		"oF": 0
-		},
-	"/cmb2/css/cmb2-display.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2-display.min-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/cmb2/css/cmb2-front-rtl.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2-front-rtl-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/cmb2/css/cmb2-front-rtl.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2-front-rtl.min-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/cmb2/css/cmb2-front.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2-front-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/cmb2/css/cmb2-front.css.map": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2-front.css.map",
-		"oF": 0
-		},
-	"/cmb2/css/cmb2-front.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2-front.min-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/cmb2/css/cmb2-rtl.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2-rtl-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/cmb2/css/cmb2-rtl.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2-rtl.min-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/cmb2/css/cmb2.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/cmb2/css/cmb2.css.map": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2.css.map",
-		"oF": 0
-		},
-	"/cmb2/css/cmb2.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/cmb2.min-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/cmb2/css/index.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/css/index.php",
-		"oF": 0
-		},
-	"/cmb2/css/sass/cmb2-display.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/css/cmb2-display.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/cmb2-front.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/css/cmb2-front.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/cmb2.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/cmb2/css/css/cmb2.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/index.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/css/sass/index.php",
-		"oF": 0
-		},
-	"/cmb2/css/sass/partials/_collapsible_ui.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/cmb2/css/sass/css/_collapsible_ui.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/partials/_context_metaboxes.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/cmb2/css/sass/css/_context_metaboxes.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/partials/_display.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/cmb2/css/sass/css/_display.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/partials/_front.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/cmb2/css/sass/css/_front.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/partials/_jquery_ui.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/cmb2/css/sass/css/_jquery_ui.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/partials/_main_wrap.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/cmb2/css/sass/css/_main_wrap.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/partials/_misc.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/cmb2/css/sass/css/_misc.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/partials/_mixins.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/cmb2/css/sass/css/_mixins.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/partials/_new_term.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/cmb2/css/sass/css/_new_term.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/partials/_options-page.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/cmb2/css/sass/css/_options-page.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/partials/_post_metaboxes.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/cmb2/css/sass/css/_post_metaboxes.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/partials/_sidebar_placements.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/cmb2/css/sass/css/_sidebar_placements.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/partials/_variables.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/cmb2/css/sass/css/_variables.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/cmb2/css/sass/partials/index.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/css/sass/partials/index.php",
-		"oF": 0
-		},
-	"/cmb2/images/ico-delete.png": {
-		"ft": 32768,
-		"iS": 715,
-		"oA": 0,
-		"oAP": "/cmb2/images/ico-delete.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/images/index.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/images/index.php",
-		"oF": 0
-		},
-	"/cmb2/images/ui-bg_flat_0_aaaaaa_40x100.png": {
-		"ft": 32768,
-		"iS": 180,
-		"oA": 0,
-		"oAP": "/cmb2/images/ui-bg_flat_0_aaaaaa_40x100.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/images/ui-bg_flat_75_ffffff_40x100.png": {
-		"ft": 32768,
-		"iS": 178,
-		"oA": 0,
-		"oAP": "/cmb2/images/ui-bg_flat_75_ffffff_40x100.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/images/ui-bg_glass_55_fbf9ee_1x400.png": {
-		"ft": 32768,
-		"iS": 120,
-		"oA": 0,
-		"oAP": "/cmb2/images/ui-bg_glass_55_fbf9ee_1x400.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/images/ui-bg_glass_65_ffffff_1x400.png": {
-		"ft": 32768,
-		"iS": 105,
-		"oA": 0,
-		"oAP": "/cmb2/images/ui-bg_glass_65_ffffff_1x400.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/images/ui-bg_glass_75_dadada_1x400.png": {
-		"ft": 32768,
-		"iS": 111,
-		"oA": 0,
-		"oAP": "/cmb2/images/ui-bg_glass_75_dadada_1x400.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/images/ui-bg_glass_75_e6e6e6_1x400.png": {
-		"ft": 32768,
-		"iS": 110,
-		"oA": 0,
-		"oAP": "/cmb2/images/ui-bg_glass_75_e6e6e6_1x400.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/images/ui-bg_glass_95_fef1ec_1x400.png": {
-		"ft": 32768,
-		"iS": 119,
-		"oA": 0,
-		"oAP": "/cmb2/images/ui-bg_glass_95_fef1ec_1x400.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/images/ui-bg_highlight-soft_75_cccccc_1x100.png": {
-		"ft": 32768,
-		"iS": 101,
-		"oA": 0,
-		"oAP": "/cmb2/images/ui-bg_highlight-soft_75_cccccc_1x100.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/images/ui-icons_222222_256x240.png": {
-		"ft": 32768,
-		"iS": 4369,
-		"oA": 0,
-		"oAP": "/cmb2/images/ui-icons_222222_256x240.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/images/ui-icons_2e83ff_256x240.png": {
-		"ft": 32768,
-		"iS": 4369,
-		"oA": 0,
-		"oAP": "/cmb2/images/ui-icons_2e83ff_256x240.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/images/ui-icons_454545_256x240.png": {
-		"ft": 32768,
-		"iS": 4369,
-		"oA": 0,
-		"oAP": "/cmb2/images/ui-icons_454545_256x240.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/images/ui-icons_888888_256x240.png": {
-		"ft": 32768,
-		"iS": 5355,
-		"oA": 0,
-		"oAP": "/cmb2/images/ui-icons_888888_256x240.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/images/ui-icons_cd0a0a_256x240.png": {
-		"ft": 32768,
-		"iS": 4369,
-		"oA": 0,
-		"oAP": "/cmb2/images/ui-icons_cd0a0a_256x240.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/cmb2/includes/CMB2.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_Ajax.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_Ajax.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_Base.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_Base.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_Boxes.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_Boxes.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_Field.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_Field.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_Field_Display.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_Field_Display.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_hookup.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_hookup.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_Hookup_Base.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_Hookup_Base.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_JS.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_JS.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_Options.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_Options.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_Options_Hookup.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_Options_Hookup.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_Sanitize.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_Sanitize.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_Show_Filters.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_Show_Filters.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_Types.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_Types.php",
-		"oF": 0
-		},
-	"/cmb2/includes/CMB2_Utils.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/CMB2_Utils.php",
-		"oF": 0
-		},
-	"/cmb2/includes/helper-functions.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/helper-functions.php",
-		"oF": 0
-		},
-	"/cmb2/includes/index.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/index.php",
-		"oF": 0
-		},
-	"/cmb2/includes/rest-api/CMB2_REST.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/rest-api/CMB2_REST.php",
-		"oF": 0
-		},
-	"/cmb2/includes/rest-api/CMB2_REST_Controller.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/rest-api/CMB2_REST_Controller.php",
-		"oF": 0
-		},
-	"/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php",
-		"oF": 0
-		},
-	"/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php",
-		"oF": 0
-		},
-	"/cmb2/includes/shim/WP_REST_Controller.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/shim/WP_REST_Controller.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Base.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Base.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Checkbox.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Checkbox.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Colorpicker.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Colorpicker.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_File.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_File.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_File_Base.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_File_Base.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_File_List.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_File_List.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Multi_Base.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Multi_Base.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Multicheck.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Multicheck.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Oembed.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Oembed.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Picker_Base.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Picker_Base.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Radio.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Radio.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Select.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Select.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Select_Timezone.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Select_Timezone.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Taxonomy_Base.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Taxonomy_Base.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Taxonomy_Multicheck.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Taxonomy_Multicheck.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Taxonomy_Multicheck_Hierarchical.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Taxonomy_Multicheck_Hierarchical.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Taxonomy_Radio.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Taxonomy_Radio.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Taxonomy_Radio_Hierarchical.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Taxonomy_Radio_Hierarchical.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Taxonomy_Select.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Taxonomy_Select.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Text.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Text.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Text_Date.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Text_Date.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Text_Datetime_Timestamp.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Text_Datetime_Timestamp.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Text_Datetime_Timestamp_Timezone.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Text_Datetime_Timestamp_Timezone.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Text_Time.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Text_Time.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Textarea.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Textarea.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Textarea_Code.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Textarea_Code.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Title.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Title.php",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Title.php.bak": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Title.php.bak",
-		"oF": 0
-		},
-	"/cmb2/includes/types/CMB2_Type_Wysiwyg.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/includes/types/CMB2_Type_Wysiwyg.php",
-		"oF": 0
-		},
-	"/cmb2/index.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/index.php",
-		"oF": 0
-		},
-	"/cmb2/init.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/init.php",
-		"oF": 0
-		},
-	"/cmb2/js/cmb2-wysiwyg.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/cmb2/js/min/cmb2-wysiwyg-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"/cmb2/js/cmb2.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/cmb2/js/min/cmb2-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"/cmb2/js/cmb2.min.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/cmb2/js/min/cmb2.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"/cmb2/js/index.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/js/index.php",
-		"oF": 0
-		},
-	"/cmb2/js/jquery-ui-timepicker-addon.min.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/cmb2/js/min/jquery-ui-timepicker-addon.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"/cmb2/js/wp-color-picker-alpha.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/cmb2/js/min/wp-color-picker-alpha-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"/cmb2/js/wp-color-picker-alpha.min.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/cmb2/js/min/wp-color-picker-alpha.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
 	"/cmb2/languages/cmb2-ach.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ach.mo",
 		"oF": 0
@@ -1171,6 +390,7 @@
 	"/cmb2/languages/cmb2-ach.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ach.po",
 		"oF": 0
@@ -1178,6 +398,7 @@
 	"/cmb2/languages/cmb2-af.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-af.mo",
 		"oF": 0
@@ -1185,6 +406,7 @@
 	"/cmb2/languages/cmb2-af.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-af.po",
 		"oF": 0
@@ -1192,6 +414,7 @@
 	"/cmb2/languages/cmb2-an.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-an.mo",
 		"oF": 0
@@ -1199,6 +422,7 @@
 	"/cmb2/languages/cmb2-an.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-an.po",
 		"oF": 0
@@ -1206,6 +430,7 @@
 	"/cmb2/languages/cmb2-ar.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ar.mo",
 		"oF": 0
@@ -1213,6 +438,7 @@
 	"/cmb2/languages/cmb2-ar.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ar.po",
 		"oF": 0
@@ -1220,6 +446,7 @@
 	"/cmb2/languages/cmb2-ary.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ary.mo",
 		"oF": 0
@@ -1227,6 +454,7 @@
 	"/cmb2/languages/cmb2-ary.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ary.po",
 		"oF": 0
@@ -1234,6 +462,7 @@
 	"/cmb2/languages/cmb2-as.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-as.mo",
 		"oF": 0
@@ -1241,6 +470,7 @@
 	"/cmb2/languages/cmb2-as.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-as.po",
 		"oF": 0
@@ -1248,6 +478,7 @@
 	"/cmb2/languages/cmb2-az.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-az.mo",
 		"oF": 0
@@ -1255,6 +486,7 @@
 	"/cmb2/languages/cmb2-az.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-az.po",
 		"oF": 0
@@ -1262,6 +494,7 @@
 	"/cmb2/languages/cmb2-be.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-be.mo",
 		"oF": 0
@@ -1269,6 +502,7 @@
 	"/cmb2/languages/cmb2-be.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-be.po",
 		"oF": 0
@@ -1276,6 +510,7 @@
 	"/cmb2/languages/cmb2-bg.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-bg.mo",
 		"oF": 0
@@ -1283,6 +518,7 @@
 	"/cmb2/languages/cmb2-bg.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-bg.po",
 		"oF": 0
@@ -1290,6 +526,7 @@
 	"/cmb2/languages/cmb2-bg_BG.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-bg_BG.mo",
 		"oF": 0
@@ -1297,6 +534,7 @@
 	"/cmb2/languages/cmb2-bg_BG.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-bg_BG.po",
 		"oF": 0
@@ -1304,6 +542,7 @@
 	"/cmb2/languages/cmb2-bn_BD.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-bn_BD.mo",
 		"oF": 0
@@ -1311,6 +550,7 @@
 	"/cmb2/languages/cmb2-bn_BD.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-bn_BD.po",
 		"oF": 0
@@ -1318,6 +558,7 @@
 	"/cmb2/languages/cmb2-br.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-br.mo",
 		"oF": 0
@@ -1325,6 +566,7 @@
 	"/cmb2/languages/cmb2-br.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-br.po",
 		"oF": 0
@@ -1332,6 +574,7 @@
 	"/cmb2/languages/cmb2-bs.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-bs.mo",
 		"oF": 0
@@ -1339,6 +582,7 @@
 	"/cmb2/languages/cmb2-bs.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-bs.po",
 		"oF": 0
@@ -1346,6 +590,7 @@
 	"/cmb2/languages/cmb2-bs_BA.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-bs_BA.mo",
 		"oF": 0
@@ -1353,6 +598,7 @@
 	"/cmb2/languages/cmb2-bs_BA.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-bs_BA.po",
 		"oF": 0
@@ -1360,6 +606,7 @@
 	"/cmb2/languages/cmb2-ca.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ca.mo",
 		"oF": 0
@@ -1367,6 +614,7 @@
 	"/cmb2/languages/cmb2-ca.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ca.po",
 		"oF": 0
@@ -1374,6 +622,7 @@
 	"/cmb2/languages/cmb2-co.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-co.mo",
 		"oF": 0
@@ -1381,6 +630,7 @@
 	"/cmb2/languages/cmb2-co.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-co.po",
 		"oF": 0
@@ -1388,6 +638,7 @@
 	"/cmb2/languages/cmb2-cs_CZ.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-cs_CZ.mo",
 		"oF": 0
@@ -1395,6 +646,7 @@
 	"/cmb2/languages/cmb2-cs_CZ.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-cs_CZ.po",
 		"oF": 0
@@ -1402,6 +654,7 @@
 	"/cmb2/languages/cmb2-cy.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-cy.mo",
 		"oF": 0
@@ -1409,6 +662,7 @@
 	"/cmb2/languages/cmb2-cy.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-cy.po",
 		"oF": 0
@@ -1416,6 +670,7 @@
 	"/cmb2/languages/cmb2-da_DK.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-da_DK.mo",
 		"oF": 0
@@ -1423,6 +678,7 @@
 	"/cmb2/languages/cmb2-da_DK.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-da_DK.po",
 		"oF": 0
@@ -1430,6 +686,7 @@
 	"/cmb2/languages/cmb2-de_AT.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-de_AT.mo",
 		"oF": 0
@@ -1437,6 +694,7 @@
 	"/cmb2/languages/cmb2-de_AT.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-de_AT.po",
 		"oF": 0
@@ -1444,6 +702,7 @@
 	"/cmb2/languages/cmb2-de_CH.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-de_CH.mo",
 		"oF": 0
@@ -1451,6 +710,7 @@
 	"/cmb2/languages/cmb2-de_CH.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-de_CH.po",
 		"oF": 0
@@ -1458,6 +718,7 @@
 	"/cmb2/languages/cmb2-de_DE.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-de_DE.mo",
 		"oF": 0
@@ -1465,6 +726,7 @@
 	"/cmb2/languages/cmb2-de_DE.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-de_DE.po",
 		"oF": 0
@@ -1472,6 +734,7 @@
 	"/cmb2/languages/cmb2-dv.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-dv.mo",
 		"oF": 0
@@ -1479,6 +742,7 @@
 	"/cmb2/languages/cmb2-dv.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-dv.po",
 		"oF": 0
@@ -1486,6 +750,7 @@
 	"/cmb2/languages/cmb2-el.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-el.mo",
 		"oF": 0
@@ -1493,6 +758,7 @@
 	"/cmb2/languages/cmb2-el.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-el.po",
 		"oF": 0
@@ -1500,6 +766,7 @@
 	"/cmb2/languages/cmb2-en@pirate.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-en@pirate.mo",
 		"oF": 0
@@ -1507,6 +774,7 @@
 	"/cmb2/languages/cmb2-en@pirate.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-en@pirate.po",
 		"oF": 0
@@ -1514,6 +782,7 @@
 	"/cmb2/languages/cmb2-en_AU.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-en_AU.mo",
 		"oF": 0
@@ -1521,6 +790,7 @@
 	"/cmb2/languages/cmb2-en_AU.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-en_AU.po",
 		"oF": 0
@@ -1528,6 +798,7 @@
 	"/cmb2/languages/cmb2-en_CA.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-en_CA.mo",
 		"oF": 0
@@ -1535,6 +806,7 @@
 	"/cmb2/languages/cmb2-en_CA.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-en_CA.po",
 		"oF": 0
@@ -1542,6 +814,7 @@
 	"/cmb2/languages/cmb2-en_GB.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-en_GB.mo",
 		"oF": 0
@@ -1549,6 +822,7 @@
 	"/cmb2/languages/cmb2-en_GB.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-en_GB.po",
 		"oF": 0
@@ -1556,6 +830,7 @@
 	"/cmb2/languages/cmb2-eo.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-eo.mo",
 		"oF": 0
@@ -1563,6 +838,7 @@
 	"/cmb2/languages/cmb2-eo.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-eo.po",
 		"oF": 0
@@ -1570,6 +846,7 @@
 	"/cmb2/languages/cmb2-es_AR.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_AR.mo",
 		"oF": 0
@@ -1577,6 +854,7 @@
 	"/cmb2/languages/cmb2-es_AR.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_AR.po",
 		"oF": 0
@@ -1584,6 +862,7 @@
 	"/cmb2/languages/cmb2-es_CL.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_CL.mo",
 		"oF": 0
@@ -1591,6 +870,7 @@
 	"/cmb2/languages/cmb2-es_CL.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_CL.po",
 		"oF": 0
@@ -1598,6 +878,7 @@
 	"/cmb2/languages/cmb2-es_CO.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_CO.mo",
 		"oF": 0
@@ -1605,6 +886,7 @@
 	"/cmb2/languages/cmb2-es_CO.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_CO.po",
 		"oF": 0
@@ -1612,6 +894,7 @@
 	"/cmb2/languages/cmb2-es_ES.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_ES.mo",
 		"oF": 0
@@ -1619,6 +902,7 @@
 	"/cmb2/languages/cmb2-es_ES.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_ES.po",
 		"oF": 0
@@ -1626,6 +910,7 @@
 	"/cmb2/languages/cmb2-es_MX.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_MX.mo",
 		"oF": 0
@@ -1633,6 +918,7 @@
 	"/cmb2/languages/cmb2-es_MX.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_MX.po",
 		"oF": 0
@@ -1640,6 +926,7 @@
 	"/cmb2/languages/cmb2-es_PE.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_PE.mo",
 		"oF": 0
@@ -1647,6 +934,7 @@
 	"/cmb2/languages/cmb2-es_PE.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_PE.po",
 		"oF": 0
@@ -1654,6 +942,7 @@
 	"/cmb2/languages/cmb2-es_VE.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_VE.mo",
 		"oF": 0
@@ -1661,6 +950,7 @@
 	"/cmb2/languages/cmb2-es_VE.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-es_VE.po",
 		"oF": 0
@@ -1668,6 +958,7 @@
 	"/cmb2/languages/cmb2-et.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-et.mo",
 		"oF": 0
@@ -1675,6 +966,7 @@
 	"/cmb2/languages/cmb2-et.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-et.po",
 		"oF": 0
@@ -1682,6 +974,7 @@
 	"/cmb2/languages/cmb2-eu.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-eu.mo",
 		"oF": 0
@@ -1689,6 +982,7 @@
 	"/cmb2/languages/cmb2-eu.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-eu.po",
 		"oF": 0
@@ -1696,6 +990,7 @@
 	"/cmb2/languages/cmb2-fa.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fa.mo",
 		"oF": 0
@@ -1703,6 +998,7 @@
 	"/cmb2/languages/cmb2-fa.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fa.po",
 		"oF": 0
@@ -1710,6 +1006,7 @@
 	"/cmb2/languages/cmb2-fa_IR.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fa_IR.mo",
 		"oF": 0
@@ -1717,6 +1014,7 @@
 	"/cmb2/languages/cmb2-fa_IR.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fa_IR.po",
 		"oF": 0
@@ -1724,6 +1022,7 @@
 	"/cmb2/languages/cmb2-fi.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fi.mo",
 		"oF": 0
@@ -1731,6 +1030,7 @@
 	"/cmb2/languages/cmb2-fi.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fi.po",
 		"oF": 0
@@ -1738,6 +1038,7 @@
 	"/cmb2/languages/cmb2-fo.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fo.mo",
 		"oF": 0
@@ -1745,6 +1046,7 @@
 	"/cmb2/languages/cmb2-fo.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fo.po",
 		"oF": 0
@@ -1752,6 +1054,7 @@
 	"/cmb2/languages/cmb2-fr_BE.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fr_BE.mo",
 		"oF": 0
@@ -1759,6 +1062,7 @@
 	"/cmb2/languages/cmb2-fr_BE.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fr_BE.po",
 		"oF": 0
@@ -1766,6 +1070,7 @@
 	"/cmb2/languages/cmb2-fr_CA.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fr_CA.mo",
 		"oF": 0
@@ -1773,6 +1078,7 @@
 	"/cmb2/languages/cmb2-fr_CA.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fr_CA.po",
 		"oF": 0
@@ -1780,6 +1086,7 @@
 	"/cmb2/languages/cmb2-fr_FR.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fr_FR.mo",
 		"oF": 0
@@ -1787,6 +1094,7 @@
 	"/cmb2/languages/cmb2-fr_FR.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fr_FR.po",
 		"oF": 0
@@ -1794,6 +1102,7 @@
 	"/cmb2/languages/cmb2-fy.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fy.mo",
 		"oF": 0
@@ -1801,6 +1110,7 @@
 	"/cmb2/languages/cmb2-fy.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-fy.po",
 		"oF": 0
@@ -1808,6 +1118,7 @@
 	"/cmb2/languages/cmb2-ga.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ga.mo",
 		"oF": 0
@@ -1815,6 +1126,7 @@
 	"/cmb2/languages/cmb2-ga.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ga.po",
 		"oF": 0
@@ -1822,6 +1134,7 @@
 	"/cmb2/languages/cmb2-gd.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-gd.mo",
 		"oF": 0
@@ -1829,6 +1142,7 @@
 	"/cmb2/languages/cmb2-gd.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-gd.po",
 		"oF": 0
@@ -1836,6 +1150,7 @@
 	"/cmb2/languages/cmb2-gl_ES.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-gl_ES.mo",
 		"oF": 0
@@ -1843,6 +1158,7 @@
 	"/cmb2/languages/cmb2-gl_ES.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-gl_ES.po",
 		"oF": 0
@@ -1850,6 +1166,7 @@
 	"/cmb2/languages/cmb2-gu_IN.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-gu_IN.mo",
 		"oF": 0
@@ -1857,6 +1174,7 @@
 	"/cmb2/languages/cmb2-gu_IN.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-gu_IN.po",
 		"oF": 0
@@ -1864,6 +1182,7 @@
 	"/cmb2/languages/cmb2-he_IL.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-he_IL.mo",
 		"oF": 0
@@ -1871,6 +1190,7 @@
 	"/cmb2/languages/cmb2-he_IL.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-he_IL.po",
 		"oF": 0
@@ -1878,6 +1198,7 @@
 	"/cmb2/languages/cmb2-hi_IN.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-hi_IN.mo",
 		"oF": 0
@@ -1885,6 +1206,7 @@
 	"/cmb2/languages/cmb2-hi_IN.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-hi_IN.po",
 		"oF": 0
@@ -1892,6 +1214,7 @@
 	"/cmb2/languages/cmb2-hr.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-hr.mo",
 		"oF": 0
@@ -1899,6 +1222,7 @@
 	"/cmb2/languages/cmb2-hr.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-hr.po",
 		"oF": 0
@@ -1906,6 +1230,7 @@
 	"/cmb2/languages/cmb2-hu_HU.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-hu_HU.mo",
 		"oF": 0
@@ -1913,6 +1238,7 @@
 	"/cmb2/languages/cmb2-hu_HU.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-hu_HU.po",
 		"oF": 0
@@ -1920,6 +1246,7 @@
 	"/cmb2/languages/cmb2-hy.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-hy.mo",
 		"oF": 0
@@ -1927,6 +1254,7 @@
 	"/cmb2/languages/cmb2-hy.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-hy.po",
 		"oF": 0
@@ -1934,6 +1262,7 @@
 	"/cmb2/languages/cmb2-id_ID.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-id_ID.mo",
 		"oF": 0
@@ -1941,6 +1270,7 @@
 	"/cmb2/languages/cmb2-id_ID.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-id_ID.po",
 		"oF": 0
@@ -1948,6 +1278,7 @@
 	"/cmb2/languages/cmb2-is_IS.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-is_IS.mo",
 		"oF": 0
@@ -1955,6 +1286,7 @@
 	"/cmb2/languages/cmb2-is_IS.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-is_IS.po",
 		"oF": 0
@@ -1962,6 +1294,7 @@
 	"/cmb2/languages/cmb2-it_IT.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-it_IT.mo",
 		"oF": 0
@@ -1969,6 +1302,7 @@
 	"/cmb2/languages/cmb2-it_IT.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-it_IT.po",
 		"oF": 0
@@ -1976,6 +1310,7 @@
 	"/cmb2/languages/cmb2-ja.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ja.mo",
 		"oF": 0
@@ -1983,6 +1318,7 @@
 	"/cmb2/languages/cmb2-ja.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ja.po",
 		"oF": 0
@@ -1990,6 +1326,7 @@
 	"/cmb2/languages/cmb2-jv.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-jv.mo",
 		"oF": 0
@@ -1997,6 +1334,7 @@
 	"/cmb2/languages/cmb2-jv.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-jv.po",
 		"oF": 0
@@ -2004,6 +1342,7 @@
 	"/cmb2/languages/cmb2-ka.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ka.mo",
 		"oF": 0
@@ -2011,6 +1350,7 @@
 	"/cmb2/languages/cmb2-ka.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ka.po",
 		"oF": 0
@@ -2018,6 +1358,7 @@
 	"/cmb2/languages/cmb2-ka_GE.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ka_GE.mo",
 		"oF": 0
@@ -2025,6 +1366,7 @@
 	"/cmb2/languages/cmb2-ka_GE.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ka_GE.po",
 		"oF": 0
@@ -2032,6 +1374,7 @@
 	"/cmb2/languages/cmb2-kk.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-kk.mo",
 		"oF": 0
@@ -2039,6 +1382,7 @@
 	"/cmb2/languages/cmb2-kk.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-kk.po",
 		"oF": 0
@@ -2046,6 +1390,7 @@
 	"/cmb2/languages/cmb2-km.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-km.mo",
 		"oF": 0
@@ -2053,6 +1398,7 @@
 	"/cmb2/languages/cmb2-km.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-km.po",
 		"oF": 0
@@ -2060,6 +1406,7 @@
 	"/cmb2/languages/cmb2-kn.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-kn.mo",
 		"oF": 0
@@ -2067,6 +1414,7 @@
 	"/cmb2/languages/cmb2-kn.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-kn.po",
 		"oF": 0
@@ -2074,6 +1422,7 @@
 	"/cmb2/languages/cmb2-ko_KR.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ko_KR.mo",
 		"oF": 0
@@ -2081,6 +1430,7 @@
 	"/cmb2/languages/cmb2-ko_KR.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ko_KR.po",
 		"oF": 0
@@ -2088,6 +1438,7 @@
 	"/cmb2/languages/cmb2-ku.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ku.mo",
 		"oF": 0
@@ -2095,6 +1446,7 @@
 	"/cmb2/languages/cmb2-ku.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ku.po",
 		"oF": 0
@@ -2102,6 +1454,7 @@
 	"/cmb2/languages/cmb2-ky.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ky.mo",
 		"oF": 0
@@ -2109,6 +1462,7 @@
 	"/cmb2/languages/cmb2-ky.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ky.po",
 		"oF": 0
@@ -2116,6 +1470,7 @@
 	"/cmb2/languages/cmb2-lo.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-lo.mo",
 		"oF": 0
@@ -2123,6 +1478,7 @@
 	"/cmb2/languages/cmb2-lo.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-lo.po",
 		"oF": 0
@@ -2130,6 +1486,7 @@
 	"/cmb2/languages/cmb2-lt_LT.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-lt_LT.mo",
 		"oF": 0
@@ -2137,6 +1494,7 @@
 	"/cmb2/languages/cmb2-lt_LT.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-lt_LT.po",
 		"oF": 0
@@ -2144,6 +1502,7 @@
 	"/cmb2/languages/cmb2-lv.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-lv.mo",
 		"oF": 0
@@ -2151,6 +1510,7 @@
 	"/cmb2/languages/cmb2-lv.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-lv.po",
 		"oF": 0
@@ -2158,6 +1518,7 @@
 	"/cmb2/languages/cmb2-mg.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-mg.mo",
 		"oF": 0
@@ -2165,6 +1526,7 @@
 	"/cmb2/languages/cmb2-mg.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-mg.po",
 		"oF": 0
@@ -2172,6 +1534,7 @@
 	"/cmb2/languages/cmb2-mk_MK.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-mk_MK.mo",
 		"oF": 0
@@ -2179,6 +1542,7 @@
 	"/cmb2/languages/cmb2-mk_MK.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-mk_MK.po",
 		"oF": 0
@@ -2186,6 +1550,7 @@
 	"/cmb2/languages/cmb2-mn.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-mn.mo",
 		"oF": 0
@@ -2193,6 +1558,7 @@
 	"/cmb2/languages/cmb2-mn.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-mn.po",
 		"oF": 0
@@ -2200,6 +1566,7 @@
 	"/cmb2/languages/cmb2-mr.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-mr.mo",
 		"oF": 0
@@ -2207,6 +1574,7 @@
 	"/cmb2/languages/cmb2-mr.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-mr.po",
 		"oF": 0
@@ -2214,6 +1582,7 @@
 	"/cmb2/languages/cmb2-ms_MY.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ms_MY.mo",
 		"oF": 0
@@ -2221,6 +1590,7 @@
 	"/cmb2/languages/cmb2-ms_MY.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ms_MY.po",
 		"oF": 0
@@ -2228,6 +1598,7 @@
 	"/cmb2/languages/cmb2-my_MM.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-my_MM.mo",
 		"oF": 0
@@ -2235,6 +1606,7 @@
 	"/cmb2/languages/cmb2-my_MM.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-my_MM.po",
 		"oF": 0
@@ -2242,6 +1614,7 @@
 	"/cmb2/languages/cmb2-nb_NO.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-nb_NO.mo",
 		"oF": 0
@@ -2249,6 +1622,7 @@
 	"/cmb2/languages/cmb2-nb_NO.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-nb_NO.po",
 		"oF": 0
@@ -2256,6 +1630,7 @@
 	"/cmb2/languages/cmb2-ne_NP.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ne_NP.mo",
 		"oF": 0
@@ -2263,6 +1638,7 @@
 	"/cmb2/languages/cmb2-ne_NP.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ne_NP.po",
 		"oF": 0
@@ -2270,6 +1646,7 @@
 	"/cmb2/languages/cmb2-nl_BE.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-nl_BE.mo",
 		"oF": 0
@@ -2277,6 +1654,7 @@
 	"/cmb2/languages/cmb2-nl_BE.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-nl_BE.po",
 		"oF": 0
@@ -2284,6 +1662,7 @@
 	"/cmb2/languages/cmb2-nl_NL.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-nl_NL.mo",
 		"oF": 0
@@ -2291,6 +1670,7 @@
 	"/cmb2/languages/cmb2-nl_NL.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-nl_NL.po",
 		"oF": 0
@@ -2298,6 +1678,7 @@
 	"/cmb2/languages/cmb2-nn_NO.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-nn_NO.mo",
 		"oF": 0
@@ -2305,6 +1686,7 @@
 	"/cmb2/languages/cmb2-nn_NO.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-nn_NO.po",
 		"oF": 0
@@ -2312,6 +1694,7 @@
 	"/cmb2/languages/cmb2-oc.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-oc.mo",
 		"oF": 0
@@ -2319,6 +1702,7 @@
 	"/cmb2/languages/cmb2-oc.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-oc.po",
 		"oF": 0
@@ -2326,6 +1710,7 @@
 	"/cmb2/languages/cmb2-os.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-os.mo",
 		"oF": 0
@@ -2333,6 +1718,7 @@
 	"/cmb2/languages/cmb2-os.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-os.po",
 		"oF": 0
@@ -2340,6 +1726,7 @@
 	"/cmb2/languages/cmb2-pap.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-pap.mo",
 		"oF": 0
@@ -2347,6 +1734,7 @@
 	"/cmb2/languages/cmb2-pap.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-pap.po",
 		"oF": 0
@@ -2354,6 +1742,7 @@
 	"/cmb2/languages/cmb2-pl_PL.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-pl_PL.mo",
 		"oF": 0
@@ -2361,6 +1750,7 @@
 	"/cmb2/languages/cmb2-pl_PL.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-pl_PL.po",
 		"oF": 0
@@ -2368,6 +1758,7 @@
 	"/cmb2/languages/cmb2-ps.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ps.mo",
 		"oF": 0
@@ -2375,6 +1766,7 @@
 	"/cmb2/languages/cmb2-ps.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ps.po",
 		"oF": 0
@@ -2382,6 +1774,7 @@
 	"/cmb2/languages/cmb2-pt_BR.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-pt_BR.mo",
 		"oF": 0
@@ -2389,6 +1782,7 @@
 	"/cmb2/languages/cmb2-pt_BR.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-pt_BR.po",
 		"oF": 0
@@ -2396,6 +1790,7 @@
 	"/cmb2/languages/cmb2-pt_PT.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-pt_PT.mo",
 		"oF": 0
@@ -2403,6 +1798,7 @@
 	"/cmb2/languages/cmb2-pt_PT.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-pt_PT.po",
 		"oF": 0
@@ -2410,6 +1806,7 @@
 	"/cmb2/languages/cmb2-ro_RO.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ro_RO.mo",
 		"oF": 0
@@ -2417,6 +1814,7 @@
 	"/cmb2/languages/cmb2-ro_RO.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ro_RO.po",
 		"oF": 0
@@ -2424,6 +1822,7 @@
 	"/cmb2/languages/cmb2-ru_RU.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ru_RU.mo",
 		"oF": 0
@@ -2431,6 +1830,7 @@
 	"/cmb2/languages/cmb2-ru_RU.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ru_RU.po",
 		"oF": 0
@@ -2438,6 +1838,7 @@
 	"/cmb2/languages/cmb2-sa.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sa.mo",
 		"oF": 0
@@ -2445,6 +1846,7 @@
 	"/cmb2/languages/cmb2-sa.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sa.po",
 		"oF": 0
@@ -2452,6 +1854,7 @@
 	"/cmb2/languages/cmb2-sah.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sah.mo",
 		"oF": 0
@@ -2459,6 +1862,7 @@
 	"/cmb2/languages/cmb2-sah.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sah.po",
 		"oF": 0
@@ -2466,6 +1870,7 @@
 	"/cmb2/languages/cmb2-si_LK.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-si_LK.mo",
 		"oF": 0
@@ -2473,6 +1878,7 @@
 	"/cmb2/languages/cmb2-si_LK.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-si_LK.po",
 		"oF": 0
@@ -2480,6 +1886,7 @@
 	"/cmb2/languages/cmb2-sk_SK.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sk_SK.mo",
 		"oF": 0
@@ -2487,6 +1894,7 @@
 	"/cmb2/languages/cmb2-sk_SK.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sk_SK.po",
 		"oF": 0
@@ -2494,6 +1902,7 @@
 	"/cmb2/languages/cmb2-sl_SI.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sl_SI.mo",
 		"oF": 0
@@ -2501,6 +1910,7 @@
 	"/cmb2/languages/cmb2-sl_SI.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sl_SI.po",
 		"oF": 0
@@ -2508,6 +1918,7 @@
 	"/cmb2/languages/cmb2-so.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-so.mo",
 		"oF": 0
@@ -2515,6 +1926,7 @@
 	"/cmb2/languages/cmb2-so.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-so.po",
 		"oF": 0
@@ -2522,6 +1934,7 @@
 	"/cmb2/languages/cmb2-sq.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sq.mo",
 		"oF": 0
@@ -2529,6 +1942,7 @@
 	"/cmb2/languages/cmb2-sq.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sq.po",
 		"oF": 0
@@ -2536,6 +1950,7 @@
 	"/cmb2/languages/cmb2-sr_RS.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sr_RS.mo",
 		"oF": 0
@@ -2543,6 +1958,7 @@
 	"/cmb2/languages/cmb2-sr_RS.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sr_RS.po",
 		"oF": 0
@@ -2550,6 +1966,7 @@
 	"/cmb2/languages/cmb2-su.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-su.mo",
 		"oF": 0
@@ -2557,6 +1974,7 @@
 	"/cmb2/languages/cmb2-su.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-su.po",
 		"oF": 0
@@ -2564,6 +1982,7 @@
 	"/cmb2/languages/cmb2-sv_SE.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sv_SE.mo",
 		"oF": 0
@@ -2571,6 +1990,7 @@
 	"/cmb2/languages/cmb2-sv_SE.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sv_SE.po",
 		"oF": 0
@@ -2578,6 +1998,7 @@
 	"/cmb2/languages/cmb2-sw.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sw.mo",
 		"oF": 0
@@ -2585,6 +2006,7 @@
 	"/cmb2/languages/cmb2-sw.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-sw.po",
 		"oF": 0
@@ -2592,6 +2014,7 @@
 	"/cmb2/languages/cmb2-ta_IN.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ta_IN.mo",
 		"oF": 0
@@ -2599,6 +2022,7 @@
 	"/cmb2/languages/cmb2-ta_IN.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ta_IN.po",
 		"oF": 0
@@ -2606,6 +2030,7 @@
 	"/cmb2/languages/cmb2-ta_LK.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ta_LK.mo",
 		"oF": 0
@@ -2613,6 +2038,7 @@
 	"/cmb2/languages/cmb2-ta_LK.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ta_LK.po",
 		"oF": 0
@@ -2620,6 +2046,7 @@
 	"/cmb2/languages/cmb2-te.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-te.mo",
 		"oF": 0
@@ -2627,6 +2054,7 @@
 	"/cmb2/languages/cmb2-te.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-te.po",
 		"oF": 0
@@ -2634,6 +2062,7 @@
 	"/cmb2/languages/cmb2-tg.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-tg.mo",
 		"oF": 0
@@ -2641,6 +2070,7 @@
 	"/cmb2/languages/cmb2-tg.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-tg.po",
 		"oF": 0
@@ -2648,6 +2078,7 @@
 	"/cmb2/languages/cmb2-th.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-th.mo",
 		"oF": 0
@@ -2655,6 +2086,7 @@
 	"/cmb2/languages/cmb2-th.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-th.po",
 		"oF": 0
@@ -2662,6 +2094,7 @@
 	"/cmb2/languages/cmb2-tk_TM.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-tk_TM.mo",
 		"oF": 0
@@ -2669,6 +2102,7 @@
 	"/cmb2/languages/cmb2-tk_TM.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-tk_TM.po",
 		"oF": 0
@@ -2676,6 +2110,7 @@
 	"/cmb2/languages/cmb2-tl.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-tl.mo",
 		"oF": 0
@@ -2683,6 +2118,7 @@
 	"/cmb2/languages/cmb2-tl.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-tl.po",
 		"oF": 0
@@ -2690,6 +2126,7 @@
 	"/cmb2/languages/cmb2-tr_TR.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-tr_TR.mo",
 		"oF": 0
@@ -2697,6 +2134,7 @@
 	"/cmb2/languages/cmb2-tr_TR.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-tr_TR.po",
 		"oF": 0
@@ -2704,6 +2142,7 @@
 	"/cmb2/languages/cmb2-tzm.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-tzm.mo",
 		"oF": 0
@@ -2711,6 +2150,7 @@
 	"/cmb2/languages/cmb2-tzm.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-tzm.po",
 		"oF": 0
@@ -2718,6 +2158,7 @@
 	"/cmb2/languages/cmb2-ug.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ug.mo",
 		"oF": 0
@@ -2725,6 +2166,7 @@
 	"/cmb2/languages/cmb2-ug.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ug.po",
 		"oF": 0
@@ -2732,6 +2174,7 @@
 	"/cmb2/languages/cmb2-uk.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-uk.mo",
 		"oF": 0
@@ -2739,6 +2182,7 @@
 	"/cmb2/languages/cmb2-uk.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-uk.po",
 		"oF": 0
@@ -2746,6 +2190,7 @@
 	"/cmb2/languages/cmb2-ur.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ur.mo",
 		"oF": 0
@@ -2753,6 +2198,7 @@
 	"/cmb2/languages/cmb2-ur.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ur.po",
 		"oF": 0
@@ -2760,6 +2206,7 @@
 	"/cmb2/languages/cmb2-ur_PK.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ur_PK.mo",
 		"oF": 0
@@ -2767,6 +2214,7 @@
 	"/cmb2/languages/cmb2-ur_PK.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-ur_PK.po",
 		"oF": 0
@@ -2774,6 +2222,7 @@
 	"/cmb2/languages/cmb2-uz.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-uz.mo",
 		"oF": 0
@@ -2781,6 +2230,7 @@
 	"/cmb2/languages/cmb2-uz.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-uz.po",
 		"oF": 0
@@ -2788,6 +2238,7 @@
 	"/cmb2/languages/cmb2-vi.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-vi.mo",
 		"oF": 0
@@ -2795,6 +2246,7 @@
 	"/cmb2/languages/cmb2-vi.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-vi.po",
 		"oF": 0
@@ -2802,6 +2254,7 @@
 	"/cmb2/languages/cmb2-zh_CN.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-zh_CN.mo",
 		"oF": 0
@@ -2809,6 +2262,7 @@
 	"/cmb2/languages/cmb2-zh_CN.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-zh_CN.po",
 		"oF": 0
@@ -2816,6 +2270,7 @@
 	"/cmb2/languages/cmb2-zh_HK.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-zh_HK.mo",
 		"oF": 0
@@ -2823,6 +2278,7 @@
 	"/cmb2/languages/cmb2-zh_HK.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-zh_HK.po",
 		"oF": 0
@@ -2830,6 +2286,7 @@
 	"/cmb2/languages/cmb2-zh_TW.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-zh_TW.mo",
 		"oF": 0
@@ -2837,6 +2294,7 @@
 	"/cmb2/languages/cmb2-zh_TW.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2-zh_TW.po",
 		"oF": 0
@@ -2844,207 +2302,39 @@
 	"/cmb2/languages/cmb2.pot": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/cmb2/languages/cmb2.pot",
 		"oF": 0
 		},
-	"/cmb2/tests/bin/after-run-wp-unit-tests.sh": {
+	"/cmb2/languages/gcmaturity-translate-nl_NL.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
-		"oAP": "/cmb2/tests/bin/after-run-wp-unit-tests.sh",
+		"oAP": "/cmb2/languages/gcmaturity-translate-nl_NL.mo",
 		"oF": 0
 		},
-	"/cmb2/tests/bin/install-php-phpunit.sh": {
+	"/cmb2/languages/gcmaturity-translate-nl_NL.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
-		"oAP": "/cmb2/tests/bin/install-php-phpunit.sh",
+		"oAP": "/cmb2/languages/gcmaturity-translate-nl_NL.po",
 		"oF": 0
 		},
-	"/cmb2/tests/bin/install-wp-tests.sh": {
+	"/cmb2/languages/gcmaturity-translate.pot": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
-		"oAP": "/cmb2/tests/bin/install-wp-tests.sh",
-		"oF": 0
-		},
-	"/cmb2/tests/bin/patches/node.patch": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/bin/patches/node.patch",
-		"oF": 0
-		},
-	"/cmb2/tests/bin/patches/openssl.patch": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/bin/patches/openssl.patch",
-		"oF": 0
-		},
-	"/cmb2/tests/bin/patches/README.md": {
-		"cB": 0,
-		"cS": 0,
-		"eF": 1,
-		"eL": 1,
-		"ema": 1,
-		"eSQ": 1,
-		"ft": 4096,
-		"oA": 0,
-		"oAP": "/cmb2/tests/bin/patches/README.html",
-		"oF": 0,
-		"oFM": 0,
-		"oS": 0,
-		"pHT": 0,
-		"pME": 1,
-		"rFN": 0,
-		"uCM": 0
-		},
-	"/cmb2/tests/bin/run-wp-unit-tests.sh": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/bin/run-wp-unit-tests.sh",
-		"oF": 0
-		},
-	"/cmb2/tests/bootstrap.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/bootstrap.php",
-		"oF": 0
-		},
-	"/cmb2/tests/cmb-rest-tests-base.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/cmb-rest-tests-base.php",
-		"oF": 0
-		},
-	"/cmb2/tests/cmb-tests-base.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/cmb-tests-base.php",
-		"oF": 0
-		},
-	"/cmb2/tests/data/images/test-image.jpg": {
-		"ft": 16384,
-		"iS": 2028,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/cmb2/tests/data/images/test-image.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 100
-		},
-	"/cmb2/tests/index.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/index.php",
-		"oF": 0
-		},
-	"/cmb2/tests/README.md": {
-		"cB": 0,
-		"cS": 0,
-		"eF": 1,
-		"eL": 1,
-		"ema": 1,
-		"eSQ": 1,
-		"ft": 4096,
-		"oA": 0,
-		"oAP": "/cmb2/tests/README.html",
-		"oF": 0,
-		"oFM": 0,
-		"oS": 0,
-		"pHT": 0,
-		"pME": 1,
-		"rFN": 0,
-		"uCM": 0
-		},
-	"/cmb2/tests/test-cmb-ajax.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/test-cmb-ajax.php",
-		"oF": 0
-		},
-	"/cmb2/tests/test-cmb-core.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/test-cmb-core.php",
-		"oF": 0
-		},
-	"/cmb2/tests/test-cmb-field.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/test-cmb-field.php",
-		"oF": 0
-		},
-	"/cmb2/tests/test-cmb-options.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/test-cmb-options.php",
-		"oF": 0
-		},
-	"/cmb2/tests/test-cmb-rest-controllers.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/test-cmb-rest-controllers.php",
-		"oF": 0
-		},
-	"/cmb2/tests/test-cmb-rest-registered-fields.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/test-cmb-rest-registered-fields.php",
-		"oF": 0
-		},
-	"/cmb2/tests/test-cmb-rest.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/test-cmb-rest.php",
-		"oF": 0
-		},
-	"/cmb2/tests/test-cmb-types-base.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/test-cmb-types-base.php",
-		"oF": 0
-		},
-	"/cmb2/tests/test-cmb-types-display.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/test-cmb-types-display.php",
-		"oF": 0
-		},
-	"/cmb2/tests/test-cmb-types.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/test-cmb-types.php",
-		"oF": 0
-		},
-	"/cmb2/tests/test-cmb-utils.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/cmb2/tests/test-cmb-utils.php",
+		"oAP": "/cmb2/languages/gcmaturity-translate.pot",
 		"oF": 0
 		},
 	"/distribute.sh": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/distribute.sh",
 		"oF": 0
@@ -3052,6 +2342,7 @@
 	"/gc-maturityscore.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/gc-maturityscore.php",
 		"oF": 0
@@ -3059,6 +2350,7 @@
 	"/inc/cmb2-check-required-fields.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/inc/cmb2-check-required-fields.php",
 		"oF": 0
@@ -3066,6 +2358,7 @@
 	"/inc/gc-maturity.systemcheck.class.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/inc/gc-maturity.systemcheck.class.php",
 		"oF": 0
@@ -3073,6 +2366,7 @@
 	"/inc/index.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/inc/index.php",
 		"oF": 0
@@ -3080,6 +2374,7 @@
 	"/languages/gcmaturity-translate-nl_NL.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 1,
 		"oAP": "/languages/gcmaturity-translate-nl_NL.mo",
 		"oF": 1
@@ -3087,6 +2382,7 @@
 	"/languages/gcmaturity-translate-nl_NL.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 1,
 		"oAP": "/languages/gcmaturity-translate-nl_NL.po",
 		"oF": 1
@@ -3094,6 +2390,7 @@
 	"/languages/gcmaturity-translate.pot": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 1,
 		"oAP": "/languages/gcmaturity-translate.pot",
 		"oF": 1
@@ -3101,6 +2398,7 @@
 	"/languages/index.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/languages/index.php",
 		"oF": 0
@@ -3159,6 +2457,7 @@
 	"/less/index.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/less/index.php",
 		"oF": 0
@@ -3166,6 +2465,7 @@
 	"/LICENSE": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/LICENSE",
 		"oF": 0
@@ -3173,6 +2473,7 @@
 	"/README.html": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/README.html",
 		"oF": 0
@@ -3185,6 +2486,7 @@
 		"ema": 1,
 		"eSQ": 1,
 		"ft": 4096,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/README.html",
 		"oF": 0,
@@ -3198,6 +2500,7 @@
 	"/snip/snip1.txt": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/snip/snip1.txt",
 		"oF": 0
@@ -3205,6 +2508,7 @@
 	"/snip/snip2.txt": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/snip/snip2.txt",
 		"oF": 0
@@ -3212,6 +2516,7 @@
 	"/snip/snip3.txt": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/snip/snip3.txt",
 		"oF": 0
@@ -3219,6 +2524,7 @@
 	"/snip/snip4.txt": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/snip/snip4.txt",
 		"oF": 0
@@ -3226,6 +2532,7 @@
 	"/snip/snip5.txt": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/snip/snip5.txt",
 		"oF": 0
@@ -3233,6 +2540,7 @@
 	"/snip/snip6.txt": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/snip/snip6.txt",
 		"oF": 0
@@ -3240,6 +2548,7 @@
 	"/snip/snip7.txt": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/snip/snip7.txt",
 		"oF": 0
@@ -3247,6 +2556,7 @@
 	"/snip/snip8.txt": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/snip/snip8.txt",
 		"oF": 0
@@ -3254,7 +2564,7 @@
 	},
 "hooks": [
 	{
-		"enabled": 0,
+		"enabled": 1,
 		"name": "Hook #1",
 		"predicateDataBase64Encoded": "YnBsaXN0MDDUAQIDBAUGYmNYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QFgcIDxQcJicqMTU6Oz5CRktMT1VZXV9VJG51bGzTCQoLDA0OXxAXTlNDb21wb3VuZFByZWRpY2F0ZVR5cGVfEA9OU1N1YnByZWRpY2F0ZXNWJGNsYXNzEAKAAoAV0hALERNaTlMub2JqZWN0c6ESgAOAFNQLFRYXGBkaG18QEU5TUmlnaHRFeHByZXNzaW9uXxAQTlNMZWZ0RXhwcmVzc2lvbl8QE05TUHJlZGljYXRlT3BlcmF0b3KAE4AOgASAEdUdHh8gCyEiIyQlWU5TT3BlcmFuZF5OU1NlbGVjdG9yTmFtZV8QEE5TRXhwcmVzc2lvblR5cGVbTlNBcmd1bWVudHOABoAFEAOACIANXHZhbHVlRm9yS2V5OtIfCygpEAGAB9IrLC0uWiRjbGFzc25hbWVYJGNsYXNzZXNfEBBOU1NlbGZFeHByZXNzaW9uoy0vMFxOU0V4cHJlc3Npb25YTlNPYmplY3TSEAsyNKEzgAmADNMLHzY3ODlZTlNLZXlQYXRogAsQCoAKXWlucHV0RnVsbFBhdGjSKyw8PV8QHE5TS2V5UGF0aFNwZWNpZmllckV4cHJlc3Npb26jPC8w0issP0BeTlNNdXRhYmxlQXJyYXmjP0EwV05TQXJyYXnSKyxDRF8QE05TS2V5UGF0aEV4cHJlc3Npb26kQ0UvMF8QFE5TRnVuY3Rpb25FeHByZXNzaW9u00cfC0hJSl8QD05TQ29uc3RhbnRWYWx1ZYAPEACAEF8QJElDVFUtLS1HQy12b2x3YXNzZW5oZWlkc3Njb3JlLXBsdWdpbtIrLE1OXxAZTlNDb25zdGFudFZhbHVlRXhwcmVzc2lvbqNNLzDUC1BRUlNJKFRaTlNNb2RpZmllcldOU0ZsYWdzXk5TT3BlcmF0b3JUeXBlgBIQY9IrLFZXXxAVTlNJblByZWRpY2F0ZU9wZXJhdG9yo1ZYMF8QE05TUHJlZGljYXRlT3BlcmF0b3LSKyxaW18QFU5TQ29tcGFyaXNvblByZWRpY2F0ZaNaXDBbTlNQcmVkaWNhdGXSKyxBXqJBMNIrLGBhXxATTlNDb21wb3VuZFByZWRpY2F0ZaNgXDBfEA9OU0tleWVkQXJjaGl2ZXLRZGVUcm9vdIABAAgAEQAaACMALQAyADcAUABWAF0AdwCJAJAAkgCUAJYAmwCmAKgAqgCsALUAyQDcAPIA9AD2APgA+gEFAQ8BHgExAT0BPwFBAUMBRQFHAVQBWQFbAV0BYgFtAXYBiQGNAZoBowGoAaoBrAGuAbUBvwHBAcMBxQHTAdgB9wH7AgACDwITAhsCIAI2AjsCUgJZAmsCbQJvAnECmAKdArkCvQLGAtEC2QLoAuoC7ALxAwkDDQMjAygDQANEA1ADVQNYA10DcwN3A4kDjAORAAAAAAAAAgEAAAAAAAAAZgAAAAAAAAAAAAAAAAAAA5M=",
 		"runOrder": 0,
@@ -3375,6 +2685,12 @@
 		"function-sent": {
 			"active": 0
 			},
+		"inline-consecutive-adds": {
+			"active": 0
+			},
+		"inline-environment-variables": {
+			"active": 0
+			},
 		"instanceof": {
 			"active": 0
 			},
@@ -3394,6 +2710,36 @@
 			"active": 0
 			},
 		"minify-booleans": {
+			"active": 0
+			},
+		"minify-builtins": {
+			"active": 0
+			},
+		"minify-constant-folding": {
+			"active": 0
+			},
+		"minify-dead-code-elimination": {
+			"active": 0
+			},
+		"minify-flip-comparisons": {
+			"active": 0
+			},
+		"minify-guarded-expressions": {
+			"active": 0
+			},
+		"minify-infinity": {
+			"active": 0
+			},
+		"minify-mangle-names": {
+			"active": 0
+			},
+		"minify-numeric-literals": {
+			"active": 0
+			},
+		"minify-simplify": {
+			"active": 0
+			},
+		"minify-type-constructors": {
 			"active": 0
 			},
 		"modules-amd": {
@@ -3444,6 +2790,9 @@
 		"pipeline-operator": {
 			"active": 0
 			},
+		"private-methods": {
+			"active": 0
+			},
 		"property-literals": {
 			"active": 0
 			},
@@ -3477,10 +2826,16 @@
 		"regenerator": {
 			"active": 0
 			},
+		"regexp-constructors": {
+			"active": 0
+			},
 		"remove-console": {
 			"active": 0
 			},
 		"remove-debugger": {
+			"active": 0
+			},
+		"remove-undefined": {
 			"active": 0
 			},
 		"reserved-words": {
@@ -4429,6 +3784,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-useless-catch": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-useless-computed-key": {
 			"active": 0,
 			"optionString": ""
@@ -5091,6 +4450,7 @@
 		"noEscapeInAttributes": 0,
 		"outputFormat": 2,
 		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0,
 		"useCDATA": 0,
 		"useDoubleQuotes": 0,
 		"useUnixNewlines": 0
@@ -5112,6 +4472,7 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 2,
+		"bundleFormat": 0,
 		"createSourceMap": 0,
 		"minifyOutput": 1,
 		"syntaxCheckerStyle": 1,
@@ -5134,7 +4495,8 @@
 		"autoOutputPathReplace1": "kit",
 		"autoOutputPathReplace2": "html",
 		"autoOutputPathStyle": 0,
-		"shouldRunCacheBuster": 0
+		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0
 		},
 	"languageDefaultsLESS": {
 		"allowInsecureImports": 0,
@@ -5173,6 +4535,7 @@
 		"processHTML": 0,
 		"randomFootnoteNumbers": 0,
 		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0,
 		"useCompatibilityMode": 0
 		},
 	"languageDefaultsOTHER": {
@@ -5182,7 +4545,8 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
-		"shouldRunCacheBuster": 0
+		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0
 		},
 	"languageDefaultsPNG": {
 		"autoOutputAction": 0,
@@ -5203,7 +4567,8 @@
 		"autoOutputPathStyle": 0,
 		"compileDebug": 1,
 		"outputStyle": 0,
-		"shouldRunCacheBuster": 0
+		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0
 		},
 	"languageDefaultsSASS": {
 		"autoOutputAction": 0,
@@ -5232,7 +4597,8 @@
 		"outputFormat": 0,
 		"outputStyle": 1,
 		"railsCompatible": 0,
-		"shouldRunCacheBuster": 0
+		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0
 		},
 	"languageDefaultsSTYLUS": {
 		"autoOutputAction": 0,
@@ -5320,16 +4686,20 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"ascii_only": {
-			"active": 0,
+		"arrows": {
+			"active": 1,
 			"flagValue": -1
 			},
-		"bare_returns": {
+		"ascii_only": {
 			"active": 0,
 			"flagValue": -1
 			},
 		"booleans": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"booleans_as_integers": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"braces": {
@@ -5341,14 +4711,14 @@
 			"flagValue": -1
 			},
 		"comments": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"comparisons": {
 			"active": 1,
 			"flagValue": -1
 			},
-		"compress": {
+		"computed_props": {
 			"active": 1,
 			"flagValue": -1
 			},
@@ -5371,6 +4741,10 @@
 		"drop_debugger": {
 			"active": 1,
 			"flagValue": -1
+			},
+		"ecma": {
+			"active": 1,
+			"flagValue": 5
 			},
 		"eval": {
 			"active": 0,
@@ -5396,10 +4770,6 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"html5_comments": {
-			"active": 1,
-			"flagValue": -1
-			},
 		"ie8": {
 			"active": 0,
 			"flagValue": -1
@@ -5408,13 +4778,13 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"indent-start": {
-			"active": 0,
-			"flagValue": 0
-			},
 		"indent_level": {
 			"active": 0,
 			"flagValue": 4
+			},
+		"indent_start": {
+			"active": 0,
+			"flagValue": 0
 			},
 		"inline": {
 			"active": 1,
@@ -5426,6 +4796,10 @@
 			},
 		"join_vars": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"keep_classnames": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"keep_fargs": {
@@ -5448,13 +4822,13 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"mangle": {
-			"active": 1,
-			"flagValue": -1
-			},
 		"max_line_len": {
 			"active": 1,
 			"flagValue": 32000
+			},
+		"module": {
+			"active": 0,
+			"flagValue": -1
 			},
 		"negate_iife": {
 			"active": 1,
@@ -5463,10 +4837,6 @@
 		"passes": {
 			"active": 1,
 			"flagValue": 1
-			},
-		"preserve_line": {
-			"active": 0,
-			"flagValue": -1
 			},
 		"properties": {
 			"active": 1,
@@ -5490,6 +4860,10 @@
 			},
 		"reduce_vars": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"safari10": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"semicolons": {
@@ -5524,6 +4898,10 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"unsafe_arrows": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"unsafe_comps": {
 			"active": 0,
 			"flagValue": -1
@@ -5533,6 +4911,10 @@
 			"flagValue": -1
 			},
 		"unsafe_math": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_methods": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -5560,15 +4942,12 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"width": {
-			"active": 1,
-			"flagValue": 80
-			},
 		"wrap_iife": {
 			"active": 0,
 			"flagValue": -1
 			}
 		},
+	"uglifyMangleNames": 1,
 	"uglifyReservedNamesString": "$",
 	"websiteRelativeRoot": ""
 	},

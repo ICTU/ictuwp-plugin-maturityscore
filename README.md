@@ -6,9 +6,10 @@ Gebruiker Centraal - Volwassenheidsscore plugin
 Paul van Buuren (paul@wbvb.nl)
 
 ## Current version
-* 1.1.6
+* 1.1.7
 
 ## Version history
+* 1.1.7 - Read a *LOCAL* version of the JSON file.
 * 1.1.6 - CSS fixes for mobile (remove left-padding for lists with checkboxes).
 * 1.1.5 - Bugfixes and translations: better check what texts to display and all strings translated.
 * 1.1.4 - Put back the scoring texts per section.

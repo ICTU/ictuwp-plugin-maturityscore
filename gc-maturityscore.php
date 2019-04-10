@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.1.6
- * Version description: CSS fixes for mobile (remove left-padding for lists with checkboxes).
+ * Version:             1.1.7
+ * Version description: Read a *LOCAL* version of the JSON file.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.1.6';
+      public $version = '1.1.7';
   
   
       /**
@@ -93,7 +93,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         define( 'GCMS_C_ASSETS_URL',              trailingslashit( GCMS_C_BASE_URL . 'assets' ) );
         define( 'GCMS_C_MEDIAELEMENT_URL',        trailingslashit( GCMS_C_BASE_URL . 'mediaelement' ) );
         define( 'GCMS_C_PATH',                    plugin_dir_path( __FILE__ ) );
-        define( 'GCMS_C_PATH_LANGUAGES',          trailingslashit( GCMS_C_PATH . 'languages' ) );;
+        define( 'GCMS_C_PATH_LANGUAGES',          trailingslashit( GCMS_C_PATH . 'languages' ) );
 
         define( 'GCMS_C_SURVEY_CPT',              "enquetes" );
         define( 'GCMS_C_QUESTION_CPT',            "vraag" );
@@ -2355,24 +2355,28 @@ function gcms_data_reset_values( $givefeedback = true ) {
 
 if (! function_exists( 'gcmsf_data_get_survey_json' ) ) {
   /**
-   * Read a JSON file that contains the form definitions
+   * Read a *LOCAL* JSON file that contains the form definitions
    */
   function gcmsf_data_get_survey_json() {
 
-    $formfields_location = GCMS_C_BASE_URL . 'assets/antwoorden-vragen.json';
-    
-    $formfields_json = wp_remote_get( $formfields_location );
+    global $wp_filesystem;
+
+    $formfields_location  = GCMS_C_PATH . 'assets/antwoorden-vragen.json';
+    $formfields_json      = file_get_contents( $formfields_location );
 
     if( is_wp_error( $formfields_json ) ) {
-        return false; // Bail early
+      
+      $error_string = $formfields_json->get_error_message();
+      die( ' inlezen van jsong bestand ging fout: ' . $error_string );
+      return false; // Bail early
+      
     }
  
-     // Retrieve the data
-    $formfields_body = wp_remote_retrieve_body( $formfields_json );
-    $formfields_data = json_decode( $formfields_body );
+    // Retrieve the data
+    $formfields_data = json_decode( $formfields_json );
     
     return $formfields_data;
-  
+    
   }    
 }    
 
