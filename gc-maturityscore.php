@@ -111,8 +111,8 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         define( 'GCMS_C_CMBS2_PREFIX',            GCMS_C_QUESTION_PREFIX . '_form_' ); // prefix for cmb2 metadata fields
         define( 'GCMS_C_FORMKEYS',                GCMS_C_CMBS2_PREFIX . 'keys' ); // prefix for cmb2 metadata fields
         
-        define( 'GCMS_C_PLUGIN_DO_DEBUG',         true );
-//        define( 'GCMS_C_PLUGIN_DO_DEBUG',         false );
+//        define( 'GCMS_C_PLUGIN_DO_DEBUG',         true );
+        define( 'GCMS_C_PLUGIN_DO_DEBUG',         false );
 //        define( 'GCMS_C_PLUGIN_OUTPUT_TOSCREEN',  false );
         define( 'GCMS_C_PLUGIN_OUTPUT_TOSCREEN',  true );
         define( 'GCMS_C_PLUGIN_USE_CMB2',         true ); 
