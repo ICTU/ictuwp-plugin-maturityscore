@@ -1209,6 +1209,8 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
        * Register frontend styles
        */
       public function gcmsf_frontend_register_frontend_style_script( ) {
+		
+		global $formfields_data;
 
         if ( !is_admin() ) {
 
