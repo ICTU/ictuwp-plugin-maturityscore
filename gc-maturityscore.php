@@ -5,7 +5,7 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.1.7
+ * Version:             1.1.8a
  * Version description: Read a *LOCAL* version of the JSON file.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
@@ -34,7 +34,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.1.7';
+      public $version = '1.1.8a';
   
   
       /**
@@ -111,8 +111,8 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         define( 'GCMS_C_CMBS2_PREFIX',            GCMS_C_QUESTION_PREFIX . '_form_' ); // prefix for cmb2 metadata fields
         define( 'GCMS_C_FORMKEYS',                GCMS_C_CMBS2_PREFIX . 'keys' ); // prefix for cmb2 metadata fields
         
-//        define( 'GCMS_C_PLUGIN_DO_DEBUG',         true );
-        define( 'GCMS_C_PLUGIN_DO_DEBUG',         false );
+        define( 'GCMS_C_PLUGIN_DO_DEBUG',         true );
+//        define( 'GCMS_C_PLUGIN_DO_DEBUG',         false );
 //        define( 'GCMS_C_PLUGIN_OUTPUT_TOSCREEN',  false );
         define( 'GCMS_C_PLUGIN_OUTPUT_TOSCREEN',  true );
         define( 'GCMS_C_PLUGIN_USE_CMB2',         true ); 
@@ -143,9 +143,10 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         define( 'GCMS_C_TABLE_COL_USER_AVERAGE',  1 );
         define( 'GCMS_C_TABLE_COL_SITE_AVERAGE',  2 );
 
-        define( 'GCMS_C_SURVEY_EMAILID',          'submitted_your_email' );
-        define( 'GCMS_C_SURVEY_YOURNAME',         'submitted_your_name' );
-        define( 'GCMS_C_SURVEY_GDPR_CHECK',       'gdpr_do_save_my_emailaddress' );
+        define( 'GCMS_C_SURVEY_EMAILID',          'submitted_your_email2' );
+        define( 'GCMS_C_SURVEY_YOURNAME',         'submitted_your_name2' );
+        define( 'GCMS_C_SURVEY_POSTTITLE',        'post_title_here2' );
+        define( 'GCMS_C_SURVEY_GDPR_CHECK',       'gdpr_do_save_my_emailaddress2' );
 
         define( 'GCMS_C_KEYS_VALUE',              '_value' );
         define( 'GCMS_C_KEYS_LABEL',              '_label' );
@@ -180,44 +181,41 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * Load required classes
        */
-      private function includes() {
-      
-        if ( GCMS_C_PLUGIN_USE_CMB2 ) {
-          // load CMB2 functionality
-          if ( ! defined( 'CMB2_LOADED' ) ) {
-            // cmb2 NOT loaded
-            if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
-              require_once dirname( __FILE__ ) . '/cmb2/init.php';
-            }
-            elseif ( file_exists( dirname( __FILE__ ) . '/CMB2/init.php' ) ) {
-              require_once dirname( __FILE__ ) . '/CMB2/init.php';
-            }
-          }
-        }
-
-        $autoload_is_disabled = defined( 'GCMS_C_AUTOLOAD_CLASSES' ) && GCMS_C_AUTOLOAD_CLASSES === false;
-        
-        if ( function_exists( "spl_autoload_register" ) && ! ( $autoload_is_disabled ) ) {
-          
-          // >= PHP 5.2 - Use auto loading
-          if ( function_exists( "__autoload" ) ) {
-            spl_autoload_register( "__autoload" );
-          }
-          spl_autoload_register( array( $this, 'autoload' ) );
-          
-        } 
-        else {
-          // < PHP5.2 - Require all classes
-          foreach ( $this->plugin_classes() as $id => $path ) {
-            if ( is_readable( $path ) && ! class_exists( $id ) ) {
-              require_once( $path );
-            }
-          }
-          
-        }
-
-      
-      }
+		private function includes() {
+			
+			if ( GCMS_C_PLUGIN_USE_CMB2 ) {
+				// load CMB2 functionality
+				if ( ! defined( 'CMB2_LOADED' ) ) {
+					// cmb2 NOT loaded
+					if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
+						require_once dirname( __FILE__ ) . '/cmb2/init.php';
+					}
+					elseif ( file_exists( dirname( __FILE__ ) . '/CMB2/init.php' ) ) {
+						require_once dirname( __FILE__ ) . '/CMB2/init.php';
+					}
+				}
+			}
+			
+			$autoload_is_disabled = defined( 'GCMS_C_AUTOLOAD_CLASSES' ) && GCMS_C_AUTOLOAD_CLASSES === false;
+			
+			if ( function_exists( "spl_autoload_register" ) && ! ( $autoload_is_disabled ) ) {
+				
+				// >= PHP 5.2 - Use auto loading
+				if ( function_exists( "__autoload" ) ) {
+					spl_autoload_register( "__autoload" );
+				}
+				spl_autoload_register( array( $this, 'autoload' ) );
+				
+			} 
+			else {
+				// < PHP5.2 - Require all classes
+				foreach ( $this->plugin_classes() as $id => $path ) {
+					if ( is_readable( $path ) && ! class_exists( $id ) ) {
+						require_once( $path );
+					}
+				}
+			}
+		}
   
       //========================================================================================================
   
@@ -348,7 +346,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           "capability_type"       => "post",
           "map_meta_cap"          => true,
           "hierarchical"          => false,
-          "rewrite"               => array( "slug" => GCMS_C_SURVEY_CPT, "with_front" => true ),
+          "rewrite"               => array( "slug" => 'scans', "with_front" => true ),
           "query_var"             => true,
       		"supports"              => array( "title", "editor" ),					
     		);
@@ -1073,135 +1071,136 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * Returns data from a survey and the site averages
        */
-      public function gcmsf_data_get_user_answers_and_averages( $postid = 0,  $context = '' ) {
+	public function gcmsf_data_get_user_answers_and_averages( $postid = 0,  $context = '' ) {
+		
+		$yourdata         = array();
+		$values           = array();
+		$user_answers     = array();
+		$systemaverages   = array();
+		$valuescounter    = 0;
+		
+		$formfields_data  = gcmsf_data_get_survey_json();
+		
+		if ( $postid ) {
+			
+			$user_answers_raw   = get_post_meta( $postid );    	
+			
+			if ( isset( $user_answers_raw[GCMS_C_FORMKEYS][0] ) ) {
+				$user_answers     = maybe_unserialize( $user_answers_raw[GCMS_C_FORMKEYS][0] );
+			}
+			
+			if ( $user_answers ) {
+				
+				foreach( $user_answers as $key => $value ){        
+					
+					// some values we do not need in our data structure
+					if ( 
+						( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_TYPE ) ||
+						( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_REGION ) ||
+						( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_SIZE ) ||
+						( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE ) ||
+						( $key == GCMS_C_SURVEY_YOURNAME ) ||
+						( $key == GCMS_C_SURVEY_POSTTITLE ) ||
+						( $key == GCMS_C_SURVEY_GDPR_CHECK ) ||
+						( $key == GCMS_C_SURVEY_EMAILID ) 
+						){
+						// do not store values in this array for any of the custom taxonomies or for the email / name fields
+						continue;
+					}
 
-        $yourdata         = array();
-        $values           = array();
-        $user_answers     = array();
-        $systemaverages   = array();
-        $valuescounter    = 0;
+					$array 			= array();
+					$group    		= '';
+					$question 		= '';
+					$answer   		= '';
+					
+					$constituents 	= explode( GCMS_C_PLUGIN_SEPARATOR, $value ); // [0] = group, [1] = question, [2] = answer
 
-        $formfields_data  = gcmsf_data_get_survey_json();
+					if ( isset( $constituents[0] ) ) {
+						$group		= $constituents[0];
+					}
+					if ( isset( $constituents[1] ) ) {
+						$question	= $constituents[1];
+					}
+					if ( isset( $constituents[2] ) ) {
+						$answer		= $constituents[2];
+					}
+					if ( $group && $question && $answer ) {
+						
+					}
+//echo '$group : ' . $group . ', $question : ' . $question . ', $answer : ' . $answer . '<br>';					
+					$current_group    = (array) $formfields_data->$group;
+					$current_question = (array) $formfields_data->$group->group_questions[0]->$question;
+					$current_answer   = (array) $formfields_data->$group->group_questions[0]->$question->question_answers[0]->$answer;
+					
+					if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+						$current_answer['answer_site_average'] = get_option( $key, 1 );
+					}
+					
+					$current_answer['question_label'] = $current_question['question_label'];
+					
+					$array['question_label']  = $current_question['question_label'];
+					$array['question_answer'] = $current_answer;
+					
+					$values[ 'averages'][ 'groups'][ $group ][]   = $current_answer['answer_value'];
+					$values[ 'all_values' ][]                     = $current_answer['answer_value'];
+					$values[ 'user_answers' ][ $group ][ $key ]   = $current_answer;
+				}
 
-        if ( $postid ) {
-
-          $user_answers_raw   = get_post_meta( $postid );    	
-
-          if ( isset( $user_answers_raw[GCMS_C_FORMKEYS][0] ) ) {
-            $user_answers     = maybe_unserialize( $user_answers_raw[GCMS_C_FORMKEYS][0] );
-          }
-
-          if ( $user_answers ) {
-    
-            foreach( $user_answers as $key => $value ){        
-
-              // some values we do not need in our data structure
-              if ( 
-                ( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_TYPE ) ||
-                ( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_REGION ) ||
-                ( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_SIZE ) ||
-                ( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE ) ||
-                ( $key == GCMS_C_SURVEY_YOURNAME ) ||
-                ( $key == GCMS_C_SURVEY_GDPR_CHECK ) ||
-                ( $key == GCMS_C_SURVEY_EMAILID ) 
-                  ){
-                // do not store values in this array for any of the custom taxonomies or for the email / name fields
-                continue;
-              }
-
-              $array = array();
-  
-              $constituents = explode( GCMS_C_PLUGIN_SEPARATOR, $value ); // [0] = group, [1] = question, [2] = answer
-              
-              $group    = '';
-              $question = '';
-              $answer   = '';
-              
-              if ( isset( $constituents[0] ) ) {
-                $group    = $constituents[0];
-              }
-              if ( isset( $constituents[1] ) ) {
-                $question = $constituents[1];
-              }
-              if ( isset( $constituents[2] ) ) {
-                $answer = $constituents[2];
-              }
-
-              $current_group    = (array) $formfields_data->$group;
-              $current_question = (array) $formfields_data->$group->group_questions[0]->$question;
-              $current_answer   = (array) $formfields_data->$group->group_questions[0]->$question->question_answers[0]->$answer;
-
-              if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-                $current_answer['answer_site_average'] = get_option( $key, 1 );
-              }
-
-              $current_answer['question_label'] = $current_question['question_label'];
-  
-              $array['question_label']  = $current_question['question_label'];
-              $array['question_answer'] = $current_answer;
-
-              $values[ 'averages'][ 'groups'][ $group ][]   = $current_answer['answer_value'];
-              $values[ 'all_values' ][]                     = $current_answer['answer_value'];
-              $values[ 'user_answers' ][ $group ][ $key ]   = $current_answer;
-
-            }
-
-  
-            if ( $values ) {
-
-              $values['averages'][ 'overall' ]  = gcms_aux_get_average_for_array( $values[ 'all_values' ], 1 );
-
-              unset( $values[ 'all_values' ] );
-
-              foreach( $values[ 'averages'][ 'groups'] as $key => $value ){        
-                $average = gcms_aux_get_average_for_array( $value, 1 );
-                $values[ 'averages'][ 'groups'][ $key ] = round( $average, 0 );
-
-                $columns = array();
-
-                $rowname_translated = gcms_aux_get_value_for_cmb2_key( $key );
-                
-                if ( $key && $rowname_translated ) {
-
-                  $key_grouplabel         = $key . '_group_label';
-                  $collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $key;
-                  $default                = $formfields_data->$key->group_label;
-                  
-                  $columns[ GCMS_C_TABLE_COL_TH ] = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $default, $collectionkey );
-                  $columns[ GCMS_C_TABLE_COL_USER_AVERAGE ] = $average;
-  
-                  if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-                    $columns[ GCMS_C_TABLE_COL_SITE_AVERAGE ] = get_option( $key, 1 );
-                  }
-                  
-                  $values[ 'rows' ][ $key ]  = $columns;
-                
-                }
-                
-              }
-  
-      
-              $values['cols'][ GCMS_C_TABLE_COL_TH ] = _x( "Chapter", "table header", "gcmaturity-translate" );
-              if ( $postid ) {
-                $values['cols'][ GCMS_C_TABLE_COL_USER_AVERAGE ] = _x( "Your score", "table header", "gcmaturity-translate" );
-              }
-    
-              if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-                $values['cols'][ GCMS_C_TABLE_COL_SITE_AVERAGE ] = _x( "Average score", "table header", "gcmaturity-translate" );
-              }
-
-              // add the default section titles to the collection
-              foreach ( $formfields_data as $group_key => $value) {
-                $key_grouplabel         = $group_key . '_group_label';
-                $values[ 'default_titles' ][ $key_grouplabel ]  = $value->group_label;
-              }
-            }
-          }
-        }
-
-        return $values;
-  
-      }
+				if ( $values ) {
+				
+					$values['averages'][ 'overall' ]  = gcms_aux_get_average_for_array( $values[ 'all_values' ], 1 );
+					
+					unset( $values[ 'all_values' ] );
+					
+					foreach( $values[ 'averages'][ 'groups'] as $key => $value ){        
+							
+						$average = gcms_aux_get_average_for_array( $value, 1 );
+						$values[ 'averages'][ 'groups'][ $key ] = round( $average, 0 );
+						
+						$columns = array();
+						
+						$rowname_translated = gcms_aux_get_value_for_cmb2_key( $key );
+						
+						if ( $key && $rowname_translated ) {
+							
+							$key_grouplabel         = $key . '_group_label';
+							$collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $key;
+							$default                = $formfields_data->$key->group_label;
+							
+							$columns[ GCMS_C_TABLE_COL_TH ] = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $default, $collectionkey );
+							$columns[ GCMS_C_TABLE_COL_USER_AVERAGE ] = $average;
+							
+							if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+								$columns[ GCMS_C_TABLE_COL_SITE_AVERAGE ] = get_option( $key, 1 );
+							}
+							
+							$values[ 'rows' ][ $key ]  = $columns;
+							
+						}
+					}
+		
+					$values['cols'][ GCMS_C_TABLE_COL_TH ] = _x( "Chapter", "table header", "gcmaturity-translate" );
+					
+					if ( $postid ) {
+						$values['cols'][ GCMS_C_TABLE_COL_USER_AVERAGE ] = _x( "Your score", "table header", "gcmaturity-translate" );
+					}
+					
+					if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+						$values['cols'][ GCMS_C_TABLE_COL_SITE_AVERAGE ] = _x( "Average score", "table header", "gcmaturity-translate" );
+					}
+					
+					// add the default section titles to the collection
+					foreach ( $formfields_data as $group_key => $value) {
+						$key_grouplabel         = $group_key . '_group_label';
+						$values[ 'default_titles' ][ $key_grouplabel ]  = $value->group_label;
+					}
+				}
+			}
+		}
+		
+		return $values;
+		
+	}
   
       //========================================================================================================
   
@@ -1368,46 +1367,48 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             $columncounter  = 0;
 
             $radardata->dataProvider = array();
-          
-            foreach( $this->survey_data['rows'] as $rowname => $rowvalue ) {
-          
-              $jouwscore        = isset( $rowvalue[ GCMS_C_TABLE_COL_USER_AVERAGE ] ) ? $rowvalue[ GCMS_C_TABLE_COL_USER_AVERAGE ] : 0;
-              $gemiddeldescore  = isset( $rowvalue[ GCMS_C_TABLE_COL_SITE_AVERAGE ] ) ? $rowvalue[ GCMS_C_TABLE_COL_SITE_AVERAGE ] : 0;
-          
-              $columncounter = 0;
-          
-              foreach( $this->survey_data['cols'] as $columname => $columnsvalue ) {
-
-                $rowname_translated = gcms_aux_get_value_for_cmb2_key( $rowname );
-                
-                if ( $rowname && $rowname_translated ) {
-                
-                  $key_grouplabel         = $rowname . '_group_label';
-                  $collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $rowname;
-                  $default                = $formfields_data->$rowname->group_label;
-                  
-                  $radardata->dataProvider[$rowcounter]->$mykeyname = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $default, $collectionkey );
-                  
-                  if ( $columncounter == 2 ) {
-                    $radardata->dataProvider[$rowcounter]->$columnsvalue = '';
-                    if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-                      $radardata->dataProvider[$rowcounter]->$columnsvalue = $gemiddeldescore;
-                    }
-                  }
-                  elseif ( $columncounter == 1 ) {
-                    $radardata->dataProvider[$rowcounter]->$columnsvalue = $jouwscore;
-                  }
-                
-                  $columncounter++;
-                
-                }
-                
             
-              }
-          
-              $rowcounter++;
-          
-            }  
+//          if ( isset( $this->survey_data['rows'] ) &&  is_array( $this->survey_data['rows'] ) ) {
+//          if ( isset( $this->survey_data['rows'] ) ) {
+//			if ( asd ) {		          
+			foreach( $this->survey_data['rows'] as $rowname => $rowvalue ) {
+				
+				$jouwscore        = isset( $rowvalue[ GCMS_C_TABLE_COL_USER_AVERAGE ] ) ? $rowvalue[ GCMS_C_TABLE_COL_USER_AVERAGE ] : 0;
+				$gemiddeldescore  = isset( $rowvalue[ GCMS_C_TABLE_COL_SITE_AVERAGE ] ) ? $rowvalue[ GCMS_C_TABLE_COL_SITE_AVERAGE ] : 0;
+				
+				$columncounter = 0;
+				
+				foreach( $this->survey_data['cols'] as $columname => $columnsvalue ) {
+					
+					$rowname_translated = gcms_aux_get_value_for_cmb2_key( $rowname );
+					
+					if ( $rowname && $rowname_translated ) {
+						
+						$key_grouplabel         = $rowname . '_group_label';
+						$collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $rowname;
+						$default                = $formfields_data->$rowname->group_label;
+						
+						$radardata->dataProvider[$rowcounter]				= new stdClass();
+						$radardata->dataProvider[$rowcounter]->$mykeyname	= gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $default, $collectionkey );
+						
+						if ( $columncounter == 2 ) {
+							$radardata->dataProvider[$rowcounter]->$columnsvalue = '';
+							if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+								$radardata->dataProvider[$rowcounter]->$columnsvalue = $gemiddeldescore;
+							}
+						}
+						elseif ( $columncounter == 1 ) {
+							$radardata->dataProvider[$rowcounter]->$columnsvalue = $jouwscore;
+						}
+//						}
+						$columncounter++;
+					}
+				}
+				
+				$rowcounter++;
+				
+			}  
+//			}
 
             $thedata = wp_json_encode( $radardata );
 
@@ -1579,43 +1580,45 @@ catch( err ) { console.log( err ); } ' );
       $yourmaildefault = gcmsf_get_post_or_cookie( GCMS_C_SURVEY_EMAILID );
       
       $cmb->add_field( array(
-    		'name'    => _x( 'About you', 'About you section', "gcmaturity-translate" ),
-      	'type'    => 'title',
-      	'id'      => GCMS_C_CMBS2_PREFIX . 'start_section_survey_user_data',
-    		'desc'    => _x( 'We can send you a link to your survey results if you fill in your email address here.', 'About you section', "gcmaturity-translate" ),
+			'name'    => _x( 'About you', 'About you section', "gcmaturity-translate" ),
+			'type'    => 'title',
+			'id'      => GCMS_C_CMBS2_PREFIX . 'start_section_survey_user_data',
+			'desc'    => _x( 'We can send you a link to your survey results if you fill in your email address here.', 'About you section', "gcmaturity-translate" ),
       ) );
 
 
     	$cmb->add_field( array(
-    		'name'    => _x( 'Your name', 'About you section', "gcmaturity-translate" ),
-    		'id'      => GCMS_C_SURVEY_YOURNAME,
-    		'type'    => 'text',
-    		'desc'    => _x( "We store your name for a maximum of 3 years; it will be visible on the resultpage. Leave this empty if you don't want this.", 'About you section', "gcmaturity-translate" ) . '<br>' . _x( 'Not required', 'About you section', "gcmaturity-translate" ),
-    		'default' => $yournamedefault,
+			'name'    => _x( 'Your name', 'About you section', "gcmaturity-translate" ),
+			'id'      => GCMS_C_SURVEY_YOURNAME,
+			'type'    => 'text',
+			'desc'    => _x( "We store your name for a maximum of 3 years; it will be visible on the resultpage. Leave this empty if you don't want this.", 'About you section', "gcmaturity-translate" ) . '<br>' . '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
+			'default' => $yournamedefault,
     	) );
+
       
     	$cmb->add_field( array(
-    		'name'    => _x( 'Your emailaddress', 'About you section', "gcmaturity-translate" ),
-    		'id'      => GCMS_C_SURVEY_EMAILID,
-    		'type'    => 'text_email',
-    		'desc'    => _x( 'We gebruiken dit e-mailadres om je een link te mailen naar jouw resultaatpagina.', 'About you section', "gcmaturity-translate" ) . '<br>' . _x( 'Not required', 'About you section', "gcmaturity-translate" ),
-    		'default' => $yourmaildefault,
+			'name'    => _x( 'Your emailaddress', 'About you section', "gcmaturity-translate" ),
+			'id'      => GCMS_C_SURVEY_EMAILID,
+			'type'    => 'text_email',
+			'desc'    => _x( 'We gebruiken dit e-mailadres om je een link te mailen naar jouw resultaatpagina.', 'About you section', "gcmaturity-translate" ) . '<br>' . '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
+			'default' => $yourmaildefault,
     	) );
     	
 
       $cmb->add_field( array(
-    		'name'    => _x( 'Permission to store emailaddress', 'About you section', "gcmaturity-translate" ),
-    		'desc'    => _x( 'Yes, keep me up to date about any developments regarding the maturity model system. You may store my email address and name for at most 3 years. Only site-admins have access to these data.', 'About you section', "gcmaturity-translate" ),
-      	'id'   => GCMS_C_SURVEY_GDPR_CHECK,
-      	'type' => 'checkbox',
+			'name'	=> _x( 'Permission to store emailaddress', 'About you section', "gcmaturity-translate" ),
+			'desc'	=> _x( 'Yes, keep me up to date about any developments regarding the maturity model system. You may store my email address and name for at most 3 years. Only site-admins have access to these data.', 'About you section', "gcmaturity-translate" ) . '<br>' . '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
+			'id'	=> GCMS_C_SURVEY_GDPR_CHECK,
+			'type'	=> 'checkbox',
       ) );    	
     	
     	$default = '';
 
       // organisation types
       $terms = get_terms( array(
-        'taxonomy' => GCMS_C_SURVEY_CT_ORG_TYPE,
-        'hide_empty' => false,
+		'taxonomy'		=> GCMS_C_SURVEY_CT_ORG_TYPE,
+		'orderby'		=> 'term_order',
+		'hide_empty' 	=> false,
       ) );
     
       if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
@@ -1628,19 +1631,21 @@ catch( err ) { console.log( err ); } ' );
         }
     
       	$cmb->add_field( array(
-      		'name'    => $taxinfo->labels->singular_name,
-      		'id'      => GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_TYPE,
-      		'type'    => 'radio',
-          'options' => $options,
-          'default' => $default,
+			'name'    	=> $taxinfo->labels->singular_name,
+			'id'      	=> GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_TYPE,
+			'type'    	=> 'radio',
+			'options'	=> $options,
+			'default'	=> $default,
+			'desc'		=> '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
       	) );
     
       }
 
       // regio's
       $terms = get_terms( array(
-        'taxonomy' => GCMS_C_SURVEY_CT_REGION,
-        'hide_empty' => false,
+        'taxonomy' 		=> GCMS_C_SURVEY_CT_REGION,
+        'orderby'		=> 'term_order',
+        'hide_empty' 	=> false,
       ) );
     
       if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
@@ -1653,11 +1658,12 @@ catch( err ) { console.log( err ); } ' );
         }
     
       	$cmb->add_field( array(
-      		'name'    => $taxinfo->labels->singular_name,
-      		'id'      => GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_REGION,
-      		'type'    => 'radio',
-          'options' => $options,
-          'default' => $default,
+			'name'   	=> $taxinfo->labels->singular_name,
+			'id'     	=> GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_REGION,
+			'type'   	=> 'radio',
+			'options'	=> $options,
+			'default'	=> $default,
+			'desc'		=> '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
       	) );
     
       }
@@ -1665,8 +1671,9 @@ catch( err ) { console.log( err ); } ' );
 
       // organisatiegrootte
       $terms = get_terms( array(
-        'taxonomy' => GCMS_C_SURVEY_CT_ORG_SIZE,
-        'hide_empty' => false,
+        'taxonomy'		=> GCMS_C_SURVEY_CT_ORG_SIZE,
+        'orderby'		=> 'term_order',
+        'hide_empty'	=> false,
       ) );
     
       if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
@@ -1679,11 +1686,12 @@ catch( err ) { console.log( err ); } ' );
         }
     
       	$cmb->add_field( array(
-      		'name'    => $taxinfo->labels->singular_name,
-      		'id'      => GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_SIZE,
-      		'type'    => 'radio',
-          'options' => $options,
-          'default' => $default,
+			'name'   	=> $taxinfo->labels->singular_name,
+			'id'     	=> GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_SIZE,
+			'type'   	=> 'radio',
+			'options'	=> $options,
+			'default'	=> $default,
+			'desc' 		=> '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
       	) );
     
       }
@@ -1691,8 +1699,9 @@ catch( err ) { console.log( err ); } ' );
 
       // organisatieattitude
       $terms = get_terms( array(
-        'taxonomy' => GCMS_C_SURVEY_CT_ORG_ATTITUDE,
-        'hide_empty' => false,
+        'taxonomy' 		=> GCMS_C_SURVEY_CT_ORG_ATTITUDE,
+        'orderby'		=> 'term_order',
+        'hide_empty'	=> false,
       ) );
     
       if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
@@ -1705,11 +1714,12 @@ catch( err ) { console.log( err ); } ' );
         }
     
       	$cmb->add_field( array(
-      		'name'    => $taxinfo->labels->singular_name,
-      		'id'      => GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE,
-      		'type'    => 'radio',
-          'options' => $options,
-          'default' => $default,
+			'name'    	=> $taxinfo->labels->singular_name,
+			'id'      	=> GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE,
+			'type'    	=> 'radio',
+			'options' 	=> $options,
+			'default'	=> $default,
+			'desc'		=> '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
       	) );
     
       }
@@ -1815,18 +1825,18 @@ catch( err ) { console.log( err ); } ' );
 
           $overall_average = number_format_i18n( $this->survey_data['averages']['overall'], 0 );
 
+          $key        				= 'SITESCORE';
           $total_number_of_surveys  = get_option( GCMS_C_AVGS_NR_SURVEYS, 1 );
           $site_average             = get_option( GCMS_C_AVGS_OVERALL_AVG, 1 );
           $collectionkey            = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $key;
 
           $punten     = sprintf( _n( '%s point', '%s points', $overall_average, "gcmaturity-translate" ), $overall_average );
-          $key        = 'SITESCORE';
           $fieldkey   = $key . GCMS_SCORESEPARATOR . number_format_i18n( $this->survey_data['averages']['overall'], 0 ); 
 
           $return     .= '<p>' . sprintf( __( 'Your average score was %s. ', "gcmaturity-translate" ), $punten );
-          $return     .= sprintf( _n( 'Thus far, we received %s survey.', 'Thus far, we received %s surveys. ', $total_number_of_surveys, "gcmaturity-translate" ), $total_number_of_surveys );
           if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-            $return   .= sprintf( __( 'The overall average score is %s. ', "gcmaturity-translate" ), $site_average );
+			$return     .= sprintf( _n( 'Thus far, we received %s survey, ', 'Thus far, we received %s surveys, ', $total_number_of_surveys, "gcmaturity-translate" ), $total_number_of_surveys );
+			$return   .= sprintf( __( ' and the overall average score is %s. ', "gcmaturity-translate" ), $site_average );
           }          
           $return     .= '</p>';
           $return     .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey, sprintf( __( 'No text available for %s.', "gcmaturity-translate" ), $fieldkey ) ) . '</p>';
@@ -2072,17 +2082,17 @@ function gcmsf_frontend_cmb2_get() {
  * @return void
  */
 function gcmsf_frontend_form_handle_posting() {
-
+	
 	// If no form submission, bail
 	if ( empty( $_POST ) || ! isset( $_POST['submit-cmb'], $_POST['object_id'] ) ) {
 		return false;
 	}
-
+	
 	// Get CMB2 metabox object
 	$cmb = gcmsf_frontend_cmb2_get();
-
+	
 	$post_data = array();
-
+	
 	// Get our shortcode attributes and set them as our initial post_data args
 	if ( isset( $_POST['atts'] ) ) {
 		foreach ( (array) $_POST['atts'] as $key => $value ) {
@@ -2090,146 +2100,144 @@ function gcmsf_frontend_form_handle_posting() {
 		}
 		unset( $_POST['atts'] );
 	}
-
+	
 	// Check security nonce
 	if ( ! isset( $_POST[ $cmb->nonce() ] ) || ! wp_verify_nonce( $_POST[ $cmb->nonce() ], $cmb->nonce() ) ) {
 		return $cmb->prop( 'submission_error', new WP_Error( 'security_fail', __( "Security checks for your form submission failed. Your data will be discarded.", "gcmaturity-translate" ) ) );
 	}
-
-
+	
+	
 	/**
-	 * Fetch sanitized values
-	 */
+	* Fetch sanitized values
+	*/
 	$sanitized_values = $cmb->get_sanitized_values( $_POST );
-
-  $datum  = date_i18n( get_option( 'date_format' ), current_time('timestamp') );
-
+	
+	$datum  = date_i18n( get_option( 'date_format' ), current_time('timestamp') );
+	
 	// Check name submitted
 	if ( empty( $_POST[ GCMS_C_SURVEY_YOURNAME ] ) ) {
-    $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] = __( "Your organisation's score", "gcmaturity-translate" ) . ' (' . $datum . ')';
+		$sanitized_values[ GCMS_C_SURVEY_POSTTITLE ] = __( "Your organisation's score", "gcmaturity-translate" ) . ' (' . $datum . ')';
 	}
-
-  $rand   = $aantalenquetes . '-' . substr( md5( microtime() ),rand( 0, 26 ), 20 );	
-
+	else {
+		$sanitized_values[ GCMS_C_SURVEY_POSTTITLE ] = $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] . ' (' . $datum . ')';
+	}
+	
+//	$rand   = $aantalenquetes . '-' . substr( md5( microtime() ),rand( 0, 26 ), 20 );	
+	$rand   = substr( md5( microtime() ),rand( 0, 26 ), 20 );	
+	
 	// Current user
 	$user_id = get_current_user_id();
-
-	// Set our post data arguments
-	$post_data['post_title']  = $sanitized_values[ GCMS_C_SURVEY_YOURNAME ];
-	$post_data['post_name']   = sanitize_title( $rand . '-' . $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] );
-  $post_data['post_author'] = $user_id ? $user_id : GCMS_C_SURVEY_DEFAULT_USERID;
-  $post_data['post_status'] = 'publish';
-  $post_data['post_type']   = GCMS_C_SURVEY_CPT;
-
-  $post_content = '';
-  if ( $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] ) {
-    $post_content .= _x( 'Your name', 'naam', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] . '<br>';
-    setcookie( GCMS_C_SURVEY_YOURNAME , $sanitized_values[ GCMS_C_SURVEY_YOURNAME ], time() + ( 3600 * 24 * 60 ), '/');
-  }
-  
-  if ( $sanitized_values[  GCMS_C_SURVEY_EMAILID  ] ) {
-    $post_content .= _x( 'Your email address', 'email', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_EMAILID ] . '<br>';
-    setcookie( GCMS_C_SURVEY_EMAILID , $sanitized_values[ GCMS_C_SURVEY_EMAILID ], time() + ( 3600 * 24 * 60 ), '/');
-  }
 	
+	// Set our post data arguments
+	$post_data['post_title']  = $sanitized_values[ GCMS_C_SURVEY_POSTTITLE ];
+	$post_data['post_name']   = sanitize_title( $rand . '-' . $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] );
+	$post_data['post_author'] = $user_id ? $user_id : GCMS_C_SURVEY_DEFAULT_USERID;
+	$post_data['post_status'] = 'publish';
+	$post_data['post_type']   = GCMS_C_SURVEY_CPT;
+	
+	$post_content = '';
+	
+	if ( isset( $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] ) ) {
+		$post_content .= _x( 'Your name', 'naam', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] . '<br>';
+		setcookie( GCMS_C_SURVEY_YOURNAME , $sanitized_values[ GCMS_C_SURVEY_YOURNAME ], time() + ( 3600 * 24 * 60 ), '/');
+	}
+	
+	if ( isset( $sanitized_values[ GCMS_C_SURVEY_EMAILID ] ) ) {
+		$post_content .= _x( 'Your email address', 'email', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_EMAILID ] . '<br>';
+		setcookie( GCMS_C_SURVEY_EMAILID , $sanitized_values[ GCMS_C_SURVEY_EMAILID ], time() + ( 3600 * 24 * 60 ), '/');
+	}
 
-
-
-
-  // update the number of surveys taken
-  update_option( GCMS_C_AVGS_NR_SURVEYS, get_option( GCMS_C_AVGS_NR_SURVEYS, 1) );
-  
-
+	// update the number of surveys taken
+	update_option( GCMS_C_AVGS_NR_SURVEYS, get_option( GCMS_C_AVGS_NR_SURVEYS, 1) );
+	
+	
 	// Create the new post
 	$new_submission_id = wp_insert_post( $post_data, true );
-
+	
 	// If we hit a snag, update the user
 	if ( is_wp_error( $new_submission_id ) ) {
 		return $cmb->prop( 'submission_error', $new_submission_id );
 	}
-  
+	
+	
+	$theurl   = get_permalink( $new_submission_id );
+	
+	// compose the mail
+	if ( isset( $sanitized_values[ GCMS_C_SURVEY_EMAILID ] ) ) {
+		
+		if ( isset( $sanitized_values[ GCMS_C_SURVEY_EMAILID ] ) && filter_var( $sanitized_values[ GCMS_C_SURVEY_EMAILID ], FILTER_VALIDATE_EMAIL ) ) {    
+			
+			// the users mailaddress appears to be a valid mailaddress
+			$mailtext = gcms_aux_get_value_for_cmb2_key( GCMS_C_TEXTEMAIL, _x( 'No mail text found', 'email', "gcmaturity-translate" ) );
+			$mailtext = str_replace( GCMS_C_URLPLACEHOLDER, '<a href="' . $theurl . '">' . $theurl . '</a>', $mailtext );
+			$mailtext = str_replace( GCMS_C_NAMEPLACEHOLDER, $sanitized_values[ GCMS_C_SURVEY_YOURNAME ], $mailtext );
+			
+			$mailfrom_address = gcms_aux_get_value_for_cmb2_key( 'mail-from-address' );
+			$mailfrom_name    = gcms_aux_get_value_for_cmb2_key( 'mail-from-name' );
+			
+			$subject  = gcms_aux_get_value_for_cmb2_key( 'mail-subject', _x( 'Link to your survey results', "email settings", "gcmaturity-translate" ) );
+			$headers  = array(
+					'From: ' . $mailfrom_name . ' <' . $mailfrom_address . '>'
+				);
 
-  $theurl   = get_permalink( $new_submission_id );
+			add_filter( 'wp_mail_content_type', 'gcmsf_mail_set_html_mail_content_type' );
 
-  // compose the mail
-  if ( $sanitized_values[ GCMS_C_SURVEY_EMAILID ] ) {
+			wp_mail( $sanitized_values[ GCMS_C_SURVEY_EMAILID ], $subject, wpautop( $mailtext ), $headers );
+			
+			// Reset content-type to avoid conflicts -- https://core.trac.wordpress.org/ticket/23578
+			remove_filter( 'wp_mail_content_type', 'gcmsf_mail_set_html_mail_content_type' );
 
-    if ( filter_var( $sanitized_values[ GCMS_C_SURVEY_EMAILID ], FILTER_VALIDATE_EMAIL ) ) {    
+		}
+	}
+	
+	if ( isset( $sanitized_values[ GCMS_C_SURVEY_GDPR_CHECK ] ) ) {
+		// we are given permission to store the name and emailaddress
+	}
+	else {
 
-      // the users mailaddress appears to be a valid mailaddress
-      $mailtext = gcms_aux_get_value_for_cmb2_key( GCMS_C_TEXTEMAIL, _x( 'No mail text found', 'email', "gcmaturity-translate" ) );
-      $mailtext = str_replace( GCMS_C_URLPLACEHOLDER, '<a href="' . $theurl . '">' . $theurl . '</a>', $mailtext );
-      $mailtext = str_replace( GCMS_C_NAMEPLACEHOLDER, $sanitized_values[ GCMS_C_SURVEY_YOURNAME ], $mailtext );
-
-      $mailfrom_address = gcms_aux_get_value_for_cmb2_key( 'mail-from-address' );
-      $mailfrom_name    = gcms_aux_get_value_for_cmb2_key( 'mail-from-name' );
-  
-      $subject  = gcms_aux_get_value_for_cmb2_key( 'mail-subject', _x( 'Link to your survey results', "email settings", "gcmaturity-translate" ) );
-      $headers  = array(
-        'From: ' . $mailfrom_name . ' <' . $mailfrom_address . '>'
-      );
-
-
-
-      add_filter( 'wp_mail_content_type', 'gcmsf_mail_set_html_mail_content_type' );
-       
-       
-      wp_mail( $sanitized_values[ GCMS_C_SURVEY_EMAILID ], $subject, wpautop( $mailtext ), $headers );
-       
-      // Reset content-type to avoid conflicts -- https://core.trac.wordpress.org/ticket/23578
-      remove_filter( 'wp_mail_content_type', 'gcmsf_mail_set_html_mail_content_type' );
-      
-  
-    }
-  }
-
-  if ( $sanitized_values[  GCMS_C_SURVEY_GDPR_CHECK  ] ) {
-    // we are given permission to store the name and emailaddress
-  }
-  else {
-  	// do not save the name nor email
-  	unset( $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] );
-  	unset( $sanitized_values[ GCMS_C_SURVEY_EMAILID ] );
-  	unset( $sanitized_values[ GCMS_C_SURVEY_GDPR_CHECK ] );
-    
-  }
-
-  // save the extra fields as metadata
+		// do not save the name nor email
+		unset( $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] );
+		unset( $sanitized_values[ GCMS_C_SURVEY_EMAILID ] );
+		unset( $sanitized_values[ GCMS_C_SURVEY_GDPR_CHECK ] );
+	
+	}
+	
+	// save the extra fields as metadata
 	$cmb->save_fields( $new_submission_id, 'post', $sanitized_values );
 	update_post_meta( $new_submission_id, GCMS_C_FORMKEYS, $sanitized_values );
-
-  gcms_data_reset_values( false );
-
-
-  // add all custom tax values
+	
+	gcms_data_reset_values( false );
+	
+	
+	// add all custom tax values
 	if ( ! empty( $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE ] ) ) {
-    wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE ], GCMS_C_SURVEY_CT_ORG_ATTITUDE );
+		wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE ], GCMS_C_SURVEY_CT_ORG_ATTITUDE );
 	}
-
+	
 	if ( ! empty( $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_REGION ] ) ) {
-    wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_REGION ], GCMS_C_SURVEY_CT_REGION );
+		wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_REGION ], GCMS_C_SURVEY_CT_REGION );
 	}
-
+	
 	if ( ! empty( $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_SIZE ] ) ) {
-    wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_SIZE ], GCMS_C_SURVEY_CT_ORG_SIZE );
+		wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_SIZE ], GCMS_C_SURVEY_CT_ORG_SIZE );
 	}
-
+	
 	if ( ! empty( $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_TYPE ] ) ) {
-    wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_TYPE ], GCMS_C_SURVEY_CT_ORG_TYPE );
+		wp_set_post_terms( $new_submission_id, $sanitized_values[ GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_TYPE ], GCMS_C_SURVEY_CT_ORG_TYPE );
 	}
-
-
+	
+	
 	/*
-	 * Redirect back to the form page with a query variable with the new post ID.
-	 * This will help double-submissions with browser refreshes
-	 */
+	* Redirect back to the form page with a query variable with the new post ID.
+	* This will help double-submissions with browser refreshes
+	*/
 	wp_redirect( get_permalink( $new_submission_id ) );
-
-
+	
+	
 	/*
-	 * Redirect back to the form page with a query variable with the new post ID.
-	 * This will help double-submissions with browser refreshes
-	 */
+	* Redirect back to the form page with a query variable with the new post ID.
+	* This will help double-submissions with browser refreshes
+	*/
 	wp_redirect( $theurl );
 	
 	exit;
@@ -2242,114 +2250,122 @@ function gcmsf_frontend_form_handle_posting() {
  * Reset the statistics
  */
 function gcms_data_reset_values( $givefeedback = true ) {
-  
-  if ( isset( $_POST['dofeedback'] ) ) {
-    $givefeedback = true;
-  }
-
-  $log              = '';
-  $subjects         = array();
-  $allemetingen     = array();
-  $formfields_data  = gcmsf_data_get_survey_json();
-  $counter          = 0;
-
-  update_option( GCMS_C_AVGS_NR_SURVEYS, 0 );  
-  update_option( GCMS_C_AVGS_OVERALL_AVG, 0 );  
-  
-  $args = array(
-    'post_type'       => GCMS_C_SURVEY_CPT,
-    'posts_per_page'  => '-1',
+	
+	if ( isset( $_POST['dofeedback'] ) ) {
+		$givefeedback = true;
+	}
+	
+	$log              = '';
+	$subjects         = array();
+	$allemetingen     = array();
+	$formfields_data  = gcmsf_data_get_survey_json();
+	$counter          = 0;
+	
+	update_option( GCMS_C_AVGS_NR_SURVEYS, 0 );  
+	update_option( GCMS_C_AVGS_OVERALL_AVG, 0 );  
+	
+	$args = array(
+		'post_type'       => GCMS_C_SURVEY_CPT,
+		'posts_per_page'  => '-1',
 		'post_status'     => 'publish',
-    'order'           => 'ASC'
-  );   
-             
+		'order'           => 'ASC'
+	);   
+	
+	
+	if ( $formfields_data ) {
+		
+		foreach ( $formfields_data as $key => $value) {
+			
+			$optionkey = sanitize_title( $value->group_label );
+			
+			$subjects[] = 'Reset value for ' . $optionkey . ' = 0';
+			
+			update_option( $optionkey, '0' );  
+			
+		}
+	}
+	
+	$the_query = new WP_Query( $args );
+	
+	if($the_query->have_posts() ) {
+	
+		while ( $the_query->have_posts() ) {
+		
+			$the_query->the_post();
+			
+			$counter++;
+			$postid           = get_the_id();
+			$subjects[]       = $counter . ' ' . GCMS_C_SURVEY_CPT . ' = ' . get_the_title() . '(' . $postid . ')';
+			
+			$user_answers_raw     = get_post_meta( $postid );    	
 
-  if ( $formfields_data ) {
+			if ( isset( $user_answers_raw[GCMS_C_FORMKEYS][0] ) ) {
 
-    foreach ( $formfields_data as $key => $value) {
+				$user_answers         = maybe_unserialize( $user_answers_raw[GCMS_C_FORMKEYS][0] );
+				
+				foreach ( $user_answers as $key => $value) {
+					
+					
+					$subjects[]   = '(' . $postid . ') ' . $key . '=' . $value . '.';
+					$constituents = explode( GCMS_C_PLUGIN_SEPARATOR, $value ); // [0] = group, [1] = question, [2] = answer
+					
+					$group    = '';
+					$question = '';
+					$answer   = '';
+					
+					if ( isset( $constituents[0] ) ) {
+						$group    = $constituents[0];
+					}
+					if ( isset( $constituents[1] ) ) {
+						$question = $constituents[1];
+					}
+					if ( isset( $constituents[2] ) ) {
+						$answer = $constituents[2];
+					}
 
-      $optionkey = sanitize_title( $value->group_label );
-
-      $subjects[] = 'Reset value for ' . $optionkey . ' = 0';
-      
-      update_option( $optionkey, '0' );  
-
-    }
-  }
-
-  $the_query = new WP_Query( $args );
-
-  if($the_query->have_posts() ) {
-    
-    while ( $the_query->have_posts() ) {
-      
-      $the_query->the_post();
-      
-      $counter++;
-      $postid           = get_the_id();
-      $subjects[]       = $counter . ' ' . GCMS_C_SURVEY_CPT . ' = ' . get_the_title() . '(' . $postid . ')';
-      
-      $user_answers_raw     = get_post_meta( $postid );    	
-      $user_answers         = maybe_unserialize( $user_answers_raw[GCMS_C_FORMKEYS][0] );
-      
-      foreach ( $user_answers as $key => $value) {
-
-      
-        $subjects[]   = '(' . $postid . ') ' . $key . '=' . $value . '.';
-        $constituents = explode( GCMS_C_PLUGIN_SEPARATOR, $value ); // [0] = group, [1] = question, [2] = answer
-        
-        $group    = '';
-        $question = '';
-        $answer   = '';
-        
-        if ( isset( $constituents[0] ) ) {
-          $group    = $constituents[0];
-        }
-        if ( isset( $constituents[1] ) ) {
-          $question = $constituents[1];
-        }
-        if ( isset( $constituents[2] ) ) {
-          $answer = $constituents[2];
-        }
-
-        $current_answer   = (array) $formfields_data->$group->group_questions[0]->$question->question_answers[0]->$answer;
-
-        if ( intval( $current_answer['answer_value'] ) > 0 ) {
-          $values[ $group . GCMS_C_PLUGIN_SEPARATOR . $question ][] = $current_answer['answer_value'];
-          $values[ $group ][] = $current_answer['answer_value'];
-        }
-      }
-    }        
-  }
-
-  // loop door alle keys en bereken hun gemiddelde
-  foreach( $values as $key => $value ){        
-    
-    $systemaverage_score  = gcms_aux_get_average_for_array( $value, 1);
-    $subjects[]           = 'nieuw gemiddelde voor ' . $key . ' = ' . $systemaverage_score . '.';
-
-    $allemetingen[ $key ] = $systemaverage_score;
-    
-    // save het gemiddelde
-    update_option( $key, $systemaverage_score );
-
-  }
-
-  // overall gemiddelde
-  $average_overall  = gcms_aux_get_average_for_array( $allemetingen, 1);
-
-  update_option( GCMS_C_AVGS_OVERALL_AVG, $average_overall );
-  update_option( GCMS_C_AVGS_NR_SURVEYS, $counter );
-
-  if ( $givefeedback ) {
-
-  	wp_send_json( array(
-  		'ajaxrespons_messages'  => $subjects,
-  		'ajaxrespons_item'      => $log,
-  	) );
-
-  }
-
+//					echo '$group : ' . $group . ', 	$question : ' . $question . ', $answer : ' . $answer . '<br>';
+					if ( $question && $answer ) {
+					
+						$current_answer   = (array) $formfields_data->$group->group_questions[0]->$question->question_answers[0]->$answer;
+						
+						if ( intval( $current_answer['answer_value'] ) > 0 ) {
+							$values[ $group . GCMS_C_PLUGIN_SEPARATOR . $question ][] = $current_answer['answer_value'];
+							$values[ $group ][] = $current_answer['answer_value'];
+						}
+					}
+				}
+			}
+		}        
+	}
+	
+	// loop door alle keys en bereken hun gemiddelde
+	foreach( $values as $key => $value ){        
+		
+		$systemaverage_score  = gcms_aux_get_average_for_array( $value, 1);
+		$subjects[]           = 'nieuw gemiddelde voor ' . $key . ' = ' . $systemaverage_score . '.';
+		
+		$allemetingen[ $key ] = $systemaverage_score;
+		
+		// save het gemiddelde
+		update_option( $key, $systemaverage_score );
+		
+	}
+	
+	// overall gemiddelde
+	$average_overall  = gcms_aux_get_average_for_array( $allemetingen, 1);
+	
+	update_option( GCMS_C_AVGS_OVERALL_AVG, $average_overall );
+	update_option( GCMS_C_AVGS_NR_SURVEYS, $counter );
+	
+	if ( $givefeedback ) {
+		
+		wp_send_json( array(
+			'ajaxrespons_messages'  => $subjects,
+			'ajaxrespons_item'      => $log,
+		) );
+		
+	}
+	
 }
 
 
@@ -2430,28 +2446,27 @@ if (! function_exists( 'gcmsf_aux_write_to_log' ) ) {
  * @return mixed           Option value
  */
 function gcms_aux_get_value_for_cmb2_key( $key = '', $default = false, $optionkey = GCMS_C_PLUGIN_KEY ) {
-
-  $return = '';
-
-  if ( function_exists( 'cmb2_get_option' ) ) {
-
-    return cmb2_get_option( $optionkey, $key, $default );
-    
-  }
-    
-  // Fallback to get_option if CMB2 is not loaded yet.
-  $opts = get_option( 'gcmsf_admin_options_metabox', $default );
-  
-  $val = $default;
-  
-  if ( 'all' == $key ) {
-    $val = $opts;
-  } elseif ( is_array( $opts ) && array_key_exists( $key, $opts ) && false !== $opts[ $key ] ) {
-    $val = $opts[ $key ];
-  }
-
-  return $val;
-
+	
+	$return = '';
+	
+	if ( function_exists( 'cmb2_get_option' ) ) {
+		return cmb2_get_option( $optionkey, $key, $default );
+	}
+	
+	// Fallback to get_option if CMB2 is not loaded yet.
+	$opts = get_option( 'gcmsf_admin_options_metabox', $default );
+	
+	$val = $default;
+	
+	if ( 'all' == $key ) {
+		$val = $opts;
+	}
+	elseif ( is_array( $opts ) && array_key_exists( $key, $opts ) && false !== $opts[ $key ] ) {
+		$val = $opts[ $key ];
+	}
+	
+	return $val;
+	
 }
 
 //========================================================================================================

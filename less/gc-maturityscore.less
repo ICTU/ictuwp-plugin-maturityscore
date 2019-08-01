@@ -9,7 +9,7 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @plugin: gc-maturityscore
-// * Version: 1.1.7
+// * Version: 1.1.8a
 // * Version desc: Read a *LOCAL* version of the JSON file.
 // * @link    https://github.com/ICTU/gc-maturityscore-plugin/
 
@@ -127,6 +127,11 @@
   }
 }
 
+.not-required {
+	font-style: italic;
+}
+
+
 @media only screen and (min-width: ( @break_tablet ) ) {
   
   .cmb-type-text,
@@ -146,38 +151,32 @@
       padding-top: .75em;
       border-top-style: none;
     }
-    .cmb-td {
-      width: 69%;
-      input[type="url"],
-      input[type="email"],
-      input[type="text"] {
-        width: 100%;
-      }
-      .cmb2-metabox-description {
-        width: 100%;
-      }
-      input,
-      .cmb2-metabox-description {
-        float: none;
-        clear: both;
-      }
-
-      
-    }
+	.cmb-td {
+		width: 69%;
+		
+		input[type="url"],
+		input[type="email"],
+		input[type="text"] {
+			width: 100%;
+		}
+		.cmb2-metabox-description {
+			width: 100%;
+//			font-style: italic;
+		}
+		input[type="url"],
+		input[type="email"],
+		input[type="text"],
+		.cmb2-metabox-description {
+			float: none;
+			clear: both;
+		}
+	}
   }
   .cmb-type-checkbox {
     input {
       margin-right: .5em;
     }
   }
-  .cmb-type-text,
-  .cmb-type-text-email {
-    .cmb2-metabox-description {
-      font-size: 90%;
-      font-style: italic;
-    }
-  }
-  
 
 }
 
@@ -291,22 +290,41 @@
   }  
 }
 
+details {
+	border: 3px solid #dadada;	
+	&:hover,
+	&[open],
+	&:focus {
+		border-color: @txt;
+	}
+}
+
 summary {
-  cursor: pointer;
-  color: @txt;
-  background: @lichtgrijs;
-  padding-top: .25em;
-  padding-bottom: .25em;
+	cursor: pointer;
+	color: @txt;
+	//  background: @lichtgrijs;
+	padding-top: .25em;
+	padding-bottom: .25em;
+	font-size: 2rem;
+	.icon_socmed_icon('../assets/images/arrow-wit.svg', @txt );
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding-left: 1rem;
+	padding-right: 3rem;
   
-  &:hover,
-  &:focus {
-    color: @wit;
-    background: @txt;
-  }
+	&:hover,
+	&:focus {
+		background-color: @txt;
+		.icon_socmed_icon('../assets/images/arrow-wit.svg', @wit );
+		color: @wit;
+	}
 }
 summary::-webkit-details-marker {
   display: none
 }
+/*
+
+
 summary:before {
   content: "+"; 
   float: left; 
@@ -320,8 +338,14 @@ summary:before {
 details[open] summary:before {
   content: "-";
 }
-
-
+*/
+details[open] {
+	summary  {
+		background-color: @txt;
+		.icon_socmed_icon('../assets/images/arrow-wit.svg', @wit );
+		color: @wit;
+	}
+}
 
 dl {
   box-sizing: border-box;
@@ -355,4 +379,19 @@ dd {
   text-align: center;
   font-size: 80%;
 }
+
+
+//=========================================================================================================
+
+.icon_socmed_icon(@src, @fill-new) {
+	
+    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+    @replace-default:   escape('fill="#f00"');
+    @replace-new:       escape('fill="@{fill-new}"');
+    @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+
+    background-image: e(@replacesrc1);
+}
+
+//=========================================================================================================
 

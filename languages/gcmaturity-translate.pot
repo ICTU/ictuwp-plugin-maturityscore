@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: GC Maturity (Gebruiker Centraal Volwassenheidsscore)\n"
-"POT-Creation-Date: 2018-10-17 17:50+0200\n"
+"POT-Creation-Date: 2019-07-31 18:09+0200\n"
 "PO-Revision-Date: 2018-06-13 10:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: gc-maturityscore.php\n"
@@ -21,11 +21,11 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: cmb2/includes/CMB2.php:179
+#: cmb2/includes/CMB2.php:199
 msgid "Metabox configuration is required to have an ID parameter."
 msgstr ""
 
-#: cmb2/includes/CMB2.php:582
+#: cmb2/includes/CMB2.php:601
 msgid "Click to toggle"
 msgstr ""
 
@@ -38,7 +38,7 @@ msgid "Remove Embed"
 msgstr ""
 
 #. translators: 1: results for. 2: link to codex.wordpress.org/Embeds
-#: cmb2/includes/CMB2_Ajax.php:189 cmb2/includes/helper-functions.php:105
+#: cmb2/includes/CMB2_Ajax.php:189 cmb2/includes/helper-functions.php:107
 #: cmb2/tests/cmb-tests-base.php:68 cmb2/tests/test-cmb-types-display.php:208
 #, php-format
 msgid "No oEmbed Results Found for %1$s. View more info at %2$s."
@@ -72,47 +72,47 @@ msgid ""
 "version %2$s with no alternative available."
 msgstr ""
 
-#: cmb2/includes/CMB2_Base.php:491 cmb2/includes/CMB2_Hookup_Base.php:100
-#: cmb2/includes/CMB2_Options_Hookup.php:348
+#: cmb2/includes/CMB2_Base.php:491 cmb2/includes/CMB2_Hookup_Base.php:102
+#: cmb2/includes/CMB2_Options_Hookup.php:357
 #: cmb2/includes/types/CMB2_Type_Base.php:173
 #, php-format
 msgid "Invalid %1$s property: %2$s"
 msgstr ""
 
-#: cmb2/includes/CMB2_Base.php:506 cmb2/includes/types/CMB2_Type_Base.php:157
+#: cmb2/includes/CMB2_Base.php:509 cmb2/includes/types/CMB2_Type_Base.php:157
 #, php-format
 msgid "Invalid %1$s method: %2$s"
 msgstr ""
 
-#: cmb2/includes/CMB2_Field.php:1346
+#: cmb2/includes/CMB2_Field.php:1348
 msgid "Add Group"
 msgstr ""
 
-#: cmb2/includes/CMB2_Field.php:1347
+#: cmb2/includes/CMB2_Field.php:1349
 msgid "Remove Group"
 msgstr ""
 
-#: cmb2/includes/CMB2_Field.php:1378 cmb2/includes/CMB2_Field.php:1382
+#: cmb2/includes/CMB2_Field.php:1380 cmb2/includes/CMB2_Field.php:1384
 #: cmb2/tests/test-cmb-field.php:237
 msgid "None"
 msgstr ""
 
-#: cmb2/includes/CMB2_Field.php:1493
+#: cmb2/includes/CMB2_Field.php:1495
 msgid "Sorry, this field does not have a cmb_id specified."
 msgstr ""
 
-#: cmb2/includes/CMB2_Field_Display.php:432 cmb2/includes/CMB2_JS.php:228
+#: cmb2/includes/CMB2_Field_Display.php:432 cmb2/includes/CMB2_JS.php:230
 #: cmb2/includes/types/CMB2_Type_File_Base.php:79
 #: cmb2/tests/test-cmb-types-base.php:149 cmb2/tests/test-cmb-types.php:956
 msgid "File:"
 msgstr ""
 
-#: cmb2/includes/CMB2_Hookup_Base.php:42
+#: cmb2/includes/CMB2_Hookup_Base.php:44
 #, php-format
 msgid "%1$s should be implemented by the extended class."
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:165 cmb2/includes/CMB2_JS.php:208
+#: cmb2/includes/CMB2_JS.php:165 cmb2/includes/CMB2_JS.php:210
 msgid "Clear"
 msgstr ""
 
@@ -128,145 +128,145 @@ msgstr ""
 msgid "Current Color"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:198
+#: cmb2/includes/CMB2_JS.php:200
 msgctxt "Valid formatDate string for jquery-ui datepicker"
 msgid "mm/dd/yy"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:199
+#: cmb2/includes/CMB2_JS.php:201
 msgid "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:200
+#: cmb2/includes/CMB2_JS.php:202
 msgid "Su, Mo, Tu, We, Th, Fr, Sa"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:201
+#: cmb2/includes/CMB2_JS.php:203
 msgid "Sun, Mon, Tue, Wed, Thu, Fri, Sat"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:202
+#: cmb2/includes/CMB2_JS.php:204
 msgid ""
 "January, February, March, April, May, June, July, August, September, "
 "October, November, December"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:203
+#: cmb2/includes/CMB2_JS.php:205
 msgid "Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:204
+#: cmb2/includes/CMB2_JS.php:206
 msgid "Next"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:205
+#: cmb2/includes/CMB2_JS.php:207
 msgid "Prev"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:206
+#: cmb2/includes/CMB2_JS.php:208
 msgid "Today"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:207 cmb2/includes/CMB2_JS.php:217
+#: cmb2/includes/CMB2_JS.php:209 cmb2/includes/CMB2_JS.php:219
 msgid "Done"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:211
+#: cmb2/includes/CMB2_JS.php:213
 msgid "Choose Time"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:212
+#: cmb2/includes/CMB2_JS.php:214
 msgid "Time"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:213
+#: cmb2/includes/CMB2_JS.php:215
 msgid "Hour"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:214
+#: cmb2/includes/CMB2_JS.php:216
 msgid "Minute"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:215
+#: cmb2/includes/CMB2_JS.php:217
 msgid "Second"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:216
+#: cmb2/includes/CMB2_JS.php:218
 msgid "Now"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:218
+#: cmb2/includes/CMB2_JS.php:220
 msgctxt ""
 "Valid formatting string, as per http://trentrichardson.com/examples/"
 "timepicker/"
 msgid "hh:mm TT"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:224
+#: cmb2/includes/CMB2_JS.php:226
 msgid "Use this file"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:225
+#: cmb2/includes/CMB2_JS.php:227
 msgid "Use these files"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:226 cmb2/includes/types/CMB2_Type_File_Base.php:64
+#: cmb2/includes/CMB2_JS.php:228 cmb2/includes/types/CMB2_Type_File_Base.php:64
 msgid "Remove Image"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:227 cmb2/includes/CMB2_Types.php:412
+#: cmb2/includes/CMB2_JS.php:229 cmb2/includes/CMB2_Types.php:413
 #: cmb2/includes/types/CMB2_Type_File_Base.php:84
 #: cmb2/tests/test-cmb-types-base.php:149 cmb2/tests/test-cmb-types.php:47
 #: cmb2/tests/test-cmb-types.php:55 cmb2/tests/test-cmb-types.php:956
 msgid "Remove"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:229 cmb2/includes/types/CMB2_Type_File_Base.php:82
+#: cmb2/includes/CMB2_JS.php:231 cmb2/includes/types/CMB2_Type_File_Base.php:82
 #: cmb2/tests/test-cmb-types-base.php:149 cmb2/tests/test-cmb-types.php:956
 msgid "Download"
 msgstr ""
 
-#: cmb2/includes/CMB2_JS.php:230
+#: cmb2/includes/CMB2_JS.php:232
 msgid "Select / Deselect All"
 msgstr ""
 
-#: cmb2/includes/CMB2_Options_Hookup.php:138
+#: cmb2/includes/CMB2_Options_Hookup.php:139
 msgid "Nothing to update."
 msgstr ""
 
-#: cmb2/includes/CMB2_Options_Hookup.php:142
+#: cmb2/includes/CMB2_Options_Hookup.php:143
 msgid "Settings updated."
 msgstr ""
 
-#: cmb2/includes/CMB2_Types.php:231
+#: cmb2/includes/CMB2_Types.php:232
 msgid "Custom CMB2 field type classes must extend CMB2_Type_Base."
 msgstr ""
 
-#: cmb2/includes/CMB2_Types.php:349
+#: cmb2/includes/CMB2_Types.php:350
 msgid "Add Row"
 msgstr ""
 
-#: cmb2/includes/CMB2_Types.php:412 cmb2/tests/test-cmb-types.php:47
+#: cmb2/includes/CMB2_Types.php:413 cmb2/tests/test-cmb-types.php:47
 #: cmb2/tests/test-cmb-types.php:55
 msgid "Remove Row"
 msgstr ""
 
-#: cmb2/includes/CMB2_hookup.php:181
+#: cmb2/includes/CMB2_hookup.php:182
 msgid ""
 "Term Metadata is a WordPress 4.4+ feature. Please upgrade your WordPress "
 "install."
 msgstr ""
 
-#: cmb2/includes/CMB2_hookup.php:185
+#: cmb2/includes/CMB2_hookup.php:186
 msgid "Term metaboxes configuration requires a \"taxonomies\" parameter."
 msgstr ""
 
-#: cmb2/includes/CMB2_hookup.php:458
+#: cmb2/includes/CMB2_hookup.php:466
 #, php-format
 msgid "Toggle panel: %s"
 msgstr ""
 
-#: cmb2/includes/helper-functions.php:303
+#: cmb2/includes/helper-functions.php:307
 msgid "Save"
 msgstr ""
 
@@ -431,376 +431,376 @@ msgstr ""
 msgid "Check Three"
 msgstr ""
 
-#: gc-maturityscore.php:311
+#: gc-maturityscore.php:308
 msgctxt "labels"
 msgid "Survey"
 msgstr ""
 
-#: gc-maturityscore.php:312
+#: gc-maturityscore.php:309
 msgctxt "labels"
 msgid "Surveys"
 msgstr ""
 
-#: gc-maturityscore.php:314
+#: gc-maturityscore.php:311
 msgctxt "labels"
 msgid "survey"
 msgstr ""
 
-#: gc-maturityscore.php:315
+#: gc-maturityscore.php:312
 msgctxt "labels"
 msgid "surveys"
 msgstr ""
 
-#: gc-maturityscore.php:321 gc-maturityscore.php:371 gc-maturityscore.php:417
-#: gc-maturityscore.php:462 gc-maturityscore.php:507
+#: gc-maturityscore.php:318 gc-maturityscore.php:368 gc-maturityscore.php:414
+#: gc-maturityscore.php:459 gc-maturityscore.php:504
 #, php-format
 msgctxt "labels"
 msgid "All %s"
 msgstr ""
 
-#: gc-maturityscore.php:322 gc-maturityscore.php:326 gc-maturityscore.php:328
-#: gc-maturityscore.php:372 gc-maturityscore.php:376 gc-maturityscore.php:378
-#: gc-maturityscore.php:418 gc-maturityscore.php:422 gc-maturityscore.php:424
-#: gc-maturityscore.php:463 gc-maturityscore.php:467 gc-maturityscore.php:469
-#: gc-maturityscore.php:508 gc-maturityscore.php:512 gc-maturityscore.php:514
+#: gc-maturityscore.php:319 gc-maturityscore.php:323 gc-maturityscore.php:325
+#: gc-maturityscore.php:369 gc-maturityscore.php:373 gc-maturityscore.php:375
+#: gc-maturityscore.php:415 gc-maturityscore.php:419 gc-maturityscore.php:421
+#: gc-maturityscore.php:460 gc-maturityscore.php:464 gc-maturityscore.php:466
+#: gc-maturityscore.php:505 gc-maturityscore.php:509 gc-maturityscore.php:511
 #, php-format
 msgctxt "labels"
 msgid "Add %s"
 msgstr ""
 
-#: gc-maturityscore.php:323 gc-maturityscore.php:373 gc-maturityscore.php:419
-#: gc-maturityscore.php:464 gc-maturityscore.php:509
+#: gc-maturityscore.php:320 gc-maturityscore.php:370 gc-maturityscore.php:416
+#: gc-maturityscore.php:461 gc-maturityscore.php:506
 #, php-format
 msgctxt "labels"
 msgid "Add new %s"
 msgstr ""
 
-#: gc-maturityscore.php:324 gc-maturityscore.php:374 gc-maturityscore.php:383
-#: gc-maturityscore.php:420 gc-maturityscore.php:429 gc-maturityscore.php:465
-#: gc-maturityscore.php:474 gc-maturityscore.php:510 gc-maturityscore.php:519
+#: gc-maturityscore.php:321 gc-maturityscore.php:371 gc-maturityscore.php:380
+#: gc-maturityscore.php:417 gc-maturityscore.php:426 gc-maturityscore.php:462
+#: gc-maturityscore.php:471 gc-maturityscore.php:507 gc-maturityscore.php:516
 msgctxt "labels"
 msgid "Edit?"
 msgstr ""
 
-#: gc-maturityscore.php:325 gc-maturityscore.php:375 gc-maturityscore.php:421
-#: gc-maturityscore.php:466 gc-maturityscore.php:511
+#: gc-maturityscore.php:322 gc-maturityscore.php:372 gc-maturityscore.php:418
+#: gc-maturityscore.php:463 gc-maturityscore.php:508
 #, php-format
 msgctxt "labels"
 msgid "Edit %s"
 msgstr ""
 
-#: gc-maturityscore.php:327 gc-maturityscore.php:377 gc-maturityscore.php:423
-#: gc-maturityscore.php:468 gc-maturityscore.php:513
+#: gc-maturityscore.php:324 gc-maturityscore.php:374 gc-maturityscore.php:420
+#: gc-maturityscore.php:465 gc-maturityscore.php:510
 msgctxt "labels"
 msgid "Show"
 msgstr ""
 
-#: gc-maturityscore.php:329 gc-maturityscore.php:379 gc-maturityscore.php:425
-#: gc-maturityscore.php:470 gc-maturityscore.php:515
+#: gc-maturityscore.php:326 gc-maturityscore.php:376 gc-maturityscore.php:422
+#: gc-maturityscore.php:467 gc-maturityscore.php:512
 #, php-format
 msgctxt "labels"
 msgid "Search %s"
 msgstr ""
 
-#: gc-maturityscore.php:330 gc-maturityscore.php:380 gc-maturityscore.php:426
-#: gc-maturityscore.php:471 gc-maturityscore.php:516
+#: gc-maturityscore.php:327 gc-maturityscore.php:377 gc-maturityscore.php:423
+#: gc-maturityscore.php:468 gc-maturityscore.php:513
 #, php-format
 msgctxt "labels"
 msgid "No %s available"
 msgstr ""
 
-#: gc-maturityscore.php:331 gc-maturityscore.php:381 gc-maturityscore.php:427
-#: gc-maturityscore.php:472 gc-maturityscore.php:517
+#: gc-maturityscore.php:328 gc-maturityscore.php:378 gc-maturityscore.php:424
+#: gc-maturityscore.php:469 gc-maturityscore.php:514
 #, php-format
 msgctxt "labels"
 msgid "No %s in trash"
 msgstr ""
 
-#: gc-maturityscore.php:332 gc-maturityscore.php:382 gc-maturityscore.php:428
-#: gc-maturityscore.php:473 gc-maturityscore.php:518
+#: gc-maturityscore.php:329 gc-maturityscore.php:379 gc-maturityscore.php:425
+#: gc-maturityscore.php:470 gc-maturityscore.php:515
 msgctxt "labels"
 msgid "Parent"
 msgstr ""
 
-#: gc-maturityscore.php:359
+#: gc-maturityscore.php:356
 msgctxt "labels"
 msgid "Organisation type"
 msgstr ""
 
-#: gc-maturityscore.php:360
+#: gc-maturityscore.php:357
 msgctxt "labels"
 msgid "Organisation types"
 msgstr ""
 
-#: gc-maturityscore.php:362
+#: gc-maturityscore.php:359
 msgctxt "labels"
 msgid "organisation type"
 msgstr ""
 
-#: gc-maturityscore.php:363
+#: gc-maturityscore.php:360
 msgctxt "labels"
 msgid "organisation types"
 msgstr ""
 
-#: gc-maturityscore.php:406
+#: gc-maturityscore.php:403
 msgctxt "labels"
 msgid "Organisation size"
 msgstr ""
 
-#: gc-maturityscore.php:407
+#: gc-maturityscore.php:404
 msgctxt "labels"
 msgid "Organisation sizes"
 msgstr ""
 
-#: gc-maturityscore.php:409
+#: gc-maturityscore.php:406
 msgctxt "labels"
 msgid "organisation size"
 msgstr ""
 
-#: gc-maturityscore.php:410
+#: gc-maturityscore.php:407
 msgctxt "labels"
 msgid "organisation sizes"
 msgstr ""
 
-#: gc-maturityscore.php:451
+#: gc-maturityscore.php:448
 msgctxt "labels"
 msgid "Region"
 msgstr ""
 
-#: gc-maturityscore.php:452
+#: gc-maturityscore.php:449
 msgctxt "labels"
 msgid "Regions"
 msgstr ""
 
-#: gc-maturityscore.php:454
+#: gc-maturityscore.php:451
 msgctxt "labels"
 msgid "region"
 msgstr ""
 
-#: gc-maturityscore.php:455
+#: gc-maturityscore.php:452
 msgctxt "labels"
 msgid "regions"
 msgstr ""
 
-#: gc-maturityscore.php:496
+#: gc-maturityscore.php:493
 msgctxt "labels"
 msgid "Organisation attitude"
 msgstr ""
 
-#: gc-maturityscore.php:497
+#: gc-maturityscore.php:494
 msgctxt "labels"
 msgid "Organisation attitudes"
 msgstr ""
 
-#: gc-maturityscore.php:499
+#: gc-maturityscore.php:496
 msgctxt "labels"
 msgid "organisation attitude"
 msgstr ""
 
-#: gc-maturityscore.php:500
+#: gc-maturityscore.php:497
 msgctxt "labels"
 msgid "organisation attitudes"
 msgstr ""
 
-#: gc-maturityscore.php:557
+#: gc-maturityscore.php:554
 msgctxt "naam template"
 msgid "Maturity score template"
 msgstr ""
 
-#: gc-maturityscore.php:574
+#: gc-maturityscore.php:571
 msgid "General settings"
 msgstr ""
 
-#: gc-maturityscore.php:606
+#: gc-maturityscore.php:603
 msgid "Documentation"
 msgstr ""
 
-#: gc-maturityscore.php:607
+#: gc-maturityscore.php:604
 msgid "GC Maturity documentation"
 msgstr ""
 
-#: gc-maturityscore.php:621
+#: gc-maturityscore.php:618
 msgctxt "admin"
 msgid "Here you can edit the surveys."
 msgstr ""
 
-#: gc-maturityscore.php:656
+#: gc-maturityscore.php:653
 msgctxt "js"
 msgid "URL"
 msgstr ""
 
-#: gc-maturityscore.php:657
+#: gc-maturityscore.php:654
 msgctxt "js"
 msgid "Caption"
 msgstr ""
 
-#: gc-maturityscore.php:658
+#: gc-maturityscore.php:655
 msgctxt "js"
 msgid "New Window"
 msgstr ""
 
-#: gc-maturityscore.php:659
+#: gc-maturityscore.php:656
 msgctxt "js"
 msgid "Are you sure?"
 msgstr ""
 
-#: gc-maturityscore.php:686 gc-maturityscore.php:736
+#: gc-maturityscore.php:683 gc-maturityscore.php:733
 msgid "Reset statistics"
 msgstr ""
 
-#: gc-maturityscore.php:687
+#: gc-maturityscore.php:684
 msgid "Empty log"
 msgstr ""
 
-#: gc-maturityscore.php:692
+#: gc-maturityscore.php:689
 msgid "Ehm, please allow JavaScript."
 msgstr ""
 
-#: gc-maturityscore.php:695
+#: gc-maturityscore.php:692
 msgid "Press the button!"
 msgstr ""
 
-#: gc-maturityscore.php:715 gc-maturityscore.php:749
+#: gc-maturityscore.php:712 gc-maturityscore.php:746
 msgid "Just a moment please"
 msgstr ""
 
-#: gc-maturityscore.php:784
+#: gc-maturityscore.php:781
 msgid "Maturity score"
 msgstr ""
 
-#: gc-maturityscore.php:790
+#: gc-maturityscore.php:787
 msgctxt "scoring menu"
 msgid "Email settings &amp; general scoring"
 msgstr ""
 
-#: gc-maturityscore.php:792
+#: gc-maturityscore.php:789
 msgid "Save options"
 msgstr ""
 
-#: gc-maturityscore.php:841
+#: gc-maturityscore.php:838
 #, php-format
 msgctxt "question range"
 msgid "%s - %s"
 msgstr ""
 
-#: gc-maturityscore.php:842
+#: gc-maturityscore.php:839
 #, php-format
 msgctxt "tablabel"
 msgid "%s - questions %s"
 msgstr ""
 
-#: gc-maturityscore.php:843
+#: gc-maturityscore.php:840
 #, php-format
 msgctxt "tablabel"
 msgid "Group %s: title, introduction and scoring texts"
 msgstr ""
 
-#: gc-maturityscore.php:844
+#: gc-maturityscore.php:841
 #, php-format
 msgctxt "tablabel"
 msgid "Title for group %s"
 msgstr ""
 
-#: gc-maturityscore.php:845
+#: gc-maturityscore.php:842
 #, php-format
 msgctxt "tablabel"
 msgid "Introduction %s"
 msgstr ""
 
-#: gc-maturityscore.php:850
+#: gc-maturityscore.php:847
 #, php-format
 msgctxt "tablabel"
 msgid "Group %s - %s"
 msgstr ""
 
-#: gc-maturityscore.php:884
+#: gc-maturityscore.php:881
 msgid "Score for this section"
 msgstr ""
 
-#: gc-maturityscore.php:896
+#: gc-maturityscore.php:893
 #, php-format
 msgid ""
 "For section <em>%s</em> you scored over %s, but lesss than %s. Here more "
 "about that."
 msgstr ""
 
-#: gc-maturityscore.php:898 gc-maturityscore.php:1050
+#: gc-maturityscore.php:895 gc-maturityscore.php:1047
 #, php-format
 msgid "between %s and %s"
 msgstr ""
 
-#: gc-maturityscore.php:900 gc-maturityscore.php:1053
+#: gc-maturityscore.php:897 gc-maturityscore.php:1050
 #, php-format
 msgid "Perfect score: %s!"
 msgstr ""
 
-#: gc-maturityscore.php:906
+#: gc-maturityscore.php:903
 #, php-format
 msgctxt "score range"
 msgid "Text %s<br><small>if score %s.</small>"
 msgstr ""
 
-#: gc-maturityscore.php:907
+#: gc-maturityscore.php:904
 #, php-format
 msgid "Score %s"
 msgstr ""
 
-#: gc-maturityscore.php:930
+#: gc-maturityscore.php:927
 #, php-format
 msgid "Question %s - %s"
 msgstr ""
 
-#: gc-maturityscore.php:938
+#: gc-maturityscore.php:935
 #, php-format
 msgid "Question %s"
 msgstr ""
 
-#: gc-maturityscore.php:961
+#: gc-maturityscore.php:958
 #, php-format
 msgid "Label answer %s"
 msgstr ""
 
-#: gc-maturityscore.php:975
+#: gc-maturityscore.php:972
 #, php-format
 msgid "Value answer %s"
 msgstr ""
 
-#: gc-maturityscore.php:999
+#: gc-maturityscore.php:996
 msgctxt "email settings"
 msgid "Email settings"
 msgstr ""
 
-#: gc-maturityscore.php:1005
+#: gc-maturityscore.php:1002
 msgctxt "email settings"
 msgid "Sender email address"
 msgstr ""
 
-#: gc-maturityscore.php:1008
+#: gc-maturityscore.php:1005
 msgctxt "email settings"
 msgid "info@gebruikercentraal.nl"
 msgstr ""
 
-#: gc-maturityscore.php:1012
+#: gc-maturityscore.php:1009
 msgctxt "email settings"
 msgid "Sender email name"
 msgstr ""
 
-#: gc-maturityscore.php:1015
+#: gc-maturityscore.php:1012
 msgctxt "email settings"
 msgid "Gebruiker Centraal"
 msgstr ""
 
-#: gc-maturityscore.php:1019
+#: gc-maturityscore.php:1016
 msgctxt "email settings"
 msgid "Email subject line"
 msgstr ""
 
-#: gc-maturityscore.php:1022 gc-maturityscore.php:2165
+#: gc-maturityscore.php:1019 gc-maturityscore.php:2173
 msgctxt "email settings"
 msgid "Link to your survey results"
 msgstr ""
 
-#: gc-maturityscore.php:1025
+#: gc-maturityscore.php:1022
 #, php-format
 msgctxt "email settings"
 msgid ""
@@ -815,12 +815,12 @@ msgid ""
 "The Gebruiker Centraal Team."
 msgstr ""
 
-#: gc-maturityscore.php:1028
+#: gc-maturityscore.php:1025
 msgctxt "email settings"
 msgid "Text in the email to the user"
 msgstr ""
 
-#: gc-maturityscore.php:1029
+#: gc-maturityscore.php:1026
 #, php-format
 msgctxt "email settings"
 msgid ""
@@ -828,84 +828,87 @@ msgid ""
 "the link we send.<br>%s - this is the placeholder for user's name."
 msgstr ""
 
-#: gc-maturityscore.php:1037
+#: gc-maturityscore.php:1034
 msgid "General scoring texts"
 msgstr ""
 
-#: gc-maturityscore.php:1049
+#: gc-maturityscore.php:1046
 #, php-format
 msgid "The text for scores between %s and %s. "
 msgstr ""
 
-#: gc-maturityscore.php:1059
+#: gc-maturityscore.php:1056
 #, php-format
 msgctxt "score range"
 msgid "Score text %s<br><small>if the total score is %s.</small>"
 msgstr ""
 
-#: gc-maturityscore.php:1060
+#: gc-maturityscore.php:1057
 #, php-format
 msgid "General average score %s"
 msgstr ""
 
-#: gc-maturityscore.php:1184
+#: gc-maturityscore.php:1181
 msgctxt "table header"
 msgid "Chapter"
 msgstr ""
 
-#: gc-maturityscore.php:1186
+#: gc-maturityscore.php:1183
 msgctxt "table header"
 msgid "Your score"
 msgstr ""
 
-#: gc-maturityscore.php:1190
+#: gc-maturityscore.php:1187
 msgctxt "table header"
 msgid "Average score"
 msgstr ""
 
-#: gc-maturityscore.php:1283
+#: gc-maturityscore.php:1282
 msgctxt "labels"
 msgid "your score"
 msgstr ""
 
-#: gc-maturityscore.php:1445
+#: gc-maturityscore.php:1444
 msgid ""
-"Oopsy daisy. There are no data to display.<br>The survey you requested is "
+"Oopsy daisy. There are no data to display. The survey you requested is "
 "empty. The server may have made an error in saving or retrieving the data, "
-"or more likely: Paul botched up.</p><p>It's not your fault, is it?</p>"
+"or more likely: our developer botched up. It's not your fault."
 msgstr ""
 
-#: gc-maturityscore.php:1484
+#: gc-maturityscore.php:1483
 msgid "Questions and answers"
 msgstr ""
 
-#: gc-maturityscore.php:1580
+#: gc-maturityscore.php:1579
 msgctxt "About you section"
 msgid "About you"
 msgstr ""
 
-#: gc-maturityscore.php:1583
+#: gc-maturityscore.php:1582
 msgctxt "About you section"
 msgid ""
 "We can send you a link to your survey results if you fill in your email "
 "address here."
 msgstr ""
 
-#: gc-maturityscore.php:1588
+#: gc-maturityscore.php:1587
 msgctxt "About you section"
 msgid "Your name"
 msgstr ""
 
-#: gc-maturityscore.php:1591
+#: gc-maturityscore.php:1590
 msgctxt "About you section"
 msgid ""
 "We store your name for a maximum of 3 years; it will be visible on the "
 "resultpage. Leave this empty if you don't want this."
 msgstr ""
 
-#: gc-maturityscore.php:1591 gc-maturityscore.php:1599
-msgctxt "About you section"
-msgid "Not required"
+#: gc-maturityscore.php:1590 gc-maturityscore.php:1599
+#: gc-maturityscore.php:1606 gc-maturityscore.php:1635
+#: gc-maturityscore.php:1662 gc-maturityscore.php:1690
+#: gc-maturityscore.php:1718
+msgctxt "field validation"
+msgid "(not required)"
 msgstr ""
 
 #: gc-maturityscore.php:1596
@@ -933,129 +936,129 @@ msgid ""
 "site-admins have access to these data."
 msgstr ""
 
-#: gc-maturityscore.php:1734
+#: gc-maturityscore.php:1742
 msgctxt "table description"
 msgid "Radar graph with your score in this survey."
 msgstr ""
 
-#: gc-maturityscore.php:1739
+#: gc-maturityscore.php:1747
 msgctxt "table description"
 msgid "Your score in red; average score in orange."
 msgstr ""
 
-#: gc-maturityscore.php:1742
+#: gc-maturityscore.php:1750
 msgctxt "table description"
 msgid "Your score in orange."
 msgstr ""
 
-#: gc-maturityscore.php:1748 gc-maturityscore.php:1905
-#: gc-maturityscore.php:1964
+#: gc-maturityscore.php:1756 gc-maturityscore.php:1913
+#: gc-maturityscore.php:1972
 msgctxt "no data error"
 msgid "No data available. Not your fault, blame the server."
 msgstr ""
 
-#: gc-maturityscore.php:1820 gc-maturityscore.php:1875
+#: gc-maturityscore.php:1828 gc-maturityscore.php:1883
 #, php-format
 msgid "%s point"
 msgid_plural "%s points"
 msgstr[0] ""
 msgstr[1] ""
 
-#: gc-maturityscore.php:1824
+#: gc-maturityscore.php:1832
 #, php-format
 msgid "Your average score was %s. "
 msgstr ""
 
-#: gc-maturityscore.php:1825
+#: gc-maturityscore.php:1833
 #, php-format
 msgid "Thus far, we received %s survey."
 msgid_plural "Thus far, we received %s surveys. "
 msgstr[0] ""
 msgstr[1] ""
 
-#: gc-maturityscore.php:1827
+#: gc-maturityscore.php:1835
 #, php-format
 msgid "The overall average score is %s. "
 msgstr ""
 
-#: gc-maturityscore.php:1830
+#: gc-maturityscore.php:1838
 #, php-format
 msgid "No text available for %s."
 msgstr ""
 
-#: gc-maturityscore.php:1831
+#: gc-maturityscore.php:1839
 msgid "Score per section"
 msgstr ""
 
-#: gc-maturityscore.php:1860
+#: gc-maturityscore.php:1868
 msgctxt "table description"
 msgid "Your score"
 msgstr ""
 
-#: gc-maturityscore.php:1864
+#: gc-maturityscore.php:1872
 msgctxt "interpretatie"
 msgid "Review your answers"
 msgstr ""
 
-#: gc-maturityscore.php:1869
+#: gc-maturityscore.php:1877
 msgctxt "interpretatie"
 msgid "Question"
 msgstr ""
 
-#: gc-maturityscore.php:1872
+#: gc-maturityscore.php:1880
 msgctxt "interpretatie"
 msgid "Your answer"
 msgstr ""
 
-#: gc-maturityscore.php:1879 gc-maturityscore.php:1886
+#: gc-maturityscore.php:1887 gc-maturityscore.php:1894
 msgctxt "interpretatie"
 msgid "Score"
 msgstr ""
 
-#: gc-maturityscore.php:1882
+#: gc-maturityscore.php:1890
 msgctxt "interpretatie"
 msgid "Average score"
 msgstr ""
 
-#: gc-maturityscore.php:1934
+#: gc-maturityscore.php:1942
 msgctxt "table description"
 msgid "Average score and your score per section"
 msgstr ""
 
-#: gc-maturityscore.php:1937
+#: gc-maturityscore.php:1945
 msgctxt "table description"
 msgid "Your score per section"
 msgstr ""
 
-#: gc-maturityscore.php:2034
+#: gc-maturityscore.php:2042
 #, php-format
 msgid "Your survey is not saved; errors occurred: %s"
 msgstr ""
 
-#: gc-maturityscore.php:2039
+#: gc-maturityscore.php:2047
 msgid "Submit"
 msgstr ""
 
-#: gc-maturityscore.php:2094
+#: gc-maturityscore.php:2102
 msgid ""
 "Security checks for your form submission failed. Your data will be discarded."
 msgstr ""
 
-#: gc-maturityscore.php:2107
+#: gc-maturityscore.php:2115
 msgid "Your organisation's score"
 msgstr ""
 
-#: gc-maturityscore.php:2124
+#: gc-maturityscore.php:2132
 msgctxt "naam"
 msgid "Your name"
 msgstr ""
 
-#: gc-maturityscore.php:2129
+#: gc-maturityscore.php:2137
 msgctxt "email"
 msgid "Your email address"
 msgstr ""
 
-#: gc-maturityscore.php:2158
+#: gc-maturityscore.php:2166
 msgctxt "email"
 msgid "No mail text found"
 msgstr ""
