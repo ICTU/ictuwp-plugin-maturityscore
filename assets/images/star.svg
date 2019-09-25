@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
-    <title>star</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="star" fill="#FF7700">
-            <polygon points="50 82.9107505 19.1035957 99.9913045 25.0042838 63.8141105 0.00856773373 38.1932797 34.5517978 32.9150984 50 0 65.4482022 32.9150984 99.9914323 38.1932797 74.9957162 63.8141105 80.8964043 99.9913045"></polygon>
-        </g>
-    </g>
-</svg>
+<svg height="100" viewBox="0 0 100 100" width="100" xmlns="http://www.w3.org/2000/svg"><path d="m50 82.9107505-30.8964043 17.080554 5.9006881-36.177194-24.99571607-25.6208308 34.54323007-5.2781813 15.4482022-32.9150984 15.4482022 32.9150984 34.5432301 5.2781813-24.9957161 25.6208308 5.9006881 36.177194z" fill="#f70" fill-rule="evenodd"/></svg>

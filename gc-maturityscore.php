@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.1.8a
- * Version description: Read a *LOCAL* version of the JSON file.
+ * Version:             1.1.9
+ * Version description: breadcrumb aangepast. code opgeschoond. vertalingen bijgewerkt. bugfixes
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.1.8a';
+      public $version = '1.1.9';
   
   
       /**
@@ -121,6 +121,9 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 
 //        define( 'GCMS_C_FRONTEND_SHOW_AVERAGES',  true ); 
         define( 'GCMS_C_FRONTEND_SHOW_AVERAGES',  false ); 
+        
+//        define( 'GCMS_C_FRONTEND_SHOW_CUMULATE',  true ); 
+        define( 'GCMS_C_FRONTEND_SHOW_CUMULATE',  false ); 
 
         define( 'GCMS_C_AVGS_NR_SURVEYS',         'gcmsf_total_number_surveys3' ); 
         define( 'GCMS_C_AVGS_OVERALL_AVG',        'gcmsf_overall_average3' ); 
@@ -139,14 +142,21 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
  
         define( 'GCMS_C_SCORE_MAX',               5 ); // max 5 sterren, max 5 punten per vraag / onderdeel
 
-        define( 'GCMS_C_TABLE_COL_TH',            0 );
-        define( 'GCMS_C_TABLE_COL_USER_AVERAGE',  1 );
-        define( 'GCMS_C_TABLE_COL_SITE_AVERAGE',  2 );
+        define( 'GCMS_C_TABLE_COLNR_TH',            0 );
+        define( 'GCMS_C_TABLE_COLNR_USER_AVERAGE',  1 );
+        define( 'GCMS_C_TABLE_COLNR_SITE_AVERAGE',  2 );
+        define( 'GCMS_C_TABLE_COLNR_USER_CUMULAT',  3 );
 
         define( 'GCMS_C_SURVEY_EMAILID',          'submitted_your_email2' );
         define( 'GCMS_C_SURVEY_YOURNAME',         'submitted_your_name2' );
         define( 'GCMS_C_SURVEY_POSTTITLE',        'post_title_here2' );
         define( 'GCMS_C_SURVEY_GDPR_CHECK',       'gdpr_do_save_my_emailaddress2' );
+
+		// older, obsolete keys, kept for backward compat.
+        define( 'GCMS_C_SURVEY_EMAILID_x',          'submitted_your_email' );
+        define( 'GCMS_C_SURVEY_YOURNAME_x',         'submitted_your_name' );
+        define( 'GCMS_C_SURVEY_POSTTITLE_x',        'post_title_here' );
+        define( 'GCMS_C_SURVEY_GDPR_CHECK_x',       'gdpr_do_save_my_emailaddress' );
 
         define( 'GCMS_C_KEYS_VALUE',              '_value' );
         define( 'GCMS_C_KEYS_LABEL',              '_label' );
@@ -284,6 +294,11 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         add_action( 'wp_enqueue_scripts',     array( $this, 'gcmsf_frontend_register_frontend_style_script' ) );
 
         add_action( 'admin_enqueue_scripts',  array( $this, 'gcmsf_admin_register_styles' ) );
+
+		add_filter( 'genesis_single_crumb',		array( $this, 'filter_breadcrumb' ), 10, 2 );
+		add_filter( 'genesis_page_crumb',		array( $this, 'filter_breadcrumb' ), 10, 2 );
+		add_filter( 'genesis_archive_crumb',	array( $this, 'filter_breadcrumb' ), 10, 2 ); 				
+        
 
 
       }
@@ -557,6 +572,37 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       
       }
   
+      //========================================================================================================
+		/** 
+		* filter the breadcrumb
+		*/
+		public function filter_breadcrumb(  $crumb, $args ) {
+	
+			global $post;
+
+			$span_before_start  = '<span class="breadcrumb-link-wrap" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
+			$span_between_start = '<span itemprop="name">';
+			$span_before_end    = '</span>';
+			
+			if ( function_exists( 'get_field' ) ) {
+
+				$brief_page_overview        = get_field('volwassenheidsscan_survey_page', 'option');		// code hier
+
+				if ( is_singular( GCMS_C_SURVEY_CPT ) && ( $brief_page_overview ) ) {
+
+					$actueelpagetitle = get_the_title( $brief_page_overview );
+					
+					if ( $brief_page_overview ) {
+						$crumb = gc_wbvb_breadcrumbstring( $brief_page_overview, $args );
+					}
+				}
+
+			}
+			
+			return $crumb;
+			
+		}			
+		
       //========================================================================================================
   
     	/**
@@ -902,9 +948,10 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             
               $questions_tab->add_field( array(
               	'name'          => sprintf( _x( 'Text %s<br><small>if score %s.</small>', 'score range', "gcmaturity-translate" ), $counter, $label ),
-              	'description'   => sprintf( __( 'Score %s', "gcmaturity-translate" ), $label . ' (' . $fieldkey . ')' ),
-            		'type'          => 'wysiwyg',
-              	'id'            => $fieldkey,
+//				'description'   => sprintf( __( 'Score %s', "gcmaturity-translate" ), $label . ' (' . $fieldkey . ')' ),
+				'description'   => sprintf( __( 'Score %s', "gcmaturity-translate" ), $label ),
+				'type'          => 'wysiwyg',
+				'id'            => $fieldkey,
               	'default'       => $default
               ) );
             
@@ -937,7 +984,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
               	'id'            => $fieldkey,
             		'type'          => 'text',
               	'default'       => $question_label,
-              	'description'   => $fieldkey,
+//              	'description'   => $fieldkey,
               	'attributes'    => array(
               		'required'    => 'required',
               	),
@@ -960,7 +1007,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
                 	'id'            => $fieldkey,
               		'type'          => 'text',
                 	'default'       => $answer->answer_label,
-                	'description'   => $fieldkey,
+//                	'description'   => $fieldkey,
                 	'attributes'    => array(
                 		'required'    => 'required',
                 	),
@@ -973,7 +1020,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
               		'name'          => sprintf( __( 'Value answer %s', "gcmaturity-translate" ), $optioncounter ),
                 	'id'            => $fieldkey,
                 	'default'       => $answer->answer_value,
-                	'description'   => $fieldkey,
+//                	'description'   => $fieldkey,
                 	'attributes'    => array(
                 		'required'    => 'required',
                 	),
@@ -1091,8 +1138,9 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 			
 			if ( $user_answers ) {
 				
+				// first, process users' answers
 				foreach( $user_answers as $key => $value ){        
-					
+
 					// some values we do not need in our data structure
 					if ( 
 						( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_TYPE ) ||
@@ -1100,8 +1148,12 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 						( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_SIZE ) ||
 						( $key == GCMS_C_QUESTION_PREFIX . GCMS_C_SURVEY_CT_ORG_ATTITUDE ) ||
 						( $key == GCMS_C_SURVEY_YOURNAME ) ||
+						( $key == GCMS_C_SURVEY_YOURNAME_x ) ||
 						( $key == GCMS_C_SURVEY_POSTTITLE ) ||
+						( $key == GCMS_C_SURVEY_POSTTITLE_x ) ||
 						( $key == GCMS_C_SURVEY_GDPR_CHECK ) ||
+						( $key == GCMS_C_SURVEY_GDPR_CHECK_x ) ||
+						( $key == GCMS_C_SURVEY_EMAILID_x ) ||
 						( $key == GCMS_C_SURVEY_EMAILID ) 
 						){
 						// do not store values in this array for any of the custom taxonomies or for the email / name fields
@@ -1127,7 +1179,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 					if ( $group && $question && $answer ) {
 						
 					}
-//echo '$group : ' . $group . ', $question : ' . $question . ', $answer : ' . $answer . '<br>';					
+
 					$current_group    = (array) $formfields_data->$group;
 					$current_question = (array) $formfields_data->$group->group_questions[0]->$question;
 					$current_answer   = (array) $formfields_data->$group->group_questions[0]->$question->question_answers[0]->$answer;
@@ -1136,26 +1188,31 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 						$current_answer['answer_site_average'] = get_option( $key, 1 );
 					}
 					
-					$current_answer['question_label'] = $current_question['question_label'];
-					
-					$array['question_label']  = $current_question['question_label'];
-					$array['question_answer'] = $current_answer;
-					
-					$values[ 'averages'][ 'groups'][ $group ][]   = $current_answer['answer_value'];
-					$values[ 'all_values' ][]                     = $current_answer['answer_value'];
-					$values[ 'user_answers' ][ $group ][ $key ]   = $current_answer;
+					$current_answer['question_label'] 			= $current_question['question_label'];
+					$array['question_label']  					= $current_question['question_label'];
+
+					$array[ 'question_answer'] 					= $current_answer;
+					$values[ 'averages'][ 'groups'][ $group ][]	= $current_answer['answer_value'];
+					$values[ 'all_values' ][]                   = $current_answer['answer_value'];
+					$values[ 'user_answers' ][ $group ][ $key ] = $current_answer;
 				}
 
 				if ( $values ) {
+
+//dovardump( $values[ 'averages'], 'averages' );
+
 				
 					$values['averages'][ 'overall' ]  = gcms_aux_get_average_for_array( $values[ 'all_values' ], 1 );
 					
 					unset( $values[ 'all_values' ] );
 					
+					// get the average per group
 					foreach( $values[ 'averages'][ 'groups'] as $key => $value ){        
+
+
 							
 						$average = gcms_aux_get_average_for_array( $value, 1 );
-						$values[ 'averages'][ 'groups'][ $key ] = round( $average, 0 );
+						$values[ 'averages'][ 'groups'][ $key ] = round( $average, 1 );
 						
 						$columns = array();
 						
@@ -1167,11 +1224,12 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 							$collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $key;
 							$default                = $formfields_data->$key->group_label;
 							
-							$columns[ GCMS_C_TABLE_COL_TH ] = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $default, $collectionkey );
-							$columns[ GCMS_C_TABLE_COL_USER_AVERAGE ] = $average;
+							$columns[ GCMS_C_TABLE_COLNR_TH ] = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $default, $collectionkey );
+							$columns[ GCMS_C_TABLE_COLNR_USER_AVERAGE ] = $average;
+//							$columns[ GCMS_C_TABLE_COLNR_USER_CUMULAT ] = $average;
 							
 							if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-								$columns[ GCMS_C_TABLE_COL_SITE_AVERAGE ] = get_option( $key, 1 );
+								$columns[ GCMS_C_TABLE_COLNR_SITE_AVERAGE ] = get_option( $key, 1 );
 							}
 							
 							$values[ 'rows' ][ $key ]  = $columns;
@@ -1179,14 +1237,19 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 						}
 					}
 		
-					$values['cols'][ GCMS_C_TABLE_COL_TH ] = _x( "Chapter", "table header", "gcmaturity-translate" );
+					// labels for the column headers
+					$values['cols'][ GCMS_C_TABLE_COLNR_TH ] = _x( "Chapter", "table header", "gcmaturity-translate" );
 					
 					if ( $postid ) {
-						$values['cols'][ GCMS_C_TABLE_COL_USER_AVERAGE ] = _x( "Your score", "table header", "gcmaturity-translate" );
+						$values['cols'][ GCMS_C_TABLE_COLNR_USER_AVERAGE ] = _x( "Your score", "table header", "gcmaturity-translate" );
+					}
+					
+					if ( GCMS_C_FRONTEND_SHOW_CUMULATE ) {
+//						$values['cols'][ GCMS_C_TABLE_COLNR_USER_CUMULAT ] = _x( "Score cumulated", "table header", "gcmaturity-translate" );
 					}
 					
 					if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-						$values['cols'][ GCMS_C_TABLE_COL_SITE_AVERAGE ] = _x( "Average score", "table header", "gcmaturity-translate" );
+						$values['cols'][ GCMS_C_TABLE_COLNR_SITE_AVERAGE ] = _x( "Average score", "table header", "gcmaturity-translate" );
 					}
 					
 					// add the default section titles to the collection
@@ -1207,250 +1270,273 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * Register frontend styles
        */
-      public function gcmsf_frontend_register_frontend_style_script( ) {
-		
+
+	public function gcmsf_frontend_register_frontend_style_script( ) {
+
 		global $formfields_data;
+		
+		if ( !is_admin() ) {
+			$postid               = get_the_ID();
 
-        if ( !is_admin() ) {
+			if ( ! $this->survey_data ) {
+				$this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
+			}
+			
+			if ( ! $formfields_data ) {
+				$formfields_data    = gcmsf_data_get_survey_json();
+			}
+			
+			$infooter = false;
 
-          $postid               = get_the_ID();
 
-          if ( ! $this->survey_data ) {
-            $this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
-          }
+			wp_enqueue_style( 'gc-maturityscore-frontend', GCMS_C_ASSETS_URL . 'css/gc-maturityscore.css', array(), GCMS_C_VERSION, $infooter );
+			// contains minified versions of amcharts js files
+			wp_enqueue_script( 'gcms-action-js', GCMS_C_ASSETS_URL . 'js/min/functions-min.js', array( 'jquery' ), GCMS_C_VERSION, $infooter );
+			// get the graph for this user
+			$mykeyname            = 'maturity_score';  
+			$yourscore_color      = '#FF7700';  // see also @starcolor_gold
+			$averagescore_color   = '#FF0000';  // as red as it gets
 
-          if ( ! $formfields_data ) {
-            $formfields_data    = gcmsf_data_get_survey_json();
-          }
-
-          $infooter = false;
-
-          wp_enqueue_style( 'gc-maturityscore-frontend', GCMS_C_ASSETS_URL . 'css/gc-maturityscore.css', array(), GCMS_C_VERSION, $infooter );
-
-          // contains minified versions of amcharts js files
-          wp_enqueue_script( 'gcms-action-js', GCMS_C_ASSETS_URL . 'js/min/functions-min.js', array( 'jquery' ), GCMS_C_VERSION, $infooter );
-
-          // get the graph for this user
-          $mykeyname            = 'maturity_score';  
-          $yourscore_color      = '#FF7700';  // see also @starcolor_gold
-          $averagescore_color   = '#FF0000';  // as red as it gets
-
-          if ( $this->survey_data ) {
-            
-            $averages = '';
-            
-            if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-              $averages = '{
-            			"fillAlphas": 0.31,
-            			"fillColors": "' . $averagescore_color . '",
-            			"id": "AmGraph-2",
-            			"lineColor": "' . $averagescore_color . '",
-            			"title": "graph 2",
-            			"valueField": "Lalal gemiddelde score",
-            			"balloonText": "Gemiddelde score: [[value]]"
-            		},';
-            }
-
-            
-            $radardata = json_decode( '{
-            	"type": "radar",
-            	"categoryField": "' . $mykeyname . '",
-            	"sequencedAnimation": false,
-            	"fontFamily": "\'Montserrat light\',Helvetica,Arial,sans-serif",
-            	"backgroundColor": "#FFFFFF",
-            	"color": "#000000",
-            	"handDrawScatter": 0,
-            	"handDrawThickness": 3,
-            	"percentPrecision": 1,
-            	"processCount": 1004,
-            	"theme": "dark",
-            	"graphs": [
-            		' . $averages . '
-            		{
-            			"balloonColor": "' . $yourscore_color . '",
-            			"balloonText": "Jouw score: [[value]]",
-
-                  "bullet": "custom",
-                  "bulletBorderThickness": 1,
-                  "bulletOffset": -1,
-                  "bulletSize": 18,
-                  "customBullet": "' . GCMS_C_ASSETS_URL . '/images/star.svg",
-                  "customMarker": "",                  
-                                        			
-            			"fillAlphas": 0.15,
-            			"fillColors": "' . $yourscore_color . '",
-            			"id": "AmGraph-1",
-            			"lineColor": "' . $yourscore_color . '",
-            			"valueField": "' . _x( "your score", "labels", "gcmaturity-translate" ) . '"
-            		}
-            	],
-            	"guides": [],
-            	"valueAxes": [
-            		{
-            			"axisTitleOffset": 20,
-            			"id": "ValueAxis-1",
-            			"minimum": 0,
-            			"maximum": 5,
-            			"zeroGridAlpha": 2,
-            			"axisAlpha": 0.76,
-            			"axisColor": "#6B6B6B",
-            			"axisThickness": 2,
-            			"dashLength": 0,
-            			"fillAlpha": 0.49,
-            			"gridAlpha": 0.68,
-            			"gridColor": "#6B6B6B",
-            			"minorGridAlpha": 0.4,
-            			"minorGridEnabled": false
-            		},
-            		{
-            			"id": "ValueAxis-2",
-            			"dashLength": 0,
-            			"fillAlpha": 0.43,
-            			"gridAlpha": 0.44,
-            			"gridColor": "' . $yourscore_color . '",
-            			"minorGridAlpha": 0.32
-            		}
-            	],
-            	"allLabels": [],
-            	"balloon": {
-            		"borderAlpha": 0.24,
-            		"color": "#9400D3"
-            	},
-            	"titles": [],
-            	"dataProvider": [
-            		{
-            			"jouw score": "4.2",
-            			"gemiddelde score": "5",
-            			"Score": "Eerste dinges"
-            		},
-            		{
-            			"jouw score": "2.4",
-            			"gemiddelde score": "4",
-            			"Score": "Tweede dinges"
-            		},
-            		{
-            			"jouw score": "3.5",
-            			"gemiddelde score": "2",
-            			"Score": "Derde dinges"
-            		},
-            		{
-            			"jouw score": "2.8",
-            			"gemiddelde score": "1",
-            			"Score": "Vierde dinges"
-            		},
-            		{
-            			"jouw score": "4",
-            			"gemiddelde score": 2,
-            			"Score": "Vijfde dinges"
-            		}
-            	]
-            }
-            ' );
-          
-
-            $columncounter  = 0;
-            $rowcounter     = 0;
-
-            $radardata->graphs[ ( GCMS_C_TABLE_COL_USER_AVERAGE - 1 ) ]->valueField     = $this->survey_data['cols'][ GCMS_C_TABLE_COL_USER_AVERAGE ] ;
-            $radardata->graphs[ ( GCMS_C_TABLE_COL_USER_AVERAGE - 1 ) ]->balloonText    = $this->survey_data['cols'][ GCMS_C_TABLE_COL_USER_AVERAGE ] . ': [[value]]';
-
-            if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-
-              $radardata->graphs[ ( GCMS_C_TABLE_COL_SITE_AVERAGE - 1 ) ]->valueField   = $this->survey_data['cols'][ GCMS_C_TABLE_COL_SITE_AVERAGE ] ;
-              $radardata->graphs[ ( GCMS_C_TABLE_COL_SITE_AVERAGE - 1 ) ]->balloonText  = $this->survey_data['cols'][ GCMS_C_TABLE_COL_SITE_AVERAGE ] . ': [[value]]';
-              
-            }
-            else {
-              unset( $radardata->graphs[ 1 ] );
-            }
-
-            $columncounter  = 0;
-
-            $radardata->dataProvider = array();
-            
-//          if ( isset( $this->survey_data['rows'] ) &&  is_array( $this->survey_data['rows'] ) ) {
-//          if ( isset( $this->survey_data['rows'] ) ) {
-//			if ( asd ) {		          
-			foreach( $this->survey_data['rows'] as $rowname => $rowvalue ) {
+			if ( $this->survey_data ) {
 				
-				$jouwscore        = isset( $rowvalue[ GCMS_C_TABLE_COL_USER_AVERAGE ] ) ? $rowvalue[ GCMS_C_TABLE_COL_USER_AVERAGE ] : 0;
-				$gemiddeldescore  = isset( $rowvalue[ GCMS_C_TABLE_COL_SITE_AVERAGE ] ) ? $rowvalue[ GCMS_C_TABLE_COL_SITE_AVERAGE ] : 0;
+				$averages = '';
 				
-				$columncounter = 0;
+				if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+					$averages = '{
+						balloonColor: "' . $averagescore_color . '",
+						balloonText: "Gemiddelde score: [[value]]",
+						bullet: "custom",
+						bulletBorderThickness: 1,
+						bulletOffset: -1,
+						bulletSize: 18,
+						customBullet: "' . GCMS_C_ASSETS_URL . '/images/star.svg",
+						customMarker: "",
+						fillAlphas: 0.15,
+						fillColors: "' . $averagescore_color . '",
+						id: "AmGraph-2",
+						lineColor: "' . $averagescore_color . '",
+						title: "graph 2",
+						valueField: "' . _x( "Average score", "labels", "gcmaturity-translate" ) . '"						
+					},';
+				}
+
+
+				if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+					$averages = '{
+						"fillAlphas": 0.31,
+						"fillColors": "' . $averagescore_color . '",
+						"id": "AmGraph-2",
+						"lineColor": "' . $averagescore_color . '",
+						"title": "graph 2",
+						"valueField": "Lalal gemiddelde score",
+						"customBullet": "' . GCMS_C_ASSETS_URL . '/images/star2.svg",
+						"bulletSize": 18,
+"bullet": "custom",
+"customMarker": "",
+						
+						"balloonText": "Gemiddelde score: [[value]]"
+					},';
+				}				
 				
-				foreach( $this->survey_data['cols'] as $columname => $columnsvalue ) {
-					
-					$rowname_translated = gcms_aux_get_value_for_cmb2_key( $rowname );
-					
-					if ( $rowname && $rowname_translated ) {
-						
-						$key_grouplabel         = $rowname . '_group_label';
-						$collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $rowname;
-						$default                = $formfields_data->$rowname->group_label;
-						
-						$radardata->dataProvider[$rowcounter]				= new stdClass();
-						$radardata->dataProvider[$rowcounter]->$mykeyname	= gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $default, $collectionkey );
-						
-						if ( $columncounter == 2 ) {
-							$radardata->dataProvider[$rowcounter]->$columnsvalue = '';
-							if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-								$radardata->dataProvider[$rowcounter]->$columnsvalue = $gemiddeldescore;
-							}
+				$radardata = json_decode( '{
+					"type": "radar",
+					"categoryField": "' . $mykeyname . '",
+					"sequencedAnimation": false,
+					"fontFamily": "\'Montserrat light\',Helvetica,Arial,sans-serif",
+					"backgroundColor": "#FFFFFF",
+					"color": "#000000",
+					"handDrawScatter": 0,
+					"handDrawThickness": 3,
+					"percentPrecision": 1,
+					"processCount": 1004,
+					"theme": "dark",
+					"graphs": [
+						' . $averages . '
+						{
+							"balloonColor": "' . $yourscore_color . '",
+							"balloonText": "Jouw score: [[value]]",
+							"bullet": "custom",
+							"bulletBorderThickness": 1,
+							"bulletOffset": -1,
+							"bulletSize": 18,
+							"customBullet": "' . GCMS_C_ASSETS_URL . '/images/star.svg",
+							"customMarker": "",                  
+							"fillAlphas": 0.15,
+							"fillColors": "' . $yourscore_color . '",
+							"id": "AmGraph-1",
+							"lineColor": "' . $yourscore_color . '",
+							"valueField": "' . _x( "your score", "labels", "gcmaturity-translate" ) . '"
 						}
-						elseif ( $columncounter == 1 ) {
-							$radardata->dataProvider[$rowcounter]->$columnsvalue = $jouwscore;
-						}
-//						}
-						$columncounter++;
+					],
+					"guides": [],
+					"valueAxes": [
+					{
+						"axisTitleOffset": 20,
+						"id": "ValueAxis-1",
+						"minimum": 0,
+						"maximum": 5,
+						"zeroGridAlpha": 2,
+						"axisAlpha": 0.76,
+						"axisColor": "#6B6B6B",
+						"axisThickness": 2,
+						"dashLength": 0,
+						"fillAlpha": 0.49,
+						"gridAlpha": 0.68,
+						"gridColor": "#6B6B6B",
+						"minorGridAlpha": 0.4,
+						"minorGridEnabled": false
+					},
+					{
+						"id": "ValueAxis-2",
+						"dashLength": 0,
+						"fillAlpha": 0.43,
+						"gridAlpha": 0.44,
+						"gridColor": "' . $yourscore_color . '",
+						"minorGridAlpha": 0.32
 					}
+					],
+					"allLabels": [],
+					"balloon": {
+						"borderAlpha": 0.24,
+						"color": "#9400D3"
+					},
+					"titles": [],
+					"dataProvider": [
+						{
+							"jouw score": "4.2",
+							"gemiddelde score": "5",
+							"Score": "Eerste dinges"
+						},
+						{
+							"jouw score": "2.4",
+							"gemiddelde score": "4",
+							"Score": "Tweede dinges"
+						},
+						{
+							"jouw score": "3.5",
+							"gemiddelde score": "2",
+							"Score": "Derde dinges"
+						},
+						{
+							"jouw score": "2.8",
+							"gemiddelde score": "1",
+							"Score": "Vierde dinges"
+						},
+						{
+							"jouw score": "4",
+							"gemiddelde score": 2,
+							"Score": "Vijfde dinges"
+						}
+					]
+					}' );
+				
+				$columncounter  = 0;
+				$rowcounter     = 0;
+				$radardata->graphs[ ( GCMS_C_TABLE_COLNR_USER_AVERAGE - 1 ) ]->valueField     = $this->survey_data['cols'][ GCMS_C_TABLE_COLNR_USER_AVERAGE ] ;
+				$radardata->graphs[ ( GCMS_C_TABLE_COLNR_USER_AVERAGE - 1 ) ]->balloonText    = $this->survey_data['cols'][ GCMS_C_TABLE_COLNR_USER_AVERAGE ] . ': [[value]]';
+
+				if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+					$radardata->graphs[ ( GCMS_C_TABLE_COLNR_SITE_AVERAGE - 1 ) ]->valueField   = $this->survey_data['cols'][ GCMS_C_TABLE_COLNR_SITE_AVERAGE ] ;
+					$radardata->graphs[ ( GCMS_C_TABLE_COLNR_SITE_AVERAGE - 1 ) ]->balloonText  = $this->survey_data['cols'][ GCMS_C_TABLE_COLNR_SITE_AVERAGE ] . ': [[value]]';
+					
+				}
+				else {
+					unset( $radardata->graphs[ 1 ] );
+				}
+				$columncounter  = 0;
+				$radardata->dataProvider = array();
+				
+				foreach( $this->survey_data['rows'] as $rowname => $rowvalue ) {
+					
+					$jouwscore        = isset( $rowvalue[ GCMS_C_TABLE_COLNR_USER_AVERAGE ] ) ? $rowvalue[ GCMS_C_TABLE_COLNR_USER_AVERAGE ] : 0;
+					$gemiddeldescore  = isset( $rowvalue[ GCMS_C_TABLE_COLNR_SITE_AVERAGE ] ) ? $rowvalue[ GCMS_C_TABLE_COLNR_SITE_AVERAGE ] : 0;
+					
+					$columncounter = 0;
+					
+					foreach( $this->survey_data['cols'] as $columname => $columnsvalue ) {
+						$rowname_translated = gcms_aux_get_value_for_cmb2_key( $rowname );
+						
+						if ( $rowname && $rowname_translated ) {
+							
+							$key_grouplabel         = $rowname . '_group_label';
+							$collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $rowname;
+							$default                = $formfields_data->$rowname->group_label;
+							
+//							$radardata->dataProvider[$rowcounter]->$mykeyname = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $default, $collectionkey );
+
+//							$radardata->dataProvider[$rowcounter]				= new stdClass();
+							$radardata->dataProvider[$rowcounter]->$mykeyname	= gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $default, $collectionkey );
+
+							
+							if ( $columncounter == 2 ) {
+								$radardata->dataProvider[$rowcounter]->$columnsvalue = '';
+								if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+									$radardata->dataProvider[$rowcounter]->$columnsvalue = $gemiddeldescore;
+								}
+							}
+							elseif ( $columncounter == 1 ) {
+								$radardata->dataProvider[$rowcounter]->$columnsvalue = $jouwscore;
+							}
+							$columncounter++;
+						}
+					}
+					
+					$rowcounter++;
+				
+				}  
+
+				$thedata = wp_json_encode( $radardata );
+
+				if ( WP_DEBUG ) {
+					/*
+					echo '<pre>';
+					var_dump( $radardata );
+					echo '</pre>';
+					*/
 				}
 				
-				$rowcounter++;
-				
-			}  
-//			}
+				wp_add_inline_script( 'gcms-action-js', 
+					'try {
+						var amchart1 = AmCharts.makeChart( "amchart1", 
+						' . $thedata . ' );
+					}
+					catch( err ) { console.log( err ); } ' );
 
-            $thedata = wp_json_encode( $radardata );
+					
+					
+			} 
+		}
+	}
+       
 
-          wp_add_inline_script( 'gcms-action-js', 
-  '      try {
-var amchart1 = AmCharts.makeChart( "amchart1", 
-' . $thedata . ' );
-}
-catch( err ) { console.log( err ); } ' );
-
-
-          } // if ( $this->survey_data ) {
-        }
-      }
   
       //========================================================================================================
   
-      /**
-       * Output the HTML
-       */
-      public function gcmsf_frontend_display_survey_results( $postid ) {
-        
-        $returnstring     = '';
-
-        if ( ! $this->survey_data ) {
-          $this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
-        }
-
-        if ( $this->survey_data ) {
-
-          $returnstring .= $this->gcmsf_frontend_get_graph( false );
-          $returnstring .= $this->gcmsf_frontend_get_interpretation( false );
-          $returnstring .= $this->gcmsf_frontend_get_tableview( false );      
-
-        }
-        else {
-          $returnstring .= '<p>' . __( "Oopsy daisy. There are no data to display. The survey you requested is empty. The server may have made an error in saving or retrieving the data, or more likely: our developer botched up. It's not your fault.", "gcmaturity-translate" ) . '</p>';
-        }
-
-        return $returnstring;
-      
-      }
+		/**
+		* Output the HTML
+		*/
+		public function gcmsf_frontend_display_survey_results( $postid ) {
+			
+			$returnstring     = '';
+			
+			if ( ! $this->survey_data ) {
+				$this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
+			}
+			
+			if ( $this->survey_data ) {
+				
+				$returnstring .= $this->gcmsf_frontend_get_graph( false );
+				$returnstring .= $this->gcmsf_frontend_get_interpretation( false );
+				$returnstring .= $this->gcmsf_frontend_get_tableview( false );      
+				
+			}
+			else {
+				$returnstring .= '<p>' . __( "Oopsy daisy. There are no data to display. The survey you requested is empty. The server may have made an error in saving or retrieving the data, or more likely: our developer botched up. It's not your fault.", "gcmaturity-translate" ) . '</p>';
+			}
+			
+			return $returnstring;
+			
+		}
   
       //========================================================================================================
 
@@ -1728,286 +1814,308 @@ catch( err ) { console.log( err ); } ' );
 
     //====================================================================================================
 
-    private function gcmsf_frontend_get_graph( $doecho = false ) {
-      
-      if ( ! $this->survey_data ) {
-        $this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
-      }
-      
-      $return = '';
-      
-      if ( $this->survey_data ) {
-
-        $titleid = 'grafiek_amchart';
-
-        $return .= '<div class="radarchart" id="amchart1" style="min-height: 500px; width: 100%" aria-labelledby="' . $titleid . '"></div>';
-        $return .= '<p id="' . $titleid . '">';
-        $return .= '<span class="visuallyhidden">';
-        $return .= _x( "Radar graph with your score in this survey.", "table description", "gcmaturity-translate" );
-        $return .= '</span>';
-
-
-        if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-          $return .= _x( "Your score in red; average score in orange.", "table description", "gcmaturity-translate" );
-        }
-        else {
-          $return .= _x( "Your score in orange.", "table description", "gcmaturity-translate" );
-        }
-        $return .= '</p>';
-
-      }
-      else {
-        $return = '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "gcmaturity-translate" ) . '<p>';
-      }
-      
-
-      if ( $doecho ) {
-        echo $return;
-      }
-      else {
-        return $return;
-      }
-
-    }
-
-    //====================================================================================================
-
-    private function gcmsf_frontend_get_percentage( $score = 0, $max = 5, $doecho = false ) {
-
-      $return = '';
-
-      if ( $max ) {
-
-        $displayvalue = ( 100 / $max ); // percentage            
-        $return       = ( $score * $displayvalue ) . '%';
-        
-        $counter = 0;
-        
-
-        $return .= '<div class="star-rating">';
-        
-        while( $counter <  $max ) {
-          if ( $score > $counter ) {
-            $return .= '<svg style="display: none;" class="ja" height="494" viewBox="0 0 507 494" width="507" xmlns="http://www.w3.org/2000/svg"><path d="m253.5 408.75-156.6447697 84.207131 29.9164887-178.353566-126.72828059-126.310696 175.13417659-26.021434 78.322385-162.271435 78.322385 162.271435 175.134177 26.021434-126.728281 126.310696 29.916489 178.353566z" fill="#ffffff" fill-rule="evenodd" stroke="#000"/></svg>';
-          }
-          else {
-            $return .= '<svg style="display: none;" class="nee" height="494" viewBox="0 0 507 494" width="507" xmlns="http://www.w3.org/2000/svg"><path d="m253.5 408.75-156.6447697 84.207131 29.9164887-178.353566-126.72828059-126.310696 175.13417659-26.021434 78.322385-162.271435 78.322385 162.271435 175.134177 26.021434-126.728281 126.310696 29.916489 178.353566z" fill="#ffffff" fill-rule="evenodd" stroke="#000"/></svg>';
-          }
-          $counter++;
-          
-        }
-        $return .= '</div>';
-
-      }
-      
-      if ( $doecho ) {
-        echo $return;
-      }
-      else {
-        return $return;
-      }
-
-    }
+	private function gcmsf_frontend_get_graph( $doecho = false ) {
+		
+		if ( ! $this->survey_data ) {
+			$this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
+		}
+		
+		$return = '';
+		
+		if ( $this->survey_data ) {
+			
+			$titleid = 'grafiek_amchart';
+			
+			$return .= '<div class="radarchart" id="amchart1" style="min-height: 500px; width: 100%" aria-labelledby="' . $titleid . '"></div>';
+			$return .= '<p id="' . $titleid . '">';
+			$return .= '<span class="visuallyhidden">';
+			$return .= _x( "Radar graph with your score in this survey.", "table description", "gcmaturity-translate" );
+			$return .= '</span>';
+			
+			
+			if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+				$return .= _x( "Your score in red; average score in orange.", "table description", "gcmaturity-translate" );
+			}
+			else {
+				$return .= _x( "Your score in orange.", "table description", "gcmaturity-translate" );
+			}
+			$return .= '</p>';
+			
+		}
+		else {
+			$return = '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "gcmaturity-translate" ) . '<p>';
+		}
+		
+		
+		if ( $doecho ) {
+			echo $return;
+		}
+		else {
+			return $return;
+		}
+		
+	}
 
     //====================================================================================================
 
-    private function gcmsf_frontend_get_interpretation( $userdata = array(), $doecho = false ) {
-      
-      if ( ! $this->survey_data ) {
-        $this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
-      }
-      
-      $return = '';
-      
-      if ( $this->survey_data ) {
+	private function gcmsf_frontend_get_percentage( $score = 0, $max = 5, $doecho = false ) {
+		
+		$return = '';
+		
+		if ( $max ) {
+			
+			$displayvalue = intval( 100 / $max ); // percentage            
+			$return       = ( floor( $score ) * floor( $displayvalue ) ) . '%';
+			$counter = 0;
+			
+			$scorerounded = round( $score, 0 );
 
-        if ( isset( $this->survey_data['averages'] ) ) {
+			$return .= '<div class="star-rating">';
+			
+			while( $counter <  $max ) {
 
-          $overall_average = number_format_i18n( $this->survey_data['averages']['overall'], 0 );
+				if ( $scorerounded > $counter ) {
+					$return .= '<svg style="display: none;" class="ja" height="494" viewBox="0 0 507 494" width="507" xmlns="http://www.w3.org/2000/svg"><path d="m253.5 408.75-156.6447697 84.207131 29.9164887-178.353566-126.72828059-126.310696 175.13417659-26.021434 78.322385-162.271435 78.322385 162.271435 175.134177 26.021434-126.728281 126.310696 29.916489 178.353566z" fill="#ffffff" fill-rule="evenodd" stroke="#000"/></svg>';
+				}
+				else {
+					$return .= '<svg style="display: none;" class="nee" height="494" viewBox="0 0 507 494" width="507" xmlns="http://www.w3.org/2000/svg"><path d="m253.5 408.75-156.6447697 84.207131 29.9164887-178.353566-126.72828059-126.310696 175.13417659-26.021434 78.322385-162.271435 78.322385 162.271435 175.134177 26.021434-126.728281 126.310696 29.916489 178.353566z" fill="#ffffff" fill-rule="evenodd" stroke="#000"/></svg>';
+				}
+				$counter++;
+				
+			}
 
-          $key        				= 'SITESCORE';
-          $total_number_of_surveys  = get_option( GCMS_C_AVGS_NR_SURVEYS, 1 );
-          $site_average             = get_option( GCMS_C_AVGS_OVERALL_AVG, 1 );
-          $collectionkey            = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $key;
-
-          $punten     = sprintf( _n( '%s point', '%s points', $overall_average, "gcmaturity-translate" ), $overall_average );
-          $fieldkey   = $key . GCMS_SCORESEPARATOR . number_format_i18n( $this->survey_data['averages']['overall'], 0 ); 
-
-          $return     .= '<p>' . sprintf( __( 'Your average score was %s. ', "gcmaturity-translate" ), $punten );
-          if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-			$return     .= sprintf( _n( 'Thus far, we received %s survey, ', 'Thus far, we received %s surveys, ', $total_number_of_surveys, "gcmaturity-translate" ), $total_number_of_surveys );
-			$return   .= sprintf( __( ' and the overall average score is %s. ', "gcmaturity-translate" ), $site_average );
-          }          
-          $return     .= '</p>';
-          $return     .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey, sprintf( __( 'No text available for %s.', "gcmaturity-translate" ), $fieldkey ) ) . '</p>';
-          $return     .= '<h2>' . __( 'Score per section', "gcmaturity-translate" ) . '</h2>';
-          
-          $counter = 0;
-          
-          foreach( $this->survey_data['user_answers'] as $key => $value ){        
-
-            $counter++;
-
-            $jouwgemiddelde         = $this->survey_data['averages']['groups'][$key];
-            $collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $key;
-            $jouwscore              = number_format_i18n( $jouwgemiddelde, 0 );
-            $thesectionid           = sanitize_title( $key . "_" . $counter );
-            $titleid                = sanitize_title( $thesectionid . '_title' );
-            $key_grouplabel         = $key . '_group_label';
-/*
-          $key_group_description  = $group_key . '_group_description';
-          $grouplabel             = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $value->group_label, $collectionkey );
-          $groupdescription       = gcms_aux_get_value_for_cmb2_key( $key_group_description, $value->group_description, $collectionkey  );
-*/  
-
-            $fieldkey               = $key . GCMS_SCORESEPARATOR . $jouwscore; // g2_score_4
-            $key_grouplabel         = $key . '_group_label';
-
-
-            
-            $titel                  = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $this->survey_data['default_titles'][ $key_grouplabel ], $collectionkey );
-
-            $return .= '<section aria-labelledby="' . $titleid . '" id="' . $thesectionid . '" class="survey-result">';
-            $return .= '<h3 class="rating-section-title"><span id="' . $titleid . '">' . $titel;
-            $return .= ' <span class="visuallyhidden">' . _x( "Your score", "table description", "gcmaturity-translate" ) . '</span></span> : ' . $this->gcmsf_frontend_get_percentage( $jouwscore, GCMS_C_SCORE_MAX );
-            $return .= '</h3>';
-            $return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey ) . '</p>';
-            $return .= '<details>';
-            $return .= '  <summary>' . _x( "Review your answers", "interpretatie", "gcmaturity-translate" ) . '</summary>';
-
-            if ( $value ) {
-              $return .= '<dl>';
-              foreach( $value as $vragen => $antwoorden ){        
-                $return .= '<dt>' . _x( "Question", "interpretatie", "gcmaturity-translate" ) . '</dt>';
-                $return .= '<dd>' . $antwoorden['question_label'] . '</dd>';
-
-                $return .= '<dt>' . _x( "Your answer", "interpretatie", "gcmaturity-translate" ) . '</dt>';
-                $return .= '<dd>' . $antwoorden['answer_label'] . '</dd>';
-
-                $score = sprintf( _n( '%s point', '%s points', $antwoorden['answer_value'], "gcmaturity-translate" ), $antwoorden['answer_value'] );
-
-                if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-
-                  $return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
-                  $return .= '<dd>' . $score . '</dd>';
-                  
-                  $return .= '<dt class="space-me">' . _x( "Average score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
-                  $return .= '<dd class="space-me">' . $antwoorden['answer_site_average'] . '</dd>';
-                }
-                else {
-                  $return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
-                  $return .= '<dd class="space-me">' . $score . '</dd>';
-                  
-                }
-              }
-              $return .= '</dl>';
-              
-            }
-
-            $return .= '</details>';
-            $return .= '</section>';
-
-          }
-
-        }
-
-
-      }
-      else {
-        $return .= '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "gcmaturity-translate" ) . '<p>';
-      }      
-
-      if ( $doecho ) {
-        echo $return;
-      }
-      else {
-        return $return;
-      }
-
-    }
+			$return .= '</div>';
+			
+		}
+		
+		if ( $doecho ) {
+			echo $return;
+		}
+		else {
+			return $return;
+		}
+		
+	}
 
     //====================================================================================================
 
-    private function gcmsf_frontend_get_tableview( $doecho = false ) {
+	private function gcmsf_frontend_get_interpretation( $userdata = array(), $doecho = false ) {
+		
+		if ( ! $this->survey_data ) {
+		$this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
+		}
+		
+		$return = '';
+		
+		if ( $this->survey_data ) {
+			
+			if ( isset( $this->survey_data['averages'] ) ) {
+				
+				$overall_average = number_format_i18n( $this->survey_data['averages']['overall'], 1 );
+				
+				$key        				= 'SITESCORE';
+				$total_number_of_surveys 	= get_option( GCMS_C_AVGS_NR_SURVEYS, 1 );
+				$site_average            	= get_option( GCMS_C_AVGS_OVERALL_AVG, 1 );
+				$collectionkey            	= GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $key;
+				
+				$punten     				= sprintf( _n( '%s point', '%s points', $overall_average, "gcmaturity-translate" ), $overall_average );
+				$fieldkey   				= $key . GCMS_SCORESEPARATOR . number_format_i18n( $this->survey_data['averages']['overall'], 0 ); 
+				
+				$return     				.= '<p>' . sprintf( __( 'Your average score was %s. ', "gcmaturity-translate" ), $punten );
 
-      $return = '';
+				if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+					$return     .= sprintf( _n( 'Thus far, we received %s survey, ', 'Thus far, we received %s surveys, ', $total_number_of_surveys, "gcmaturity-translate" ), $total_number_of_surveys );
+					$return   .= sprintf( __( ' and the overall average score is %s. ', "gcmaturity-translate" ), $site_average );
+				}          
+				
+				$return     .= '</p>';
+				$return     .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey, sprintf( __( 'No text available for %s.', "gcmaturity-translate" ), $fieldkey ) ) . '</p>';
+				$return     .= '<h2>' . __( 'Score per section', "gcmaturity-translate" ) . '</h2>';
+				
+				$counter = 0;
+				
+				foreach( $this->survey_data['user_answers'] as $key => $value ){        
+					
+					$counter++;
 
-      if ( ! $this->survey_data ) {
-        $this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
-      }
-      
-      if ( $this->survey_data ) {
+					
+					$jouwgemiddelde         = $this->survey_data['averages']['groups'][$key];
+					$collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $key;
+					$jouwscore              = number_format_i18n( $jouwgemiddelde, 1 );
 
-        if ( isset( $this->survey_data['cols'] ) ) {
+//echo 'me gemiddelde : ' . $this->survey_data['averages']['groups'][$key] . '<br>';
+//echo 'me gemiddelde : ' . $jouwscore . '<br>';
+//dovardump( $this->survey_data['averages']['groups'][$key] );		
+					
+					$thesectionid           = sanitize_title( $key . "_" . $counter );
+					$titleid                = sanitize_title( $thesectionid . '_title' );
+					$key_grouplabel         = $key . '_group_label';
 
-          $return .= '	<table class="gcms-score">' . "\n";
-                  
-          if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-            $return .= '<caption>' . _x( "Average score and your score per section", "table description", "gcmaturity-translate" ) . "</caption>\n";
-          }
-          else {
-            $return .= '<caption>' . _x( "Your score per section", "table description", "gcmaturity-translate" ) . "</caption>\n";
-          }
-          $return .= '<tr>';
-          foreach( $this->survey_data['cols'] as $key => $value ){        
-            $return .= '<th scope="col">' . $value . "</th>\n";
-          }
-          $return .= "</tr>\n";
-        
-          if ( isset( $this->survey_data['rows'] ) ) {
+					/*
+					$key_group_description  = $group_key . '_group_description';
+					$grouplabel             = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $value->group_label, $collectionkey );
+					$groupdescription       = gcms_aux_get_value_for_cmb2_key( $key_group_description, $value->group_description, $collectionkey  );
+					*/  
+					
+					$fieldkey               = $key . GCMS_SCORESEPARATOR . round( $jouwscore, 0 ); // g2_score_4
+					$key_grouplabel         = $key . '_group_label';
+	
+					$titel                  = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $this->survey_data['default_titles'][ $key_grouplabel ], $collectionkey );
+					
+					$return .= '<section aria-labelledby="' . $titleid . '" id="' . $thesectionid . '" class="survey-result">';
+					$return .= '<h3 class="rating-section-title"><span id="' . $titleid . '">' . $titel;
+					$return .= ' (' . $jouwgemiddelde . ')';
+					
+					$return .= ' <span class="visuallyhidden">' . _x( "Your score", "table description", "gcmaturity-translate" ) . '</span></span> : ' . $this->gcmsf_frontend_get_percentage( $jouwgemiddelde, GCMS_C_SCORE_MAX );
+					$return .= '</h3>';
+					$return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey ) . '</p>';
+					$return .= '<details>';
+					$return .= '  <summary>' . _x( "Review your answers", "interpretatie", "gcmaturity-translate" ) . '</summary>';
+					
+					if ( $value ) {
+						$return .= '<dl>';
+	
+						foreach( $value as $vragen => $antwoorden ){        
+							$return .= '<dt>' . _x( "Question", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+							$return .= '<dd>' . $antwoorden['question_label'] . '</dd>';
+							
+							$return .= '<dt>' . _x( "Your answer", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+							$return .= '<dd>' . $antwoorden['answer_label'] . '</dd>';
+							
+							$score = sprintf( _n( '%s point', '%s points', $antwoorden['answer_value'], "gcmaturity-translate" ), $antwoorden['answer_value'] );
+							
+							if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+								$return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+								$return .= '<dd>' . $score . '</dd>';
+								
+								$return .= '<dt class="space-me">' . _x( "Average score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+								$return .= '<dd class="space-me">' . $antwoorden['answer_site_average'] . '</dd>';
+							}
+							else {
+								$return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+								$return .= '<dd class="space-me">' . $score . '</dd>';
+							}
+						}
+						$return .= '</dl>';
+						
+					}
+					
+					$return .= '</details>';
+					$return .= '</section>';
+					
+				}
+			}
+		}
+		else {
+			$return .= '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "gcmaturity-translate" ) . '<p>';
+		}      
+		
+		if ( $doecho ) {
+			echo $return;
+		}
+		else {
+			return $return;
+		}
+		
+	}
 
-            foreach( $this->survey_data['rows'] as $key => $value ){        
-  
-              $return .= '<tr>';
-              $return .= '<th scope="row">' . $value[ GCMS_C_TABLE_COL_TH ] . '</th>';
-  
-              $return .= '<td>' . number_format_i18n( $value[ GCMS_C_TABLE_COL_USER_AVERAGE ], 1)  . "</td>";
-              if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-                  $return .= '<td>' . number_format_i18n( $value[ GCMS_C_TABLE_COL_SITE_AVERAGE ], 1)  . "</td>";
-              }              
-              $return .= "</tr>\n";
-  
-            }
-          }
-          $return .= "</table>\n";
+    //====================================================================================================
 
-        }
-        else {
-          $return .= '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "gcmaturity-translate" ) . '<p>';
-        }
+	private function gcmsf_frontend_get_tableview( $doecho = false ) {
+		
+		$return = '';
+		
+		if ( ! $this->survey_data ) {
+			$this->survey_data = $this->gcmsf_data_get_user_answers_and_averages( $postid );
+		}
+		
+		if ( $this->survey_data ) {
+			
+			if ( isset( $this->survey_data['cols'] ) ) {
+				
+				$return .= '	<table class="gcms-score">' . "\n";
+				
+				if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+					$return .= '<caption>' . _x( "Average score and your score per section", "table description", "gcmaturity-translate" ) . "</caption>\n";
+				}
+				else {
+					$return .= '<caption>' . _x( "Your score per section", "table description", "gcmaturity-translate" ) . "</caption>\n";
+				}
+				$return .= '<tr>';
 
-      
-      }
+				foreach( $this->survey_data['cols'] as $key => $value ){        
+					$return .= '<th scope="col">' . $value . "</th>\n";
+				}
+				$return .= "</tr>\n";
+				
+				if ( isset( $this->survey_data['rows'] ) ) {
+					
+					$usercumulate		= 0;
+					$overallcumulate	= 0;
+					$rowcounter 		= 0;
+					
+					foreach( $this->survey_data['rows'] as $key => $value ){        
+						
+						$rowcounter++;
+						
+						$return .= '<tr>';
+						$return .= '<th scope="row">' . $value[ GCMS_C_TABLE_COLNR_TH ] . '</th>';
+						$return .= '<td>' . number_format_i18n( $value[ GCMS_C_TABLE_COLNR_USER_AVERAGE ], 1)  . "</td>";
+						$usercumulate = $usercumulate + $value[ GCMS_C_TABLE_COLNR_USER_AVERAGE ];
+						if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+							$return .= '<td>' . number_format_i18n( $value[ GCMS_C_TABLE_COLNR_SITE_AVERAGE ], 1)  . "</td>";
+							$overallcumulate = $overallcumulate + $value[ GCMS_C_TABLE_COLNR_SITE_AVERAGE ];
+						}              
+						$return .= "</tr>\n";
+					}
 
-      if ( $doecho ) {
-        echo $return;
-      }
-      else {
-        return $return;
-      }
-    
-    }
+					$return .= '<tr>';
+					$return .= '<th scope="row">' . _x( "Total", "table description", "gcmaturity-translate" ) . '</th>';
+					$return .= '<td>' . number_format_i18n( $usercumulate, 1)  . " (" . number_format_i18n( ( $usercumulate / $rowcounter ), 1) . " gemiddeld)<br>" . $this->gcmsf_frontend_get_percentage( $usercumulate / $rowcounter, GCMS_C_SCORE_MAX, false ) . "</td>";
+					
+					if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
+						$return .= '<td>' . number_format_i18n( $overallcumulate, 1)  . " (" . number_format_i18n( ( $overallcumulate / $rowcounter ), 1) . " gemiddeld)<br>" . $this->gcmsf_frontend_get_percentage( $overallcumulate / $rowcounter, GCMS_C_SCORE_MAX, false ) . "</td>";
+					}              
+					$return .= "</tr>\n";
+
+					
+				}
+				$return .= "</table>\n";
+			}
+			else {
+				$return .= '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "gcmaturity-translate" ) . '<p>';
+			}
+		}
+		
+		if ( $doecho ) {
+			echo $return;
+		}
+		else {
+			return $return;
+		}
+		
+	}
 
     //====================================================================================================
 
     /**
     * Modify page content if using a specific page template.
     */
-    public function gcmsf_frontend_use_page_template() {
-      
-      global $post;
-      
-      $page_template  = get_post_meta( get_the_ID(), '_wp_page_template', true );
-      
-      if ( $this->templatefile == $page_template ) {
-  
-        add_action( 'genesis_entry_content',  'gcmsf_do_frontend_form_submission_shortcode_echo', 15 );
-
-        //* Force full-width-content layout
-        add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-      
-      }
-    }
+	public function gcmsf_frontend_use_page_template() {
+		
+		global $post;
+		
+		$page_template  = get_post_meta( get_the_ID(), '_wp_page_template', true );
+		
+		if ( $this->templatefile == $page_template ) {
+			
+			add_action( 'genesis_entry_content',  'gcmsf_do_frontend_form_submission_shortcode_echo', 15 );
+			
+			//* Force full-width-content layout
+			add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+			
+		}
+	}
 
   
   }
@@ -2606,6 +2714,31 @@ function gcmsf_remove_post_navigation_for_survey( $args ){
 
 }
 
+//========================================================================================================
+
+if (! function_exists( 'gc_wbvb_breadcrumbstring' ) ) {
+
+	function gc_wbvb_breadcrumbstring( $currentpageID, $args ) {
+	
+		global $post;
+		$crumb = '';
+		$countertje = 0;
+		
+		if ( $currentpageID ) {
+			$crumb = '<a href="' . get_permalink( $currentpageID ) . '">' . get_the_title( $currentpageID ) .'</a>' . $args['sep'] . ' ' . get_the_title( $post->ID );
+			$postparents = get_post_ancestors( $currentpageID );
+	
+			foreach( $postparents as $postparent ) {
+				$countertje ++;
+				$crumb = '<a href="' . get_permalink( $postparent ) . '">' . get_the_title( $postparent ) .'</a>' . $args['sep'] . $crumb;
+			}
+		}
+		
+		return $crumb;
+		
+	}
+
+}
 
 //========================================================================================================
 
