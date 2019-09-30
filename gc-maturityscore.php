@@ -5,8 +5,8 @@
  * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.1.9
- * Version description: breadcrumb aangepast. code opgeschoond. vertalingen bijgewerkt. bugfixes
+ * Version:             1.2.1
+ * Version description: Laatste bugfixes voor go-live.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.1.9';
+      public $version = '1.2.1';
   
   
       /**
@@ -1863,15 +1863,16 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 		$return = '';
 		
 		if ( $max ) {
+
+			$counter = 0;
+			$scorerounded = round( $score, 0 );
 			
 			$displayvalue = intval( 100 / $max ); // percentage            
-			$return       = ( floor( $score ) * floor( $displayvalue ) ) . '%';
-			$counter = 0;
-			
-			$scorerounded = round( $score, 0 );
+//			$return       = ( floor( $score ) * floor( $displayvalue ) ) . '%';
+//			$return .= ' (score: ' . $score . ', rounded: ' . $scorerounded . ')';
 
 			$return .= '<div class="star-rating">';
-			
+
 			while( $counter <  $max ) {
 
 				if ( $scorerounded > $counter ) {
@@ -1938,25 +1939,14 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 					
 					$counter++;
 
-					
 					$jouwgemiddelde         = $this->survey_data['averages']['groups'][$key];
 					$collectionkey          = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $key;
 					$jouwscore              = number_format_i18n( $jouwgemiddelde, 1 );
 
-//echo 'me gemiddelde : ' . $this->survey_data['averages']['groups'][$key] . '<br>';
-//echo 'me gemiddelde : ' . $jouwscore . '<br>';
-//dovardump( $this->survey_data['averages']['groups'][$key] );		
-					
 					$thesectionid           = sanitize_title( $key . "_" . $counter );
 					$titleid                = sanitize_title( $thesectionid . '_title' );
 					$key_grouplabel         = $key . '_group_label';
 
-					/*
-					$key_group_description  = $group_key . '_group_description';
-					$grouplabel             = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $value->group_label, $collectionkey );
-					$groupdescription       = gcms_aux_get_value_for_cmb2_key( $key_group_description, $value->group_description, $collectionkey  );
-					*/  
-					
 					$fieldkey               = $key . GCMS_SCORESEPARATOR . round( $jouwscore, 0 ); // g2_score_4
 					$key_grouplabel         = $key . '_group_label';
 	
@@ -1964,9 +1954,8 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 					
 					$return .= '<section aria-labelledby="' . $titleid . '" id="' . $thesectionid . '" class="survey-result">';
 					$return .= '<h3 class="rating-section-title"><span id="' . $titleid . '">' . $titel;
-					$return .= ' (' . $jouwgemiddelde . ')';
+					$return .= ' <span class="visuallyhidden">' . sprintf( _x( ' - your score: %s', 'Your score for visually impaired users', "gcmaturity-translate" ), $jouwgemiddelde ) . '</span> ' . $this->gcmsf_frontend_get_percentage( $jouwgemiddelde, GCMS_C_SCORE_MAX );
 					
-					$return .= ' <span class="visuallyhidden">' . _x( "Your score", "table description", "gcmaturity-translate" ) . '</span></span> : ' . $this->gcmsf_frontend_get_percentage( $jouwgemiddelde, GCMS_C_SCORE_MAX );
 					$return .= '</h3>';
 					$return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey ) . '</p>';
 					$return .= '<details>';
@@ -2071,13 +2060,13 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 
 					$return .= '<tr>';
 					$return .= '<th scope="row">' . _x( "Total", "table description", "gcmaturity-translate" ) . '</th>';
-					$return .= '<td>' . number_format_i18n( $usercumulate, 1)  . " (" . number_format_i18n( ( $usercumulate / $rowcounter ), 1) . " gemiddeld)<br>" . $this->gcmsf_frontend_get_percentage( $usercumulate / $rowcounter, GCMS_C_SCORE_MAX, false ) . "</td>";
+					$return .= '<td>' . number_format_i18n( $usercumulate, 1)  . " (" . number_format_i18n( ( $usercumulate / $rowcounter ), 1) . " gemiddeld)<br>" . $this->gcmsf_frontend_get_percentage( number_format_i18n( ( $usercumulate / $rowcounter ), 1), GCMS_C_SCORE_MAX, false ) . " </td>";
 					
 					if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-						$return .= '<td>' . number_format_i18n( $overallcumulate, 1)  . " (" . number_format_i18n( ( $overallcumulate / $rowcounter ), 1) . " gemiddeld)<br>" . $this->gcmsf_frontend_get_percentage( $overallcumulate / $rowcounter, GCMS_C_SCORE_MAX, false ) . "</td>";
+						$return .= '<td>' . number_format_i18n( $overallcumulate, 1)  . " (" . number_format_i18n( ( $overallcumulate / $rowcounter ), 1) . " gemiddeld)<br>" . $this->gcmsf_frontend_get_percentage( $overallcumulate / $rowcounter, GCMS_C_SCORE_MAX, false ) . " </td>";
 					}              
 					$return .= "</tr>\n";
-
+//array_rand
 					
 				}
 				$return .= "</table>\n";

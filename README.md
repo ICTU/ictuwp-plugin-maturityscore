@@ -6,9 +6,10 @@ Gebruiker Centraal - Volwassenheidsscore plugin
 Paul van Buuren (paul@wbvb.nl)
 
 ## Current version
-* 1.1.9
+* 1.2.1
 
 ## Version history
+* 1.2.1 - Laatste bugfixes voor go-live.
 * 1.1.9 - breadcrumb aangepast. code opgeschoond. vertalingen bijgewerkt. bugfixes
 * 1.1.8 - Read a *LOCAL* version of the JSON file.
 * 1.1.6 - CSS fixes for mobile (remove left-padding for lists with checkboxes).
@@ -27,12 +28,12 @@ Paul van Buuren (paul@wbvb.nl)
 
 
 ## To do
-* check inbouwen of het theme op Genesis gebaseerd is.
-* check inbouwen of amchart plugin actief is
-* on post insert: opnieuw berekenen site gemiddelden
-* admin: inbouwen resetpagina
-* admin: opdelen optionspagina in subpagina's
-* CSS opschonen
-* enquetes bewerkbaar maken via de admin
-* all texts translated to English and to Dutch
-* remove the_post_navigation() (is visible in f.e. Twentyseventeen theme)
+[ ] - check inbouwen of het theme op Genesis gebaseerd is.
+[ ] - check inbouwen of amchart plugin actief is
+[ ] - on post insert: opnieuw berekenen site gemiddelden
+[ ] - admin: inbouwen resetpagina
+[ ] - admin: opdelen optionspagina in subpagina's
+[ ] - CSS opschonen
+[ ] - enquetes bewerkbaar maken via de admin
+[x] - all texts translated to English and to Dutch
+[ ] - remove the_post_navigation() (is visible in f.e. Twentyseventeen theme)
