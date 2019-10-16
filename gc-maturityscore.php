@@ -2,7 +2,7 @@
 /*
  * GC_Maturity. 
  *
- * Plugin Name:         Gebruiker Centraal Volwassenheidsscore Plugin
+ * Plugin Name:         ICTU / Gebruiker Centraal / Maturity Scan Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
  * Version:             1.2.1

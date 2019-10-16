@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GC Maturity\n"
-"POT-Creation-Date: 2019-09-30 21:52+0200\n"
-"PO-Revision-Date: 2019-09-30 21:52+0200\n"
+"POT-Creation-Date: 2019-10-08 11:09+0200\n"
+"PO-Revision-Date: 2019-10-08 11:10+0200\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: paul@wbvb.nl\n"
 "Language: nl_NL\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: gc-maturityscore.php\n"
@@ -77,12 +77,12 @@ msgstr ""
 #: cmb2/includes/types/CMB2_Type_Base.php:173
 #, php-format
 msgid "Invalid %1$s property: %2$s"
-msgstr ""
+msgstr "Ongeldige waarde %1$s method: %2$s"
 
 #: cmb2/includes/CMB2_Base.php:509 cmb2/includes/types/CMB2_Type_Base.php:157
 #, php-format
 msgid "Invalid %1$s method: %2$s"
-msgstr ""
+msgstr "Ongeldige aanroep %1$s method: %2$s"
 
 #: cmb2/includes/CMB2_Field.php:1348
 msgid "Add Group"
@@ -1105,8 +1105,8 @@ msgid "These are required fields:"
 msgstr "Deze velden zijn verplicht:"
 
 #. Plugin Name of the plugin/theme
-msgid "Gebruiker Centraal Volwassenheidsscore Plugin"
-msgstr ""
+msgid "ICTU / Gebruiker Centraal / Maturity Scan Plugin"
+msgstr "ICTU / Gebruiker Centraal / Volwassenheidsscan Plugin"
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/ICTU/gc-maturityscore-plugin/"
