@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: GC Maturity (Gebruiker Centraal Volwassenheidsscore)\n"
-"POT-Creation-Date: 2019-10-08 11:09+0200\n"
+"POT-Creation-Date: 2019-11-01 12:18+0100\n"
 "PO-Revision-Date: 2018-06-13 10:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -923,9 +923,7 @@ msgstr ""
 
 #: gc-maturityscore.php:1689
 msgctxt "About you section"
-msgid ""
-"We gebruiken dit e-mailadres om je een link te mailen naar jouw "
-"resultaatpagina."
+msgid "We use this email address to email you a link to your result page."
 msgstr ""
 
 #: gc-maturityscore.php:1695

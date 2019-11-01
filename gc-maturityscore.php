@@ -1686,7 +1686,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 			'name'    => _x( 'Your emailaddress', 'About you section', "gcmaturity-translate" ),
 			'id'      => GCMS_C_SURVEY_EMAILID,
 			'type'    => 'text_email',
-			'desc'    => _x( 'We gebruiken dit e-mailadres om je een link te mailen naar jouw resultaatpagina.', 'About you section', "gcmaturity-translate" ) . '<br>' . '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
+			'desc'    => _x( 'We use this email address to email you a link to your result page.', 'About you section', "gcmaturity-translate" ) . '<br>' . '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
 			'default' => $yourmaildefault,
     	) );
     	
