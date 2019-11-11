@@ -6,9 +6,10 @@ Gebruiker Centraal - Volwassenheidsscore plugin
 Paul van Buuren (paul@wbvb.nl)
 
 ## Current version
-* 1.2.1
+* 1.3.1
 
 ## Version history
+* 1.3.1 - In de Engelse site-versie bleek dat niet alle strings netjes vertaald waren; gecorrigeerd.
 * 1.2.1 - Laatste bugfixes voor go-live.
 * 1.1.9 - breadcrumb aangepast. code opgeschoond. vertalingen bijgewerkt. bugfixes
 * 1.1.8 - Read a *LOCAL* version of the JSON file.
