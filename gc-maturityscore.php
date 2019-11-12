@@ -5,8 +5,8 @@
  * Plugin Name:         ICTU / Gebruiker Centraal / Maturity Scan Plugin
  * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.3.1
- * Version description: In de Engelse site-versie bleek dat niet alle strings netjes vertaald waren; gecorrigeerd.
+ * Version:             1.3.2
+ * Version description: Bugfixes versie 1.3.1: nog niet alle teksten bleken te worden opgehaald uit de formulierwaarden.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       /**
        * @var string
        */
-      public $version = '1.3.1';
+      public $version = '1.3.2';
   
   
       /**
@@ -889,14 +889,14 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 
             // maak een tab aan voor de vragen van een groep
             $args = array(
-            	'id'           => GCMS_C_PLUGIN_KEY . $group_key,
-            	'menu_title'   => sprintf( _x( 'Group %s - %s', 'tablabel', "gcmaturity-translate" ), $tabscounter, '(' . $questionrange . ')' ),
-            	'object_types' => array( 'options-page' ),
-            	'option_key'   => GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key,
-            	'parent_slug'  => GCMS_C_PLUGIN_KEY,
-            	'tab_group'    => GCMS_C_PLUGIN_KEY,
-            	'tab_title'    => $tablabel,
-              'display_cb'   => 'yourprefix_options_display_with_tabs',
+				'id'           => GCMS_C_PLUGIN_KEY . $group_key,
+				'menu_title'   => sprintf( _x( 'Group %s - %s', 'tablabel', "gcmaturity-translate" ), $tabscounter, '(' . $questionrange . ')' ),
+				'object_types' => array( 'options-page' ),
+				'option_key'   => GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key,
+				'parent_slug'  => GCMS_C_PLUGIN_KEY,
+				'tab_group'    => GCMS_C_PLUGIN_KEY,
+				'tab_title'    => $tablabel,
+				'display_cb'   => 'yourprefix_options_display_with_tabs',
             );
             
             $questions_tab    = new_cmb2_box( $args );
@@ -953,6 +953,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
               $questions_tab->add_field( array(
               	'name'          => sprintf( _x( 'Text %s<br><small>if score %s.</small>', 'score range', "gcmaturity-translate" ), $counter, $label ),
 				'description'   => sprintf( __( 'Score %s', "gcmaturity-translate" ), $label . ' (id=' . $fieldkey . ', option_key=' . GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key . ')' ),
+				'description'   => 'fieldkey: ' . $fieldkey . ', fieldkey: "' . GCMS_C_CMBS2_PREFIX . 'start_scoring_section' . $counter_group . '"',
 //				'description'   => sprintf( __( 'Score %s', "gcmaturity-translate" ), $label ),
 				'type'          => 'wysiwyg',
 				'id'            => $fieldkey,
@@ -1047,27 +1048,32 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         $cmb_options->add_field( array(
         	'name'          => _x( 'Email settings', "email settings", "gcmaturity-translate" ),
         	'type'          => 'title',
-        	'id'            => GCMS_C_CMBS2_PREFIX . 'start_section_emailsection'
+        	'id'            => GCMS_C_CMBS2_PREFIX . 'start_section_emailsection',
+			'description'   => '(id: ' . GCMS_C_CMBS2_PREFIX . 'start_section_emailsection, option_key: ' . GCMS_C_PLUGIN_KEY . ')',
+        	
         ) );
 
         $cmb_options->add_field( array(
         	'name'          => _x( 'Sender email address', "email settings", "gcmaturity-translate" ),
       		'type'          => 'text',
         	'id'            => 'mail-from-address',
-        	'default'       => _x( 'info@gebruikercentraal.nl', "email settings", "gcmaturity-translate" )
+        	'default'       => _x( 'info@gebruikercentraal.nl', "email settings", "gcmaturity-translate" ),
+			'description'   => '(id: mail-from-address, option_key: ' . GCMS_C_PLUGIN_KEY . ')',
         ) );
 
         $cmb_options->add_field( array(
         	'name'          => _x( 'Sender email name', "email settings", "gcmaturity-translate" ),
       		'type'          => 'text',
         	'id'            => 'mail-from-name',
-        	'default'       => _x( 'Gebruiker Centraal', "email settings", "gcmaturity-translate" )
+        	'default'       => _x( 'Gebruiker Centraal', "email settings", "gcmaturity-translate" ),
+			'description'   => '(id: mail-from-name, option_key: ' . GCMS_C_PLUGIN_KEY . ')',
         ) );
 
         $cmb_options->add_field( array(
         	'name'          => _x( 'Email subject line', "email settings", "gcmaturity-translate" ),
       		'type'          => 'text',
         	'id'            => 'mail-subject',
+			'description'   => '(id: mail-subject, option_key: ' . GCMS_C_PLUGIN_KEY . ')',
         	'default'       => _x( 'Link to your survey results', "email settings", "gcmaturity-translate" )
         ) );
 
@@ -1078,6 +1084,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         	'description'   => '<span style="font-weight: 700; background: white; color: black;">' . sprintf( _x( 'This text should contain these strings:<br>%s - this is the placeholder for the link we send.<br>%s - this is the placeholder for user\'s name.', "email settings",  "gcmaturity-translate" ), GCMS_C_URLPLACEHOLDER, GCMS_C_NAMEPLACEHOLDER ) . '</span>',
       		'type'          => 'wysiwyg',
         	'id'            => GCMS_C_TEXTEMAIL,
+			'description'   => '(id: ' . GCMS_C_TEXTEMAIL . ', option_key: ' . GCMS_C_PLUGIN_KEY . ')',
         	'default'       => $default,
         ) );
       
@@ -1091,29 +1098,29 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         // reset
         $counter = 0;
 
-        while( $counter <  GCMS_C_SCORE_MAX ) {
-    
-          $counter++;
-    
-          $default  = sprintf( __( 'The text for scores between %s and %s. ', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
-          $label    = sprintf( __( 'between %s and %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
-
-          if ( GCMS_C_SCORE_MAX == $counter ) {
-            $default = sprintf( __( 'Perfect score: %s!', "gcmaturity-translate" ), $counter );
-          }
-    
-          $fieldkey = $key . GCMS_SCORESEPARATOR . $counter;
-    
-          $cmb_options->add_field( array(
-          	'name'          => sprintf( _x( 'Score text %s<br><small>if the total score is %s.</small>', 'score range', "gcmaturity-translate" ), $counter, $label ),
-          	'description'   => sprintf( __( 'General average score %s', "gcmaturity-translate" ), $label . ' (' . $fieldkey . ')' ),
-        		'type'          => 'wysiwyg',
-          	'id'            => $fieldkey,
-          	'default'       => $default
-          ) );
-
-        
-        }
+		while( $counter <  GCMS_C_SCORE_MAX ) {
+			
+			$counter++;
+			
+			$default  = sprintf( __( 'The text for scores between %s and %s. ', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
+			$label    = sprintf( __( 'between %s and %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
+			
+			if ( GCMS_C_SCORE_MAX == $counter ) {
+				$default = sprintf( __( 'Perfect score: %s!', "gcmaturity-translate" ), $counter );
+			}
+			
+			$fieldkey = $key . GCMS_SCORESEPARATOR . $counter;
+			
+			$cmb_options->add_field( array(
+				'name'          => sprintf( _x( 'Score text %s<br><small>if the total score is %s.</small>', 'score range', "gcmaturity-translate" ), $counter, $label ),
+				'description'   => sprintf( __( 'General average score %s', "gcmaturity-translate" ), $label . ' (id: ' . $fieldkey . ', option_key: ' . GCMS_C_PLUGIN_KEY . ')' ),
+				'type'          => 'wysiwyg',
+				'id'            => $fieldkey,
+				'default'       => $default
+			) );
+			
+			
+		}
 
   
     }    
@@ -1946,7 +1953,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 				}          
 				
 				$return     .= '</p>';
-				$return     .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey, '', $collectionkey ) . '</p>';
+				$return     .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey, '', GCMS_C_PLUGIN_KEY ) . '</p>';
 				$return     .= '<h2>' . __( 'Score per section', "gcmaturity-translate" ) . '</h2>';
 				
 				$counter = 0;
@@ -2284,14 +2291,18 @@ function gcmsf_frontend_form_handle_posting() {
 		if ( isset( $sanitized_values[ GCMS_C_SURVEY_EMAILID ] ) && filter_var( $sanitized_values[ GCMS_C_SURVEY_EMAILID ], FILTER_VALIDATE_EMAIL ) ) {    
 			
 			// the users mailaddress appears to be a valid mailaddress
-			$mailtext = gcms_aux_get_value_for_cmb2_key( GCMS_C_TEXTEMAIL, _x( 'No mail text found', 'email', "gcmaturity-translate" ) );
+
+//			'description'   => '(id: ' . GCMS_C_TEXTEMAIL . ', option_key: ' . GCMS_C_PLUGIN_KEY . ')',
+
+			
+			$mailtext = gcms_aux_get_value_for_cmb2_key( GCMS_C_TEXTEMAIL, _x( 'No mail text found', 'email', "gcmaturity-translate" ), GCMS_C_PLUGIN_KEY );
 			$mailtext = str_replace( GCMS_C_URLPLACEHOLDER, '<a href="' . $theurl . '">' . $theurl . '</a>', $mailtext );
 			$mailtext = str_replace( GCMS_C_NAMEPLACEHOLDER, $sanitized_values[ GCMS_C_SURVEY_YOURNAME ], $mailtext );
 			
-			$mailfrom_address = gcms_aux_get_value_for_cmb2_key( 'mail-from-address' );
-			$mailfrom_name    = gcms_aux_get_value_for_cmb2_key( 'mail-from-name' );
+			$mailfrom_address = gcms_aux_get_value_for_cmb2_key( 'mail-from-address', 'info@gebruikercentraal.nl', GCMS_C_PLUGIN_KEY );
+			$mailfrom_name    = gcms_aux_get_value_for_cmb2_key( 'mail-from-name', 'Gebruiker Centraal', GCMS_C_PLUGIN_KEY );
 			
-			$subject  = gcms_aux_get_value_for_cmb2_key( 'mail-subject', _x( 'Link to your survey results', "email settings", "gcmaturity-translate" ) );
+			$subject  = gcms_aux_get_value_for_cmb2_key( 'mail-subject', _x( 'Link to your survey results', "email settings", "gcmaturity-translate" ), GCMS_C_PLUGIN_KEY );
 			$headers  = array(
 					'From: ' . $mailfrom_name . ' <' . $mailfrom_address . '>'
 				);
