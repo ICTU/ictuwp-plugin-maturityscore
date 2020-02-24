@@ -1,0 +1,14 @@
+{
+  "name": "ictu/gc-maturityscore-plugin",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0",
+  "description": "Toont een vragenlijst op basis waarvan een score wordt gegenereerd over de 'digitale volwassenheid' van een organisatie ",
+  "homepage": "https://www.digitaleoverheid.nl",
+  "authors": [
+    {
+      "name": "Paul van Buuren",
+      "email": "paul@wbvb.nl",
+      "homepage": "https://wbvb.nl"
+    }
+  ]
+}
