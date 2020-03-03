@@ -1,5 +1,5 @@
 {
-  "name": "ictu/gc-maturityscore-plugin",
+  "name": "ictu/ictuwp-plugin-maturityscore",
   "type": "wordpress-plugin",
   "license": "GPL-3.0",
   "description": "Toont een vragenlijst op basis waarvan een score wordt gegenereerd over de 'digitale volwassenheid' van een organisatie ",
