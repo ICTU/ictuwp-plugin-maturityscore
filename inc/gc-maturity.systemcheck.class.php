@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Check for common issues with the server environment and WordPress install.
  */
-class GC_MaturitySystemCheck {
+class ictuwp_plugin_maturityscore_Systemcheck {
 
     var $options = array();
 
@@ -61,7 +61,7 @@ class GC_MaturitySystemCheck {
         }
 
         if ( !function_exists( 'wp_enqueue_media' ) ) {
-            $error = "GC_Maturity requires WordPress 3.5 or above. Please upgrade your WordPress installation.";
+            $error = "ictuwp-plugin-maturityscore requires WordPress 3.5 or above. Please upgrade your WordPress installation.";
             $this->printMessage( $error, 'wordPressVersion' );
         }
         else {

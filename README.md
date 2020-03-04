@@ -6,9 +6,10 @@ Gebruiker Centraal - Volwassenheidsscore plugin
 Paul van Buuren (paul@wbvb.nl)
 
 ## Current version
-* 1.3.2
+* 2.0.1 - Plugin hernoemd van 'gc-maturityscore' naar 'ictuwp-plugin-maturityscore'; Bestanden opgeschoond.
 
 ## Version history
+* 2.0.1 - Plugin hernoemd van 'gc-maturityscore' naar 'ictuwp-plugin-maturityscore'; Bestanden opgeschoond.
 * 1.3.2 - Bugfixes versie 1.3.1: nog niet alle teksten bleken te worden opgehaald uit de formulierwaarden.
 * 1.3.1 - In de Engelse site-versie bleek dat niet alle strings netjes vertaald waren; gecorrigeerd.
 * 1.2.1 - Laatste bugfixes voor go-live.

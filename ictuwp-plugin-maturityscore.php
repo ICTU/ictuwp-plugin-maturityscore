@@ -1,17 +1,17 @@
 <?php
 /*
- * GC_Maturity. 
+ * ictuwp-plugin-maturityscore 
  *
  * Plugin Name:         ICTU / Gebruiker Centraal / Maturity Scan Plugin
- * Plugin URI:          https://github.com/ICTU/gc-maturityscore-plugin/
+ * Plugin URI:          https://github.com/ICTU/ictuwp-plugin-maturityscore/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             1.3.2
- * Version description: Bugfixes versie 1.3.1: nog niet alle teksten bleken te worden opgehaald uit de formulierwaarden.
+ * Version:             2.0.1
+ * Version description: Plugin hernoemd van 'gc-maturityscore' naar 'ictuwp-plugin-maturityscore'; Bestanden opgeschoond.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
  * License:             GPL-2.0+
  *
- * Text Domain:         gcmaturity-translate
+ * Text Domain:         ictuwp-plugin-maturityscore
  * Domain Path:         /languages
  */
 
@@ -22,28 +22,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 add_action( 'plugins_loaded', 'gcmsf_init_load_plugin_textdomain' );
 
-if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
+if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 
 /**
  * Register the plugin.
  *
  * Display the administration panel, add JavaScript etc.
  */
-  class GC_MaturityPlugin {
+  class ictuwp_plugin_maturityscore_Plugin {
   
       /**
        * @var string
        */
-      public $version = '1.3.2';
+      public $version = '2.0.1';
   
   
       /**
-       * @var GC_Maturity
+       * @var ictuwp-plugin-maturityscore
        */
       public $gcmaturity = null;
 
       /**
-       * @var GC_Maturity
+       * @var ictuwp-plugin-maturityscore
        */
 
       public $option_name = null;
@@ -81,14 +81,14 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       //========================================================================================================
   
       /**
-       * Define GC_Maturity constants
+       * Define ictuwp-plugin-maturityscore constants
        */
       private function define_constants() {
   
         $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://';
   
         define( 'GCMS_C_VERSION',                 $this->version );
-        define( 'GCMS_C_FOLDER',                  'gc-maturityscore' );
+        define( 'GCMS_C_FOLDER',                  'ictuwp-plugin-maturityscore' );
         define( 'GCMS_C_BASE_URL',                trailingslashit( plugins_url( GCMS_C_FOLDER ) ) );
         define( 'GCMS_C_ASSETS_URL',              trailingslashit( GCMS_C_BASE_URL . 'assets' ) );
         define( 'GCMS_C_MEDIAELEMENT_URL',        trailingslashit( GCMS_C_BASE_URL . 'mediaelement' ) );
@@ -176,12 +176,12 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       //========================================================================================================
   
       /**
-       * All GC_Maturity classes
+       * All ictuwp-plugin-maturityscore classes
        */
       private function plugin_classes() {
   
           return array(
-              'GC_MaturitySystemCheck'  => GCMS_C_PATH . 'inc/gc-maturity.systemcheck.class.php',
+              'ictuwp_plugin_maturityscore_Systemcheck'  => GCMS_C_PATH . 'inc/gc-maturity.systemcheck.class.php',
           );
   
       }
@@ -249,7 +249,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       //========================================================================================================
   
       /**
-       * Autoload GC_Maturity classes to reduce memory consumption
+       * Autoload ictuwp-plugin-maturityscore classes to reduce memory consumption
        */
       public function autoload( $class ) {
   
@@ -268,7 +268,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       //========================================================================================================
   
       /**
-       * Hook GC_Maturity into WordPress
+       * Hook ictuwp-plugin-maturityscore into WordPress
        */
       private function gcmsf_init_setup_actions() {
 
@@ -305,7 +305,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       //========================================================================================================
   
       /**
-       * Hook GC_Maturity into WordPress
+       * Hook ictuwp-plugin-maturityscore into WordPress
        */
       private function gcmsf_init_setup_filters() {
 
@@ -321,28 +321,28 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
        */
       public function gcmsf_init_register_post_type() {
 
-        $typeUC_single = _x( "Survey", "labels", "gcmaturity-translate" );
-        $typeUC_plural = _x( "Surveys", "labels", "gcmaturity-translate" );
+        $typeUC_single = _x( "Survey", "labels", "ictuwp-plugin-maturityscore" );
+        $typeUC_plural = _x( "Surveys", "labels", "ictuwp-plugin-maturityscore" );
         
-        $typeLC_single = _x( "survey", "labels", "gcmaturity-translate" );
-        $typeLC_plural = _x( "surveys", "labels", "gcmaturity-translate" );
+        $typeLC_single = _x( "survey", "labels", "ictuwp-plugin-maturityscore" );
+        $typeLC_plural = _x( "surveys", "labels", "ictuwp-plugin-maturityscore" );
 
       	$labels = array(
       		"name"                  => sprintf( '%s', $typeUC_single ),
       		"singular_name"         => sprintf( '%s', $typeUC_single ),
       		"menu_name"             => sprintf( '%s', $typeUC_single ),
-      		"all_items"             => sprintf( _x( 'All %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"edit"                  => _x( "Edit?", "labels", "gcmaturity-translate" ),
-      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"view"                  => _x( "Show", "labels", "gcmaturity-translate" ),
-      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"parent"                => _x( "Parent", "labels", "gcmaturity-translate" ),
+      		"all_items"             => sprintf( _x( 'All %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"edit"                  => _x( "Edit?", "labels", "ictuwp-plugin-maturityscore" ),
+      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"view"                  => _x( "Show", "labels", "ictuwp-plugin-maturityscore" ),
+      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"parent"                => _x( "Parent", "labels", "ictuwp-plugin-maturityscore" ),
       		
     		);
       
@@ -369,11 +369,11 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       	register_post_type( GCMS_C_SURVEY_CPT, $args );
 
 
-        $typeUC_single = _x( "Organisation type", "labels", "gcmaturity-translate" );
-        $typeUC_plural = _x( "Organisation types", "labels", "gcmaturity-translate" );
+        $typeUC_single = _x( "Organisation type", "labels", "ictuwp-plugin-maturityscore" );
+        $typeUC_plural = _x( "Organisation types", "labels", "ictuwp-plugin-maturityscore" );
         
-        $typeLC_single = _x( "organisation type", "labels", "gcmaturity-translate" );
-        $typeLC_plural = _x( "organisation types", "labels", "gcmaturity-translate" );
+        $typeLC_single = _x( "organisation type", "labels", "ictuwp-plugin-maturityscore" );
+        $typeLC_plural = _x( "organisation types", "labels", "ictuwp-plugin-maturityscore" );
 
         // organisation types
       	$labels = array(
@@ -381,19 +381,19 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       		"name"                  => sprintf( '%s', $typeUC_single ),
       		"singular_name"         => sprintf( '%s', $typeUC_single ),
       		"menu_name"             => sprintf( '%s', $typeUC_single ),
-      		"all_items"             => sprintf( _x( 'All %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"edit"                  => _x( "Edit?", "labels", "gcmaturity-translate" ),
-      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"view"                  => _x( "Show", "labels", "gcmaturity-translate" ),
-      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"parent"                => _x( "Parent", "labels", "gcmaturity-translate" ),
-      		"archives"              => _x( "Edit?", "labels", "gcmaturity-translate" ),
+      		"all_items"             => sprintf( _x( 'All %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"edit"                  => _x( "Edit?", "labels", "ictuwp-plugin-maturityscore" ),
+      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"view"                  => _x( "Show", "labels", "ictuwp-plugin-maturityscore" ),
+      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"parent"                => _x( "Parent", "labels", "ictuwp-plugin-maturityscore" ),
+      		"archives"              => _x( "Edit?", "labels", "ictuwp-plugin-maturityscore" ),
 
     		);
 
@@ -416,30 +416,30 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       	register_taxonomy( GCMS_C_SURVEY_CT_ORG_TYPE, array( GCMS_C_SURVEY_CPT ), $args );
 
 
-        $typeUC_single = _x( "Organisation size", "labels", "gcmaturity-translate" );
-        $typeUC_plural = _x( "Organisation sizes", "labels", "gcmaturity-translate" );
+        $typeUC_single = _x( "Organisation size", "labels", "ictuwp-plugin-maturityscore" );
+        $typeUC_plural = _x( "Organisation sizes", "labels", "ictuwp-plugin-maturityscore" );
         
-        $typeLC_single = _x( "organisation size", "labels", "gcmaturity-translate" );
-        $typeLC_plural = _x( "organisation sizes", "labels", "gcmaturity-translate" );
+        $typeLC_single = _x( "organisation size", "labels", "ictuwp-plugin-maturityscore" );
+        $typeLC_plural = _x( "organisation sizes", "labels", "ictuwp-plugin-maturityscore" );
 
         // organisatiegrootteS
       	$labels = array(
       		"name"                  => sprintf( '%s', $typeUC_single ),
       		"singular_name"         => sprintf( '%s', $typeUC_single ),
       		"menu_name"             => sprintf( '%s', $typeUC_single ),
-      		"all_items"             => sprintf( _x( 'All %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"edit"                  => _x( "Edit?", "labels", "gcmaturity-translate" ),
-      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"view"                  => _x( "Show", "labels", "gcmaturity-translate" ),
-      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"parent"                => _x( "Parent", "labels", "gcmaturity-translate" ),
-      		"archives"              => _x( "Edit?", "labels", "gcmaturity-translate" ),
+      		"all_items"             => sprintf( _x( 'All %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"edit"                  => _x( "Edit?", "labels", "ictuwp-plugin-maturityscore" ),
+      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"view"                  => _x( "Show", "labels", "ictuwp-plugin-maturityscore" ),
+      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"parent"                => _x( "Parent", "labels", "ictuwp-plugin-maturityscore" ),
+      		"archives"              => _x( "Edit?", "labels", "ictuwp-plugin-maturityscore" ),
     		);
 
       	$args = array(
@@ -461,30 +461,30 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       	register_taxonomy( GCMS_C_SURVEY_CT_ORG_SIZE, array( GCMS_C_SURVEY_CPT ), $args );
 	      	
 
-        $typeUC_single = _x( "Region", "labels", "gcmaturity-translate" );
-        $typeUC_plural = _x( "Regions", "labels", "gcmaturity-translate" );
+        $typeUC_single = _x( "Region", "labels", "ictuwp-plugin-maturityscore" );
+        $typeUC_plural = _x( "Regions", "labels", "ictuwp-plugin-maturityscore" );
         
-        $typeLC_single = _x( "region", "labels", "gcmaturity-translate" );
-        $typeLC_plural = _x( "regions", "labels", "gcmaturity-translate" );
+        $typeLC_single = _x( "region", "labels", "ictuwp-plugin-maturityscore" );
+        $typeLC_plural = _x( "regions", "labels", "ictuwp-plugin-maturityscore" );
 
         // REGIO'S
       	$labels = array(
       		"name"                  => sprintf( '%s', $typeUC_single ),
       		"singular_name"         => sprintf( '%s', $typeUC_single ),
       		"menu_name"             => sprintf( '%s', $typeUC_single ),
-      		"all_items"             => sprintf( _x( 'All %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"edit"                  => _x( "Edit?", "labels", "gcmaturity-translate" ),
-      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"view"                  => _x( "Show", "labels", "gcmaturity-translate" ),
-      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"parent"                => _x( "Parent", "labels", "gcmaturity-translate" ),
-      		"archives"              => _x( "Edit?", "labels", "gcmaturity-translate" ),
+      		"all_items"             => sprintf( _x( 'All %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"edit"                  => _x( "Edit?", "labels", "ictuwp-plugin-maturityscore" ),
+      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"view"                  => _x( "Show", "labels", "ictuwp-plugin-maturityscore" ),
+      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"parent"                => _x( "Parent", "labels", "ictuwp-plugin-maturityscore" ),
+      		"archives"              => _x( "Edit?", "labels", "ictuwp-plugin-maturityscore" ),
     		);
       
       	$args = array(
@@ -506,30 +506,30 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       	register_taxonomy( GCMS_C_SURVEY_CT_REGION, array( GCMS_C_SURVEY_CPT ), $args );
 	      	
 
-        $typeUC_single = _x( "Organisation attitude", "labels", "gcmaturity-translate" );
-        $typeUC_plural = _x( "Organisation attitudes", "labels", "gcmaturity-translate" );
+        $typeUC_single = _x( "Organisation attitude", "labels", "ictuwp-plugin-maturityscore" );
+        $typeUC_plural = _x( "Organisation attitudes", "labels", "ictuwp-plugin-maturityscore" );
         
-        $typeLC_single = _x( "organisation attitude", "labels", "gcmaturity-translate" );
-        $typeLC_plural = _x( "organisation attitudes", "labels", "gcmaturity-translate" );
+        $typeLC_single = _x( "organisation attitude", "labels", "ictuwp-plugin-maturityscore" );
+        $typeLC_plural = _x( "organisation attitudes", "labels", "ictuwp-plugin-maturityscore" );
 
         // organisatieattitudes
       	$labels = array(
       		"name"                  => sprintf( '%s', $typeUC_single ),
       		"singular_name"         => sprintf( '%s', $typeUC_single ),
       		"menu_name"             => sprintf( '%s', $typeUC_single ),
-      		"all_items"             => sprintf( _x( 'All %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"edit"                  => _x( "Edit?", "labels", "gcmaturity-translate" ),
-      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"view"                  => _x( "Show", "labels", "gcmaturity-translate" ),
-      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "gcmaturity-translate" ), $typeLC_single ),
-      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "gcmaturity-translate" ), $typeLC_plural ),
-      		"parent"                => _x( "Parent", "labels", "gcmaturity-translate" ),
-      		"archives"              => _x( "Edit?", "labels", "gcmaturity-translate" ),
+      		"all_items"             => sprintf( _x( 'All %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"add_new"               => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"add_new_item"          => sprintf( _x( 'Add new %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"edit"                  => _x( "Edit?", "labels", "ictuwp-plugin-maturityscore" ),
+      		"edit_item"             => sprintf( _x( 'Edit %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"new_item"              => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"view"                  => _x( "Show", "labels", "ictuwp-plugin-maturityscore" ),
+      		"view_item"             => sprintf( _x( 'Add %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"search_items"          => sprintf( _x( 'Search %s', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"not_found"             => sprintf( _x( 'No %s available', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_single ),
+      		"not_found_in_trash"    => sprintf( _x( 'No %s in trash', 'labels', "ictuwp-plugin-maturityscore" ), $typeLC_plural ),
+      		"parent"                => _x( "Parent", "labels", "ictuwp-plugin-maturityscore" ),
+      		"archives"              => _x( "Edit?", "labels", "ictuwp-plugin-maturityscore" ),
     		);
 
       	$args = array(
@@ -567,7 +567,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       */
       function gcmsf_init_add_page_templates( $post_templates ) {
       
-        $post_templates[$this->templatefile]  		= _x( 'Maturity score template', "naam template", "gcmaturity-translate" );    
+        $post_templates[$this->templatefile]  		= _x( 'Maturity score template', "naam template", "ictuwp-plugin-maturityscore" );    
         return $post_templates;
       
       }
@@ -615,7 +615,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
     		// Add a General section
     		add_settings_section(
     			$this->option_name . '_general',
-    			__( 'General settings', "gcmaturity-translate" ),
+    			__( 'General settings', "ictuwp-plugin-maturityscore" ),
     			array( $this, $this->option_name . '_general_cb' ),
     			GCMS_C_PLUGIN_KEY
     		);
@@ -630,7 +630,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       public function gcmsf_admin_register_styles() {
   
         if ( is_admin() ) {
-          wp_enqueue_style( 'gc-maturityscore-admin', GCMS_C_ASSETS_URL . 'css/gc-maturityscore-admin.css', false, GCMS_C_VERSION );
+          wp_enqueue_style( 'ictuwp-plugin-maturityscore-admin', GCMS_C_ASSETS_URL . 'css/ictuwp-plugin-maturityscore-admin.css', false, GCMS_C_VERSION );
         }
   
       }
@@ -647,8 +647,8 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         // documentation tab
         $screen->add_gcmsf_admin_help_tab( array(
           'id'      => 'documentation',
-          'title'   => __( 'Documentation', "gcmaturity-translate" ),
-          'content' => "<p><a href='https://github.com/ICTU/gc-maturityscore-plugin/documentation/' target='blank'>" . __( 'GC Maturity documentation', "gcmaturity-translate" ) . "</a></p>",
+          'title'   => __( 'Documentation', "ictuwp-plugin-maturityscore" ),
+          'content' => "<p><a href='https://github.com/ICTU/ictuwp-plugin-maturityscore/documentation/' target='blank'>" . __( 'GC Maturity documentation', "ictuwp-plugin-maturityscore" ) . "</a></p>",
           )
         );
       }
@@ -656,13 +656,13 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       //====================================================================================================
   
       /**
-       * Check our WordPress installation is compatible with GC_Maturity
+       * Check our WordPress installation is compatible with ictuwp-plugin-maturityscore
        */
       public function gcmsf_admin_main_page_get() {
   
         echo '<div class="wrap">';
         echo '	<h2>' .  esc_html( get_admin_page_title() ) . '</h2>';
-        echo '	<p>' .  _x( 'Here you can edit the surveys.', "admin", "gcmaturity-translate" ) . '</p>';
+        echo '	<p>' .  _x( 'Here you can edit the surveys.', "admin", "ictuwp-plugin-maturityscore" ) . '</p>';
         echo $this->gcmsf_frontend_get_tableview( false, 0, true );
         // cmb2
         echo '</div>';
@@ -697,10 +697,10 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       public function gcmsf_admin_localize_scripts() {
   
           wp_localize_script( 'gcms-admin-script', 'gcms', array(
-                  'url'               => _x( "URL", "js", "gcmaturity-translate" ),
-                  'caption'           => _x( "Caption", "js", "gcmaturity-translate" ),
-                  'new_window'        => _x( "New Window", "js", "gcmaturity-translate" ),
-                  'confirm'           => _x( "Are you sure?", "js", "gcmaturity-translate" ),
+                  'url'               => _x( "URL", "js", "ictuwp-plugin-maturityscore" ),
+                  'caption'           => _x( "Caption", "js", "ictuwp-plugin-maturityscore" ),
+                  'new_window'        => _x( "New Window", "js", "ictuwp-plugin-maturityscore" ),
+                  'confirm'           => _x( "Are you sure?", "js", "ictuwp-plugin-maturityscore" ),
                   'ajaxurl'           => admin_url( 'admin-ajax.php' ),
                   'resize_nonce'      => wp_create_nonce( 'gcmsf_resize' ),
                   'iframeurl'         => admin_url( 'admin-post.php?action=gcmsf_preview' ),
@@ -712,7 +712,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 	//====================================================================================================
 	
 	/**
-	* Check our WordPress installation is compatible with GC_Maturity
+	* Check our WordPress installation is compatible with ictuwp-plugin-maturityscore
 	*/
 	public function gcmsf_admin_options_page() {
 		
@@ -727,16 +727,16 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
     	<table class="form-table" id="progress">
     		<tr>
     			<td>
-    				<input id="startsync" type="button" class="button button-primary" value="<?php _e( 'Reset statistics', "gcmaturity-translate" ); ?>" />
-    				<input id="clearlog" type="button" class="button button-secondary" value="<?php _e( 'Empty log', "gcmaturity-translate" ); ?>" />
+    				<input id="startsync" type="button" class="button button-primary" value="<?php _e( 'Reset statistics', "ictuwp-plugin-maturityscore" ); ?>" />
+    				<input id="clearlog" type="button" class="button button-secondary" value="<?php _e( 'Empty log', "ictuwp-plugin-maturityscore" ); ?>" />
     			</td>
     		</tr>
     	</table>
       <noscript style="background: red; padding: .5em; font-size: 120%;display: block; margin-top: 1em !important; color: white;">
-        <strong><?php _e( 'Ehm, please allow JavaScript.', "gcmaturity-translate" );?></strong>
+        <strong><?php _e( 'Ehm, please allow JavaScript.', "ictuwp-plugin-maturityscore" );?></strong>
       </noscript>
       <div style="width: 100%; padding-top: 16px;" id="items">&nbsp;</div>
-    	<div style="width: 100%; padding-top: 16px; font-style: italic;" id="log"><?php _e( 'Press the button!', "gcmaturity-translate" );?></div>
+    	<div style="width: 100%; padding-top: 16px; font-style: italic;" id="log"><?php _e( 'Press the button!', "ictuwp-plugin-maturityscore" );?></div>
     
     
     	<script type="text/javascript">
@@ -756,7 +756,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
     			_button.click(function (e) {
     
     				e.preventDefault();
-    				jQuery(this).val('<?php _e( 'Just a moment please', "gcmaturity-translate" );?>').prop('disabled', true);
+    				jQuery(this).val('<?php _e( 'Just a moment please', "ictuwp-plugin-maturityscore" );?>').prop('disabled', true);
     				jQuery( '#log' ).empty();
     				jQuery( '#thetable' ).empty();
     				_requestJob( );
@@ -777,7 +777,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
     
     		var _jobResult = function (response) {
     
-          _button.val('<?php _e( 'Reset statistics', "gcmaturity-translate" ) ?>').prop('disabled', false);
+          _button.val('<?php _e( 'Reset statistics', "ictuwp-plugin-maturityscore" ) ?>').prop('disabled', false);
     
     			if (response.ajaxrespons_item.length > 0) {
     				// new messages appear on top. .append() can be used to have new entries at the bottom
@@ -790,7 +790,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
     				}
     			}
     
-    			jQuery(this).val('<?php _e( 'Just a moment please', "gcmaturity-translate" );?>').prop('disabled', true);
+    			jQuery(this).val('<?php _e( 'Just a moment please', "ictuwp-plugin-maturityscore" );?>').prop('disabled', true);
     		}
     
     	</script>
@@ -804,12 +804,12 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       //====================================================================================================
   
       /**
-       * Check our WordPress installation is compatible with GC_Maturity
+       * Check our WordPress installation is compatible with ictuwp-plugin-maturityscore
        */
       public function gcmsf_admin_do_system_check() {
   
   
-  //        $systemCheck = new GC_MaturitySystemCheck();
+  //        $systemCheck = new ictuwp_plugin_maturityscore_Systemcheck();
   //        $systemCheck->check();
   
       }
@@ -825,15 +825,15 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
        */
       $cmb_options = new_cmb2_box( array(
       	'id'              => 'gcmsf_admin_options_metabox',
-      	'title'           => esc_html__( 'Maturity score', "gcmaturity-translate" ),
+      	'title'           => esc_html__( 'Maturity score', "ictuwp-plugin-maturityscore" ),
       	'object_types'    => array( 'options-page' ),
       	'option_key'      => GCMS_C_PLUGIN_KEY, // The option key and admin menu page slug.
       	'icon_url'        => 'dashicons-admin-settings', // Menu icon. Only applicable if 'parent_slug' is left empty.
       	'capability'      => 'manage_options', // Cap required to view options-page.
         'tab_group'       => GCMS_C_PLUGIN_KEY,
-        'tab_title'       => _x( 'Email settings &amp; general scoring', 'scoring menu', "gcmaturity-translate"),      	
+        'tab_title'       => _x( 'Email settings &amp; general scoring', 'scoring menu', "ictuwp-plugin-maturityscore"),      	
         'display_cb'      => 'yourprefix_options_display_with_tabs',
-      	'save_button'     => esc_html__( 'Save options', "gcmaturity-translate" ), 
+      	'save_button'     => esc_html__( 'Save options', "ictuwp-plugin-maturityscore" ), 
       ) );
       /*
        * Options fields ids only need
@@ -881,16 +881,16 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             $questionsnumber_end    = ( ( $questionsnumber_start - 1 ) + count( $groupquestions ) );
             $questionsnumber_prev   = $questionsnumber_end;
 
-            $questionrange          = sprintf( _x( '%s - %s', 'question range', "gcmaturity-translate" ), ( $question_counter + 1 ), ( $question_counter + count( $groupquestions ) ) );
-            $tablabel               = sprintf( _x( '%s - questions %s', 'tablabel', "gcmaturity-translate" ), $tabscounter, $questionrange );
-            $groupheader            = sprintf( _x( 'Group %s: title, introduction and scoring texts', 'tablabel', "gcmaturity-translate" ), $counter_group );
-            $grouptitle_label       = sprintf( _x( 'Title for group %s', 'tablabel', "gcmaturity-translate" ), $counter_group );
-            $groupintro_label       = sprintf( _x( 'Introduction %s', 'tablabel', "gcmaturity-translate" ), $counter_group );
+            $questionrange          = sprintf( _x( '%s - %s', 'question range', "ictuwp-plugin-maturityscore" ), ( $question_counter + 1 ), ( $question_counter + count( $groupquestions ) ) );
+            $tablabel               = sprintf( _x( '%s - questions %s', 'tablabel', "ictuwp-plugin-maturityscore" ), $tabscounter, $questionrange );
+            $groupheader            = sprintf( _x( 'Group %s: title, introduction and scoring texts', 'tablabel', "ictuwp-plugin-maturityscore" ), $counter_group );
+            $grouptitle_label       = sprintf( _x( 'Title for group %s', 'tablabel', "ictuwp-plugin-maturityscore" ), $counter_group );
+            $groupintro_label       = sprintf( _x( 'Introduction %s', 'tablabel', "ictuwp-plugin-maturityscore" ), $counter_group );
 
             // maak een tab aan voor de vragen van een groep
             $args = array(
 				'id'           => GCMS_C_PLUGIN_KEY . $group_key,
-				'menu_title'   => sprintf( _x( 'Group %s - %s', 'tablabel', "gcmaturity-translate" ), $tabscounter, '(' . $questionrange . ')' ),
+				'menu_title'   => sprintf( _x( 'Group %s - %s', 'tablabel', "ictuwp-plugin-maturityscore" ), $tabscounter, '(' . $questionrange . ')' ),
 				'object_types' => array( 'options-page' ),
 				'option_key'   => GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key,
 				'parent_slug'  => GCMS_C_PLUGIN_KEY,
@@ -905,7 +905,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             	'name'          => $groupheader,
             	'type'          => 'title',
             	'id'            => GCMS_C_CMBS2_PREFIX . 'start_section' . $counter_group,
-				'description'   => 'Key: ' . GCMS_C_CMBS2_PREFIX . 'start_section' . $counter_group . ', optionkey: "' . GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key . '"',
+				'description'   => '', // 'Key: ' . GCMS_C_CMBS2_PREFIX . 'start_section' . $counter_group . ', optionkey: "' . GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key . '"',
             	
             ) );
 
@@ -914,7 +914,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           		'type'          => 'text',
             	'id'            => $key_grouplabel,
             	'default'       => $grouplabel,
-				'description'   => 'Key: ' . $key_grouplabel . ', optionkey: "' . GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key . '"',
+				'description'   => '', // 'Key: ' . $key_grouplabel . ', optionkey: "' . GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key . '"',
             	
             ) );
       
@@ -923,13 +923,13 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
           		'type'          => 'textarea',
             	'id'            => $key_group_description,
             	'default'       => $groupdescription,
-				'description'   => 'Key: ' . $key_group_description . ', optionkey: "' . GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key . '"',
+				'description'   => '', // 'Key: ' . $key_group_description . ', optionkey: "' . GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key . '"',
             ) );
 
             
             // scoring texts
             $questions_tab->add_field( array(
-            	'name'          => __( 'Score for this section', "gcmaturity-translate" ),
+            	'name'          => __( 'Score for this section', "ictuwp-plugin-maturityscore" ),
             	'type'          => 'title',
             	'id'            => GCMS_C_CMBS2_PREFIX . 'start_scoring_section' . $counter_group
             ) );
@@ -941,20 +941,20 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
             
               $counter++;
             
-              $default = sprintf( __( 'For section <em>%s</em> you scored over %s, but lesss than %s. Here more about that.', "gcmaturity-translate" ), gcms_aux_get_value_for_cmb2_key( $key, $key, GCMS_C_PLUGIN_KEY ), ( $counter - 1 ), $counter );
+              $default = sprintf( __( 'For section <em>%s</em> you scored over %s, but lesss than %s. Here more about that.', "ictuwp-plugin-maturityscore" ), gcms_aux_get_value_for_cmb2_key( $key, $key, GCMS_C_PLUGIN_KEY ), ( $counter - 1 ), $counter );
               
-              $label = sprintf( __( 'between %s and %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
+              $label = sprintf( __( 'between %s and %s', "ictuwp-plugin-maturityscore" ), ( $counter - 1 ), $counter );
               if ( GCMS_C_SCORE_MAX == $counter ) {
-                $default = sprintf( __( 'Perfect score: %s!', "gcmaturity-translate" ), $counter );
+                $default = sprintf( __( 'Perfect score: %s!', "ictuwp-plugin-maturityscore" ), $counter );
               }
             
               $fieldkey = $group_key . GCMS_SCORESEPARATOR . $counter;
             
               $questions_tab->add_field( array(
-              	'name'          => sprintf( _x( 'Text %s<br><small>if score %s.</small>', 'score range', "gcmaturity-translate" ), $counter, $label ),
-				'description'   => sprintf( __( 'Score %s', "gcmaturity-translate" ), $label . ' (id=' . $fieldkey . ', option_key=' . GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key . ')' ),
-				'description'   => 'fieldkey: ' . $fieldkey . ', fieldkey: "' . GCMS_C_CMBS2_PREFIX . 'start_scoring_section' . $counter_group . '"',
-//				'description'   => sprintf( __( 'Score %s', "gcmaturity-translate" ), $label ),
+              	'name'          => sprintf( _x( 'Text %s<br><small>if score %s.</small>', 'score range', "ictuwp-plugin-maturityscore" ), $counter, $label ),
+				'description'   => sprintf( __( 'Score %s', "ictuwp-plugin-maturityscore" ), $label . ' (id=' . $fieldkey . ', option_key=' . GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key . ')' ),
+				'description'   => '', // 'fieldkey: ' . $fieldkey . ', fieldkey: "' . GCMS_C_CMBS2_PREFIX . 'start_scoring_section' . $counter_group . '"',
+//				'description'   => sprintf( __( 'Score %s', "ictuwp-plugin-maturityscore" ), $label ),
 				'type'          => 'wysiwyg',
 				'id'            => $fieldkey,
               	'default'       => $default
@@ -977,7 +977,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
               $questionkey      =  $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key;
 
               $questions_tab->add_field( array(
-              	'name'          =>  sprintf( __( 'Question %s - %s', "gcmaturity-translate" ), $question_counter, gcms_aux_get_value_for_cmb2_key( $questionkey, $question_label, GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key ) ),
+              	'name'          =>  sprintf( __( 'Question %s - %s', "ictuwp-plugin-maturityscore" ), $question_counter, gcms_aux_get_value_for_cmb2_key( $questionkey, $question_label, GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key ) ),
               	'type'          => 'title',
               	'id'            => GCMS_C_CMBS2_PREFIX . '_section_' . $key . '_' . $group_key . '_' . $question_counter
               ) );
@@ -985,11 +985,11 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
               // put it together
               $fieldkey = $group_key . GCMS_C_PLUGIN_SEPARATOR . $question_key;
               $questions_tab->add_field( array(
-				'name'          => sprintf( __( 'Question %s', "gcmaturity-translate" ), $question_counter ),
+				'name'          => sprintf( __( 'Question %s', "ictuwp-plugin-maturityscore" ), $question_counter ),
 				'id'            => $fieldkey,
 				'type'          => 'text',
 				'default'       => $question_label,
-				'description'   => 'Key: ' . $fieldkey . ', optionkey: "' . GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key . '"',
+				'description'   => '', // 'Key: ' . $fieldkey . ', optionkey: "' . GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key . '"',
 				'attributes'    => array(
 					'required'    => 'required',
 	              	),
@@ -1008,7 +1008,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
                 // put it together
                 $fieldkey = $this_answer_key . GCMS_C_KEYS_LABEL;
               	$questions_tab->add_field( array(
-              		'name'          => sprintf( __( 'Label answer %s', "gcmaturity-translate" ), $optioncounter ),
+              		'name'          => sprintf( __( 'Label answer %s', "ictuwp-plugin-maturityscore" ), $optioncounter ),
                 	'id'            => $fieldkey,
               		'type'          => 'text',
 					'default'       => $answer->answer_label,
@@ -1022,7 +1022,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
                 $fieldkey = $this_answer_key . GCMS_C_KEYS_VALUE;
               	$questions_tab->add_field( array(
               		'type'          => 'text',
-              		'name'          => sprintf( __( 'Value answer %s', "gcmaturity-translate" ), $optioncounter ),
+              		'name'          => sprintf( __( 'Value answer %s', "ictuwp-plugin-maturityscore" ), $optioncounter ),
                 	'id'            => $fieldkey,
                 	'default'       => $answer->answer_value,
 					'description'   => ' (id=' . $fieldkey . ', option_key=' . GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $group_key . ')',
@@ -1046,7 +1046,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 
 
         $cmb_options->add_field( array(
-        	'name'          => _x( 'Email settings', "email settings", "gcmaturity-translate" ),
+        	'name'          => _x( 'Email settings', "email settings", "ictuwp-plugin-maturityscore" ),
         	'type'          => 'title',
         	'id'            => GCMS_C_CMBS2_PREFIX . 'start_section_emailsection',
 			'description'   => '(id: ' . GCMS_C_CMBS2_PREFIX . 'start_section_emailsection, option_key: ' . GCMS_C_PLUGIN_KEY . ')',
@@ -1054,34 +1054,34 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
         ) );
 
         $cmb_options->add_field( array(
-        	'name'          => _x( 'Sender email address', "email settings", "gcmaturity-translate" ),
+        	'name'          => _x( 'Sender email address', "email settings", "ictuwp-plugin-maturityscore" ),
       		'type'          => 'text',
         	'id'            => 'mail-from-address',
-        	'default'       => _x( 'info@gebruikercentraal.nl', "email settings", "gcmaturity-translate" ),
+        	'default'       => _x( 'info@gebruikercentraal.nl', "email settings", "ictuwp-plugin-maturityscore" ),
 			'description'   => '(id: mail-from-address, option_key: ' . GCMS_C_PLUGIN_KEY . ')',
         ) );
 
         $cmb_options->add_field( array(
-        	'name'          => _x( 'Sender email name', "email settings", "gcmaturity-translate" ),
+        	'name'          => _x( 'Sender email name', "email settings", "ictuwp-plugin-maturityscore" ),
       		'type'          => 'text',
         	'id'            => 'mail-from-name',
-        	'default'       => _x( 'Gebruiker Centraal', "email settings", "gcmaturity-translate" ),
+        	'default'       => _x( 'Gebruiker Centraal', "email settings", "ictuwp-plugin-maturityscore" ),
 			'description'   => '(id: mail-from-name, option_key: ' . GCMS_C_PLUGIN_KEY . ')',
         ) );
 
         $cmb_options->add_field( array(
-        	'name'          => _x( 'Email subject line', "email settings", "gcmaturity-translate" ),
+        	'name'          => _x( 'Email subject line', "email settings", "ictuwp-plugin-maturityscore" ),
       		'type'          => 'text',
         	'id'            => 'mail-subject',
 			'description'   => '(id: mail-subject, option_key: ' . GCMS_C_PLUGIN_KEY . ')',
-        	'default'       => _x( 'Link to your survey results', "email settings", "gcmaturity-translate" )
+        	'default'       => _x( 'Link to your survey results', "email settings", "ictuwp-plugin-maturityscore" )
         ) );
 
-        $default = sprintf( _x( "Hi %s,\n\nThank you for using this tool.\nFor your future reference, here is a link to the results page of the survey you just filled out:\n%s\n\nKind regards,\nThe Gebruiker Centraal Team.", "email settings", "gcmaturity-translate" ), GCMS_C_NAMEPLACEHOLDER, GCMS_C_URLPLACEHOLDER );
+        $default = sprintf( _x( "Hi %s,\n\nThank you for using this tool.\nFor your future reference, here is a link to the results page of the survey you just filled out:\n%s\n\nKind regards,\nThe Gebruiker Centraal Team.", "email settings", "ictuwp-plugin-maturityscore" ), GCMS_C_NAMEPLACEHOLDER, GCMS_C_URLPLACEHOLDER );
 
         $cmb_options->add_field( array(
-        	'name'          => _x( 'Text in the email to the user', "email settings", "gcmaturity-translate" ),
-        	'description'   => '<span style="font-weight: 700; background: white; color: black;">' . sprintf( _x( 'This text should contain these strings:<br>%s - this is the placeholder for the link we send.<br>%s - this is the placeholder for user\'s name.', "email settings",  "gcmaturity-translate" ), GCMS_C_URLPLACEHOLDER, GCMS_C_NAMEPLACEHOLDER ) . '</span>',
+        	'name'          => _x( 'Text in the email to the user', "email settings", "ictuwp-plugin-maturityscore" ),
+        	'description'   => '<span style="font-weight: 700; background: white; color: black;">' . sprintf( _x( 'This text should contain these strings:<br>%s - this is the placeholder for the link we send.<br>%s - this is the placeholder for user\'s name.', "email settings",  "ictuwp-plugin-maturityscore" ), GCMS_C_URLPLACEHOLDER, GCMS_C_NAMEPLACEHOLDER ) . '</span>',
       		'type'          => 'wysiwyg',
         	'id'            => GCMS_C_TEXTEMAIL,
 			'description'   => '(id: ' . GCMS_C_TEXTEMAIL . ', option_key: ' . GCMS_C_PLUGIN_KEY . ')',
@@ -1090,7 +1090,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       
 
         $cmb_options->add_field( array(
-        	'name'          => __( 'General scoring texts', "gcmaturity-translate" ),
+        	'name'          => __( 'General scoring texts', "ictuwp-plugin-maturityscore" ),
         	'type'          => 'title',
         	'id'            => GCMS_C_CMBS2_PREFIX . 'start_section_scoring'
         ) );
@@ -1102,18 +1102,18 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 			
 			$counter++;
 			
-			$default  = sprintf( __( 'The text for scores between %s and %s. ', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
-			$label    = sprintf( __( 'between %s and %s', "gcmaturity-translate" ), ( $counter - 1 ), $counter );
+			$default  = sprintf( __( 'The text for scores between %s and %s. ', "ictuwp-plugin-maturityscore" ), ( $counter - 1 ), $counter );
+			$label    = sprintf( __( 'between %s and %s', "ictuwp-plugin-maturityscore" ), ( $counter - 1 ), $counter );
 			
 			if ( GCMS_C_SCORE_MAX == $counter ) {
-				$default = sprintf( __( 'Perfect score: %s!', "gcmaturity-translate" ), $counter );
+				$default = sprintf( __( 'Perfect score: %s!', "ictuwp-plugin-maturityscore" ), $counter );
 			}
 			
 			$fieldkey = $key . GCMS_SCORESEPARATOR . $counter;
 			
 			$cmb_options->add_field( array(
-				'name'          => sprintf( _x( 'Score text %s<br><small>if the total score is %s.</small>', 'score range', "gcmaturity-translate" ), $counter, $label ),
-				'description'   => sprintf( __( 'General average score %s', "gcmaturity-translate" ), $label . ' (id: ' . $fieldkey . ', option_key: ' . GCMS_C_PLUGIN_KEY . ')' ),
+				'name'          => sprintf( _x( 'Score text %s<br><small>if the total score is %s.</small>', 'score range', "ictuwp-plugin-maturityscore" ), $counter, $label ),
+				'description'   => sprintf( __( 'General average score %s', "ictuwp-plugin-maturityscore" ), $label . ' (id: ' . $fieldkey . ', option_key: ' . GCMS_C_PLUGIN_KEY . ')' ),
 				'type'          => 'wysiwyg',
 				'id'            => $fieldkey,
 				'default'       => $default
@@ -1258,18 +1258,18 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 					}
 		
 					// labels for the column headers
-					$values['cols'][ GCMS_C_TABLE_COLNR_TH ] = _x( "Chapter", "table header", "gcmaturity-translate" );
+					$values['cols'][ GCMS_C_TABLE_COLNR_TH ] = _x( "Chapter", "table header", "ictuwp-plugin-maturityscore" );
 					
 					if ( $postid ) {
-						$values['cols'][ GCMS_C_TABLE_COLNR_USER_AVERAGE ] = _x( "Your score", "table header", "gcmaturity-translate" );
+						$values['cols'][ GCMS_C_TABLE_COLNR_USER_AVERAGE ] = _x( "Your score", "table header", "ictuwp-plugin-maturityscore" );
 					}
 					
 					if ( GCMS_C_FRONTEND_SHOW_CUMULATE ) {
-//						$values['cols'][ GCMS_C_TABLE_COLNR_USER_CUMULAT ] = _x( "Score cumulated", "table header", "gcmaturity-translate" );
+//						$values['cols'][ GCMS_C_TABLE_COLNR_USER_CUMULAT ] = _x( "Score cumulated", "table header", "ictuwp-plugin-maturityscore" );
 					}
 					
 					if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-						$values['cols'][ GCMS_C_TABLE_COLNR_SITE_AVERAGE ] = _x( "Average score", "table header", "gcmaturity-translate" );
+						$values['cols'][ GCMS_C_TABLE_COLNR_SITE_AVERAGE ] = _x( "Average score", "table header", "ictuwp-plugin-maturityscore" );
 					}
 					
 					// add the default section titles to the collection
@@ -1310,7 +1310,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 			$infooter = false;
 
 
-			wp_enqueue_style( 'gc-maturityscore-frontend', GCMS_C_ASSETS_URL . 'css/gc-maturityscore.css', array(), GCMS_C_VERSION, $infooter );
+			wp_enqueue_style( 'ictuwp-plugin-maturityscore-frontend', GCMS_C_ASSETS_URL . 'css/ictuwp-plugin-maturityscore.css', array(), GCMS_C_VERSION, $infooter );
 			// contains minified versions of amcharts js files
 			wp_enqueue_script( 'gcms-action-js', GCMS_C_ASSETS_URL . 'js/min/functions-min.js', array( 'jquery' ), GCMS_C_VERSION, $infooter );
 			// get the graph for this user
@@ -1337,7 +1337,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 						id: "AmGraph-2",
 						lineColor: "' . $averagescore_color . '",
 						title: "graph 2",
-						valueField: "' . _x( "Average score", "labels", "gcmaturity-translate" ) . '"						
+						valueField: "' . _x( "Average score", "labels", "ictuwp-plugin-maturityscore" ) . '"						
 					},';
 				}
 
@@ -1385,7 +1385,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 							"fillColors": "' . $yourscore_color . '",
 							"id": "AmGraph-1",
 							"lineColor": "' . $yourscore_color . '",
-							"valueField": "' . _x( "your score", "labels", "gcmaturity-translate" ) . '"
+							"valueField": "' . _x( "your score", "labels", "ictuwp-plugin-maturityscore" ) . '"
 						}
 					],
 					"guides": [],
@@ -1554,7 +1554,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 				
 			}
 			else {
-				$returnstring .= '<p>' . __( "Oopsy daisy. There are no data to display. The survey you requested is empty. The server may have made an error in saving or retrieving the data, or more likely: our developer botched up. It's not your fault.", "gcmaturity-translate" ) . '</p>';
+				$returnstring .= '<p>' . __( "Oopsy daisy. There are no data to display. The survey you requested is empty. The server may have made an error in saving or retrieving the data, or more likely: our developer botched up. It's not your fault.", "ictuwp-plugin-maturityscore" ) . '</p>';
 			}
 			
 			return $returnstring;
@@ -1593,7 +1593,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 
     	$cmb = new_cmb2_box( array(
     		'id'            => GCMS_C_METABOX_ID,
-    		'title'         => __( "Questions and answers", "gcmaturity-translate" ),
+    		'title'         => __( "Questions and answers", "ictuwp-plugin-maturityscore" ),
     		'object_types'  => array( 'post' ),
     		'hookup'        => false,
     		'save_fields'   => true,
@@ -1689,34 +1689,34 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
       $yourmaildefault = gcmsf_get_post_or_cookie( GCMS_C_SURVEY_EMAILID );
       
       $cmb->add_field( array(
-			'name'    => _x( 'About you', 'About you section', "gcmaturity-translate" ),
+			'name'    => _x( 'About you', 'About you section', "ictuwp-plugin-maturityscore" ),
 			'type'    => 'title',
 			'id'      => GCMS_C_CMBS2_PREFIX . 'start_section_survey_user_data',
-			'desc'    => _x( 'We can send you a link to your survey results if you fill in your email address here.', 'About you section', "gcmaturity-translate" ),
+			'desc'    => _x( 'We can send you a link to your survey results if you fill in your email address here.', 'About you section', "ictuwp-plugin-maturityscore" ),
       ) );
 
 
     	$cmb->add_field( array(
-			'name'    => _x( 'Your name', 'About you section', "gcmaturity-translate" ),
+			'name'    => _x( 'Your name', 'About you section', "ictuwp-plugin-maturityscore" ),
 			'id'      => GCMS_C_SURVEY_YOURNAME,
 			'type'    => 'text',
-			'desc'    => _x( "We store your name for a maximum of 3 years; it will be visible on the resultpage. Leave this empty if you don't want this.", 'About you section', "gcmaturity-translate" ) . '<br>' . '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
+			'desc'    => _x( "We store your name for a maximum of 3 years; it will be visible on the resultpage. Leave this empty if you don't want this.", 'About you section', "ictuwp-plugin-maturityscore" ) . '<br>' . '<span class="not-required">' . _x( "(not required)", "field validation", "ictuwp-plugin-maturityscore" ) . '</span>',
 			'default' => $yournamedefault,
     	) );
 
       
     	$cmb->add_field( array(
-			'name'    => _x( 'Your emailaddress', 'About you section', "gcmaturity-translate" ),
+			'name'    => _x( 'Your emailaddress', 'About you section', "ictuwp-plugin-maturityscore" ),
 			'id'      => GCMS_C_SURVEY_EMAILID,
 			'type'    => 'text_email',
-			'desc'    => _x( 'We use this email address to email you a link to your result page.', 'About you section', "gcmaturity-translate" ) . '<br>' . '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
+			'desc'    => _x( 'We use this email address to email you a link to your result page.', 'About you section', "ictuwp-plugin-maturityscore" ) . '<br>' . '<span class="not-required">' . _x( "(not required)", "field validation", "ictuwp-plugin-maturityscore" ) . '</span>',
 			'default' => $yourmaildefault,
     	) );
     	
 
       $cmb->add_field( array(
-			'name'	=> _x( 'Permission to store emailaddress', 'About you section', "gcmaturity-translate" ),
-			'desc'	=> _x( 'Yes, keep me up to date about any developments regarding the maturity model system. You may store my email address and name for at most 3 years. Only site-admins have access to these data.', 'About you section', "gcmaturity-translate" ) . '<br>' . '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
+			'name'	=> _x( 'Permission to store emailaddress', 'About you section', "ictuwp-plugin-maturityscore" ),
+			'desc'	=> _x( 'Yes, keep me up to date about any developments regarding the maturity model system. You may store my email address and name for at most 3 years. Only site-admins have access to these data.', 'About you section', "ictuwp-plugin-maturityscore" ) . '<br>' . '<span class="not-required">' . _x( "(not required)", "field validation", "ictuwp-plugin-maturityscore" ) . '</span>',
 			'id'	=> GCMS_C_SURVEY_GDPR_CHECK,
 			'type'	=> 'checkbox',
       ) );    	
@@ -1745,7 +1745,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 			'type'    	=> 'radio',
 			'options'	=> $options,
 			'default'	=> $default,
-			'desc'		=> '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
+			'desc'		=> '<span class="not-required">' . _x( "(not required)", "field validation", "ictuwp-plugin-maturityscore" ) . '</span>',
       	) );
     
       }
@@ -1772,7 +1772,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 			'type'   	=> 'radio',
 			'options'	=> $options,
 			'default'	=> $default,
-			'desc'		=> '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
+			'desc'		=> '<span class="not-required">' . _x( "(not required)", "field validation", "ictuwp-plugin-maturityscore" ) . '</span>',
       	) );
     
       }
@@ -1800,7 +1800,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 			'type'   	=> 'radio',
 			'options'	=> $options,
 			'default'	=> $default,
-			'desc' 		=> '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
+			'desc' 		=> '<span class="not-required">' . _x( "(not required)", "field validation", "ictuwp-plugin-maturityscore" ) . '</span>',
       	) );
     
       }
@@ -1828,7 +1828,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 			'type'    	=> 'radio',
 			'options' 	=> $options,
 			'default'	=> $default,
-			'desc'		=> '<span class="not-required">' . _x( "(not required)", "field validation", "gcmaturity-translate" ) . '</span>',
+			'desc'		=> '<span class="not-required">' . _x( "(not required)", "field validation", "ictuwp-plugin-maturityscore" ) . '</span>',
       	) );
     
       }
@@ -1852,21 +1852,21 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 			$return .= '<div class="radarchart" id="amchart1" style="min-height: 500px; width: 100%" aria-labelledby="' . $titleid . '"></div>';
 			$return .= '<p id="' . $titleid . '">';
 			$return .= '<span class="visuallyhidden">';
-			$return .= _x( "Radar graph with your score in this survey.", "table description", "gcmaturity-translate" );
+			$return .= _x( "Radar graph with your score in this survey.", "table description", "ictuwp-plugin-maturityscore" );
 			$return .= '</span>';
 			
 			
 			if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-				$return .= _x( "Your score in red; average score in orange.", "table description", "gcmaturity-translate" );
+				$return .= _x( "Your score in red; average score in orange.", "table description", "ictuwp-plugin-maturityscore" );
 			}
 			else {
-				$return .= _x( "Your score in orange.", "table description", "gcmaturity-translate" );
+				$return .= _x( "Your score in orange.", "table description", "ictuwp-plugin-maturityscore" );
 			}
 			$return .= '</p>';
 			
 		}
 		else {
-			$return = '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "gcmaturity-translate" ) . '<p>';
+			$return = '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "ictuwp-plugin-maturityscore" ) . '<p>';
 		}
 		
 		
@@ -1942,19 +1942,19 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 				$site_average            	= get_option( GCMS_C_AVGS_OVERALL_AVG, 1 );
 				$collectionkey            	= GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $key;
 				
-				$punten     				= sprintf( _n( '%s point', '%s points', $overall_average, "gcmaturity-translate" ), $overall_average );
+				$punten     				= sprintf( _n( '%s point', '%s points', $overall_average, "ictuwp-plugin-maturityscore" ), $overall_average );
 				$fieldkey   				= $key . GCMS_SCORESEPARATOR . number_format_i18n( $this->survey_data['averages']['overall'], 0 ); 
 				
-				$return     				.= '<p>' . sprintf( __( 'Your average score was %s. ', "gcmaturity-translate" ), $punten );
+				$return     				.= '<p>' . sprintf( __( 'Your average score was %s. ', "ictuwp-plugin-maturityscore" ), $punten );
 
 				if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-					$return     .= sprintf( _n( 'Thus far, we received %s survey, ', 'Thus far, we received %s surveys, ', $total_number_of_surveys, "gcmaturity-translate" ), $total_number_of_surveys );
-					$return   .= sprintf( __( ' and the overall average score is %s. ', "gcmaturity-translate" ), $site_average );
+					$return     .= sprintf( _n( 'Thus far, we received %s survey, ', 'Thus far, we received %s surveys, ', $total_number_of_surveys, "ictuwp-plugin-maturityscore" ), $total_number_of_surveys );
+					$return   .= sprintf( __( ' and the overall average score is %s. ', "ictuwp-plugin-maturityscore" ), $site_average );
 				}          
 				
 				$return     .= '</p>';
 				$return     .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey, '', GCMS_C_PLUGIN_KEY ) . '</p>';
-				$return     .= '<h2>' . __( 'Score per section', "gcmaturity-translate" ) . '</h2>';
+				$return     .= '<h2>' . __( 'Score per section', "ictuwp-plugin-maturityscore" ) . '</h2>';
 				
 				$counter = 0;
 				
@@ -1977,34 +1977,34 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 					
 					$return .= '<section aria-labelledby="' . $titleid . '" id="' . $thesectionid . '" class="survey-result">';
 					$return .= '<h3 class="rating-section-title"><span id="' . $titleid . '">' . $titel;
-					$return .= ' <span class="visuallyhidden">' . sprintf( _x( ' - your score: %s', 'Your score for visually impaired users', "gcmaturity-translate" ), $jouwgemiddelde ) . '</span> ' . $this->gcmsf_frontend_get_percentage( $jouwgemiddelde, GCMS_C_SCORE_MAX );
+					$return .= ' <span class="visuallyhidden">' . sprintf( _x( ' - your score: %s', 'Your score for visually impaired users', "ictuwp-plugin-maturityscore" ), $jouwgemiddelde ) . '</span> ' . $this->gcmsf_frontend_get_percentage( $jouwgemiddelde, GCMS_C_SCORE_MAX );
 					
 					$return .= '</h3>';
 					$return .= '<p>' . gcms_aux_get_value_for_cmb2_key( $fieldkey, $fieldkey, $collectionkey ) . '</p>';
 					$return .= '<details>';
-					$return .= '  <summary>' . _x( "Review your answers", "interpretatie", "gcmaturity-translate" ) . '</summary>';
+					$return .= '  <summary>' . _x( "Review your answers", "interpretatie", "ictuwp-plugin-maturityscore" ) . '</summary>';
 					
 					if ( $value ) {
 						$return .= '<dl>';
 	
 						foreach( $value as $vragen => $antwoorden ){        
-							$return .= '<dt>' . _x( "Question", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+							$return .= '<dt>' . _x( "Question", "interpretatie", "ictuwp-plugin-maturityscore" ) . '</dt>';
 							$return .= '<dd>' . $antwoorden['question_label'] . '</dd>';
 							
-							$return .= '<dt>' . _x( "Your answer", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+							$return .= '<dt>' . _x( "Your answer", "interpretatie", "ictuwp-plugin-maturityscore" ) . '</dt>';
 							$return .= '<dd>' . $antwoorden['answer_label'] . '</dd>';
 							
-							$score = sprintf( _n( '%s point', '%s points', $antwoorden['answer_value'], "gcmaturity-translate" ), $antwoorden['answer_value'] );
+							$score = sprintf( _n( '%s point', '%s points', $antwoorden['answer_value'], "ictuwp-plugin-maturityscore" ), $antwoorden['answer_value'] );
 							
 							if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-								$return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+								$return .= '<dt>' . _x( "Score", "interpretatie", "ictuwp-plugin-maturityscore" ) . '</dt>';
 								$return .= '<dd>' . $score . '</dd>';
 								
-								$return .= '<dt class="space-me">' . _x( "Average score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+								$return .= '<dt class="space-me">' . _x( "Average score", "interpretatie", "ictuwp-plugin-maturityscore" ) . '</dt>';
 								$return .= '<dd class="space-me">' . $antwoorden['answer_site_average'] . '</dd>';
 							}
 							else {
-								$return .= '<dt>' . _x( "Score", "interpretatie", "gcmaturity-translate" ) . '</dt>';
+								$return .= '<dt>' . _x( "Score", "interpretatie", "ictuwp-plugin-maturityscore" ) . '</dt>';
 								$return .= '<dd class="space-me">' . $score . '</dd>';
 							}
 						}
@@ -2019,7 +2019,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 			}
 		}
 		else {
-			$return .= '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "gcmaturity-translate" ) . '<p>';
+			$return .= '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "ictuwp-plugin-maturityscore" ) . '<p>';
 		}      
 		
 		if ( $doecho ) {
@@ -2048,10 +2048,10 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 				$return .= '	<table class="gcms-score">' . "\n";
 				
 				if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-					$return .= '<caption>' . _x( "Average score and your score per section", "table description", "gcmaturity-translate" ) . "</caption>\n";
+					$return .= '<caption>' . _x( "Average score and your score per section", "table description", "ictuwp-plugin-maturityscore" ) . "</caption>\n";
 				}
 				else {
-					$return .= '<caption>' . _x( "Your score per section", "table description", "gcmaturity-translate" ) . "</caption>\n";
+					$return .= '<caption>' . _x( "Your score per section", "table description", "ictuwp-plugin-maturityscore" ) . "</caption>\n";
 				}
 				$return .= '<tr>';
 
@@ -2081,14 +2081,14 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 						$return .= "</tr>\n";
 					}
 
-					$overalltext = sprintf( _x( '%s average', 'table user average score', "gcmaturity-translate" ), number_format_i18n( ( $usercumulate / $rowcounter ), 1) );
+					$overalltext = sprintf( _x( '%s average', 'table user average score', "ictuwp-plugin-maturityscore" ), number_format_i18n( ( $usercumulate / $rowcounter ), 1) );
 
 					$return .= '<tr>';
-					$return .= '<th scope="row">' . _x( "Total", "table description", "gcmaturity-translate" ) . '</th>';
+					$return .= '<th scope="row">' . _x( "Total", "table description", "ictuwp-plugin-maturityscore" ) . '</th>';
 					$return .= '<td>' . number_format_i18n( $usercumulate, 1)  . " (" . $overalltext . ")<br>" . $this->gcmsf_frontend_get_percentage( number_format_i18n( ( $usercumulate / $rowcounter ), 1), GCMS_C_SCORE_MAX, false ) . " </td>";
 					
 					if ( GCMS_C_FRONTEND_SHOW_AVERAGES ) {
-						$overalltext = sprintf( _x( '%s average', 'table overall average score', "gcmaturity-translate" ), number_format_i18n( ( $overallcumulate / $rowcounter ), 1) );
+						$overalltext = sprintf( _x( '%s average', 'table overall average score', "ictuwp-plugin-maturityscore" ), number_format_i18n( ( $overallcumulate / $rowcounter ), 1) );
 						$return .= '<td>' . number_format_i18n( $overallcumulate, 1)  . " (" . $overalltext . ")<br>" . $this->gcmsf_frontend_get_percentage( $overallcumulate / $rowcounter, GCMS_C_SCORE_MAX, false ) . " </td>";
 					}              
 					$return .= "</tr>\n";
@@ -2098,7 +2098,7 @@ if ( ! class_exists( 'GC_MaturityPlugin' ) ) :
 				$return .= "</table>\n";
 			}
 			else {
-				$return .= '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "gcmaturity-translate" ) . '<p>';
+				$return .= '<p>' . _x( "No data available. Not your fault, blame the server.", "no data error", "ictuwp-plugin-maturityscore" ) . '<p>';
 			}
 		}
 		
@@ -2141,7 +2141,7 @@ endif;
 
 //========================================================================================================
 
-add_action( 'plugins_loaded', array( 'GC_MaturityPlugin', 'init' ), 10 );
+add_action( 'plugins_loaded', array( 'ictuwp_plugin_maturityscore_Plugin', 'init' ), 10 );
 
 //========================================================================================================
 
@@ -2166,12 +2166,12 @@ function gcmsf_frontend_register_shortcode( $atts = array() ) {
 	// Get any submission errors
 	if ( ( $error = $cmb->prop( 'submission_error' ) ) && is_wp_error( $error ) ) {
 		// If there was an error with the submission, add it to our ouput.
-		$output .= '<h2>' . sprintf( __( 'Your survey is not saved; errors occurred: %s', "gcmaturity-translate" ), '<strong>'. $error->get_error_message() .'</strong>' ) . '</h2>';
+		$output .= '<h2>' . sprintf( __( 'Your survey is not saved; errors occurred: %s', "ictuwp-plugin-maturityscore" ), '<strong>'. $error->get_error_message() .'</strong>' ) . '</h2>';
 	}
 
 
 	// Get our form
-	$output .= cmb2_get_metabox_form( $cmb, GCMS_CMB2_RANDOM_OBJECT_ID, array( 'save_button' => __( "Submit", "gcmaturity-translate" ) ) );
+	$output .= cmb2_get_metabox_form( $cmb, GCMS_CMB2_RANDOM_OBJECT_ID, array( 'save_button' => __( "Submit", "ictuwp-plugin-maturityscore" ) ) );
 
 	return $output;
 
@@ -2226,7 +2226,7 @@ function gcmsf_frontend_form_handle_posting() {
 	
 	// Check security nonce
 	if ( ! isset( $_POST[ $cmb->nonce() ] ) || ! wp_verify_nonce( $_POST[ $cmb->nonce() ], $cmb->nonce() ) ) {
-		return $cmb->prop( 'submission_error', new WP_Error( 'security_fail', __( "Security checks for your form submission failed. Your data will be discarded.", "gcmaturity-translate" ) ) );
+		return $cmb->prop( 'submission_error', new WP_Error( 'security_fail', __( "Security checks for your form submission failed. Your data will be discarded.", "ictuwp-plugin-maturityscore" ) ) );
 	}
 	
 	
@@ -2239,7 +2239,7 @@ function gcmsf_frontend_form_handle_posting() {
 	
 	// Check name submitted
 	if ( empty( $_POST[ GCMS_C_SURVEY_YOURNAME ] ) ) {
-		$sanitized_values[ GCMS_C_SURVEY_POSTTITLE ] = __( "Your organisation's score", "gcmaturity-translate" ) . ' (' . $datum . ')';
+		$sanitized_values[ GCMS_C_SURVEY_POSTTITLE ] = __( "Your organisation's score", "ictuwp-plugin-maturityscore" ) . ' (' . $datum . ')';
 	}
 	else {
 		$sanitized_values[ GCMS_C_SURVEY_POSTTITLE ] = $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] . ' (' . $datum . ')';
@@ -2261,12 +2261,12 @@ function gcmsf_frontend_form_handle_posting() {
 	$post_content = '';
 	
 	if ( isset( $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] ) ) {
-		$post_content .= _x( 'Your name', 'naam', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] . '<br>';
+		$post_content .= _x( 'Your name', 'naam', "ictuwp-plugin-maturityscore" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] . '<br>';
 		setcookie( GCMS_C_SURVEY_YOURNAME , $sanitized_values[ GCMS_C_SURVEY_YOURNAME ], time() + ( 3600 * 24 * 60 ), '/');
 	}
 	
 	if ( isset( $sanitized_values[ GCMS_C_SURVEY_EMAILID ] ) ) {
-		$post_content .= _x( 'Your email address', 'email', "gcmaturity-translate" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_EMAILID ] . '<br>';
+		$post_content .= _x( 'Your email address', 'email', "ictuwp-plugin-maturityscore" ) . '=' . $sanitized_values[ GCMS_C_SURVEY_EMAILID ] . '<br>';
 		setcookie( GCMS_C_SURVEY_EMAILID , $sanitized_values[ GCMS_C_SURVEY_EMAILID ], time() + ( 3600 * 24 * 60 ), '/');
 	}
 
@@ -2295,14 +2295,14 @@ function gcmsf_frontend_form_handle_posting() {
 //			'description'   => '(id: ' . GCMS_C_TEXTEMAIL . ', option_key: ' . GCMS_C_PLUGIN_KEY . ')',
 
 			
-			$mailtext = gcms_aux_get_value_for_cmb2_key( GCMS_C_TEXTEMAIL, _x( 'No mail text found', 'email', "gcmaturity-translate" ), GCMS_C_PLUGIN_KEY );
+			$mailtext = gcms_aux_get_value_for_cmb2_key( GCMS_C_TEXTEMAIL, _x( 'No mail text found', 'email', "ictuwp-plugin-maturityscore" ), GCMS_C_PLUGIN_KEY );
 			$mailtext = str_replace( GCMS_C_URLPLACEHOLDER, '<a href="' . $theurl . '">' . $theurl . '</a>', $mailtext );
 			$mailtext = str_replace( GCMS_C_NAMEPLACEHOLDER, $sanitized_values[ GCMS_C_SURVEY_YOURNAME ], $mailtext );
 			
 			$mailfrom_address = gcms_aux_get_value_for_cmb2_key( 'mail-from-address', 'info@gebruikercentraal.nl', GCMS_C_PLUGIN_KEY );
 			$mailfrom_name    = gcms_aux_get_value_for_cmb2_key( 'mail-from-name', 'Gebruiker Centraal', GCMS_C_PLUGIN_KEY );
 			
-			$subject  = gcms_aux_get_value_for_cmb2_key( 'mail-subject', _x( 'Link to your survey results', "email settings", "gcmaturity-translate" ), GCMS_C_PLUGIN_KEY );
+			$subject  = gcms_aux_get_value_for_cmb2_key( 'mail-subject', _x( 'Link to your survey results', "email settings", "ictuwp-plugin-maturityscore" ), GCMS_C_PLUGIN_KEY );
 			$headers  = array(
 					'From: ' . $mailfrom_name . ' <' . $mailfrom_address . '>'
 				);
@@ -2530,7 +2530,7 @@ if (! function_exists( 'gcmsf_data_get_survey_json' ) ) {
 add_action( 'wp_enqueue_scripts', 'gcmsf_aux_remove_cruft', 100 ); // high prio, to ensure all junk is discarded
 
 /**
- * Unhook GC_Maturity styles from WordPress
+ * Unhook ictuwp-plugin-maturityscore styles from WordPress
  */
 function gcmsf_aux_remove_cruft() {
 
@@ -2674,8 +2674,8 @@ if (! function_exists( 'dodebug' ) ) {
  */
 function gcmsf_init_load_plugin_textdomain() {
 
-  //          load_plugin_textdomain( "gcmaturity-translate", false, GCMS_C_PATH_LANGUAGES );
-  load_plugin_textdomain( "gcmaturity-translate", false, basename( dirname( __FILE__ ) ) . '/languages' );
+  //          load_plugin_textdomain( "ictuwp-plugin-maturityscore", false, GCMS_C_PATH_LANGUAGES );
+  load_plugin_textdomain( "ictuwp-plugin-maturityscore", false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 }
 
