@@ -22,7 +22,7 @@ class CMB2_Type_Title extends CMB2_Type_Base {
 		$tag  = 'span';
 
 		if ( ! empty( $name ) ) {
-			$tag = $this->field->object_type == 'post' ? 'h2' : 'h3';
+			$tag = $this->field->object_type == 'post' ? 'h5' : 'h3';
 		}
 
 		$a = $this->parse_args( 'title', array(
