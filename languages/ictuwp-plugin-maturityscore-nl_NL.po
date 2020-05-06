@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GC Maturity\n"
 "POT-Creation-Date: 2020-05-06 12:28+0200\n"
-"PO-Revision-Date: 2020-05-06 13:40+0200\n"
+"PO-Revision-Date: 2020-05-06 13:43+0200\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: paul@wbvb.nl\n"
 "Language: nl_NL\n"
@@ -1086,7 +1086,7 @@ msgstr "Gemiddelde score en jouw score per onderdeel"
 #: ictuwp-plugin-maturityscore.php:2054
 msgctxt "table description"
 msgid "Your score per section"
-msgstr "Score per los onderdeel"
+msgstr "Score per onderdeel"
 
 #: ictuwp-plugin-maturityscore.php:2084
 #, php-format
