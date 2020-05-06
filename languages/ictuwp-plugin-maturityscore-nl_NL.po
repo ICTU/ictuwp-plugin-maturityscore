@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GC Maturity\n"
-"POT-Creation-Date: 2020-03-04 13:32+0100\n"
-"PO-Revision-Date: 2020-03-04 13:33+0100\n"
+"POT-Creation-Date: 2020-05-06 12:28+0200\n"
+"PO-Revision-Date: 2020-05-06 12:28+0200\n"
 "Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
 "Language-Team: paul@wbvb.nl\n"
 "Language: nl_NL\n"
@@ -105,21 +105,6 @@ msgstr ""
 #: cmb2/includes/types/CMB2_Type_File_Base.php:79
 #: cmb2/tests/test-cmb-types-base.php:149 cmb2/tests/test-cmb-types.php:959
 msgid "File:"
-msgstr ""
-
-#: cmb2/includes/CMB2_Hookup.php:188
-msgid ""
-"Term Metadata is a WordPress 4.4+ feature. Please upgrade your WordPress "
-"install."
-msgstr ""
-
-#: cmb2/includes/CMB2_Hookup.php:192
-msgid "Term metaboxes configuration requires a \"taxonomies\" parameter."
-msgstr ""
-
-#: cmb2/includes/CMB2_Hookup.php:550
-#, php-format
-msgid "Toggle panel: %s"
 msgstr ""
 
 #: cmb2/includes/CMB2_Hookup_Base.php:44
@@ -264,6 +249,21 @@ msgstr ""
 #: cmb2/includes/CMB2_Types.php:408 cmb2/tests/test-cmb-types.php:47
 #: cmb2/tests/test-cmb-types.php:55
 msgid "Remove Row"
+msgstr ""
+
+#: cmb2/includes/CMB2_hookup.php:188
+msgid ""
+"Term Metadata is a WordPress 4.4+ feature. Please upgrade your WordPress "
+"install."
+msgstr ""
+
+#: cmb2/includes/CMB2_hookup.php:192
+msgid "Term metaboxes configuration requires a \"taxonomies\" parameter."
+msgstr ""
+
+#: cmb2/includes/CMB2_hookup.php:550
+#, php-format
+msgid "Toggle panel: %s"
 msgstr ""
 
 #: cmb2/includes/helper-functions.php:307
@@ -1086,7 +1086,7 @@ msgstr "Gemiddelde score en jouw score per onderdeel"
 #: ictuwp-plugin-maturityscore.php:2054
 msgctxt "table description"
 msgid "Your score per section"
-msgstr "Je score per onderdeel"
+msgstr "Score per onderdeel"
 
 #: ictuwp-plugin-maturityscore.php:2084
 #, php-format
@@ -1164,6 +1164,10 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://wbvb.nl"
 msgstr ""
+
+#~ msgctxt "table description"
+#~ msgid "XXX ONVERTAALD Your score per section"
+#~ msgstr "(VERTAALD) Je score per onderdeel"
 
 #, php-format
 #~ msgid "No text available for %s."
