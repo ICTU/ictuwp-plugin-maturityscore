@@ -1,6 +1,12 @@
 # ICTU - GC volwassenheidsscore-plugin
 
-Gebruiker Centraal - Volwassenheidsscore plugin
+Gebruiker Centraal - Volwassenheidsscore plugin.
+Gebouwd in 2018 voor 
+
+## Gebruik
+Gebruik deze shortcode om de enquee op een pagina te tonen:
+
+[gcms_survey]
 
 ## Contact
 Paul van Buuren (paul@wbvb.nl)
