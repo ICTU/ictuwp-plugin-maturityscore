@@ -32,3 +32,5 @@ deleteme.php
 *.bak
 *.codekit3
 oude-code-grafiek.html
+.idea/
+
