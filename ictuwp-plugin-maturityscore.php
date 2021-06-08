@@ -1,6 +1,6 @@
 <?php
 /*
- * ictuwp-plugin-maturityscore 
+ * ictuwp-plugin-maturityscore
  *
  * Plugin Name:         ICTU / Gebruiker Centraal / Maturity Scan Plugin
  * Plugin URI:          https://github.com/ICTU/ictuwp-plugin-maturityscore/
@@ -119,10 +119,10 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 			define( 'GCMS_C_PLUGIN_GENESIS_ACTIVE', true ); // todo: inbouwen check op actief zijn van Genesis framework
 			define( 'GCMS_C_PLUGIN_AMCHART_ACTIVE', true ); // todo: inbouwen check op actief zijn AM-chart of op AM-chart licentie
 
-//        define( 'GCMS_C_FRONTEND_SHOW_AVERAGES',  true ); 
+//        define( 'GCMS_C_FRONTEND_SHOW_AVERAGES',  true );
 			define( 'GCMS_C_FRONTEND_SHOW_AVERAGES', false );
 
-//        define( 'GCMS_C_FRONTEND_SHOW_CUMULATE',  true ); 
+//        define( 'GCMS_C_FRONTEND_SHOW_CUMULATE',  true );
 			define( 'GCMS_C_FRONTEND_SHOW_CUMULATE', false );
 
 			define( 'GCMS_C_AVGS_NR_SURVEYS', 'gcmsf_total_number_surveys3' );
@@ -1346,7 +1346,7 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 						id: "AmGraph-2",
 						lineColor: "' . $averagescore_color . '",
 						title: "graph 2",
-						valueField: "' . _x( "Average score", "labels", "ictuwp-plugin-maturityscore" ) . '"						
+						valueField: "' . _x( "Average score", "labels", "ictuwp-plugin-maturityscore" ) . '"
 					},';
 					}
 
@@ -1389,7 +1389,7 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 							"bulletOffset": -1,
 							"bulletSize": 18,
 							"customBullet": "' . GCMS_C_ASSETS_URL . '/images/star.svg",
-							"customMarker": "",                  
+							"customMarker": "",
 							"fillAlphas": 0.15,
 							"fillColors": "' . $yourscore_color . '",
 							"id": "AmGraph-1",
@@ -1527,7 +1527,7 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 
 					wp_add_inline_script( 'gcms-action-js',
 						'try {
-						var amchart1 = AmCharts.makeChart( "amchart1", 
+						var amchart1 = AmCharts.makeChart( "amchart1",
 						' . $thedata . ' );
 					}
 					catch( err ) { console.log( err ); } ' );
@@ -2238,7 +2238,7 @@ function gcmsf_frontend_form_handle_posting() {
 		$sanitized_values[ GCMS_C_SURVEY_POSTTITLE ] = $sanitized_values[ GCMS_C_SURVEY_YOURNAME ] . ' (' . $datum . ')';
 	}
 
-//	$rand   = $aantalenquetes . '-' . substr( md5( microtime() ),rand( 0, 26 ), 20 );	
+//	$rand   = $aantalenquetes . '-' . substr( md5( microtime() ),rand( 0, 26 ), 20 );
 	$rand = substr( md5( microtime() ), rand( 0, 26 ), 20 );
 
 	// Current user
@@ -2566,7 +2566,7 @@ if ( ! function_exists( 'gcmsf_aux_write_to_log' ) ) {
  * @return mixed           Option value
  * @since  0.1.0
  */
-function gcms_aux_get_value_for_cmb2_key( $key = '', $default, $optionkey ) {
+function gcms_aux_get_value_for_cmb2_key( $key = '', $default = '', $optionkey = '' ) {
 
 	$return = '';
 
