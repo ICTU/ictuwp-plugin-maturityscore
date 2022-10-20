@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GC Maturity\n"
-"POT-Creation-Date: 2020-05-06 12:28+0200\n"
-"PO-Revision-Date: 2020-05-06 13:43+0200\n"
-"Last-Translator: Paul van Buuren <paul@wbvb.nl>\n"
+"POT-Creation-Date: 2022-10-20 22:40+0200\n"
+"PO-Revision-Date: 2022-10-20 22:40+0200\n"
+"Last-Translator: Paul van Buuren <poedit@wbvb.nl>\n"
 "Language-Team: paul@wbvb.nl\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.1.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: ictuwp-plugin-maturityscore.php\n"
@@ -21,621 +21,196 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: cmb2/includes/CMB2.php:199
-msgid "Metabox configuration is required to have an ID parameter."
+#: ictuwp-plugin-maturityscore.php:171
+msgctxt "honeypot-label"
+msgid "Laat dit veld leeg!"
 msgstr ""
 
-#: cmb2/includes/CMB2.php:609
-msgid "Click to toggle"
-msgstr ""
-
-#: cmb2/includes/CMB2_Ajax.php:75
-msgid "Please Try Again"
-msgstr ""
-
-#: cmb2/includes/CMB2_Ajax.php:181 cmb2/tests/cmb-tests-base.php:50
-msgid "Remove Embed"
-msgstr ""
-
-#. translators: 1: results for. 2: link to codex.wordpress.org/Embeds
-#: cmb2/includes/CMB2_Ajax.php:189 cmb2/includes/helper-functions.php:107
-#: cmb2/tests/cmb-tests-base.php:68 cmb2/tests/test-cmb-types-display.php:208
-#, php-format
-msgid "No oEmbed Results Found for %1$s. View more info at %2$s."
-msgstr ""
-
-#: cmb2/includes/CMB2_Base.php:422
-#, php-format
-msgid ""
-"The \"%1$s\" field parameter has been deprecated in favor of the \"%2$s\" "
-"parameter."
-msgstr ""
-
-#: cmb2/includes/CMB2_Base.php:426
-#, php-format
-msgid ""
-"Using the \"%1$s\" field parameter as a callback has been deprecated in "
-"favor of the \"%2$s\" parameter."
-msgstr ""
-
-#: cmb2/includes/CMB2_Base.php:456
-#, php-format
-msgid ""
-"%1$s was called with a parameter that is <strong>deprecated</strong> since "
-"version %2$s! %3$s"
-msgstr ""
-
-#: cmb2/includes/CMB2_Base.php:458
-#, php-format
-msgid ""
-"%1$s was called with a parameter that is <strong>deprecated</strong> since "
-"version %2$s with no alternative available."
-msgstr ""
-
-#: cmb2/includes/CMB2_Base.php:491 cmb2/includes/CMB2_Hookup_Base.php:102
-#: cmb2/includes/CMB2_Options.php:247 cmb2/includes/CMB2_Options_Hookup.php:357
-#: cmb2/includes/types/CMB2_Type_Base.php:173
-#, php-format
-msgid "Invalid %1$s property: %2$s"
-msgstr "Ongeldige waarde %1$s method: %2$s"
-
-#: cmb2/includes/CMB2_Base.php:509 cmb2/includes/types/CMB2_Type_Base.php:157
-#, php-format
-msgid "Invalid %1$s method: %2$s"
-msgstr "Ongeldige aanroep %1$s method: %2$s"
-
-#: cmb2/includes/CMB2_Field.php:1438
-msgid "Add Group"
-msgstr ""
-
-#: cmb2/includes/CMB2_Field.php:1439
-msgid "Remove Group"
-msgstr ""
-
-#: cmb2/includes/CMB2_Field.php:1471 cmb2/includes/CMB2_Field.php:1475
-#: cmb2/tests/test-cmb-field.php:237
-msgid "None"
-msgstr ""
-
-#: cmb2/includes/CMB2_Field.php:1589
-msgid "Sorry, this field does not have a cmb_id specified."
-msgstr ""
-
-#: cmb2/includes/CMB2_Field_Display.php:453 cmb2/includes/CMB2_JS.php:242
-#: cmb2/includes/types/CMB2_Type_File_Base.php:79
-#: cmb2/tests/test-cmb-types-base.php:149 cmb2/tests/test-cmb-types.php:959
-msgid "File:"
-msgstr ""
-
-#: cmb2/includes/CMB2_Hookup_Base.php:44
-#, php-format
-msgid "%1$s should be implemented by the extended class."
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:177 cmb2/includes/CMB2_JS.php:222
-msgid "Clear"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:178
-msgid "Default"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:179
-msgid "Select Color"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:180
-msgid "Current Color"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:212
-msgctxt "Valid formatDate string for jquery-ui datepicker"
-msgid "mm/dd/yy"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:213
-msgid "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:214
-msgid "Su, Mo, Tu, We, Th, Fr, Sa"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:215
-msgid "Sun, Mon, Tue, Wed, Thu, Fri, Sat"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:216
-msgid ""
-"January, February, March, April, May, June, July, August, September, "
-"October, November, December"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:217
-msgid "Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:218
-msgid "Next"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:219
-msgid "Prev"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:220
-msgid "Today"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:221 cmb2/includes/CMB2_JS.php:231
-msgid "Done"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:225
-msgid "Choose Time"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:226
-msgid "Time"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:227
-msgid "Hour"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:228
-msgid "Minute"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:229
-msgid "Second"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:230
-msgid "Now"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:232
-msgctxt ""
-"Valid formatting string, as per http://trentrichardson.com/examples/"
-"timepicker/"
-msgid "hh:mm TT"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:238
-msgid "Use this file"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:239
-msgid "Use these files"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:240 cmb2/includes/types/CMB2_Type_File_Base.php:64
-msgid "Remove Image"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:241 cmb2/includes/CMB2_Types.php:408
-#: cmb2/includes/types/CMB2_Type_File_Base.php:84
-#: cmb2/tests/test-cmb-types-base.php:149 cmb2/tests/test-cmb-types.php:47
-#: cmb2/tests/test-cmb-types.php:55 cmb2/tests/test-cmb-types.php:959
-msgid "Remove"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:243 cmb2/includes/types/CMB2_Type_File_Base.php:82
-#: cmb2/tests/test-cmb-types-base.php:149 cmb2/tests/test-cmb-types.php:959
-msgid "Download"
-msgstr ""
-
-#: cmb2/includes/CMB2_JS.php:244
-msgid "Select / Deselect All"
-msgstr ""
-
-#: cmb2/includes/CMB2_Options_Hookup.php:139
-msgid "Nothing to update."
-msgstr ""
-
-#: cmb2/includes/CMB2_Options_Hookup.php:143
-msgid "Settings updated."
-msgstr ""
-
-#: cmb2/includes/CMB2_Types.php:226
-msgid "Custom CMB2 field type classes must extend CMB2_Type_Base."
-msgstr ""
-
-#: cmb2/includes/CMB2_Types.php:344
-msgid "Add Row"
-msgstr ""
-
-#: cmb2/includes/CMB2_Types.php:408 cmb2/tests/test-cmb-types.php:47
-#: cmb2/tests/test-cmb-types.php:55
-msgid "Remove Row"
-msgstr ""
-
-#: cmb2/includes/CMB2_hookup.php:188
-msgid ""
-"Term Metadata is a WordPress 4.4+ feature. Please upgrade your WordPress "
-"install."
-msgstr ""
-
-#: cmb2/includes/CMB2_hookup.php:192
-msgid "Term metaboxes configuration requires a \"taxonomies\" parameter."
-msgstr ""
-
-#: cmb2/includes/CMB2_hookup.php:550
-#, php-format
-msgid "Toggle panel: %s"
-msgstr ""
-
-#: cmb2/includes/helper-functions.php:307
-msgid "Save"
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller.php:257
-msgid "This box does not have read permissions."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller.php:277
-msgid "This box does not have write permissions."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller.php:300
-msgid ""
-"No box found by that id. A box needs to be registered with the \"show_in_rest"
-"\" parameter configured."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller.php:378
-msgid "A human-readable description of the object."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller.php:385
-msgid "The id for the object."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller.php:392
-msgid "The title for the object."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:51
-msgid "Includes the registered fields for the box in the response."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:72
-msgid ""
-"Includes the fully rendered attributes, 'form_open', 'form_close', as well "
-"as the enqueued 'js_dependencies' script handles, and 'css_dependencies' "
-"stylesheet handles."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:122
-msgid "No boxes found."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:27
-msgid ""
-"Includes the box object which the fields are registered to in the response."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:30
-msgid ""
-"When the '_rendered' argument is passed, the renderable field attributes "
-"will be returned fully rendered. By default, the names of the callback "
-"handers for the renderable attributes will be returned."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:33
-#: cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:36
-msgid ""
-"To view or modify the field's value, the 'object_id' and 'object_type' "
-"arguments are required."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:236
-#: cmb2/tests/test-cmb-rest-controllers.php:247
-msgid ""
-"CMB2 Field value cannot be updated without the value parameter specified."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:297
-#: cmb2/tests/test-cmb-rest-controllers.php:258
-#: cmb2/tests/test-cmb-rest-controllers.php:269
-msgid ""
-"CMB2 Field value cannot be modified without the object_id and object_type "
-"parameters specified."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:312
-#: cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:341
-msgid "No field found by that id."
-msgstr ""
-
-#: cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:415
-#, php-format
-msgid "Value Error for %s"
-msgstr ""
-
-#. translators: %s: register_routes()
-#: cmb2/includes/shim/WP_REST_Controller.php:25
-#, php-format
-msgid "Method '%s' must be overridden."
-msgstr ""
-
-#: cmb2/includes/shim/WP_REST_Controller.php:35
-#: cmb2/includes/shim/WP_REST_Controller.php:47
-#: cmb2/includes/shim/WP_REST_Controller.php:59
-#: cmb2/includes/shim/WP_REST_Controller.php:71
-#: cmb2/includes/shim/WP_REST_Controller.php:83
-#: cmb2/includes/shim/WP_REST_Controller.php:95
-#: cmb2/includes/shim/WP_REST_Controller.php:107
-#: cmb2/includes/shim/WP_REST_Controller.php:119
-#: cmb2/includes/shim/WP_REST_Controller.php:131
-#: cmb2/includes/shim/WP_REST_Controller.php:143
-#: cmb2/includes/shim/WP_REST_Controller.php:155
-#: cmb2/includes/shim/WP_REST_Controller.php:168
-#, php-format
-msgid "Method '%s' not implemented. Must be overridden in subclass."
-msgstr ""
-
-#: cmb2/includes/shim/WP_REST_Controller.php:273
-msgid "Current page of the collection."
-msgstr ""
-
-#: cmb2/includes/shim/WP_REST_Controller.php:281
-msgid "Maximum number of items to be returned in result set."
-msgstr ""
-
-#: cmb2/includes/shim/WP_REST_Controller.php:290
-msgid "Limit results to those matching a string."
-msgstr ""
-
-#: cmb2/includes/shim/WP_REST_Controller.php:308
-msgid ""
-"Scope under which the request is made; determines fields present in response."
-msgstr ""
-
-#: cmb2/includes/types/CMB2_Type_Counter_Base.php:50
-msgid "Words left"
-msgstr ""
-
-#: cmb2/includes/types/CMB2_Type_Counter_Base.php:51
-msgid "Words"
-msgstr ""
-
-#: cmb2/includes/types/CMB2_Type_Counter_Base.php:56
-msgid "Characters left"
-msgstr ""
-
-#: cmb2/includes/types/CMB2_Type_Counter_Base.php:57
-msgid "Characters"
-msgstr ""
-
-#: cmb2/includes/types/CMB2_Type_Counter_Base.php:62
-msgid "Your text may be truncated."
-msgstr ""
-
-#: cmb2/includes/types/CMB2_Type_File.php:76 cmb2/tests/test-cmb-types.php:935
-#: cmb2/tests/test-cmb-types.php:959
-msgid "Add or Upload File"
-msgstr ""
-
-#: cmb2/includes/types/CMB2_Type_File_List.php:41
-#: cmb2/tests/test-cmb-types.php:882 cmb2/tests/test-cmb-types.php:915
-msgid "Add or Upload Files"
-msgstr ""
-
-#: cmb2/includes/types/CMB2_Type_Taxonomy_Base.php:115
-msgid "No terms"
-msgstr ""
-
-#: cmb2/tests/test-cmb-field.php:263
-msgid "Test Metabox"
-msgstr ""
-
-#: cmb2/tests/test-cmb-field.php:274
-msgid "Test Multi Checkbox"
-msgstr ""
-
-#: cmb2/tests/test-cmb-field.php:275
-msgid "field description (optional)"
-msgstr ""
-
-#: cmb2/tests/test-cmb-field.php:280
-msgid "Check One"
-msgstr ""
-
-#: cmb2/tests/test-cmb-field.php:281
-msgid "Check Two"
-msgstr ""
-
-#: cmb2/tests/test-cmb-field.php:282
-msgid "Check Three"
-msgstr ""
-
-#: ictuwp-plugin-maturityscore.php:324
+#: ictuwp-plugin-maturityscore.php:323
 msgctxt "labels"
 msgid "Survey"
 msgstr "Scan"
 
-#: ictuwp-plugin-maturityscore.php:325
+#: ictuwp-plugin-maturityscore.php:324
 msgctxt "labels"
 msgid "Surveys"
 msgstr "Scans"
 
-#: ictuwp-plugin-maturityscore.php:327
+#: ictuwp-plugin-maturityscore.php:326
 msgctxt "labels"
 msgid "survey"
 msgstr "scan"
 
-#: ictuwp-plugin-maturityscore.php:328
+#: ictuwp-plugin-maturityscore.php:327
 msgctxt "labels"
 msgid "surveys"
 msgstr "scans"
 
-#: ictuwp-plugin-maturityscore.php:334 ictuwp-plugin-maturityscore.php:384
-#: ictuwp-plugin-maturityscore.php:430 ictuwp-plugin-maturityscore.php:475
-#: ictuwp-plugin-maturityscore.php:520
+#: ictuwp-plugin-maturityscore.php:333 ictuwp-plugin-maturityscore.php:383
+#: ictuwp-plugin-maturityscore.php:429 ictuwp-plugin-maturityscore.php:474
+#: ictuwp-plugin-maturityscore.php:519
 #, php-format
 msgctxt "labels"
 msgid "All %s"
 msgstr "Alle  %s"
 
-#: ictuwp-plugin-maturityscore.php:335 ictuwp-plugin-maturityscore.php:339
-#: ictuwp-plugin-maturityscore.php:341 ictuwp-plugin-maturityscore.php:385
-#: ictuwp-plugin-maturityscore.php:389 ictuwp-plugin-maturityscore.php:391
-#: ictuwp-plugin-maturityscore.php:431 ictuwp-plugin-maturityscore.php:435
-#: ictuwp-plugin-maturityscore.php:437 ictuwp-plugin-maturityscore.php:476
-#: ictuwp-plugin-maturityscore.php:480 ictuwp-plugin-maturityscore.php:482
-#: ictuwp-plugin-maturityscore.php:521 ictuwp-plugin-maturityscore.php:525
-#: ictuwp-plugin-maturityscore.php:527
+#: ictuwp-plugin-maturityscore.php:334 ictuwp-plugin-maturityscore.php:338
+#: ictuwp-plugin-maturityscore.php:340 ictuwp-plugin-maturityscore.php:384
+#: ictuwp-plugin-maturityscore.php:388 ictuwp-plugin-maturityscore.php:390
+#: ictuwp-plugin-maturityscore.php:430 ictuwp-plugin-maturityscore.php:434
+#: ictuwp-plugin-maturityscore.php:436 ictuwp-plugin-maturityscore.php:475
+#: ictuwp-plugin-maturityscore.php:479 ictuwp-plugin-maturityscore.php:481
+#: ictuwp-plugin-maturityscore.php:520 ictuwp-plugin-maturityscore.php:524
+#: ictuwp-plugin-maturityscore.php:526
 #, php-format
 msgctxt "labels"
 msgid "Add %s"
 msgstr "%s toevoegen"
 
-#: ictuwp-plugin-maturityscore.php:336 ictuwp-plugin-maturityscore.php:386
-#: ictuwp-plugin-maturityscore.php:432 ictuwp-plugin-maturityscore.php:477
-#: ictuwp-plugin-maturityscore.php:522
+#: ictuwp-plugin-maturityscore.php:335 ictuwp-plugin-maturityscore.php:385
+#: ictuwp-plugin-maturityscore.php:431 ictuwp-plugin-maturityscore.php:476
+#: ictuwp-plugin-maturityscore.php:521
 #, php-format
 msgctxt "labels"
 msgid "Add new %s"
 msgstr "Nieuwe  %s toevoegen"
 
-#: ictuwp-plugin-maturityscore.php:337 ictuwp-plugin-maturityscore.php:387
-#: ictuwp-plugin-maturityscore.php:396 ictuwp-plugin-maturityscore.php:433
-#: ictuwp-plugin-maturityscore.php:442 ictuwp-plugin-maturityscore.php:478
-#: ictuwp-plugin-maturityscore.php:487 ictuwp-plugin-maturityscore.php:523
-#: ictuwp-plugin-maturityscore.php:532
+#: ictuwp-plugin-maturityscore.php:336 ictuwp-plugin-maturityscore.php:386
+#: ictuwp-plugin-maturityscore.php:395 ictuwp-plugin-maturityscore.php:432
+#: ictuwp-plugin-maturityscore.php:441 ictuwp-plugin-maturityscore.php:477
+#: ictuwp-plugin-maturityscore.php:486 ictuwp-plugin-maturityscore.php:522
+#: ictuwp-plugin-maturityscore.php:531
 msgctxt "labels"
 msgid "Edit?"
 msgstr "Bewerken?"
 
-#: ictuwp-plugin-maturityscore.php:338 ictuwp-plugin-maturityscore.php:388
-#: ictuwp-plugin-maturityscore.php:434 ictuwp-plugin-maturityscore.php:479
-#: ictuwp-plugin-maturityscore.php:524
+#: ictuwp-plugin-maturityscore.php:337 ictuwp-plugin-maturityscore.php:387
+#: ictuwp-plugin-maturityscore.php:433 ictuwp-plugin-maturityscore.php:478
+#: ictuwp-plugin-maturityscore.php:523
 #, php-format
 msgctxt "labels"
 msgid "Edit %s"
 msgstr "%s bewerken"
 
-#: ictuwp-plugin-maturityscore.php:340 ictuwp-plugin-maturityscore.php:390
-#: ictuwp-plugin-maturityscore.php:436 ictuwp-plugin-maturityscore.php:481
-#: ictuwp-plugin-maturityscore.php:526
+#: ictuwp-plugin-maturityscore.php:339 ictuwp-plugin-maturityscore.php:389
+#: ictuwp-plugin-maturityscore.php:435 ictuwp-plugin-maturityscore.php:480
+#: ictuwp-plugin-maturityscore.php:525
 msgctxt "labels"
 msgid "Show"
 msgstr "Toon"
+
+#: ictuwp-plugin-maturityscore.php:341 ictuwp-plugin-maturityscore.php:391
+#: ictuwp-plugin-maturityscore.php:437 ictuwp-plugin-maturityscore.php:482
+#: ictuwp-plugin-maturityscore.php:527
+#, php-format
+msgctxt "labels"
+msgid "Search %s"
+msgstr "%s zoeken"
 
 #: ictuwp-plugin-maturityscore.php:342 ictuwp-plugin-maturityscore.php:392
 #: ictuwp-plugin-maturityscore.php:438 ictuwp-plugin-maturityscore.php:483
 #: ictuwp-plugin-maturityscore.php:528
 #, php-format
 msgctxt "labels"
-msgid "Search %s"
-msgstr "%s zoeken"
+msgid "No %s available"
+msgstr "Geen  %s gevonden"
 
 #: ictuwp-plugin-maturityscore.php:343 ictuwp-plugin-maturityscore.php:393
 #: ictuwp-plugin-maturityscore.php:439 ictuwp-plugin-maturityscore.php:484
 #: ictuwp-plugin-maturityscore.php:529
 #, php-format
 msgctxt "labels"
-msgid "No %s available"
-msgstr "Geen  %s gevonden"
+msgid "No %s in trash"
+msgstr "Geen  %s in de prullenbak"
 
 #: ictuwp-plugin-maturityscore.php:344 ictuwp-plugin-maturityscore.php:394
 #: ictuwp-plugin-maturityscore.php:440 ictuwp-plugin-maturityscore.php:485
 #: ictuwp-plugin-maturityscore.php:530
-#, php-format
-msgctxt "labels"
-msgid "No %s in trash"
-msgstr "Geen  %s in de prullenbak"
-
-#: ictuwp-plugin-maturityscore.php:345 ictuwp-plugin-maturityscore.php:395
-#: ictuwp-plugin-maturityscore.php:441 ictuwp-plugin-maturityscore.php:486
-#: ictuwp-plugin-maturityscore.php:531
 msgctxt "labels"
 msgid "Parent"
 msgstr "Parent"
 
-#: ictuwp-plugin-maturityscore.php:372
+#: ictuwp-plugin-maturityscore.php:371
 msgctxt "labels"
 msgid "Organisation type"
 msgstr "Organisatietype"
 
-#: ictuwp-plugin-maturityscore.php:373
+#: ictuwp-plugin-maturityscore.php:372
 msgctxt "labels"
 msgid "Organisation types"
 msgstr "Organisatietypes"
 
-#: ictuwp-plugin-maturityscore.php:375
+#: ictuwp-plugin-maturityscore.php:374
 msgctxt "labels"
 msgid "organisation type"
 msgstr "organisatietype"
 
-#: ictuwp-plugin-maturityscore.php:376
+#: ictuwp-plugin-maturityscore.php:375
 msgctxt "labels"
 msgid "organisation types"
 msgstr "organisatietypes"
 
-#: ictuwp-plugin-maturityscore.php:419
+#: ictuwp-plugin-maturityscore.php:418
 msgctxt "labels"
 msgid "Organisation size"
 msgstr "Organisatiegrootte"
 
-#: ictuwp-plugin-maturityscore.php:420
+#: ictuwp-plugin-maturityscore.php:419
 msgctxt "labels"
 msgid "Organisation sizes"
 msgstr "Organisatiegroottes"
 
-#: ictuwp-plugin-maturityscore.php:422
+#: ictuwp-plugin-maturityscore.php:421
 msgctxt "labels"
 msgid "organisation size"
 msgstr "organisatiegrootte"
 
-#: ictuwp-plugin-maturityscore.php:423
+#: ictuwp-plugin-maturityscore.php:422
 msgctxt "labels"
 msgid "organisation sizes"
 msgstr "organisatiegroottes"
 
-#: ictuwp-plugin-maturityscore.php:464
+#: ictuwp-plugin-maturityscore.php:463
 msgctxt "labels"
 msgid "Region"
 msgstr "Regio"
 
-#: ictuwp-plugin-maturityscore.php:465
+#: ictuwp-plugin-maturityscore.php:464
 msgctxt "labels"
 msgid "Regions"
 msgstr "Regio's"
 
-#: ictuwp-plugin-maturityscore.php:467
+#: ictuwp-plugin-maturityscore.php:466
 msgctxt "labels"
 msgid "region"
 msgstr "regio"
 
-#: ictuwp-plugin-maturityscore.php:468
+#: ictuwp-plugin-maturityscore.php:467
 msgctxt "labels"
 msgid "regions"
 msgstr "regio's"
 
-#: ictuwp-plugin-maturityscore.php:509
+#: ictuwp-plugin-maturityscore.php:508
 msgctxt "labels"
 msgid "Organisation attitude"
 msgstr "Organisatie-attitude"
 
-#: ictuwp-plugin-maturityscore.php:510
+#: ictuwp-plugin-maturityscore.php:509
 msgctxt "labels"
 msgid "Organisation attitudes"
 msgstr "Organisatie-attitudes"
 
-#: ictuwp-plugin-maturityscore.php:512
+#: ictuwp-plugin-maturityscore.php:511
 msgctxt "labels"
 msgid "organisation attitude"
 msgstr "organisatie-attitude"
 
-#: ictuwp-plugin-maturityscore.php:513
+#: ictuwp-plugin-maturityscore.php:512
 msgctxt "labels"
 msgid "organisation attitudes"
 msgstr "organisatie-attitudes"
 
-#: ictuwp-plugin-maturityscore.php:570
+#: ictuwp-plugin-maturityscore.php:568
 msgctxt "naam template"
 msgid "Maturity score template"
 msgstr "GC Volwassenheidsscore template"
@@ -677,80 +252,80 @@ msgctxt "js"
 msgid "Are you sure?"
 msgstr "Weet je het zeker?"
 
-#: ictuwp-plugin-maturityscore.php:730 ictuwp-plugin-maturityscore.php:780
+#: ictuwp-plugin-maturityscore.php:731 ictuwp-plugin-maturityscore.php:784
 msgid "Reset statistics"
 msgstr "Gemiddelden opnieuw instellen"
 
-#: ictuwp-plugin-maturityscore.php:731
+#: ictuwp-plugin-maturityscore.php:733
 msgid "Empty log"
 msgstr "Log leegmaken"
 
-#: ictuwp-plugin-maturityscore.php:736
+#: ictuwp-plugin-maturityscore.php:739
 msgid "Ehm, please allow JavaScript."
 msgstr "Javascript staat uit; zonder JS geen functionaliteit."
 
-#: ictuwp-plugin-maturityscore.php:739
+#: ictuwp-plugin-maturityscore.php:743
 msgid "Press the button!"
 msgstr "Druk die knop in!"
 
-#: ictuwp-plugin-maturityscore.php:759 ictuwp-plugin-maturityscore.php:793
+#: ictuwp-plugin-maturityscore.php:763 ictuwp-plugin-maturityscore.php:797
 msgid "Just a moment please"
 msgstr "Moment geduld alstublieft"
 
-#: ictuwp-plugin-maturityscore.php:828
+#: ictuwp-plugin-maturityscore.php:833
 msgid "Maturity score"
 msgstr "Volwassenheids&shy;score"
 
-#: ictuwp-plugin-maturityscore.php:834
+#: ictuwp-plugin-maturityscore.php:842
 msgctxt "scoring menu"
 msgid "Email settings &amp; general scoring"
 msgstr "Instellingen voor e-mail &amp; scoreteksten"
 
-#: ictuwp-plugin-maturityscore.php:836
+#: ictuwp-plugin-maturityscore.php:844
 msgid "Save options"
 msgstr ""
 
-#: ictuwp-plugin-maturityscore.php:884
+#: ictuwp-plugin-maturityscore.php:892
 #, php-format
 msgctxt "question range"
 msgid "%s - %s"
 msgstr "%s - %s"
 
-#: ictuwp-plugin-maturityscore.php:885
+#: ictuwp-plugin-maturityscore.php:893
 #, php-format
 msgctxt "tablabel"
 msgid "%s - questions %s"
 msgstr "%s - vragen %s"
 
-#: ictuwp-plugin-maturityscore.php:886
+#: ictuwp-plugin-maturityscore.php:894
 #, php-format
 msgctxt "tablabel"
 msgid "Group %s: title, introduction and scoring texts"
 msgstr "Groep %s: titel, inleiding en score-teksten"
 
-#: ictuwp-plugin-maturityscore.php:887
+#: ictuwp-plugin-maturityscore.php:895
 #, php-format
 msgctxt "tablabel"
 msgid "Title for group %s"
 msgstr "Titel voor groep %s"
 
-#: ictuwp-plugin-maturityscore.php:888
+#: ictuwp-plugin-maturityscore.php:896
 #, php-format
 msgctxt "tablabel"
 msgid "Introduction %s"
 msgstr "Inleiding bij groep %s"
 
-#: ictuwp-plugin-maturityscore.php:893
+#: ictuwp-plugin-maturityscore.php:901
 #, php-format
 msgctxt "tablabel"
 msgid "Group %s - %s"
 msgstr "Vragen %s - %s"
 
-#: ictuwp-plugin-maturityscore.php:932
+#: ictuwp-plugin-maturityscore.php:943
 msgid "Score for this section"
 msgstr "Score voor dit onderdeel"
 
-#: ictuwp-plugin-maturityscore.php:944
+#: ictuwp-plugin-maturityscore.php:955
 #, php-format
 msgid ""
 "For section <em>%s</em> you scored over %s, but lesss than %s. Here more "
@@ -759,83 +334,83 @@ msgstr ""
 "Voor onderdeel %s haalde je meer dan %s, maar minder dan %s. Hier een "
 "toelichting."
 
-#: ictuwp-plugin-maturityscore.php:946 ictuwp-plugin-maturityscore.php:1106
+#: ictuwp-plugin-maturityscore.php:957 ictuwp-plugin-maturityscore.php:1117
 #, php-format
 msgid "between %s and %s"
 msgstr "tussen %s -  %s"
 
-#: ictuwp-plugin-maturityscore.php:948 ictuwp-plugin-maturityscore.php:1109
+#: ictuwp-plugin-maturityscore.php:959 ictuwp-plugin-maturityscore.php:1120
 #, php-format
 msgid "Perfect score: %s!"
 msgstr "Perfecte score: %s!"
 
-#: ictuwp-plugin-maturityscore.php:954
+#: ictuwp-plugin-maturityscore.php:965
 #, php-format
 msgctxt "score range"
 msgid "Text %s<br><small>if score %s.</small>"
 msgstr "Scoretekst %s<br><small>als de score %s is.</small>"
 
-#: ictuwp-plugin-maturityscore.php:955
+#: ictuwp-plugin-maturityscore.php:966
 #, php-format
 msgid "Score %s"
 msgstr "Score %s"
 
-#: ictuwp-plugin-maturityscore.php:980
+#: ictuwp-plugin-maturityscore.php:992
 #, php-format
 msgid "Question %s - %s"
 msgstr "Vraag %s -  %s"
 
-#: ictuwp-plugin-maturityscore.php:988
+#: ictuwp-plugin-maturityscore.php:1000
 #, php-format
 msgid "Question %s"
 msgstr "Vraag %s"
 
-#: ictuwp-plugin-maturityscore.php:1011
+#: ictuwp-plugin-maturityscore.php:1024
 #, php-format
 msgid "Label answer %s"
 msgstr "Antwoord %s label"
 
-#: ictuwp-plugin-maturityscore.php:1025
+#: ictuwp-plugin-maturityscore.php:1038
 #, php-format
 msgid "Value answer %s"
 msgstr "Antwoord %s score"
 
-#: ictuwp-plugin-maturityscore.php:1049
+#: ictuwp-plugin-maturityscore.php:1060
 msgctxt "email settings"
 msgid "Email settings"
 msgstr "Instellingen voor de mail"
 
-#: ictuwp-plugin-maturityscore.php:1057
+#: ictuwp-plugin-maturityscore.php:1068
 msgctxt "email settings"
 msgid "Sender email address"
 msgstr "E-mailadres van de afzender"
 
-#: ictuwp-plugin-maturityscore.php:1060
+#: ictuwp-plugin-maturityscore.php:1071
 msgctxt "email settings"
 msgid "info@gebruikercentraal.nl"
 msgstr "info@gebruikercentraal.nl"
 
-#: ictuwp-plugin-maturityscore.php:1065
+#: ictuwp-plugin-maturityscore.php:1076
 msgctxt "email settings"
 msgid "Sender email name"
 msgstr "Naam van de afzender"
 
-#: ictuwp-plugin-maturityscore.php:1068
+#: ictuwp-plugin-maturityscore.php:1079
 msgctxt "email settings"
 msgid "Gebruiker Centraal"
 msgstr "Gebruiker Centraal"
 
-#: ictuwp-plugin-maturityscore.php:1073
+#: ictuwp-plugin-maturityscore.php:1084
 msgctxt "email settings"
 msgid "Email subject line"
 msgstr "Onderwerp voor e-mailbericht"
 
-#: ictuwp-plugin-maturityscore.php:1077 ictuwp-plugin-maturityscore.php:2305
+#: ictuwp-plugin-maturityscore.php:1088 ictuwp-plugin-maturityscore.php:2336
 msgctxt "email settings"
 msgid "Link to your survey results"
 msgstr "Link naar de uitslag van de volwassenheids-scan"
 
-#: ictuwp-plugin-maturityscore.php:1080
+#: ictuwp-plugin-maturityscore.php:1091
 #, php-format
 msgctxt "email settings"
 msgid ""
@@ -858,12 +433,12 @@ msgstr ""
 "Hartelijk dank en vriendelijke groet,\n"
 "Het Gebruiker Centraal Actieteam."
 
-#: ictuwp-plugin-maturityscore.php:1083
+#: ictuwp-plugin-maturityscore.php:1094
 msgctxt "email settings"
 msgid "Text in the email to the user"
 msgstr "Tekst in de mail aan de gebruiker"
 
-#: ictuwp-plugin-maturityscore.php:1084
+#: ictuwp-plugin-maturityscore.php:1095
 #, php-format
 msgctxt "email settings"
 msgid ""
@@ -873,52 +448,52 @@ msgstr ""
 "De tekst moet deze strings bevatten: <br>%s - voor de URL die we versturen."
 "<br>%s - voor de naam die de gebruiker heeft opgegeven."
 
-#: ictuwp-plugin-maturityscore.php:1093
+#: ictuwp-plugin-maturityscore.php:1104
 msgid "General scoring texts"
 msgstr "Score-teksten algemeen"
 
-#: ictuwp-plugin-maturityscore.php:1105
+#: ictuwp-plugin-maturityscore.php:1116
 #, php-format
 msgid "The text for scores between %s and %s. "
 msgstr "De tekst voor scores tussen %s en %s. "
 
-#: ictuwp-plugin-maturityscore.php:1115
+#: ictuwp-plugin-maturityscore.php:1126
 #, php-format
 msgctxt "score range"
 msgid "Score text %s<br><small>if the total score is %s.</small>"
 msgstr "Scoretekst %s<br><small>als de totale score %s is.</small>"
 
-#: ictuwp-plugin-maturityscore.php:1116
+#: ictuwp-plugin-maturityscore.php:1127
 #, php-format
 msgid "General average score %s"
 msgstr "Gemiddelde score: %s"
 
-#: ictuwp-plugin-maturityscore.php:1261
+#: ictuwp-plugin-maturityscore.php:1273
 msgctxt "table header"
 msgid "Chapter"
 msgstr "Onderdeel"
 
-#: ictuwp-plugin-maturityscore.php:1264
+#: ictuwp-plugin-maturityscore.php:1276
 msgctxt "table header"
 msgid "Your score"
 msgstr "Jouw score"
 
-#: ictuwp-plugin-maturityscore.php:1272
+#: ictuwp-plugin-maturityscore.php:1284
 msgctxt "table header"
 msgid "Average score"
 msgstr "Gemiddelde score"
 
-#: ictuwp-plugin-maturityscore.php:1340
+#: ictuwp-plugin-maturityscore.php:1352
 msgctxt "labels"
 msgid "Average score"
 msgstr "Gemiddelde score"
 
-#: ictuwp-plugin-maturityscore.php:1388
+#: ictuwp-plugin-maturityscore.php:1400
 msgctxt "labels"
 msgid "your score"
 msgstr "jouw score"
 
-#: ictuwp-plugin-maturityscore.php:1557
+#: ictuwp-plugin-maturityscore.php:1565
 msgid ""
 "Oopsy daisy. There are no data to display. The survey you requested is "
 "empty. The server may have made an error in saving or retrieving the data, "
@@ -927,16 +502,16 @@ msgstr ""
 "Grutjes, geen gegevens beschikbaar. De server heeft waarschijnlijk een "
 "baaldag. Of Paul heeft zitten broddelen. Het is niet jouw schuld."
 
-#: ictuwp-plugin-maturityscore.php:1596
+#: ictuwp-plugin-maturityscore.php:1604
 msgid "Questions and answers"
 msgstr "Vragen en antwoorden"
 
-#: ictuwp-plugin-maturityscore.php:1692
+#: ictuwp-plugin-maturityscore.php:1699
 msgctxt "About you section"
 msgid "About you"
 msgstr "Jouw gegevens"
 
-#: ictuwp-plugin-maturityscore.php:1695
+#: ictuwp-plugin-maturityscore.php:1702
 msgctxt "About you section"
 msgid ""
 "We can send you a link to your survey results if you fill in your email "
@@ -945,12 +520,12 @@ msgstr ""
 "We kunnen je een link sturen naar de uitslag van je enquete. Laat dan "
 "hieronder je e-mailadres achter en je naam."
 
-#: ictuwp-plugin-maturityscore.php:1700
+#: ictuwp-plugin-maturityscore.php:1707
 msgctxt "About you section"
 msgid "Your name"
 msgstr "Jouw naam"
 
-#: ictuwp-plugin-maturityscore.php:1703
+#: ictuwp-plugin-maturityscore.php:1710
 msgctxt "About you section"
 msgid ""
 "We store your name for a maximum of 3 years; it will be visible on the "
@@ -959,32 +534,32 @@ msgstr ""
 "Je naam slaan we maximaal 3 jaar op, zodat jouw naam zichtbaar blijft in je "
 "resultaatpagina. Wil je dat niet? Laat het veld dan leeg."
 
-#: ictuwp-plugin-maturityscore.php:1703 ictuwp-plugin-maturityscore.php:1712
-#: ictuwp-plugin-maturityscore.php:1719 ictuwp-plugin-maturityscore.php:1748
-#: ictuwp-plugin-maturityscore.php:1775 ictuwp-plugin-maturityscore.php:1803
-#: ictuwp-plugin-maturityscore.php:1831
+#: ictuwp-plugin-maturityscore.php:1710 ictuwp-plugin-maturityscore.php:1719
+#: ictuwp-plugin-maturityscore.php:1726 ictuwp-plugin-maturityscore.php:1755
+#: ictuwp-plugin-maturityscore.php:1782 ictuwp-plugin-maturityscore.php:1810
+#: ictuwp-plugin-maturityscore.php:1838
 msgctxt "field validation"
 msgid "(not required)"
 msgstr "(niet verplicht)"
 
-#: ictuwp-plugin-maturityscore.php:1709
+#: ictuwp-plugin-maturityscore.php:1716
 msgctxt "About you section"
 msgid "Your emailaddress"
 msgstr "Je e-mailadres"
 
-#: ictuwp-plugin-maturityscore.php:1712
+#: ictuwp-plugin-maturityscore.php:1719
 msgctxt "About you section"
 msgid "We use this email address to email you a link to your result page."
 msgstr ""
 "We gebruiken dit e-mailadres om je een link te mailen naar jouw "
 "resultaatpagina."
 
-#: ictuwp-plugin-maturityscore.php:1718
+#: ictuwp-plugin-maturityscore.php:1725
 msgctxt "About you section"
 msgid "Permission to store emailaddress"
 msgstr "Toestemming"
 
-#: ictuwp-plugin-maturityscore.php:1719
+#: ictuwp-plugin-maturityscore.php:1726
 msgctxt "About you section"
 msgid ""
 "Yes, keep me up to date about any developments regarding the maturity model "
@@ -996,144 +571,144 @@ msgstr ""
 "3 jaar na vandaag hiervoor bewaren. Alleen de beheerders van deze website "
 "hebben toegang tot deze gegevens."
 
-#: ictuwp-plugin-maturityscore.php:1855
+#: ictuwp-plugin-maturityscore.php:1877
 msgctxt "table description"
 msgid "Radar graph with your score in this survey."
 msgstr "Radargrafiek met jouw score in deze enquete."
 
-#: ictuwp-plugin-maturityscore.php:1860
+#: ictuwp-plugin-maturityscore.php:1882
 msgctxt "table description"
 msgid "Your score in red; average score in orange."
 msgstr "Jouw score in het rood; gemiddelde score oranje."
 
-#: ictuwp-plugin-maturityscore.php:1863
+#: ictuwp-plugin-maturityscore.php:1884
 msgctxt "table description"
 msgid "Your score in orange."
 msgstr "Jouw score in het oranje."
 
-#: ictuwp-plugin-maturityscore.php:1869 ictuwp-plugin-maturityscore.php:2022
-#: ictuwp-plugin-maturityscore.php:2101
+#: ictuwp-plugin-maturityscore.php:1889 ictuwp-plugin-maturityscore.php:2037
+#: ictuwp-plugin-maturityscore.php:2113
 msgctxt "no data error"
 msgid "No data available. Not your fault, blame the server."
 msgstr ""
 "Geen gegevens beschikbaar. Dit is de schuld van de webserver of van de "
 "programmeur."
 
-#: ictuwp-plugin-maturityscore.php:1945 ictuwp-plugin-maturityscore.php:1997
+#: ictuwp-plugin-maturityscore.php:1962 ictuwp-plugin-maturityscore.php:2014
 #, php-format
 msgid "%s point"
 msgid_plural "%s points"
 msgstr[0] "%s punt"
 msgstr[1] "%s punten"
 
-#: ictuwp-plugin-maturityscore.php:1948
+#: ictuwp-plugin-maturityscore.php:1965
 #, php-format
 msgid "Your average score was %s. "
 msgstr "Jouw gemiddelde score was %s. "
 
-#: ictuwp-plugin-maturityscore.php:1951
+#: ictuwp-plugin-maturityscore.php:1968
 #, php-format
 msgid "Thus far, we received %s survey, "
 msgid_plural "Thus far, we received %s surveys, "
 msgstr[0] "Er is %s enquete ingestuurd, "
 msgstr[1] "Er zijn %s enquetes ingestuurd, "
 
-#: ictuwp-plugin-maturityscore.php:1952
+#: ictuwp-plugin-maturityscore.php:1969
 #, php-format
 msgid " and the overall average score is %s. "
 msgstr " en de gemiddelde score is %s. "
 
-#: ictuwp-plugin-maturityscore.php:1957
+#: ictuwp-plugin-maturityscore.php:1974
 msgid "Score per section"
 msgstr "Score per onderdeel"
 
-#: ictuwp-plugin-maturityscore.php:1980
+#: ictuwp-plugin-maturityscore.php:1997
 #, php-format
 msgctxt "Your score for visually impaired users"
 msgid " - your score: %s"
 msgstr " - jij scoorde: %s"
 
-#: ictuwp-plugin-maturityscore.php:1985
+#: ictuwp-plugin-maturityscore.php:2002
 msgctxt "interpretatie"
 msgid "Review your answers"
 msgstr "Bekijk je antwoorden"
 
-#: ictuwp-plugin-maturityscore.php:1991
+#: ictuwp-plugin-maturityscore.php:2008
 msgctxt "interpretatie"
 msgid "Question"
 msgstr "Vraag"
 
-#: ictuwp-plugin-maturityscore.php:1994
+#: ictuwp-plugin-maturityscore.php:2011
 msgctxt "interpretatie"
 msgid "Your answer"
 msgstr "Jouw antwoord"
 
-#: ictuwp-plugin-maturityscore.php:2000 ictuwp-plugin-maturityscore.php:2007
+#: ictuwp-plugin-maturityscore.php:2017 ictuwp-plugin-maturityscore.php:2023
 msgctxt "interpretatie"
 msgid "Score"
 msgstr "Score"
 
-#: ictuwp-plugin-maturityscore.php:2003
+#: ictuwp-plugin-maturityscore.php:2020
 msgctxt "interpretatie"
 msgid "Average score"
 msgstr "Gemiddelde score"
 
-#: ictuwp-plugin-maturityscore.php:2051
+#: ictuwp-plugin-maturityscore.php:2065
 msgctxt "table description"
 msgid "Average score and your score per section"
 msgstr "Gemiddelde score en jouw score per onderdeel"
 
-#: ictuwp-plugin-maturityscore.php:2054
+#: ictuwp-plugin-maturityscore.php:2067
 msgctxt "table description"
 msgid "Your score per section"
 msgstr "Score per onderdeel"
 
-#: ictuwp-plugin-maturityscore.php:2084
+#: ictuwp-plugin-maturityscore.php:2097
 #, php-format
 msgctxt "table user average score"
 msgid "%s average"
 msgstr "%s gemiddeld"
 
-#: ictuwp-plugin-maturityscore.php:2087
+#: ictuwp-plugin-maturityscore.php:2100
 msgctxt "table description"
 msgid "Total"
 msgstr "Totaal"
 
-#: ictuwp-plugin-maturityscore.php:2091
+#: ictuwp-plugin-maturityscore.php:2104
 #, php-format
 msgctxt "table overall average score"
 msgid "%s average"
 msgstr "%s gemiddelde van alle enquetes"
 
-#: ictuwp-plugin-maturityscore.php:2169
+#: ictuwp-plugin-maturityscore.php:2181
 #, php-format
 msgid "Your survey is not saved; errors occurred: %s"
 msgstr "Je inzending is niet opgeslagen, omdat er fouten zijn opgetreden: %s"
 
-#: ictuwp-plugin-maturityscore.php:2174
+#: ictuwp-plugin-maturityscore.php:2186
 msgid "Submit"
 msgstr "Versturen"
 
-#: ictuwp-plugin-maturityscore.php:2229
+#: ictuwp-plugin-maturityscore.php:2241
 msgid ""
 "Security checks for your form submission failed. Your data will be discarded."
 msgstr "Er is gerommeld met je inzending; de server negeert deze inzending."
 
-#: ictuwp-plugin-maturityscore.php:2242
+#: ictuwp-plugin-maturityscore.php:2274
 msgid "Your organisation's score"
 msgstr "Score van je organisatie"
 
-#: ictuwp-plugin-maturityscore.php:2264
+#: ictuwp-plugin-maturityscore.php:2295
 msgctxt "naam"
 msgid "Your name"
 msgstr "Jouw naam"
 
-#: ictuwp-plugin-maturityscore.php:2269
+#: ictuwp-plugin-maturityscore.php:2300
 msgctxt "email"
 msgid "Your email address"
 msgstr "Je e-mailadres"
 
-#: ictuwp-plugin-maturityscore.php:2298
+#: ictuwp-plugin-maturityscore.php:2329
 msgctxt "email"
 msgid "No mail text found"
 msgstr "Geen e-mail tekst gevonden"
@@ -1164,6 +739,14 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://wbvb.nl"
 msgstr ""
+
+#, php-format
+#~ msgid "Invalid %1$s property: %2$s"
+#~ msgstr "Ongeldige waarde %1$s method: %2$s"
+
+#, php-format
+#~ msgid "Invalid %1$s method: %2$s"
+#~ msgstr "Ongeldige aanroep %1$s method: %2$s"
 
 #~ msgctxt "table description"
 #~ msgid "XXX ONVERTAALD Your score per section"
