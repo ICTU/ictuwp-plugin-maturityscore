@@ -8,8 +8,8 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @plugin: ictuwp-plugin-maturityscore
-// * Version: 2.0.1
-// * Version desc: Versienummer opgehoogd. CMB2 verwijderd.
+// * Version: 2.0.2
+// * Version desc: Eenvoudige Honeypot toegevoegd
 // * @link    https://github.com/ICTU/ictuwp-plugin-maturityscore/
 
 
@@ -255,6 +255,10 @@
   padding: 0;
   position: absolute;
   width: 1px;
+}
+.honingpot {
+  display: none !important;
+  visibility: hidden !important;
 }
 .rating-section-title {
   overflow: hidden;
