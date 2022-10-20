@@ -166,6 +166,9 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 
 			define( 'GCMS_C_TEXTEMAIL', 'textforemail' );
 
+			// Fake 'honeypot' field ID
+			define( 'GCMS_C_HONEYPOT', 'name_email_id' );
+			define( 'GCMS_C_HONEYPOT_LABEL', _x( "Laat dit veld leeg!", "honeypot-label", "ictuwp-plugin-maturityscore" ) );
 
 			$this->option_name = 'gcms-option';
 			$this->survey_data = array();
@@ -1837,6 +1840,21 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 
 			}
 
+			// Honeypot
+			$cmb->add_field( array(
+				'name'    => GCMS_C_HONEYPOT_LABEL,
+				'id'      => GCMS_C_HONEYPOT,
+				'type'    => 'text',
+				'default' => '',
+				'attributes' => array(
+					'autocomplete' => 'new-password',
+					'tabindex'     => '-1',
+					'size'         => '40',
+					'style'        => 'display: none !important; visibility: hidden !important;'
+				),
+				'classes' => 'visuallyhidden honingpot'
+			) );
+
 		}
 
 		//====================================================================================================
@@ -2228,6 +2246,26 @@ function gcmsf_frontend_form_handle_posting() {
 	 * Fetch sanitized values
 	 */
 	$sanitized_values = $cmb->get_sanitized_values( $_POST );
+
+
+	/**
+	 * Check HoneyPot
+	 * 
+	 * This field lures spambots to fill it in by 
+	 * 1) being empty 
+	 * 2) having some 'generic' name/label like "Email Name ID"
+	 * 
+	 * We HIDE this field and (strongly!) advise to NOT fill it in
+	 * so that Humans will leave it blank.
+	 * (Dumb) spam-bots, however, are very greedy and will fill it in.
+	 * 
+	 * Therefore: when it is NOT EMPTY we assume a spam-entry and ignore it...
+	 */
+	if ( ! empty( $sanitized_values[GCMS_C_HONEYPOT] ) ) {
+		// return $cmb->prop( 'submission_error', new WP_Error( 'security_fail', __( "Security checks for your form submission failed. Your data will be discarded.", "ictuwp-plugin-maturityscore" ) ) );
+		// Do not even show an error, just silently bail...
+		return false;
+	}
 
 	$datum = date_i18n( get_option( 'date_format' ), current_time( 'timestamp' ) );
 
