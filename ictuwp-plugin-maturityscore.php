@@ -1241,7 +1241,7 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 						foreach ( $values['averages']['groups'] as $key => $value ) {
 
 							$average                              = gcms_aux_get_average_for_array( $value, 1 );
-							$values['averages']['groups'][ $key ] = round( $average, 1 );
+							$values['averages']['groups'][ $key ] = round( (float)$average, 1 );
 
 							$columns = array();
 
@@ -1496,7 +1496,7 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 								$collectionkey  = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $rowname;
 								$default        = $formfields_data->$rowname->group_label;
 
-//							$radardata->dataProvider[$rowcounter]				= new stdClass();
+								$radardata->dataProvider[$rowcounter]				= new stdClass();
 //$melebeltje = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $default, $collectionkey );
 //echo '$melebeltje: "' . $melebeltje . '" (mykeyname=' . $mykeyname . ') <br>';
 
@@ -1907,7 +1907,7 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 			if ( $max ) {
 
 				$counter      = 0;
-				$scorerounded = round( $score, 0 );
+				$scorerounded = round( (float)$score, 0 );
 
 				$displayvalue = intval( 100 / $max ); // percentage
 //			$return       = ( floor( $score ) * floor( $displayvalue ) ) . '%';
@@ -1987,7 +1987,7 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 						$titleid        = sanitize_title( $thesectionid . '_title' );
 						$key_grouplabel = $key . '_group_label';
 
-						$fieldkey       = $key . GCMS_SCORESEPARATOR . round( $jouwscore, 0 ); // g2_score_4
+						$fieldkey       = $key . GCMS_SCORESEPARATOR . round( (float)$jouwscore, 0 ); // g2_score_4
 						$key_grouplabel = $key . '_group_label';
 
 						$titel = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $this->survey_data['default_titles'][ $key_grouplabel ], $collectionkey );
