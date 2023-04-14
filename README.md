@@ -12,7 +12,7 @@ Gebruik deze shortcode om de enquee op een pagina te tonen:
 Paul van Buuren (paul@wbvb.nl)
 
 ## Current version
-* 2.0.2 - Eenvoudige Honeypot toegevoegd
+* 2.0.3 - PHP8.x compatibilty check.
 
 ## To do
 - [ ] check inbouwen of het theme op Genesis gebaseerd is.
