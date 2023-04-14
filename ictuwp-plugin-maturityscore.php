@@ -53,6 +53,9 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 		public $survey_data = null;
 
 
+		private $templates = '';
+		private $templatefile = '';
+
 		/**
 		 * Init
 		 */
