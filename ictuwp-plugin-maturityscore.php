@@ -5,7 +5,7 @@
  * Plugin Name:         ICTU / Gebruiker Centraal / Maturity Scan Plugin
  * Plugin URI:          https://github.com/ICTU/ictuwp-plugin-maturityscore/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             2.0.3
+ * Version:             2.0.4
  * Version description: Versienummer opgehoogd. CMB2 verwijderd.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
@@ -34,7 +34,7 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 		/**
 		 * @var string
 		 */
-		public $version = '2.0.3';
+		public $version = '2.0.4';
 
 
 		/**

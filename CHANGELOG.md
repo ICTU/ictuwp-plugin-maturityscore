@@ -1,6 +1,7 @@
 # Changelog
 
 ## Version history
+* 2.0.4 - Updated older CSS.
 * 2.0.3 - PHP8.x compatibilty check.
 * 2.0.2 - Eenvoudige Honeypot toegevoegd
 * 2.0.1 - Versienummer opgehoogd. CMB2 verwijderd.
