@@ -1,6 +1,7 @@
 # Changelog
 
 ## Version history
+* 2.0.5 - Fixed a bug for useless key / values.
 * 2.0.4 - Updated older CSS.
 * 2.0.3 - PHP8.x compatibilty check.
 * 2.0.2 - Eenvoudige Honeypot toegevoegd

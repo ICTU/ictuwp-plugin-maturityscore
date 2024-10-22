@@ -8,14 +8,14 @@
 // * @author  Paul van Buuren
 // * @license GPL-2.0+
 // * @plugin: ictuwp-plugin-maturityscore
-// * Version: 2.0.4
-// * Version desc: Updated older CSS.
+// * Version: 2.0.5
+// * Version desc: Fixed a bug for useless key / values.
 // * @link    https://github.com/ICTU/ictuwp-plugin-maturityscore/
 
 
-<!--                                                            -->
+<!--//                              -->
 <!-- ========================================================   -->
-<!--                                                            -->
+<!--//                              -->
 <!--                  .:::::::::::::::}}}}}}}                   -->
 <!--                  .:::::::::::::::}}}}}}}                   -->
 <!--                  .:::::::::::::::}}}}}}}                   -->
@@ -43,9 +43,9 @@
 <!--             ``::::::::::::::::}}}}}}}}}}}}}}-`             -->
 <!--              `::::::::::::::::}}}}}}}}}}}}}}.              -->
 <!--              `::::::::::::::::}}}}}}}}}}}}}}.              -->
-<!--                                                            -->
+<!--//                              -->
 <!-- ========================================================   -->
-<!--                                                            -->
+<!--//                              -->
  
 */
 
@@ -297,48 +297,48 @@
   }
 }
 
-details {
-  border: 3px solid #dadada;
-
-  &:hover,
-  &[open],
-  &:focus {
-    border-color: @txt;
-  }
-}
-
-summary {
-  cursor: pointer;
-  color: @txt;
-  padding-top: .25em;
-  padding-bottom: .25em;
-  font-size: 2rem;
-  .icon_socmed_icon('../assets/images/arrow-wit.svg', @txt);
-  background-repeat: no-repeat;
-  background-position: right center;
-  padding-left: 1rem;
-  padding-right: 3rem;
-
-  &:hover,
-  &:focus {
-    background-color: @txt;
-    .icon_socmed_icon('../assets/images/arrow-wit.svg', @wit);
-    color: @wit;
-  }
-}
-
-summary::-webkit-details-marker {
-  display: none
-}
-
-details[open] {
-  summary {
-    background-color: @txt;
-    .icon_socmed_icon('../assets/images/arrow-wit.svg', @wit);
-    color: @wit;
-  }
-}
-
+//  details {
+//    border: 3px solid #dadada;
+//  
+//    &:hover,
+//    &[open],
+//    &:focus {
+//      border-color: @txt;
+//    }
+//  }
+//  
+//  summary {
+//    cursor: pointer;
+//    color: @txt;
+//    padding-top: .25em;
+//    padding-bottom: .25em;
+//    font-size: 2rem;
+//    .icon_socmed_icon('../assets/images/arrow-wit.svg', @txt);
+//    background-repeat: no-repeat;
+//    background-position: right center;
+//    padding-left: 1rem;
+//    padding-right: 3rem;
+//  
+//    &:hover,
+//    &:focus {
+//      background-color: @txt;
+//      .icon_socmed_icon('../assets/images/arrow-wit.svg', @wit);
+//      color: @wit;
+//    }
+//  }
+//  
+//  summary::-webkit-details-marker {
+//    display: none
+//  }
+//  
+//  details[open] {
+//    summary {
+//      background-color: @txt;
+//      .icon_socmed_icon('../assets/images/arrow-wit.svg', @wit);
+//      color: @wit;
+//    }
+//  }
+//  
 dl {
   box-sizing: border-box;
   display: grid;
@@ -377,16 +377,16 @@ dd {
 
 //=========================================================================================================
 
-.icon_socmed_icon(@src, @fill-new) {
-
-  @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-  @replace-default: escape('fill="#f00"');
-  @replace-new: escape('fill="@{fill-new}"');
-  @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
-
-  background-image: e(@replacesrc1);
-
-}
+//  .icon_socmed_icon(@src, @fill-new) {
+//  
+//    @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+//    @replace-default: escape('fill="#f00"');
+//    @replace-new: escape('fill="@{fill-new}"');
+//    @replacesrc1: replace("@{data-uri}", @replace-default, @replace-new, "g");
+//  
+//    background-image: e(@replacesrc1);
+//  
+//  }
 
 //=========================================================================================================
 

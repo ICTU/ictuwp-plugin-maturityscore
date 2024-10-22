@@ -5,7 +5,7 @@
  * Plugin Name:         ICTU / Gebruiker Centraal / Maturity Scan Plugin
  * Plugin URI:          https://github.com/ICTU/ictuwp-plugin-maturityscore/
  * Description:         Plugin voor gebruikercentraal.nl waarmee extra functionaliteit mogelijk wordt voor enquetes en rapportages rondom digitale 'volwassenheid' van organisaties.
- * Version:             2.0.4
+ * Version:             2.0.5
  * Version description: Versienummer opgehoogd. CMB2 verwijderd.
  * Author:              Paul van Buuren
  * Author URI:          https://wbvb.nl
@@ -34,7 +34,7 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 		/**
 		 * @var string
 		 */
-		public $version = '2.0.4';
+		public $version = '2.0.5';
 
 
 		/**
@@ -1244,7 +1244,7 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 						foreach ( $values['averages']['groups'] as $key => $value ) {
 
 							$average                              = gcms_aux_get_average_for_array( $value, 1 );
-							$values['averages']['groups'][ $key ] = round( (float)$average, 1 );
+							$values['averages']['groups'][ $key ] = round( (float) $average, 1 );
 
 							$columns = array();
 
@@ -1499,7 +1499,7 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 								$collectionkey  = GCMS_C_PLUGIN_KEY . GCMS_C_PLUGIN_SEPARATOR . $rowname;
 								$default        = $formfields_data->$rowname->group_label;
 
-								$radardata->dataProvider[$rowcounter]				= new stdClass();
+								$radardata->dataProvider[ $rowcounter ] = new stdClass();
 //$melebeltje = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $default, $collectionkey );
 //echo '$melebeltje: "' . $melebeltje . '" (mykeyname=' . $mykeyname . ') <br>';
 
@@ -1845,17 +1845,17 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 
 			// Honeypot
 			$cmb->add_field( array(
-				'name'    => GCMS_C_HONEYPOT_LABEL,
-				'id'      => GCMS_C_HONEYPOT,
-				'type'    => 'text',
-				'default' => '',
+				'name'       => GCMS_C_HONEYPOT_LABEL,
+				'id'         => GCMS_C_HONEYPOT,
+				'type'       => 'text',
+				'default'    => '',
 				'attributes' => array(
 					'autocomplete' => 'new-password',
 					'tabindex'     => '-1',
 					'size'         => '40',
 					'style'        => 'display: none !important; visibility: hidden !important;'
 				),
-				'classes' => 'visuallyhidden honingpot'
+				'classes'    => 'visuallyhidden honingpot'
 			) );
 
 		}
@@ -1910,7 +1910,7 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 			if ( $max ) {
 
 				$counter      = 0;
-				$scorerounded = round( (float)$score, 0 );
+				$scorerounded = round( (float) $score, 0 );
 
 				$displayvalue = intval( 100 / $max ); // percentage
 //			$return       = ( floor( $score ) * floor( $displayvalue ) ) . '%';
@@ -1990,7 +1990,7 @@ if ( ! class_exists( 'ictuwp_plugin_maturityscore_Plugin' ) ) :
 						$titleid        = sanitize_title( $thesectionid . '_title' );
 						$key_grouplabel = $key . '_group_label';
 
-						$fieldkey       = $key . GCMS_SCORESEPARATOR . round( (float)$jouwscore, 0 ); // g2_score_4
+						$fieldkey       = $key . GCMS_SCORESEPARATOR . round( (float) $jouwscore, 0 ); // g2_score_4
 						$key_grouplabel = $key . '_group_label';
 
 						$titel = gcms_aux_get_value_for_cmb2_key( $key_grouplabel, $this->survey_data['default_titles'][ $key_grouplabel ], $collectionkey );
@@ -2253,18 +2253,18 @@ function gcmsf_frontend_form_handle_posting() {
 
 	/**
 	 * Check HoneyPot
-	 * 
-	 * This field lures spambots to fill it in by 
-	 * 1) being empty 
+	 *
+	 * This field lures spambots to fill it in by
+	 * 1) being empty
 	 * 2) having some 'generic' name/label like "Email Name ID"
-	 * 
+	 *
 	 * We HIDE this field and (strongly!) advise to NOT fill it in
 	 * so that Humans will leave it blank.
 	 * (Dumb) spam-bots, however, are very greedy and will fill it in.
-	 * 
+	 *
 	 * Therefore: when it is NOT EMPTY we assume a spam-entry and ignore it...
 	 */
-	if ( ! empty( $sanitized_values[GCMS_C_HONEYPOT] ) ) {
+	if ( ! empty( $sanitized_values[ GCMS_C_HONEYPOT ] ) ) {
 		// return $cmb->prop( 'submission_error', new WP_Error( 'security_fail', __( "Security checks for your form submission failed. Your data will be discarded.", "ictuwp-plugin-maturityscore" ) ) );
 		// Do not even show an error, just silently bail...
 		return false;
@@ -2612,7 +2612,12 @@ function gcms_aux_get_value_for_cmb2_key( $key = '', $default = '', $optionkey =
 	$return = '';
 
 	if ( function_exists( 'cmb2_get_option' ) ) {
-		return cmb2_get_option( $optionkey, $key, $default );
+		$return = cmb2_get_option( $optionkey, $key, $default );
+        if ( $key === $return ) {
+            return '';
+        } else {
+            return $return;
+        }
 	}
 
 	// Fallback to get_option if CMB2 is not loaded yet.

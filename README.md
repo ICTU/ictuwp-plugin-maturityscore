@@ -12,7 +12,7 @@ Gebruik deze shortcode om de enquee op een pagina te tonen:
 Paul van Buuren (paul@wbvb.nl)
 
 ## Current version
-* 2.0.4 - Updated older CSS.
+* 2.0.5 - Fixed a bug for useless key / values.
 
 ## To do
 - [ ] check inbouwen of het theme op Genesis gebaseerd is.
